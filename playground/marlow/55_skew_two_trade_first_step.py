@@ -60,10 +60,11 @@ def components(spokes):
     return sorted(sizes)
 
 
-def build(p):
+def build(p,g=None):
     assert p % 8 == 5 and all(p % d for d in range(2,int(p**0.5)+1))
     k,t=(p-1)//2,(p-1)//4
-    g=primitive_root(p)
+    g=primitive_root(p) if g is None else g
+    assert len({pow(g,i,p) for i in range(p-1)})==p-1
     assert t % 2 == 1
     half={pow(g,4*i+j,p) for i in range(t) for j in range(2)}
     first={pair(x,pow(g,2,p)*x%p) for x in half}
@@ -132,10 +133,11 @@ def verify(p,singles,colors):
     assert len(singles)+len(colors)==t+(k*t+p-1)//p
 
 
-def algebraic_template(p):
+def algebraic_template(p,g=None):
     """Return the conditional two-trade formula, or a failed hypothesis."""
     assert p % 8 == 5 and all(p % d for d in range(2,int(p**0.5)+1))
-    g=primitive_root(p)
+    g=primitive_root(p) if g is None else g
+    assert len({pow(g,i,p) for i in range(p-1)})==p-1
     a=g*g%p
     inv=lambda value:pow(value%p,-1,p)
     half=inv(2)
@@ -183,6 +185,16 @@ def main():
         else:
             assert status in ('degenerate','same component')
     assert algebraic_template(157)[1]=='selected slot'
+    # Different primitive roots can satisfy the same proved criterion when
+    # the least root fails it. These four are direct full-partition checks.
+    for p,g in ((29,11),(53,18),(109,11),(157,72)):
+        moves,status=algebraic_template(p,g)
+        assert status=='ready'
+        singles,colors=build(p,g)
+        for move in moves:
+            exchange(colors,move)
+        verify(p,singles,colors)
+    print('Changed-root formula repairs also verified at p=29,53,109,157')
     scan=Counter(algebraic_template(p)[1] for p in range(13,1001,8)
                  if all(p % d for d in range(2,int(p**0.5)+1)))
     assert scan=={'ready':21,'same component':18,
