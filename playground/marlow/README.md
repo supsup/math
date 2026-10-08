@@ -170,7 +170,7 @@ The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil((
 
 ## 35. A conditional square-to-all-bases criterion
 
-The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; the even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17` and `h=29` in [items 41](41_seventeen_affine_pages.md) and [42](42_twentynine_affine_growth.md), so this remains a research reduction rather than a general odd-hub theorem.
+The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; a weaker ordered test allows one shared edge per alternating matching of each earlier page. The even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17` and `h=29` in [items 41](41_seventeen_affine_pages.md) and [42](42_twentynine_affine_growth.md), so this remains a research reduction rather than a general odd-hub theorem.
 
 ## 36. Two prime-one-mod-four template limits
 
