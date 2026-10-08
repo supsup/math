@@ -223,3 +223,7 @@ The [switch note](47_support_preserving_switch.md) proves that a checkerboard fo
 ## 48. Every large leaf count with thirty-nine bipartite hubs
 
 The [thirty-nine-hub formula note](48_thirtynine_hub_all_residues.md) proves `d(K_{39,t})=t+ceil(19t/39)` for every `t≥38`. Its [checker](48_thirtynine_hub_all_residues.py) builds twenty even bases by the weave, the 39-leaf offset base, and eighteen [saved odd-base certificates](48_thirtynine_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtynine_hub_residue_ladder.svg) shows all 39 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is prime `h=41≡1 (mod 4)`.
+
+## 49. Translation overlap as a difference-pair profile
+
+The [overlap note](49_affine_translation_overlap.md) proves that the common-edge count of a growth page and its translate equals a multiplicity in the page's repeated-difference displacement list. It gives an explicit nineteen-center set for `p=41` if a page's only repeated displacement magnitudes lie in a pair `{a,3a}`; the needed page itself is still unproved. The [checker](49_affine_translation_overlap.py) tests the identity on the existing 17-, 29-, and 37-hub pages and draws the [forty-one-center circle](art/fortyone_compatible_centers.svg).
