@@ -75,7 +75,7 @@
     "confluence"
    ],
    "verdict": "NARROWER",
-   "gap": "docs/266: 'does not establish the paper's upper bound of three'. Note: n <= 5 alone already rules out a complete set of 7 in dimension 6 (six MUBs force seven), itself a famous open question, so the narrower statement is still a strong claim. Build: pending"
+   "gap": "docs/266: 'does not establish the paper's upper bound of three'. Note: n <= 5 alone already rules out a complete set of 7 in dimension 6 (six MUBs force seven), itself a famous open question, so the narrower statement is still a strong claim. Build: 3,381 modules kernel-checked, permitted axioms only, no native_decide"
   },
   {
    "family": "195",
