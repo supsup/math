@@ -151,3 +151,7 @@ The [fifteen-hub formula note](29_fifteen_hub_all_residues.md) proves `d(K_{15,t
 ## 30. The even-hub parity cliff
 
 The [even-hub note](30_even_hub_cycle_weave.md) gives an explicit `C_{4k}`-cycle weave for every `K_{2k,2m}` with `m≥k`, replacing the Sotteau dependency for the even bases in item 24. It also proves `d(K_{h,t})=t/2` for even `h≤t` and even `t`, but `d(K_{h,t})=h+(t−1)/2` for odd `t`. The [checker](30_even_hub_cycle_weave.py) tests 72 even-even instances and draws the [four-hub parity diagram](art/even_hub_parity_cliff.svg): `d(K_{4,4}),d(K_{4,5}),d(K_{4,6})=2,6,3`. A separate read-only audit verified the general indexing and lower bound, including `h=2`; no publication novelty is claimed.
+
+## 31. Every large leaf count with seventeen bipartite hubs
+
+The [seventeen-hub formula note](31_seventeen_hub_all_residues.md) proves `d(K_{17,t})=t+ceil(8t/17)` for every `t≥16`. The [checker](31_seventeen_hub_all_residues.py) constructs all nine even bases from item 30's weave, the 17-leaf offset base, and seven [saved odd-base certificates](31_seventeen_hub_odd_seeds.json), then checks every spoke through eleven lifts. The [residue ladder](art/seventeen_hub_residue_ladder.svg) shows all seventeen methods. An independent read-only checker verified the raw odd witnesses, even weave, and lift; the saved JSON matches its SHA-256 digest. Priority and a uniform all-odd-hub proof remain open.
