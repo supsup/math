@@ -1,6 +1,6 @@
 # A long-cycle switching gap in the odd-hub problem
 
-The fixed-hub certificates and affine pages prove the proposed formula through `h=39`, but they do not give one construction for every odd `h=2k+1`. The remaining design step is sharp. For an odd base `t=h+2j`, `1≤j≤k−1`, equality in the parity/capacity lower bound requires exactly one singleton spoke at each leaf and exactly `k+j` cycles. With those counts, the total number of omitted hub visits is
+The fixed-hub certificates and affine pages prove the proposed formula through `h=45`, but they do not give one construction for every odd `h=2k+1`. The remaining design step is sharp. For an odd base `t=h+2j`, `1≤j≤k−1`, equality in the parity/capacity lower bound requires exactly one singleton spoke at each leaf and exactly `k+j` cycles. With those counts, the total number of omitted hub visits is
 
 `h(k+j)−kt=j`.
 
@@ -10,4 +10,4 @@ Two published switching results look relevant but do not supply that step as sta
 
 [Kim's October 2026 general theorem](https://arxiv.org/html/2610.07840v1) gives an `O(n)` cycle-and-edge decomposition for every `n`-vertex graph. Its degree-potential and expander argument allows slack in the number and lengths of parts. It does not produce the exact `k+j` long cycles needed at these bases.
 
-**Question for a uniform proof.** Fix the interval schedule and singleton degrees above. Is there, for every odd `h` and each `j`, a connected edge assignment for each prescribed cycle support? A useful intermediate result would be a length-preserving trade that lowers the number of components in one scheduled 2-factor without increasing it in another or changing any vertex's prescribed incidence. The finite certificates through `h=39` demonstrate feasibility at those sizes; they do not establish that such trades always exist.
+**Question for a uniform proof.** Fix the interval schedule and singleton degrees above. Is there, for every odd `h` and each `j`, a connected edge assignment for each prescribed cycle support? A useful intermediate result would be a length-preserving trade that lowers the number of components in one scheduled 2-factor without increasing it in another or changing any vertex's prescribed incidence. The finite certificates through `h=45`, including [item 56](56_fortyfive_hub_all_residues.md), demonstrate feasibility at those sizes; they do not establish that such trades always exist.
