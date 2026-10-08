@@ -18,6 +18,8 @@ def main():
     rows = [r for r in data["rows"] if len(set(r["readers"])) >= 2]
     pending = [r for r in data["rows"] if len(set(r["readers"])) < 2]
     text = json.dumps(rows).lower()
+    long = [r["family"] for r in rows if len(r["title"]) > 58]
+    assert not long, f"titles too long to sit beside the verdict: {long}"
     assert "proved" not in text, "the table must not say 'proved'"
     W, H = 480, 600
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
