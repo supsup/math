@@ -65,7 +65,7 @@ rigorously supplies a universal late-pair witness for that particular
 `p,g`, without testing quadratic characters point by point. The later
 [half-interval overlap theorem](68_half_interval_overlap_all_large_primes.md)
 proves the uniform geometric bound needed here and gives every prime
-`p≡5 (mod 8)` at and above 600 million. The
+`p≡5 (mod 8)` at and above 60 million. The
 complete-sum estimate from item60 alone cannot finish the last pairs:
 its `N≈p/4` is smaller than the allowed `|E_c|≈3p/4` or more.
 

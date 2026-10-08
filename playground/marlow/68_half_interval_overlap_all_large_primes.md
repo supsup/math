@@ -1,7 +1,7 @@
 # A half-interval overlap theorem closes all large 5-mod-8 prime hubs
 
 **Graph theorem.** For every prime \(p\equiv5\pmod8\) with
-\(p\ge600{,}000{,}000\), and every integer \(t\ge p-1\), put \(k=(p-1)/2\).
+\(p\ge60{,}000{,}000\), and every integer \(t\ge p-1\), put \(k=(p-1)/2\).
 Then
 
 \[
@@ -117,25 +117,46 @@ Including `0` gives
     |I_c∩aI_c| ≥ 1+ceil(k/3)−4 = ceil(k/3)−3,
     |B_c| = 3+|I_c∩aI_c| ≥ ceil(k/3).               (4)
 
-Combining (4) with the [Fourier–Weil bound](67_skew_late_prefix_geometry.md)
-proves `G∩B_c≠∅` whenever
+The [Fourier–Weil count](67_skew_late_prefix_geometry.md) can be
+sharpened here because the two complementary interval factors of
+`1_{B_c}` both have length `L=p-(k-1)=(p+3)/2`. For an interval of
+that length, write its normalized additive Fourier coefficient at
+`r`, represented by `1≤|r|≤k`, in the standard form
 
-    ceil(k/3) > 8√p(2+log p)²+8.                    (5)
+    |hat 1_J(r)| = |sin(πrL/p)| / (p|sin(πr/p)|).
 
-Here is an explicit threshold check. From (4),
-`|B_c|≥ceil(k/3)≥(p−1)/6`; it suffices that
+Since `p sin(πr/p)≥2r` for `1≤r≤k`, the two frequencies `±r`
+together contribute at most `1/r` for odd `r`. For even `r`,
+`sin(πrL/p)=±sin(3πr/(2p))`, so their joint contribution is at
+most `3π/(2p)`. Summing the odd terms by
+`1/r≤(1/2)log(r/(r−2))` for odd `r≥3`, and noting there are at
+most `k/2` positive even frequencies, gives
 
-    p−49 > 48√p(2+log p)².                              (6)
+    ||hat 1_J||_1
+       < 1 + (1 + (1/2)log k) + 3π/8
+       < A(p) := 2+3π/8+(1/2)log p.                  (5)
 
-The ratio `(2+log p)²/√p` decreases for `p>e²`, as its logarithmic
-derivative has the sign of `2−log p`. At `p=600,000,000`,
-`log p<20.5` and `√p>24494`, so the right side of (6), divided by
-`p`, is less than `48·22.5²/24494=24300/24494<0.993`. The left
-side divided by `p` is at least `1−49/600,000,000>0.999`.
-Thus (6) holds for every `p≥600,000,000`. The elementary bounds
-can be checked without floating point: `e>27/10` from its first
-six series terms and `(27/10)^41>(600,000,000)^2` show
-`log(600,000,000)<20.5`, while `24494²<600,000,000`.
+Affine images have the same Fourier ℓ¹ norm. The product bound
+therefore gives `||hat 1_{B_c}||_1<A(p)²`. The two quadratic mixed
+sums and one quartic mixed sum in item 67 contribute respectively
+`2√p,2√p,4√p` times this norm; its four polynomial roots cost at
+most 2 more. Hence
+
+    |G∩B_c| > |B_c|/4 − 2√p A(p)² − 2.              (6)
+
+From (4), `|B_c|≥ceil(k/3)≥(p−1)/6`. A sufficient condition is
+
+    p−49 > 48√p A(p)².                              (7)
+
+The ratio `A(p)²/√p` decreases with `p`, since its logarithmic
+derivative with respect to `p` is `1/A(p)−1/2<0`. At
+`p=60,000,000`, `log p<18`, `π<22/7`, and `√p>7745` give
+`A(p)<341/28`, so the right side of (7), divided by `p`, is less
+than `48(341/28)²/7745<0.92`. The left side divided by `p`
+is greater than `1−49/60,000,000>0.999`. Thus (7) holds for every
+`p≥60,000,000`. Integer checks certify the elementary inputs:
+the first seven series terms give `e>271/100`,
+`(271/100)^18>60,000,000`, and `7745²<60,000,000`.
 
 The positive point in `G∩B_{k−2}` survives **all** earlier adjacent
 pairs because the exception sets are nested. For every even growth
