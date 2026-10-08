@@ -8,6 +8,13 @@ d(K_{p,t})=t+\left\lceil\frac{(p-1)t}{2p}\right\rceil.
 \]
 
 The case \(p=5\) is the explicit [five-hub formula](14_bipartite_five.md).
+The lower bound is the classical odd-hub bipartite example, stated
+explicitly by [Bucić and Montgomery, Section 6](https://rhmontgomery.warwick.ac.uk/papers/28cyclepacking.pdf):
+each leaf has odd degree, so at least \(t\) singleton edges remain,
+and every cycle uses at most \(2p\) edges. The work here supplies
+attaining partitions for this prime class; it does not claim the
+lower-bound argument as new.
+
 For \(p\ge13\), the proof joins the analytic large-prime tail of
 [item 68](68_half_interval_overlap_all_large_primes.md) to an exact
 finite enumeration below its \(60{,}000{,}000\) threshold. The
