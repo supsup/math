@@ -1,0 +1,30 @@
+# Marlow's math playground
+
+This is my branch of [Charles's math fork](https://github.com/supsup/math), cloned at `fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb` and developed on `marlow/playground`. I follow Fixpoint's `playground/fixpoint` pattern: numbered, reproducible experiments; an accompanying picture; and notes that distinguish what I proved, computed, and have only read as a claim. Everything here is local until reviewed.
+
+## 1. The six-vertex boundary for cycle–clique Ramsey
+
+Family **189**, the collection's [cycle–clique manuscript](../../preprints/Cycle-clique-Ramsey-numbers-September-25-2026/README.md), states at [`01-introduction.tex:13`](../../preprints/Cycle-clique-Ramsey-numbers-September-25-2026/build/sections/01-introduction.tex) exactly `R(C_m,K_n)=(m-1)(n-1)+1.` for `m≥n≥3`, except `(3,3)`. I looked independently at its first nontrivial small case, `R(C_4,K_3)=7`. The finite classification below is my argument for that case only; it is not evidence that the manuscript's general proof is sound, and I have not established whether this small classification is new in the literature.
+
+Color each edge of a complete graph red or blue. A coloring is *safe* if it has no red (possibly non-induced) four-cycle and no blue triangle. Every safe coloring of `K_6` consists of two red triangles with all nine cross-edges blue except possibly one red bridge. Thus there are two isomorphism types and exactly **100 labelled safe colorings**: `10` with no bridge and `90` with one.
+
+Here is a short proof. A red triangle `T` must exist in any coloring of `K_6` without a blue triangle, by `R(3,3)=6`. Each vertex outside `T` has at most one red neighbor in `T`: with two, its two red edges and two edges of `T` give a red four-cycle. If two outside vertices were joined by a blue edge, among the three vertices of `T` one would be blue-adjacent to both, closing a blue triangle. Hence the three outside vertices also form a red triangle. Finally, two red cross-edges give a red four-cycle. If their endpoints in `T` differ, traverse those two endpoints and the joined outside pair; if they share a vertex in `T`, traverse that vertex and the red triangle outside. The at-most-one-neighbor observation rules out two bridges sharing an outside endpoint.
+
+Conversely, two red triangles with zero or one red bridge plainly have no blue triangle or red four-cycle. The partition into the two triangles is unique in either case: these are the only red triangles. There are `binom(6,3)/2=10` unordered partitions and `3×3=9` choices of bridge per partition, so the counts are `10` and `90`.
+
+The same argument shows that `K_7` cannot be safe: choose any red triangle `T`. Every pair among its four outside vertices must be red, so those vertices induce a red `K_4`, which contains a four-cycle. The safe `K_6` examples give the lower bound; therefore `R(C_4,K_3)=7`.
+
+Run `python3 -I playground/marlow/01_cycle_clique.py` from the repository root. It checks every one of the `2^15=32,768` edge colorings of `K_6` with two differently written predicates, classifies the 100 survivors, and checks all `100×2^6=6,400` extensions to `K_7` (zero survive). It also regenerates [the two-type diagram](art/cycle_clique.svg). This exhaustive check is a backstop for the finite argument, not a proof of the general formula.
+
+The check could have embarrassed the claim in three concrete ways: the two predicates could disagree on any of 32,768 masks, a surviving six-vertex coloring could fail the classification or alter either count, or one of the 6,400 seven-vertex extensions could survive. None did. An independent read-only agent repeated the enumeration and found the same counts and zero extensions.
+
+**Lean status.** [`lean/docs/189.md`](../../lean/docs/189.md) points to the comparator [`CycleCliqueRamsey.lean`](../../lean/ComparatorChallenges/CycleCliqueRamsey.lean), whose `thm_main` is a `sorry` challenge statement. The claimed actual proof is under [`lean/OAI/Combinatorics/Ramsey/CycleClique/`](../../lean/OAI/Combinatorics/Ramsey/CycleClique/); `MainTheorem.lean` has a `thm_main` proof and I found no code-level `sorry`, `admit`, or `axiom` in that 443-file directory. The only `axiom` search hit is explanatory prose in `Construction/PublishedInputs.lean`. I have **not built** this Lean development: no `lean` or `lake` executable is installed here. The source inspection is not a machine-check verdict.
+
+**Why this might transfer.** The useful idea is the *forced complement*: forbidding a blue clique and a red cycle can force a small red core, after which vertices outside the core have limited red adjacency and become rigid. In a larger Ramsey problem, such core constraints could shrink a computer search or guide a stability theorem. Outside math, a SAT or constraint-programming researcher could encode the same forced-neighborhood rule to prune finite graph-coloring searches; that is a possible technique, not a demonstrated performance gain. The six-vertex argument alone supplies neither a general induction nor a claim about larger cases.
+
+**Red flags.** The full theorem is far outside the enumerated range; this result may be a familiar special case rather than a new finding; the Lean proof was source-inspected but not built; and the SVG has only been checked for well-formed XML because local Quick Look and headless Chrome failed to render in this environment. The picture is self-contained SVG with no script, hyperlink, foreign object, or external reference. Its color-count labels are generated from the checked `counts` dictionary.
+
+## Review queue
+
+- Ask Fixpoint to check the finite proof, exhaustive predicates, labelled count, and diagram independently.
+- If it survives review and Fixpoint thinks it belongs, ask to add a carefully scoped card to his showcase; do not present it as a new general theorem.
