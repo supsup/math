@@ -190,7 +190,7 @@ The [template note](39_prime_power_template_limits.md) proves that no nonprime o
 
 ## 40. Every large leaf count with twenty-seven bipartite hubs
 
-The [twenty-seven-hub formula note](40_twentyseven_hub_all_residues.md) proves `d(K_{27,t})=t+ceil(13t/27)` for every `t≥26`. The [checker](40_twentyseven_hub_all_residues.py) builds fourteen even bases by the weave, the 27-leaf offset base, and twelve [saved odd-base certificates](40_twentyseven_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/twentyseven_hub_residue_ladder.svg) shows the 27 base residues. Two separate raw-edge audits verified the odd certificates; the edge assignments appear solver-specific. [Item 42](42_twentynine_affine_growth.md) covers the next prime `h=29`; the first unchecked odd hub count is composite `h=35`.
+The [twenty-seven-hub formula note](40_twentyseven_hub_all_residues.md) proves `d(K_{27,t})=t+ceil(13t/27)` for every `t≥26`. The [checker](40_twentyseven_hub_all_residues.py) builds fourteen even bases by the weave, the 27-leaf offset base, and twelve [saved odd-base certificates](40_twentyseven_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/twentyseven_hub_residue_ladder.svg) shows the 27 base residues. Two separate raw-edge audits verified the odd certificates; the edge assignments appear solver-specific. [Item 42](42_twentynine_affine_growth.md) covers the next prime `h=29`.
 
 ## 41. A non-primitive growth page at seventeen hubs
 
@@ -198,7 +198,7 @@ The [affine-page note](41_seventeen_affine_pages.md) gives an explicit near-Hami
 
 ## 42. Every leaf count at twenty-nine prime hubs
 
-The [twenty-nine-hub growth note](42_twentynine_affine_growth.md) gives a compact explicit non-primitive page for the affine square at `p=29≡1 (mod 4)`. Its 13 selected translates have pairwise edge overlap at most one, so the two-leaf move gives all difficult odd bases; the even weave and offset lift prove `d(K_{29,t})=t+ceil(14t/29)` for every `t≥28`. The [checker](42_twentynine_affine_growth.py) rebuilds every growth partition from the displayed page and center set and draws the [difference table](art/twentynine_affine_growth.svg). This is a fixed-prime theorem outside item 34's infinite class; the first unchecked odd hub count is composite `h=35`.
+The [twenty-nine-hub growth note](42_twentynine_affine_growth.md) gives a compact explicit non-primitive page for the affine square at `p=29≡1 (mod 4)`. Its 13 selected translates have pairwise edge overlap at most one, so the two-leaf move gives all difficult odd bases; the even weave and offset lift prove `d(K_{29,t})=t+ceil(14t/29)` for every `t≥28`. The [checker](42_twentynine_affine_growth.py) rebuilds every growth partition from the displayed page and center set and draws the [difference table](art/twentynine_affine_growth.svg). This is a fixed-prime theorem outside item 34's infinite class.
 
 ## 43. A split-overlap growth family at thirty-seven hubs
 
@@ -206,4 +206,8 @@ The [thirty-seven-hub note](43_thirtyseven_affine_growth.md) proves `d(K_{37,t})
 
 ## 44. Every large leaf count with thirty-three bipartite hubs
 
-The [thirty-three-hub formula note](44_thirtythree_hub_all_residues.md) proves `d(K_{33,t})=t+ceil(16t/33)` for every `t≥32`. Its [checker](44_thirtythree_hub_all_residues.py) builds seventeen even bases by the weave, the 33-leaf offset base, and fifteen [saved odd-base certificates](44_thirtythree_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtythree_hub_residue_ladder.svg) shows all 33 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is composite `h=35`; `h=37` has the structural proof in item 43.
+The [thirty-three-hub formula note](44_thirtythree_hub_all_residues.md) proves `d(K_{33,t})=t+ceil(16t/33)` for every `t≥32`. Its [checker](44_thirtythree_hub_all_residues.py) builds seventeen even bases by the weave, the 33-leaf offset base, and fifteen [saved odd-base certificates](44_thirtythree_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtythree_hub_residue_ladder.svg) shows all 33 base residues. A separate direct audit checked the saved walks against the original solver edge lists.
+
+## 45. Every large leaf count with thirty-five bipartite hubs
+
+The [thirty-five-hub formula note](45_thirtyfive_hub_all_residues.md) proves `d(K_{35,t})=t+ceil(17t/35)` for every `t≥34`. Its [checker](45_thirtyfive_hub_all_residues.py) builds eighteen even bases by the weave, the 35-leaf offset base, and sixteen [saved odd-base certificates](45_thirtyfive_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtyfive_hub_residue_ladder.svg) shows all 35 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is composite `h=39`; item 43 handles `h=37` structurally.
