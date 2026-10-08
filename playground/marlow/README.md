@@ -214,4 +214,8 @@ The [thirty-five-hub formula note](45_thirtyfive_hub_all_residues.md) proves `d(
 
 ## 46. Where published bipartite switching stops short
 
-The [long-cycle switching note](46_long_cycle_switching_boundary.md) compares the exact incidence needed at an odd base with published cycle-switching theorems and Kim's recent general linear bound. Horsley's and Asplund–Chaffee–Hammer's stated sufficient conditions exclude our near-Hamilton cycle list; Kim's proof allows too much slack to give the fixed-hub equality. The note isolates a possible uniform next step: connect every scheduled cycle support by trades that preserve the other supports and singleton spokes.
+The [long-cycle switching note](46_long_cycle_switching_boundary.md) compares the exact incidence needed at an odd base with published cycle-switching theorems and Kim's recent general linear bound. Horsley's and Asplund–Chaffee–Hammer's stated sufficient conditions exclude our odd, unequal residual graph and near-Hamilton cycle list; Kim's proof allows too much slack to give the fixed-hub equality. The note isolates a possible uniform next step: connect every scheduled cycle support by trades that preserve the other supports and singleton spokes.
+
+## 47. A support-preserving two-color repair
+
+The [switch note](47_support_preserving_switch.md) proves that a checkerboard four-edge color trade preserves every scheduled hub and leaf support, singleton spoke, and edge partition. When its two first-color edges lie in distinct components, it merges them; the second color may merge, stay connected, or split, so total component count never rises. The [checker](47_support_preserving_switch.py) verifies a concrete reversible `K_{9,11}` example and draws the [rectangle diagram](art/support_preserving_switch.svg). The remaining uniform question is whether a reducing trade sequence always exists.
