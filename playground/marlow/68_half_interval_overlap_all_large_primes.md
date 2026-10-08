@@ -20,9 +20,15 @@ let `a` be a unit with `a≠±1 (mod n)`. Then
 
     |H∩aH| ≥ ceil(k/3).
 
-The prime hypothesis is unnecessary for this overlap theorem. The bound is exactly sharp for
-every modulus `n=6j+1`: with `a=−3`, one has `k=3j` and
-`|H∩aH|=j`. Here `−3` is always a unit.
+The prime hypothesis is unnecessary for this overlap theorem. The
+bound is sharp for **every odd modulus coprime to 3**: take `a=−3`.
+The count is
+
+    |H∩(−3)H| = floor(2k/3)−floor(k/3) = ceil(k/3).
+
+Indeed, for `1≤x≤k`, `−3x mod n` lies in `H` precisely when
+`k<3x≤2k`; the range `3x≤3k<n+k` leaves no second wrapped
+interval. When `n=6j+3`, the multiplier `−3` is not a unit.
 
 ## Metric reduction
 
@@ -148,12 +154,12 @@ From (4), `|B_c|≥ceil(k/3)≥(p−1)/6`. A sufficient condition is
 
     p−49 > 48√p A(p)².                              (7)
 
-The ratio `A(p)²/√p` decreases with `p`, since its logarithmic
-derivative with respect to `p` is `1/A(p)−1/2<0`. At
+The ratio `A(p)²/√p` decreases with `p`, since the derivative
+of its logarithm with respect to `log p` is `1/A(p)−1/2<0`. At
 `p=60,000,000`, `log p<18`, `π<22/7`, and `√p>7745` give
 `A(p)<341/28`, so the right side of (7), divided by `p`, is less
 than `48(341/28)²/7745<0.92`. The left side divided by `p`
-is greater than `1−49/60,000,000>0.999`. Thus (7) holds for every
+is at least `1−49/60,000,000>0.999`. Thus (7) holds for every
 `p≥60,000,000`. Integer checks certify the elementary inputs:
 the first seven series terms give `e>271/100`,
 `(271/100)^18>60,000,000`, and `7745²<60,000,000`.
