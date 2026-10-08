@@ -139,3 +139,7 @@ The [thirteen-hub formula note](26_thirteen_hub_all_residues.md) proves `d(K_{13
 ## 27. The general odd-base design question
 
 The [design-question note](27_odd_hub_design_question.md) isolates the remaining odd bases for a possible uniform theorem. It formulates a sufficient deletion-and-cycle design with `k` full cycles and `j` short cycles at `t=h+2j`, records the stronger `j=1` missing-leaf structure, and separates the conjecture from the proved finite-hub cases and existing cycle-design theorems.
+
+## 28. A finite Coulomb branching model
+
+The [finite transport note](28_finite_coulomb_branches.md) gives an exact atomic model of the branch geometry behind family 373: on a center and any `m≥2` antipodal unit pairs, a simple dual potential certifies Kantorovich value `2+2^(−s)` for inverse-power cost, while every deterministic measure-preserving Monge plan has infinite cost. The [five-site checker](28_finite_coulomb_branches.py) verifies the original two-pair counts and rational marginals and draws [the branch diagram](art/finite_coulomb_branches.svg). This atomic mechanism has a value gap and does not establish the preprint's smooth nonattainment theorem, where the two infima agree.
