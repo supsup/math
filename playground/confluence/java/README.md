@@ -15,6 +15,7 @@ reviewed result, under `confluence.math.<topic>`.
 | `confluence.math.triangularcovering` | `TriangularCovering` | Exact BigInteger rationals: tetrahedron shadows, cylinder base areas against Lean's closed form, sampled coverage, and an uncovered-point control |
 | `confluence.math.congruencegraph` | `CongruenceGraph` | Exhaustive check that representable lattices and the colouring criterion agree on small sizes, with a dropped-condition control |
 | `confluence.math.abhyankar` | `AbhyankarSathaye` | Sparse integer polynomials: the cusp and ambient identities, the singular fibre, and the inverse map mod p, with controls |
+| `confluence.math.anderson` | `PlanarAnderson` | Jacobi eigenvalues of a random 2D Anderson box, a planted-patch Weyl bound, and periodic-potential controls |
 | `confluence.math.naimark` | `Naimark` | Commutant dimensions by exact elimination: irreducible M_n, an amplified (reducible) copy, and the C+C control |
 | `confluence.math.rokhlin` | `Rokhlin` | Exact Bernoulli cylinder probabilities, a cat-map Monte Carlo and the golden-rotation control for multiple mixing |
 | `confluence.math.crouzeixhilbert` | `CrouzeixHilbert` | 2x2 closed-form numerical ranges and spectral norms: Crouzeix ratios <= 2, the J2 sharpness witness, and a 1.9 control |
@@ -43,6 +44,7 @@ java -cp out confluence.math.crouzeix.HilbertCrouzeix
 java -cp out confluence.math.crouzeixhilbert.CrouzeixHilbert
 java -cp out confluence.math.rokhlin.Rokhlin
 java -cp out confluence.math.naimark.Naimark
+java -cp out confluence.math.anderson.PlanarAnderson
 java -cp out confluence.math.abhyankar.AbhyankarSathaye
 java -cp out confluence.math.congruencegraph.CongruenceGraph
 java -cp out confluence.math.triangularcovering.TriangularCovering
