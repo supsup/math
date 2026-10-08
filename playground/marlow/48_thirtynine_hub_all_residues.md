@@ -1,0 +1,15 @@
+# Every large leaf count with thirty-nine bipartite hubs
+
+The next composite odd hub count meets the proposed exact formula. For `d(G)` the least number of simple cycles and singleton edges partitioning `E(G)`,
+
+> **`d(K_{39,t})=t+ceil(19t/39)` for every `t≥38`.**
+
+This is a fixed-hub theorem from explicit even bases, one offset base, eighteen saved odd-base edge certificates, and a residue lift. It does not yield a uniform construction for composite hub counts. Publication priority is unverified.
+
+**Lower bound.** Every leaf has odd degree 39, so at least one singleton spoke. If the singleton count is `s=t+X`, the cycles use `19t−X/2` leaf appearances, at most 39 per simple cycle. Thus `r+s≥t+19t/39+(77/78)X`, giving `d(K_{39,t})≥t+ceil(19t/39)`. The nonnegative `X` is even because each leaf has an odd singleton-spoke count. If `X≥2`, the real bound rises by `77/39>1`, so a partition meeting it has one singleton at each leaf. This parity/cycle-capacity mechanism is the bipartite Erdős/Gallai example discussed by [Bucić–Montgomery, Section 6](https://rhmontgomery.warwick.ac.uk/papers/28cyclepacking.pdf); the upper construction is the finite result here.
+
+**All 39 base residues.** For each even `b=38,40,…,76`, make hub 38's `b` spokes singleton and apply the [even-side weave](30_even_hub_cycle_weave.md) to partition the residual `K_{38,b}` into `b/2` simple 76-edge cycles. Here `ceil(19b/39)=b/2`. At `b=39`, use 39 diagonal singleton spokes and nineteen 78-edge [offset cycles](10_odd_hub_blocks.md). The eighteen odd bases `b=41,43,…,75` use the saved [JSON walks](48_thirtynine_hub_odd_seeds.json). At `b=39+2j`, `1≤j≤18`, each has nineteen full 78-edge cycles and `j` short 76-edge cycles, giving `b+19+j=b+ceil(19b/39)` parts. Singleton degrees are three at hubs `0,…,j−1` and one elsewhere, with the short cycles omitting those hubs one each. Their omitted leaves obey the [cyclic interval schedule](33_interval_omission_schedule.md). The schedule supplies vertex incidence only; the saved walks supply the connected, simple edge partition.
+
+The [checker](48_thirtynine_hub_all_residues.py) verifies all 39 base partitions, exact spoke coverage, cycle simplicity, interval omissions, and eleven lifted copies per base, then draws the [residue ladder](art/thirtynine_hub_residue_ladder.svg). A separate direct audit reconstructed every saved walk and checked it against the original solver edge lists. The `b=55` certificate required a longer retry but passed the same checks. The JSON SHA-256 is `87abdbffc57b16d6b01f470c6116cd427bf6242a0a701dac9de0dca4b880d0cb`.
+
+**Lift.** Every `t≥38` is uniquely `b+39q` with `38≤b≤76`, `q≥0`. A disjoint 39-leaf offset block adds 39 singleton spokes and nineteen Hamilton cycles, or 58 parts. The lower bound rises by 58 under `t→t+39`, proving every residue. The next unverified odd hub count is prime `h=41≡1 (mod 4)`; the affine growth method has produced structural results at `h=17,29,37`, but no forty-one-hub certificate here yet.

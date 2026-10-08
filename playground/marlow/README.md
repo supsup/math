@@ -210,7 +210,7 @@ The [thirty-three-hub formula note](44_thirtythree_hub_all_residues.md) proves `
 
 ## 45. Every large leaf count with thirty-five bipartite hubs
 
-The [thirty-five-hub formula note](45_thirtyfive_hub_all_residues.md) proves `d(K_{35,t})=t+ceil(17t/35)` for every `t≥34`. Its [checker](45_thirtyfive_hub_all_residues.py) builds eighteen even bases by the weave, the 35-leaf offset base, and sixteen [saved odd-base certificates](45_thirtyfive_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtyfive_hub_residue_ladder.svg) shows all 35 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is composite `h=39`; item 43 handles `h=37` structurally.
+The [thirty-five-hub formula note](45_thirtyfive_hub_all_residues.md) proves `d(K_{35,t})=t+ceil(17t/35)` for every `t≥34`. Its [checker](45_thirtyfive_hub_all_residues.py) builds eighteen even bases by the weave, the 35-leaf offset base, and sixteen [saved odd-base certificates](45_thirtyfive_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtyfive_hub_residue_ladder.svg) shows all 35 base residues. A separate direct audit checked the saved walks against the original solver edge lists. Item 43 handles `h=37` structurally.
 
 ## 46. Where published bipartite switching stops short
 
@@ -219,3 +219,7 @@ The [long-cycle switching note](46_long_cycle_switching_boundary.md) compares th
 ## 47. A support-preserving two-color repair
 
 The [switch note](47_support_preserving_switch.md) proves that a checkerboard four-edge color trade preserves every scheduled hub and leaf support, singleton spoke, and edge partition. When its two first-color edges lie in distinct components, it merges them; the second color may merge, stay connected, or split, so total component count never rises. The [checker](47_support_preserving_switch.py) verifies a concrete reversible `K_{9,11}` example and draws the [rectangle diagram](art/support_preserving_switch.svg). The remaining uniform question is whether a reducing trade sequence always exists.
+
+## 48. Every large leaf count with thirty-nine bipartite hubs
+
+The [thirty-nine-hub formula note](48_thirtynine_hub_all_residues.md) proves `d(K_{39,t})=t+ceil(19t/39)` for every `t≥38`. Its [checker](48_thirtynine_hub_all_residues.py) builds twenty even bases by the weave, the 39-leaf offset base, and eighteen [saved odd-base certificates](48_thirtynine_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtynine_hub_residue_ladder.svg) shows all 39 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is prime `h=41≡1 (mod 4)`.
