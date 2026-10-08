@@ -40,8 +40,27 @@ def declarations(text):
     for idx, (pos, kind, name) in enumerate(starts):
         nxt = [p for p in [s[0] for s in starts[idx + 1:]] + ends if p > pos]
         body = text[pos:min(nxt) if nxt else len(text)]
-        out[name] = (kind, normalize(body))
+        norm = normalize(body)
+        if kind == "instance" and name[0] in ":{([":
+            # An anonymous instance has no name; the regex took its first binder
+            # ("{Carrier"), so two anonymous instances in one file collided. Key it
+            # by the class it instantiates: the head after the last top-level ':'.
+            name = "instance " + instance_head(norm)
+        out[name] = (kind, norm)
     return out
+
+
+def instance_head(norm):
+    sig = re.split(r"\s?\bwhere\b", statement_only(norm), maxsplit=1)[0]
+    depth, colon = 0, -1
+    for i, ch in enumerate(sig):
+        if ch in "([{\u27e8":
+            depth += 1
+        elif ch in ")]}\u27e9":
+            depth -= 1
+        elif ch == ":" and depth == 0:
+            colon = i
+    return sig[colon + 1:].strip() if colon >= 0 else sig
 
 
 def normalize(body):

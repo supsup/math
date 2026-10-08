@@ -1,0 +1,50 @@
+translation reduction: 300 random algebras on Fin 2 (arity 0..3) all land in the unary-closure families
+translation reduction: 300 random algebras on Fin 3 (arity 0..3) all land in the unary-closure families
+translation reduction: 300 random algebras on Fin 4 (arity 0..3) all land in the unary-closure families
+lattices of size 1: 1
+lattices of size 2: 1
+lattices of size 3: 1
+lattices of size 4: 2
+lattices of size 5: 5
+lattices of size 6: 15
+lattices of size 7: 53
+n=1: 1 distinct congruence families; size histogram {1: 1}
+  n=1: A true for 1/78 lattices; elapsed 0.6s
+n=2: 1 distinct congruence families; size histogram {2: 1}
+  n=2: A true for 1/78 lattices; elapsed 0.6s
+n=3: 8 distinct congruence families; size histogram {2: 1, 3: 3, 4: 3, 5: 1}
+  n=3: A true for 4/78 lattices; elapsed 0.7s
+n=4: 303 distinct congruence families; size histogram {2: 1, 3: 13, 4: 45, 5: 46, 6: 76, 7: 69, 8: 28, 9: 12, 10: 12, 15: 1}
+  n=4: A true for 16/78 lattices; elapsed 339.5s
+
+(lattice, n) instances: 312; A true 22; B true 22; mismatches 0
+lattices representable at some n<=4: 17/78
+control drop-gen: 12 instances with weakened-B true but A false
+    n=4 L10(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 5), (2, 5), (3, 5), (4, 5)]
+    n=4 L11(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 5), (2, 5), (3, 5), (4, 5)]
+    n=4 L12(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 5), (2, 5), (3, 5), (4, 5)]
+    n=4 L16(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 4), (1, 5), (2, 3), (2, 5), (3, 5), (4, 5)]
+    n=4 L25(|L|=7) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6)]
+    n=4 L26(|L|=7) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 6), (2, 6), (3, 6), (4, 6), (5, 6)]
+    explicit: n=4 L10(|L|=6) color matrix [[0, 1, 1, 2], [1, 0, 1, 3], [1, 1, 0, 4], [2, 3, 4, 0]]
+      full IsGraphWitness on it: False
+      failing (seeds, sup, unconnected pair, #admissible maps): (((0, 1),), 1, (0, 2), 5)
+control drop-sep: 287 instances with weakened-B true but A false
+    n=1 L1(|L|=2) strict order pairs [(0, 1)]
+    n=1 L2(|L|=3) strict order pairs [(0, 1), (0, 2), (1, 2)]
+    n=1 L3(|L|=4) strict order pairs [(0, 1), (0, 2), (0, 3), (1, 3), (2, 3)]
+    n=1 L4(|L|=4) strict order pairs [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
+    n=1 L5(|L|=5) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (1, 4), (2, 4), (3, 4)]
+    n=1 L6(|L|=5) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]
+control drop-tri: 55 instances with weakened-B true but A false
+    n=3 L4(|L|=4) strict order pairs [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
+    n=3 L6(|L|=5) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]
+    n=3 L7(|L|=5) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]
+    n=3 L8(|L|=5) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+    n=3 L14(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 3), (1, 5), (2, 3), (2, 5), (3, 5), (4, 5)]
+    n=3 L17(|L|=6) strict order pairs [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 3), (1, 4), (1, 5), (2, 3), (2, 5), (3, 5), (4, 5)]
+
+real	5m39.507s
+user	5m26.345s
+sys	0m4.675s
+exit=0
