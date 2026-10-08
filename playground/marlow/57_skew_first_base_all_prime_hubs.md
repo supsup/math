@@ -67,4 +67,7 @@ limit=10000000 primes_5mod8=166203 witnesses_p_ge29=166202 max_first_g=134 max_g
 
 Reproduce with `g++ -O2 -std=c++17 playground/marlow/57_skew_first_base_finite_sweep.cpp -o /tmp/skew_first_base && /tmp/skew_first_base`. The source uses 64-bit signed products; its largest polynomial product is below \(3\cdot10^{14}\). Its sieve proves primality for the enumerated values, and the cyclic-group generator test is exact. The analytic range starts at \(p-1=10^7\), so together the sweep and bound cover every prime in the stated class.
 
-The first-base class result does not provide compatible repairs for later odd bases. That remains the route toward an all-residue prime-hub theorem.
+The first-base construction is separate from the later page-pair repairs.
+Together with those repairs, the analytic tail and finite criterion
+scan in [item 69](69_skew_prime_hub_all_residues.md) now give the
+all-residue formula for this prime class.

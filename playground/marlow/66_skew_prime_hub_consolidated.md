@@ -6,6 +6,9 @@ separate constructions in items 10, 24, 57, 58, 60, and 64 into one
 statement. It is a **partial residue theorem** that begins at \(p=53\).
 The later [half-interval overlap theorem](68_half_interval_overlap_all_large_primes.md)
 strengthens this to **every residue** for every such prime \(p\ge60{,}000{,}000\).
+The [finite criterion scan](69_skew_prime_hub_all_residues.md)
+then covers all smaller eligible primes, yielding the full class
+formula with a computational component.
 
 **Theorem.** Let \(p\ge53\) be prime with \(p\equiv5\pmod8\). Set
 
@@ -111,4 +114,4 @@ checks all 166,203 through ten million. The
 checks all 42 through 1000. These bounded scans find witnesses
 outside this note's initial analytic range at the tested primes. Item 68
 supplies a separate uniform proof of all residues for \(p\ge60{,}000{,}000\);
-the scans remain finite evidence for smaller primes.
+item 69's exact finite criterion scan covers the remaining primes.

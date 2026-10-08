@@ -170,7 +170,8 @@ lower bound, proving the graph theorem at the top.
 
 The [finite overlap checker](68_half_interval_overlap_scan.cpp)
 tests all units at every odd modulus through 10,000, as a backstop
-for the elementary proof. The separate late-pair scans in item 67
-are finite evidence for smaller primes. Publication priority for
-this particular overlap lemma and graph corollary has not been
-established.
+for the elementary proof. [Item 69](69_skew_prime_hub_all_residues.md)
+then checks the exact late-pair criterion at every smaller eligible
+prime, completing the full prime-class formula with a finite
+computational component. Publication priority for this particular
+overlap lemma and graph corollary has not been established.
