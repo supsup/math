@@ -171,3 +171,7 @@ The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil((
 ## 35. A conditional square-to-all-bases criterion
 
 The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; the even weave and offset lift then give the all-residue formula. Existence of such compatible cycles is established here for primes `3 (mod 4)` only, so this is a research reduction rather than a general odd-hub theorem.
+
+## 36. Two prime-one-mod-four template limits
+
+The [boundary note](36_p1_two_page_boundary.md) records why the primitive-power page fails the one-step alternating-color condition at primes `1 (mod 4)`, and why a published `p=13` super-extendable page fails the affine midpoint-distinctness condition. An [exhaustive relaxed CSP](36_p1_two_page_probe.py) rules out a specific simultaneous two-page, four-leaf surgery at `p=5,13,17,29`; an independent audit checked the model and finite results. These are scoped construction limits, not failures of the odd-hub partition formula.

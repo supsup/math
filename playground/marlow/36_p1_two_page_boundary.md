@@ -1,0 +1,17 @@
+# Two failed growth templates at primes one modulo four
+
+The [prime `3 (mod 4)` theorem](34_prime_two_leaf_growth.md) rests on a compatible square seed and a family of almost-Hamilton hub cycles. These checks show why two nearby constructions do **not** immediately transfer to primes `p≡1 (mod 4)`. They are limitations of specific templates, not counterexamples to the odd-hub formula.
+
+**Primitive-power parity.** Keep the affine midpoint square seed from item 34 and the classical translated primitive-power page `C_a=(a+g^i)_{i=0}^{p−2}`. A difference class `{d,−d}` occurs at indices `i` and `i+k`, where `k=(p−1)/2`. When `p≡1 (mod 4)`, `k` is even, so both appearances have the **same** parity. Neither alternating matching contains one edge from every affine full-cycle color, violating condition 1 of the [conditional growth criterion](35_compatible_growth_criterion.md). This rules out the one-page, two-leaf move with those pages and that square seed.
+
+**A different page fixes parity but repeats leaf labels.** [Bey–Hartmann–Leck–Leck (2002), Example 4.2](https://www.math.uni-luebeck.de/mitarbeiter/bey/pub/orthogonal_double_covers_by_super-extendable_cycles__02_BEY_HARTMANN_LECK_LECK.pdf) gives a `p=13` almost-Hamilton cycle
+
+`(1,4,7,5,3,12,8,2,9,10,11,6)`.
+
+Its difference classes, read around the cycle, are `(3,3,2,2,4,4,6,6,1,1,5,5)`, so each alternating matching is rainbow over all six affine colors. But its successive affine midpoint labels are `(9,12,6,4,1,10,5,12,3,4,2,10)`: only nine distinct labels among twelve edges. The displaced-leaf short cycle would repeat a leaf, violating simplicity. This page fixes condition 1 but fails condition 2 for the affine midpoint labeling; another square labeling or page could behave differently.
+
+**A bounded two-page probe.** The [exhaustive script](36_p1_two_page_probe.py) asks whether processing the two primitive-power pages centered at `0` and `1` together could add four leaves, two singleton at each center. It permits each fresh leaf to occupy selected edges on **either** page, provided its hub pairs form a perfect matching on all hubs except its singleton center. It also requires fresh labels remaining in each affine full cycle to be distinct. The pages share one hub-pair slot; the model correctly lets the second page overwrite the first occupant and removes that first occurrence from the final-slot check. It deliberately omits some intermediate simplicity constraints, making the search a *relaxation*: a feasible surgery would satisfy these necessary conditions, but a satisfying assignment might still fail to give a valid partition.
+
+The script exhaustively returns **UNSAT** for this fixed seed/page pair at `p=5,13,17,29` (search nodes `1,7,11,23`). An independent read-only audit checked the model, reran all four cases, and independently enumerated the `p=5` assignment space. Thus the proposed two-page surgery cannot work at these four primes, even under its extra color freedom. This says nothing about other pages, other Kotzig square seeds, more elaborate switches, or the target formula itself. In fact, fixed-hub partitions for `h=5,13,17` are already certified in this playground.
+
+The next useful search is for a square seed and almost-Hamilton pages satisfying all three [compatibility conditions](35_compatible_growth_criterion.md), or for a growth move that does not require their strict rainbow and one-edge-intersection structure. Publication priority of this boundary analysis is unverified.
