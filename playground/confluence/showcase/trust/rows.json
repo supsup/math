@@ -85,17 +85,19 @@
    "title": "A counterexample to the small Cohen-Macaulay conjecture",
    "lean": "there exists a 3-dimensional complete Noetherian normal local C-domain with residue field C",
    "readers": [
-    "confluence"
+    "confluence",
+    "fixpoint"
    ],
    "verdict": "NARROWER",
-   "gap": "docs/195 says the MCM-free property is not proved. Sharper: the existential is met by C[[x,y,z]], which is regular and IS its own maximal CM module, so the statement does not pin the paper's candidate at all"
+   "gap": "docs/195 says the MCM-free property is not established. Sharper: the existential is met by C[[x,y,z]], which is regular and IS its own maximal CM module, so the statement does not pin the paper's candidate at all"
   },
   {
    "family": "254",
    "title": "An Artin group that is not CAT(0)",
    "lean": "an explicit Artin group on 116 generators (labels 2, 3, infinity) has no geometric action on any nonempty proper CAT(0) space",
    "readers": [
-    "confluence"
+    "confluence",
+    "fixpoint"
    ],
    "verdict": "MATCHES",
    "gap": "none at the statement level (docs/254 states exactly this); the 9,400-line proof is the kernel's word"
@@ -105,10 +107,11 @@
    "title": "Bogomolov-Pop reconstruction of function fields",
    "lean": "isomorphisms of perfect closures inducing the same abelian pro-l Galois data, up to l-adic units, agree up to Frobenius",
    "readers": [
-    "confluence"
+    "confluence",
+    "fixpoint"
    ],
    "verdict": "NARROWER",
-   "gap": "docs/009: 'existence of a field isomorphism for every admissible Galois-data isomorphism is outside it' (uniqueness half only)"
+   "gap": "docs/009: 'existence of a field isomorphism for every admissible Galois-data isomorphism is outside it' (uniqueness half only). Whether this half is already Pop's 2012 theorem needs a source check"
   }
  ]
 }
