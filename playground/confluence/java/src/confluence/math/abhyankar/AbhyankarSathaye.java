@@ -306,7 +306,7 @@ public class AbhyankarSathaye {
         control("wrong inverse (2UyG -> 3UyG): phi(F)=0 and phi(shiftY)=Y", Fp.isZero(e3.get(3)) && Fp.eq(e3.get(5), Y));
         Q[] moved = {RAT.of(2), RAT.of(0), Q.of(BigInteger.valueOf(-1), BigInteger.TWO), Q.of(BigInteger.valueOf(3), BigInteger.TWO)};
         Q g0 = F.pderiv(0).eval(RAT, moved);
-        control("moved point (2,0,-1/2,3/2): dF/dh = " + g0 + " is zero", RAT.isZero(g0));
+        control("moved point (2,0,-1/2,3/2): claim dF/dh = 0 (actual " + g0 + ")", RAT.isZero(g0));
 
         System.out.println(failures == 0 ? "OVERALL: ALL CHECKS PASS, ALL CONTROLS FAIL" : "OVERALL: " + failures + " PROBLEM(S)");
         if (failures != 0) System.exit(1);
