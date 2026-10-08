@@ -231,3 +231,7 @@ The [overlap note](49_affine_translation_overlap.md) proves that the common-edge
 ## 50. Why nineteen translated pages at forty-one hubs need two special shifts
 
 The [inverse note](50_fortyone_center_inverse.md) proves that nineteen pairwise compatible translates of a single 41-hub page exist exactly when all repeated edge-displacement magnitudes lie in `{a,3a}` for some nonzero `a`. Cauchy–Davenport bounds the number of bad magnitudes by two; in the two-magnitude case, Vosper forces the centers to be an arithmetic progression and the bad-shift ratio to be three. The [checker](50_fortyone_center_inverse.py) independently enumerates all 1330 normalized 19-center gap patterns. A valid page with the required profile remains open.
+
+## 51. An explicit path-only permutation witness
+
+The [binary witness note](51_path_binary_witness.md) gives an individual elementary-shape map for naturally labeled paths by encoding each admissible permutation as its edge-inversion bits, appending a zero, and reading alternating one/zero block lengths. Its generating function matches the classical Shareshian–Wachs path identity; it is a control case for, rather than an implementation of, the newer family-169 general witness algorithm. The [checker](51_path_binary_witness.py) compares direct colorings through six vertices and identifies the two `e_(2,2,2)` permutations at `P6`.
