@@ -182,8 +182,12 @@ The [twenty-one-hub formula note](37_twentyone_hub_all_residues.md) proves `d(K_
 
 ## 38. Every large leaf count with twenty-five bipartite hubs
 
-The [twenty-five-hub formula note](38_twentyfive_hub_all_residues.md) proves `d(K_{25,t})=t+ceil(12t/25)` for every `t≥24`. The [checker](38_twentyfive_hub_all_residues.py) constructs thirteen even bases by the weave, the 25-leaf offset base, and eleven [saved odd-base certificates](38_twentyfive_hub_odd_seeds.json), then checks exact spoke coverage and eleven lifts. The [residue ladder](art/twentyfive_hub_residue_ladder.svg) shows all 25 base residues. Separate checks rebuilt the raw odd-base partitions. The next unverified odd hub count is composite `h=27`; the [prime theorem](34_prime_two_leaf_growth.md) does not cover it.
+The [twenty-five-hub formula note](38_twentyfive_hub_all_residues.md) proves `d(K_{25,t})=t+ceil(12t/25)` for every `t≥24`. The [checker](38_twentyfive_hub_all_residues.py) constructs thirteen even bases by the weave, the 25-leaf offset base, and eleven [saved odd-base certificates](38_twentyfive_hub_odd_seeds.json), then checks exact spoke coverage and eleven lifts. The [residue ladder](art/twentyfive_hub_residue_ladder.svg) shows all 25 base residues. Separate checks rebuilt the raw odd-base partitions. [Item 40](40_twentyseven_hub_all_residues.md) covers the next composite case `h=27`.
 
 ## 39. Limits of the affine finite-field template
 
 The [template note](39_prime_power_template_limits.md) proves that no nonprime odd finite field admits a fully translation-invariant Hamilton decomposition of its complete graph, and that when `q≡1 (mod 4)` the primitive-power near-Hamilton pages cannot all be rainbow under one fixed edge coloring. A [field checker](39_prime_power_template_probe.py) verifies the 25-page edge/parity/midpoint facts and generates the [counting diagram](art/prime_power_template_limits.svg). These obstructions constrain direct extensions of item 34; they leave item 35's selected-page criterion and the odd-hub formula open.
+
+## 40. Every large leaf count with twenty-seven bipartite hubs
+
+The [twenty-seven-hub formula note](40_twentyseven_hub_all_residues.md) proves `d(K_{27,t})=t+ceil(13t/27)` for every `t≥26`. The [checker](40_twentyseven_hub_all_residues.py) builds fourteen even bases by the weave, the 27-leaf offset base, and twelve [saved odd-base certificates](40_twentyseven_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/twentyseven_hub_residue_ladder.svg) shows the 27 base residues. Two separate raw-edge audits verified the odd certificates; the edge assignments appear solver-specific. The next unverified odd hub count is prime `h=29≡1 (mod 4)`.
