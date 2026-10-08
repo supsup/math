@@ -335,3 +335,7 @@ The [computer-assisted class theorem](75_one_mod16_first_base_all_primes.md) com
 ## 76. The first odd base for every seventeen-mod-thirty-two prime hub
 
 The [computer-assisted class theorem](76_seventeen_mod32_first_base_all_primes.md) proves `d(K_{p,p+2})=(3p+5)/2` for every prime `p≡17 (mod 32)`, with all `p`-leaf offsets. Items 31 and 62 cover the small hubs 17 and 113; a [four-case full-spoke replay](76_seventeen_mod32_small_certificates.py) gives optimal partitions at `p=241,337,401,433`. Two [independent](76_seventeen_mod32_first_base_finite_sweep.cpp) [finite scanners](76_seventeen_mod32_first_base_independent_audit.cpp) agree on all 894,227 remaining primes through `p−1=262,144,000`, including least-witness digest `b584f964dd718afc`; item 74 handles larger primes analytically. This is a first-base result only; other leaf residues remain open.
+
+## 77. A direct repair at the first sixteen-component page
+
+The [fixed-hub certificate](77_p353_first_base_direct_repair.md) gives `d(K_{353,355})=532`. At this prime the item 73 local character condition fails for every primitive-root parameter, so the [saved 19-trade trace](77_p353_first_base_trace.json) uses direct page-to-square joins, with four extra square-to-square repairs, to turn a sixteen-component starter page into one cycle. A [standalone replay](77_p353_first_base_audit.py) validates all 125,315 spokes, all final cycle lengths, and the sharp part count. The offset block covers `t=355+353r`; this is a fixed-hub result, not a theorem for the whole `33 (mod 64)` class.
