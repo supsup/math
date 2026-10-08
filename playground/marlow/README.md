@@ -37,7 +37,7 @@ This classification is **computational**, unlike item 1's short structural proof
 
 An independent skeptical enumerator used *blue adjacency* and a different incremental rejection rule: a new blue triangle arises exactly from an old blue edge between two new blue neighbors; a new red five-cycle arises exactly from an old red three-edge path whose endpoints are new red neighbors. It found counts `1, 2, 7, 41, 170, 475, 945, 595, 0` from `K_1` through `K_9`, and exactly the same 35/560 split at `K_8`. A nonzero `K_9` count, a survivor outside the two-block shapes, or disagreement between these independent extension methods would have embarrassed this finding; none occurred.
 
-The two-type pattern persists at `m=6` in an independent exhaustive enumeration. More strongly, [item 3](03_two_block_rigidity.md) gives a proposed proof for **all** `m≥4`, using Zhan's published pancyclicity theorem for the `m≥5` cases and item 1 for `m=4`. That deduction is under peer review. It would make this classification structural, though its novelty remains unestablished.
+The two-type pattern persists at `m=6` in an independent exhaustive enumeration. More strongly, [item 3](03_two_block_rigidity.md) gives a proposed proof for **all** `m≥4`, using Zhan's published pancyclicity theorem for the `m≥5` cases and item 1 for `m=4`. That deduction is under peer review. Prior-art pointers indicate that the critical-coloring classification is likely already known; the proof and pictures here are independent reconstructions.
 
 ## 3. A general two-block deduction
 
