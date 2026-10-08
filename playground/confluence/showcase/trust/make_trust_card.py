@@ -64,8 +64,10 @@ def draw(rows, pi, npages, nrows, npending):
                  f'statement read by: {escape(", ".join(r["readers"]))}</text>')
         y += 22
     assert y < 548, f"rows overflow the card (y = {y}); split into two cards"
-    notes = [f"Every row: the Lean artifact kernel-checks the stated formal statement (permitted axioms only).",
-             f"{nrows} rows read twice; {npending} more await a second independent reading."]
+    notes = ["Every row: the Lean artifact kernel-checks the stated formal statement (permitted axioms only)."]
+    if pi == npages:  # counts only on the LAST page, so earlier (published) pages stay byte-stable as rows are added
+        notes.append(f"{nrows} rows read twice; {npending} more " + ("awaits" if npending == 1 else "await")
+                     + " a second independent reading.")
     yy = 556
     for t in notes:
         o.append(f'<text x="240" y="{yy}" text-anchor="middle" font-family="sans-serif" font-size="10.5" fill="{DIM}">{escape(t)}</text>')

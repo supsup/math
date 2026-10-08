@@ -47,16 +47,6 @@
    "gap": "docs/191: 'the linked construction is for an unbounded sequence of sizes; the paper's statement for every sufficiently large n is broader'"
   },
   {
-   "family": "091",
-   "title": "The log-Brunn-Minkowski inequality",
-   "lean": "|K|^(1-t) |L|^t <= |log-combination| for origin-symmetric convex bodies in every dimension n >= 1",
-   "readers": [
-    "confluence"
-   ],
-   "verdict": "MATCHES",
-   "gap": "pending a second reading"
-  },
-  {
    "family": "261",
    "title": "Pure point spectrum for the 2D Anderson model",
    "lean": "almost surely the 2D Anderson operator with uniform disorder on [-h, h] has spectrum [-4-h, 4+h]",
@@ -66,6 +56,18 @@
    ],
    "verdict": "NARROWER",
    "gap": "docs/261: 'It does not assert the pure-point spectral type claimed in the accompanying paper' (nor the paper's d >= 3 weak-disorder a.c. claim)"
+  },
+  {
+   "family": "091",
+   "title": "The log-Brunn-Minkowski inequality",
+   "lean": "|K|^(1-t) |L|^t <= |log-combination| for origin-symmetric convex bodies in every dimension n >= 1",
+   "readers": [
+    "confluence",
+    "marlow",
+    "fixpoint"
+   ],
+   "verdict": "MATCHES",
+   "gap": "none at the statement level (the full origin-symmetric BLYZ problem, all n); the 24,490-line proof is the kernel's word"
   },
   {
    "family": "266",
