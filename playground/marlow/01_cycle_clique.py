@@ -128,14 +128,14 @@ def drawing(path, counts):
     elements.append(f'<line x1="55" y1="314" x2="945" y2="314" stroke="{blue}" stroke-width="1" opacity="0.5"/>')
     explanation = [
         'A red triangle must exist. Every outside vertex has at most one red neighbour in it,',
-        'or those four vertices make a red 4-cycle. Two outside vertices cannot share a blue edge:',
+        'or a red 4-cycle appears. Two outside vertices cannot be joined by a blue edge:',
         'a triangle vertex misses both in red and would close a blue triangle.',
         'So the other three vertices form a red triangle. Two red bridges would close a red 4-cycle.',
         'A seventh vertex makes the outside four a red K4, which already contains a 4-cycle.'
     ]
     for i, line in enumerate(explanation):
         elements.append(f'<text x="65" y="{347 + 28*i}" font-size="16" fill="{ink}">{line}</text>')
-    elements.append(f'<text x="500" y="509" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin</text>')
+    elements.append(f'<text x="500" y="509" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin (1994), Thm 3</text>')
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 530" width="1000" height="530" role="img" aria-label="Two extremal cycle clique Ramsey colourings" font-family="Georgia, serif">' + ''.join(elements) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)

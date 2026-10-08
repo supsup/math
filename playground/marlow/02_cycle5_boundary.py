@@ -99,23 +99,18 @@ def drawing(path, types, counts):
     ink, red, blue, paper = '#242320', '#ad4d35', '#718aa0', '#f7f4ed'
     parts = [f'<rect width="1000" height="510" fill="{paper}"/>',
              f'<text x="500" y="42" text-anchor="middle" font-size="25" fill="{ink}">The next rung: eight vertices</text>',
-             f'<text x="500" y="70" text-anchor="middle" font-size="15" fill="{ink}">No red 5-cycle · No blue triangle</text>']
+             f'<text x="500" y="70" text-anchor="middle" font-size="15" fill="{ink}">No red 5-cycle · No blue triangle · blue cross-edges omitted</text>']
 
     def panel(x0, bridge_count):
         # Each K4 is a diamond, so all six red edges are visible.
-        centers = ((x0 + 115, 171), (x0 + 355, 171))
+        centers = ((x0 + 115, 155), (x0 + 355, 185))
         offsets = ((-47, 0), (0, -48), (47, 0), (0, 48))
         points = {4 * side + i: (cx + dx, cy + dy)
                   for side, (cx, cy) in enumerate(centers)
                   for i, (dx, dy) in enumerate(offsets)}
         bridge = (2, 4)
-        for a in range(4):
-            for b in range(4, 8):
-                if bridge_count and (a, b) == bridge:
-                    continue
-                x1, y1 = points[a]
-                x2, y2 = points[b]
-                parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{blue}" stroke-width="1.1" opacity="0.36"/>')
+        cross_label = 'all other cross-edges blue' if bridge_count else 'all cross-edges blue'
+        parts.append(f'<text x="{x0 + 235}" y="103" text-anchor="middle" font-size="13" fill="{blue}">{cross_label}</text>')
         for side in (range(4), range(4, 8)):
             for a, b in combinations(side, 2):
                 x1, y1 = points[a]
@@ -124,7 +119,8 @@ def drawing(path, types, counts):
         if bridge_count:
             x1, y1 = points[bridge[0]]
             x2, y2 = points[bridge[1]]
-            parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{red}" stroke-width="3.6"/>')
+            midx = (x1 + x2) / 2
+            parts.append(f'<path d="M {x1} {y1} Q {midx} 123 {x2} {y2}" fill="none" stroke="{red}" stroke-width="3.6"/>')
         for k, (x, y) in points.items():
             parts.append(f'<circle cx="{x}" cy="{y}" r="11" fill="{paper}" stroke="{ink}" stroke-width="1.5"/>')
             parts.append(f'<text x="{x}" y="{y + 4}" text-anchor="middle" font-size="11" fill="{ink}">{k + 1}</text>')
@@ -136,14 +132,14 @@ def drawing(path, types, counts):
     panel(515, 1)
     parts.append(f'<line x1="55" y1="343" x2="945" y2="343" stroke="{blue}" opacity="0.5"/>')
     notes = (
-        'Every surviving K8 colouring has this shape. This classification is exhaustive by code,',
+        'Every surviving K8 colouring has this shape. The published result is rechecked by code;',
         f'not a new general proof: {counts[5]} → {counts[6]} → {counts[7]} → {counts[8]} safe labelled colourings at K5–K8.',
         f'A ninth vertex has no safe attachment among the {counts[8]} × {1 << 8} possibilities.',
         'The two red K4s contain no 5-cycle; one bridge cannot close a cycle across them.'
     )
     for i, line in enumerate(notes):
         parts.append(f'<text x="61" y="{378 + 27 * i}" font-size="16" fill="{ink}">{line}</text>')
-    parts.append(f'<text x="500" y="496" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin</text>')
+    parts.append(f'<text x="500" y="496" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin (1994), Thm 3</text>')
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" width="1000" height="510" role="img" aria-label="Two surviving types for the C5 K3 Ramsey boundary" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)

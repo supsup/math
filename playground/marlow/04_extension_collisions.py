@@ -95,7 +95,7 @@ def drawing(path, results):
     parts.append(f'<text x="143" y="488" font-size="14" fill="{ink}">two cliques, no bridge</text>')
     parts.append(f'<rect x="420" y="475" width="15" height="15" fill="{red}"/>')
     parts.append(f'<text x="443" y="488" font-size="14" fill="{ink}">two cliques, one red bridge</text>')
-    parts.append(f'<text x="480" y="524" text-anchor="middle" font-size="12" fill="{blue}">Critical types: Radziszowski &amp; Jin</text>')
+    parts.append(f'<text x="480" y="524" text-anchor="middle" font-size="12" fill="{blue}">Critical types: Radziszowski &amp; Jin (1994), Thm 3</text>')
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="Minimum forbidden copies in one-vertex extensions of critical cycle triangle colorings" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)

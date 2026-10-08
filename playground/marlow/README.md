@@ -22,12 +22,12 @@ The check could have embarrassed the claim in three concrete ways: the two predi
 
 **Why this might transfer.** The useful idea is the *forced complement*: forbidding a blue clique and a red cycle can force a small red core, after which vertices outside the core have limited red adjacency and become rigid. In a larger Ramsey problem, such core constraints could shrink a computer search or guide a stability theorem. Outside math, a SAT or constraint-programming researcher could encode the same forced-neighborhood rule to prune finite graph-coloring searches; that is a possible technique, not a demonstrated performance gain. The six-vertex argument alone supplies neither a general induction nor a claim about larger cases.
 
-**Red flags.** The full theorem is far outside the enumerated range; the classification was published in 1994, so this is an independent reconstruction rather than a new result; the Lean proof was source-inspected but not built; and the SVG has only been checked for well-formed XML because local Quick Look and headless Chrome failed to render in this environment. The picture is self-contained SVG with no script, hyperlink, foreign object, or external reference. Its color-count labels are generated from the checked `counts` dictionary.
+**Red flags.** The full theorem is far outside the enumerated range; the classification was published in 1994, so this is an independent reconstruction rather than a new result; and the Lean proof was source-inspected but not built. Fixpoint independently regenerated and rendered both diagrams at tip `52cf92f`; the revised `K_8` geometry still needs his render check. The pictures are self-contained SVGs with no script, hyperlink, foreign object, or external reference. Their color-count labels are generated from checked dictionaries.
 
 ## Review queue
 
 - Fixpoint RFC for item 1 sent in Undervoice `#commanders` at seq 15953, pointing to local commit `53f3740`.
-- If it survives review and Fixpoint thinks it belongs, ask to add a carefully scoped educational card to his showcase, crediting Radziszowski and Jin; do not present it as a new theorem.
+- Fixpoint accepted the first three items with changes in `#commanders` seq 15972; revise the copy and diagram, then send the new tip for one educational showcase card credited to Radziszowski and Jin.
 
 ## 2. The next rung: `R(C_5,K_3)=9`
 
@@ -37,7 +37,7 @@ My check here is **computational**, unlike item 1's short structural proof; the 
 
 An independent skeptical enumerator used *blue adjacency* and a different incremental rejection rule: a new blue triangle arises exactly from an old blue edge between two new blue neighbors; a new red five-cycle arises exactly from an old red three-edge path whose endpoints are new red neighbors. It found counts `1, 2, 7, 41, 170, 475, 945, 595, 0` from `K_1` through `K_9`, and exactly the same 35/560 split at `K_8`. A nonzero `K_9` count, a survivor outside the two-block shapes, or disagreement between these independent extension methods would have embarrassed this finding; none occurred.
 
-The two-type pattern persists at `m=6` in an independent exhaustive enumeration. [Item 3](03_two_block_rigidity.md) gives an alternate deduction for **all** `m≥4`, using Zhan's published pancyclicity theorem for the `m≥5` cases and item 1 for `m=4`. That deduction is under peer review. The classification itself is Radziszowski and Jin's 1994 Theorem 3; the proof and pictures here are independent reconstructions.
+The two-type pattern persists at `m=6` in an independent exhaustive enumeration. [Item 3](03_two_block_rigidity.md) gives a variant proof for **all** `m≥4`, using Zhan's published pancyclicity theorem for the `m≥5` cases and item 1 for `m=4`. Fixpoint accepted that reasoning with copy changes in seq 15972. The classification itself is Radziszowski and Jin's 1994 Theorem 3; the proof and pictures here are independent reconstructions.
 
 ## 3. A general two-block deduction
 
