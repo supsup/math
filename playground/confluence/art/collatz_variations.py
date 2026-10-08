@@ -37,14 +37,14 @@ def five(n):
     return (n // 2, True) if n % 2 == 0 else (5 * n + 1, False)
 
 
-def build(f, starts):
+def build(f, starts, sizef=abs):
     """parent[v] = successor (None for a cycle root), divided[v] = branch used to reach parent."""
     parent, divided, root_of = {}, {}, {}
     roots, escaped = [], 0
     for s in starts:
         path, seen, n = [], {}, s
         while n not in parent and n not in seen:
-            if abs(n) > CAP_VALUE or len(path) > CAP_STEPS:
+            if sizef(n) > CAP_VALUE or len(path) > CAP_STEPS:
                 break
             seen[n] = len(path)
             path.append(n)
@@ -52,7 +52,7 @@ def build(f, starts):
         else:
             if n in seen:  # closed a NEW cycle inside this path: root it at its smallest |value|
                 cyc = path[seen[n]:]
-                r = min(cyc, key=abs)
+                r = min(cyc, key=lambda q: (sizef(q), str(q)))
                 roots.append(r)
                 for v in cyc:
                     m, d = f(v)
@@ -78,15 +78,16 @@ def build(f, starts):
     return parent, divided, flow, roots, escaped
 
 
-def draw(name, title, f, starts, even, odd, notes):
-    parent, divided, flow, roots, escaped = build(f, starts)
+def draw(name, title, f, starts, even, odd, notes, sizef=abs, label=str):
+    parent, divided, flow, roots, escaped = build(f, starts, sizef)
+    order = lambda q: (sizef(q), str(q))
     children = {v: [] for v in parent}
     for v, p in parent.items():
         if p is not None:
             children[p].append(v)
     pos, head = {}, {}
     k = len(roots)
-    for i, r in enumerate(sorted(roots, key=abs)):
+    for i, r in enumerate(sorted(roots, key=order)):
         a = -math.pi / 2 + 2 * math.pi * i / max(k, 1)
         pos[r] = (0.0, 0.0) if k == 1 else (22 * math.cos(a), 22 * math.sin(a))
         head[r] = a
@@ -113,7 +114,7 @@ def draw(name, title, f, starts, even, odd, notes):
         return ox + (x - min(xs)) * sc, oy + (y - min(ys)) * sc
 
     basin = {}
-    for r_i, r in enumerate(sorted(roots, key=abs)):
+    for r_i, r in enumerate(sorted(roots, key=order)):
         stack = [r]
         while stack:
             p = stack.pop()
@@ -124,7 +125,7 @@ def draw(name, title, f, starts, even, odd, notes):
     for v, p in parent.items():
         if p is None or v not in pos or p not in pos:
             continue
-        t = math.log(flow[v]) / top if top > 0 else 1
+        t = math.log(max(flow[v], 1)) / top if top > 0 else 1  # cycle edges past the cut can carry 0
         key = (basin.get(v, 0), min(13, int(t * 14)))
         groups.setdefault(key, []).append(v)
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
@@ -137,14 +138,14 @@ def draw(name, title, f, starts, even, odd, notes):
         d = "".join("M%.1f %.1fL%.1f %.1f" % (*P(v), *P(parent[v])) for v in vs)
         out.append(f'<path d="{d}" fill="none" stroke="{colour}" stroke-opacity="{0.3 + 0.7 * t:.2f}" '
                    f'stroke-width="{0.3 + 3.2 * t ** 1.7:.2f}" stroke-linecap="round"/>')
-    for i, r in enumerate(sorted(roots, key=abs)):
+    for i, r in enumerate(sorted(roots, key=order)):
         x, y = P(r)
         col = PALETTE[i % len(PALETTE)] if k > 1 else GOLD
         out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.4" fill="{col}"/>')
         out.append(f'<text x="{x + 7:.1f}" y="{y + 4:.1f}" font-family="serif" font-style="italic" font-size="13" '
-                   f'fill="{col}">{r}</text>')
+                   f'fill="{col}">{label(r)}</text>')
     drawn = sum(1 for s in starts if s in parent)
-    lines = [(f"{drawn:,} of {len(starts):,} starts drawn; {len(parent):,} values; mouths at {', '.join(str(r) for r in sorted(roots, key=abs))}", INK, 12)]
+    lines = [(f"{drawn:,} of {len(starts):,} starts drawn; {len(parent):,} values; mouths at {', '.join(label(r) for r in sorted(roots, key=order))}", INK, 12)]
     if escaped:
         lines.append((f"{escaped:,} starts passed {CAP_VALUE:.0e} or {CAP_STEPS} steps first: not drawn", "#ffb3a7", 11))
     lines += [(n, DIM, 11) for n in notes]
@@ -159,7 +160,7 @@ def draw(name, title, f, starts, even, odd, notes):
     out.append("</svg>")
     path = OUT / f"{name}.svg"
     path.write_text("".join(out), encoding="utf-8")
-    return name, drawn, len(starts), len(parent), sorted(roots, key=abs), escaped, path.stat().st_size
+    return name, drawn, len(starts), len(parent), [label(r) for r in sorted(roots, key=order)], escaped, path.stat().st_size
 
 
 def main():
