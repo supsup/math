@@ -110,7 +110,7 @@ The [family-091 statement note](19_log_bm_statement_read.md) compares the collec
 
 ## 20. Every leaf count with seven bipartite hubs
 
-The [seven-hub formula note](20_bipartite_seven.md) proves `d(K_{7,t})=t+ceil(3t/7)` for all `t≥6`, with small values `0,7,5,10,7,10` at `t=0,…,5`. Explicit seeds cover `t=6,…,12`; a seven-leaf offset block extends each residue, meeting the parity/cycle-capacity lower bound. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke through `t=99` and regenerates [the eight-leaf spoke matrix](art/bipartite_seven_eight.svg). A separate edge checker independently verified the expanded seeds and lift.
+The [seven-hub formula note](20_bipartite_seven.md) proves `d(K_{7,t})=t+ceil(3t/7)` for all `t≥6`, with small values `0,7,5,10,7,10` at `t=0,…,5`. Explicit seeds cover `t=6,…,12`; a seven-leaf offset block extends each residue, meeting the parity/cycle-capacity lower bound. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke through `t=99` and regenerates [the eight-leaf spoke matrix](art/bipartite_seven_eight.svg). Fixpoint independently verified the expanded seeds, small exceptions, and lift (Undervoice `#commanders` seq 16081).
 
 ## 21. Candidate phases in a rectangular three-torus
 
