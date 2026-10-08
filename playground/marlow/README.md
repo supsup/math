@@ -259,3 +259,11 @@ The [forty-five-hub formula note](56_fortyfive_hub_all_residues.md) proves `d(K_
 ## 57. The first odd base for all prime hubs 5 mod 8
 
 The [class theorem](57_skew_first_base_all_prime_hubs.md) shows that the conditional two-trade repair from item 55 has a suitable primitive root for every prime `p≡5 (mod 8)`, `p≥29`. A character-sum bound handles `p−1≥10^7`; a [C++17 finite sweep](57_skew_first_base_finite_sweep.cpp) checks all 166202 remaining primes. Thus `d(K_{p,p+2})=(3p+5)/2`, and the same optimum holds at `t=p+2+pq` for `q≥0`. Item 54 separately covers `p=13`. This result leaves the other leaf residues open.
+
+## 58. A simultaneous repair at the second odd base
+
+The [one-trade theorem](58_skew_second_base_one_trade.md) proves `d(K_{p,p+4})=(3p+11)/2` for every prime `p≡5 (mod 8)`, `p≥13`. It grows two translated antipodal pages before repairing either, then uses one page-to-page checkerboard trade that joins both split colors. A quartic character-sum bound supplies a valid trade for `p≥53`; three explicit small rectangles cover `p=13,29,37`. The [full-partition replay](58_skew_second_base_one_trade.py) checks six primes, and a [line scan](58_skew_second_base_line_scan.py) checks the candidate through 1000. Offsets cover `t=p+4+pq`, `q≥0`; other residues remain open.
+
+## 59. Every large leaf count with forty-nine bipartite hubs
+
+The [forty-nine-hub formula note](59_fortynine_hub_all_residues.md) proves `d(K_{49,t})=t+ceil(24t/49)` for every `t≥48`. A saved skew strong starter gives 23 compatible translated two-component growth pages. Eighteen support-preserving trades repair three split square colors, and one more repairs each page color. The [saved certificates](59_fortynine_hub_odd_seeds.json) cover all 24 odd bases; a [stdlib generator](59_fortynine_hub_generator.py) reproduces them, a [trade audit](59_fortynine_hub_trace_audit.py) replays all 708 recorded moves, and an [independent checker](59_fortynine_hub_independent_audit.py) audits all 49 base residues and offset lifts. The next unchecked odd hub count is 51.
