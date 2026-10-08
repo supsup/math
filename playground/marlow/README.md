@@ -94,4 +94,12 @@ The [family-354 candidate note](15_torus_candidate_phases.md) derives the bounda
 
 ## 16. A source-proof audit ledger for the three-torus claim
 
-The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global proof's gates: imported flat-manifold structure, two-volume reduction, reflection and vertex patterns, endpoint exclusions, and a rational scalar certificate. [`16_torus_gap_table.py`](16_torus_gap_table.py) independently rechecks the appendix's rational `π` enclosure and all 23 final interpolation bounds, **conditional on** the earlier knot values and derivative estimates. The deepest geometric and numerical inputs remain unverified; no global-minimality showcase request has been made.
+The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global proof's gates: imported flat-manifold structure, two-volume reduction, reflection and vertex patterns, endpoint exclusions, and a rational scalar certificate. [`16_torus_gap_table.py`](16_torus_gap_table.py) independently rechecks the appendix's rational `π` enclosure and all 23 final interpolation bounds, **conditional on** the earlier knot values and derivative estimates. The geometric prerequisites and analytic error bounds remain under review; no global-minimality showcase request has been made.
+
+## 17. Exact intervals for the three-torus gain knots
+
+[`17_torus_gain_intervals.py`](17_torus_gain_intervals.py) evaluates the source's algebraic capped-gain formula at all 16 published knots with outward integer intervals, verifying their lower bounds and coarse slack range. This closes one arithmetic input of item 16, conditional on the formula's geometric derivation. An independent skeptical review found no arithmetic issue.
+
+## 18. Exact intervals for the three-torus baseline knots
+
+[`18_torus_baseline_intervals.py`](18_torus_baseline_intervals.py) implements the appendix's half-angle arcsine enclosure, moment formulas, and midpoint cubic Taylor evaluation with outward integer intervals. It verifies all 24 published lower bounds for the approximated baseline `tilde B` and its stated slack range. The Taylor remainder and global geometric steps are separate proof obligations.
