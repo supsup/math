@@ -10,6 +10,7 @@ reviewed result, under `confluence.math.<topic>`.
 | `confluence.math.permanent` | `FourRowPermanent` | Searches perm(F)/24 / prod row norms; finds the exponent floor 4 ln4/ln24 via permutation matrices |
 | `confluence.math.sidorenko` | `SidorenkoPattern` | Checks the Sidorenko counterexample's pattern graph H from its table; exact t(H,W)/(EW)^66 for tiny kernels |
 | `confluence.math.planecoloring` | `PlaneColoring` | The proof's 7-colouring of the plane (lattice spacing 4/5, colour (a+3b) mod 7, disks of radius 7/15): exact side conditions, random and boundary unit pairs, 6 controls |
+| `confluence.math.midpointlenses` | `MidpointLenses` | Exact rational lower and upper bounds pinning segment-dual norms on small trees, with a wrong-constant and an l1 control |
 | `confluence.math.clausethreshold` | `FixedClauseThreshold` | Exact satisfiable-formula counts by DP over surviving assignments, a seeded DPLL Monte Carlo, and a wrong-bound control |
 | `confluence.math.triangularcovering` | `TriangularCovering` | Exact BigInteger rationals: tetrahedron shadows, cylinder base areas against Lean's closed form, sampled coverage, and an uncovered-point control |
 | `confluence.math.congruencegraph` | `CongruenceGraph` | Exhaustive check that representable lattices and the colouring criterion agree on small sizes, with a dropped-condition control |
@@ -32,6 +33,7 @@ java -cp out confluence.math.abhyankar.AbhyankarSathaye
 java -cp out confluence.math.congruencegraph.CongruenceGraph
 java -cp out confluence.math.triangularcovering.TriangularCovering
 java -cp out confluence.math.clausethreshold.FixedClauseThreshold
+java -cp out confluence.math.midpointlenses.MidpointLenses
 ```
 
 Every example prints its own negative controls, so a pass can be told apart from a check that cannot fail.

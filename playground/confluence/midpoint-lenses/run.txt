@@ -1,0 +1,38 @@
+== Part 1: exact 2-vertex instance (root r = 0, child c = 1, H = {r}) ==
+  ||x|| in [0.900000000000000, 0.900000000000001]
+  ||x+y|| in [1.000000000000000, 1.000000000000002]
+  ||x-y|| in [1.000000000000000, 1.000000000000001]
+  ||Q_H y|| in [0.600000000000000, 0.600000000000001]
+  exact: R = 1, ||x|| = 9/10, ||Q_H y|| = 3/5, deficit R^2-||x||^2 = 19/100
+  theorem (c = 2):   LHS^2 = 9/25 <= 4*deficit = 19/25 : True
+  ratio ||Q_H y|| / sqrt(deficit) = sqrt(36/19) = 1.376494
+  CONTROL A (c = 13/10): LHS^2 = 9/25 > c^2*deficit = 3211/10000 -> claim FAILS: True
+  CONTROL B (l1 segment sums): R = 1, ||x|| = 1, ||Q_H y|| >= 1/2 > 2*sqrt(0) -> claim FAILS: True
+== Part 2: 2-vertex lens, closed form vs brute force ==
+  r =  0.3: max|y_c| brute 1.00000  closed 1.00000  bound 2sqrt(1-r^2) 1.90788  ratio to sqrt(1-r^2): 1.0483
+  r =  0.5: max|y_c| brute 1.00000  closed 1.00000  bound 2sqrt(1-r^2) 1.73205  ratio to sqrt(1-r^2): 1.1547
+  r =  0.6: max|y_c| brute 0.97980  closed 0.97980  bound 2sqrt(1-r^2) 1.60000  ratio to sqrt(1-r^2): 1.2247
+  r = 0.75: max|y_c| brute 0.86603  closed 0.86603  bound 2sqrt(1-r^2) 1.32288  ratio to sqrt(1-r^2): 1.3093
+  r =  0.9: max|y_c| brute 0.60000  closed 0.60000  bound 2sqrt(1-r^2) 0.87178  ratio to sqrt(1-r^2): 1.3765
+  r = 0.97: max|y_c| brute 0.34118  closed 0.34117  bound 2sqrt(1-r^2) 0.48621  ratio to sqrt(1-r^2): 1.4034
+  sup of ratio as r -> 1 is 2*sqrt(r/(1+r)) -> sqrt(2) = 1.41421 (theorem allows 2)
+== Part 3: adversarial search on small trees (numeric, best instance re-certified exactly) ==
+  IRLS instrument matches exact 2-vertex norms to 1e-6
+  edge      H=[0]      : coarse 1.3907 refined 1.3907 | certified ratio in [1.3907, 1.3907], theorem instance certified: True
+  chain3    H=[0]      : coarse 1.3854 refined 1.3886 | certified ratio in [1.3886, 1.3886], theorem instance certified: True
+  chain3    H=[0, 1]   : coarse 1.4005 refined 1.3970 | certified ratio in [1.3971, 1.3972], theorem instance certified: True
+  cherry    H=[0]      : coarse 1.4118 refined 1.4118 | certified ratio in [1.4118, 1.4118], theorem instance certified: True
+  chain4    H=[0]      : coarse 1.3842 refined 1.3841 | certified ratio in [1.3841, 1.3841], theorem instance certified: True
+  chain4    H=[0, 1]   : coarse 1.3316 refined 1.3483 | certified ratio in [1.3483, 1.3483], theorem instance certified: True
+  chain4    H=[0, 1, 2]: coarse 1.3780 refined 1.3802 | certified ratio in [1.3802, 1.3802], theorem instance certified: True
+  Y         H=[0]      : coarse 1.4326 refined 1.3628 | certified ratio in [1.3628, 1.3628], theorem instance certified: True
+  Y         H=[0, 1]   : coarse 1.4071 refined 1.4092 | certified ratio in [1.4092, 1.4092], theorem instance certified: True
+  star3     H=[0]      : coarse 1.4046 refined 1.4049 | certified ratio in [1.4049, 1.4049], theorem instance certified: True
+  Y+leaf    H=[0]      : coarse 1.4450 refined 1.3968 | certified ratio in [1.3968, 1.3968], theorem instance certified: True
+  Y+leaf    H=[0, 1]   : coarse 1.3851 refined 1.3857 | certified ratio in [1.3857, 1.3857], theorem instance certified: True
+  Y+leaf    H=[0, 4]   : coarse 1.3471 refined 1.3499 | certified ratio in [1.3499, 1.3499], theorem instance certified: True
+  two edges H=[0]      : coarse 1.3605 refined 1.3631 | certified ratio in [1.3630, 1.3630], theorem instance certified: True
+  two edges H=[0, 2]   : coarse 1.3876 refined 1.3893 | certified ratio in [1.3893, 1.3893], theorem instance certified: True
+  largest certified ratio LOWER bound: 1.41184 (cherry, H=[0]); theorem constant 2; sqrt(2) = 1.41421
+ALL CHECKS DONE
+exit=0
