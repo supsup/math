@@ -15,6 +15,7 @@ reviewed result, under `confluence.math.<topic>`.
 | `confluence.math.triangularcovering` | `TriangularCovering` | Exact BigInteger rationals: tetrahedron shadows, cylinder base areas against Lean's closed form, sampled coverage, and an uncovered-point control |
 | `confluence.math.congruencegraph` | `CongruenceGraph` | Exhaustive check that representable lattices and the colouring criterion agree on small sizes, with a dropped-condition control |
 | `confluence.math.abhyankar` | `AbhyankarSathaye` | Sparse integer polynomials: the cusp and ambient identities, the singular fibre, and the inverse map mod p, with controls |
+| `confluence.math.commonbases` | `CommonBases` | Brute-force common-base counts by two channels (direct and the paired reduction with the dual), with a dual-swap control |
 | `confluence.math.logbm` | `LogBrunnMinkowski` | Planar lower bounds for the L_0 combination of symmetric polygons, equality cases withheld, and a non-symmetric control |
 | `confluence.math.grahamspherical` | `GrahamSpherical` | Exact checks of the 12 circle points, the derivation D u = -v, D v = u, and the weighted-energy invariant of isometric copies, with controls |
 | `confluence.math.ramseynine` | `RamseyNine` | Exact BigInteger-rational check of the nine-point determinant certificate (det = 8^6) and four controls that must come out singular |
@@ -33,6 +34,7 @@ java -cp out confluence.math.hadamard.HadamardCubeFiber
 java -cp out confluence.math.ramseynine.RamseyNine
 java -cp out confluence.math.grahamspherical.GrahamSpherical
 java -cp out confluence.math.logbm.LogBrunnMinkowski
+java -cp out confluence.math.commonbases.CommonBases
 java -cp out confluence.math.abhyankar.AbhyankarSathaye
 java -cp out confluence.math.congruencegraph.CongruenceGraph
 java -cp out confluence.math.triangularcovering.TriangularCovering
