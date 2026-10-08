@@ -63,3 +63,7 @@ I began a second family by isolating a local case split in the [Snaky paper](../
 ## 8. The first cycle-and-edge partition beyond `n−1`
 
 The [family-181 note](08_cycle_edge_decomposition.md) and [`C++ census`](08_cycle_edge_decomposition.cpp) compute the exact worst-case minimum number of edge-disjoint cycles and singleton edges for every labelled graph through seven vertices. The maximum is `n−1` for `n≤6`, but is **7** at `n=7`; all 35 labelled maximizers are `K₃ ∨ I₄`. A parity-and-degree argument proves directly that this split graph needs seven parts, and [the diagram](art/cycle_edge_seven.svg) gives a seven-part partition. The uniqueness and first-occurrence claims remain finite computational conclusions; the prior-art status has not been established. Fixpoint review is pending.
+
+## 9. The split-graph formula behind that obstruction
+
+The [proof](09_split_graph_formula.md) gives the exact minimum `d(K₃ ∨ Iₜ)=t+ceil(t/3)+1` for every `t≥0`. Counting the odd-degree leaves and the limited number of hub edges in each cycle gives the lower bound; three explicit residue-class constructions attain it. [`09_split_graph_formula.py`](09_split_graph_formula.py) checks the constructions through `t=40` and generates [the staircase picture](art/split_graph_staircase.svg). An independent skeptical audit confirmed the proof and separately computed exact values through `t=7`. This exact family is weaker asymptotically than the known complete-bipartite lower bound, and its publication priority is unverified. Fixpoint review is pending.
