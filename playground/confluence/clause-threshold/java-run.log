@@ -1,0 +1,47 @@
+A. exact counts
+  [OK ] card ProperClause n=0 k=3 = C(n,3)*8: 0
+  [OK ] card ProperClause n=1 k=3 = C(n,3)*8: 0
+  [OK ] card ProperClause n=2 k=3 = C(n,3)*8: 0
+  [OK ] card ProperClause n=3 k=3 = C(n,3)*8: 8
+  [OK ] card ProperClause n=4 k=3 = C(n,3)*8: 32
+  [OK ] card ProperClause n=5 k=3 = C(n,3)*8: 80
+  [OK ] card ProperClause n=6 k=3 = C(n,3)*8: 160
+  [OK ] n=2<k: m=0 -> 1/1, m=1 -> 0/0 (Lean 0)
+  [OK ] n=3 monotone nonincreasing in m
+  [OK ] n=3 first moment P <= 2^n (7/8)^m
+  [OK ] n=3 first m with P<1 is 8: 8
+     n=3 m= 8 P=0.997597
+     n=3 m=12 P=0.906694
+     n=3 m=16 P=0.693202
+     n=3 m=20 P=0.469442
+  [OK ] closed form: unsat 8-tuples at n=3 = 8! = 40320: 40320
+  [OK ] n=4 monotone nonincreasing in m
+  [OK ] n=4 first moment P <= 2^n (7/8)^m
+  [OK ] n=4 first m with P<1 is 8: 8
+     n=4 m= 8 P=0.999990
+     n=4 m=12 P=0.989361
+     n=4 m=16 P=0.897625
+     n=4 m=20 P=0.708149
+     n=4 m=32 P=0.203314
+  [OK ] center(4,3) = 6.296722 within [e^-2/16, 2^3+1]
+  [OK ] CONTROL wrong bound 2^n (3/4)^m is violated by exact counts: 68 violations, first at n=3 m=8
+B. Monte Carlo, seed 20261008, 400 formulas per cell
+     c=2.00 n= 40 m=  80 P^=1.000 95% CI [0.990,1.000]
+     c=2.00 n= 80 m= 160 P^=1.000 95% CI [0.990,1.000]
+     c=2.00 n=120 m= 240 P^=1.000 95% CI [0.990,1.000]
+     c=3.00 n= 40 m= 120 P^=1.000 95% CI [0.990,1.000]
+     c=3.00 n= 80 m= 240 P^=1.000 95% CI [0.990,1.000]
+     c=3.00 n=120 m= 360 P^=1.000 95% CI [0.990,1.000]
+     c=4.27 n= 40 m= 170 P^=0.683 95% CI [0.635,0.726]
+     c=4.27 n= 80 m= 341 P^=0.588 95% CI [0.539,0.635]
+     c=4.27 n=120 m= 512 P^=0.503 95% CI [0.454,0.551]
+     c=6.00 n= 40 m= 240 P^=0.000 95% CI [0.000,0.010]
+     c=6.00 n= 80 m= 480 P^=0.000 95% CI [0.000,0.010]
+     c=6.00 n=120 m= 720 P^=0.000 95% CI [0.000,0.010]
+  [OK ] c=2.0 n=120 P^ >= 0.95
+  [OK ] c=3.0 n=120 P^ >= 0.95
+  [OK ] c=6.0 n=120 P^ <= 0.05
+  [OK ] c=6.0 nonincreasing in n (40 -> 120)
+  [OK ] first-moment bound ln2/-ln(7/8) = 5.1909 > 4.27
+  [OK ] CONTROL wrong-side claim 'P(c=6, n=120) >= 0.95' is FALSE: observed 0.000
+ALL CHECKS HOLD

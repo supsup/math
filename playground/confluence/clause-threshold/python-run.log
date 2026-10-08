@@ -1,0 +1,56 @@
+PASS A0 card ProperClause n=0 k=3: 0
+PASS A0 card ProperClause n=1 k=3: 0
+PASS A0 card ProperClause n=2 k=3: 0
+PASS A0 card ProperClause n=3 k=3: 8
+PASS A0 card ProperClause n=4 k=3: 32
+PASS A0 card ProperClause n=5 k=3: 80
+PASS A0 card ProperClause n=6 k=3: 160
+PASS A1 n=2<k=3, m=0 -> 1
+PASS A1 n=2<k=3, m=1 -> 0 (x/0 = 0)
+exact properSATProbability n k=3 m (first unsat-possible m is 2^n / ... )
+PASS A2 n=3 monotone nonincreasing in m
+PASS A2 n=3 first moment P <= 2^n (7/8)^m
+PASS A2 n=3 P=1 exactly for m<8 and P<1 at m=8: first m with P<1: 8
+   n=3 m=  8 P=0.997597  (16736896 / 8^8)
+   n=3 m= 10 P=0.971837  (1043501824 / 8^10)
+   n=3 m= 16 P=0.693202  (195119050093696 / 8^16)
+   n=3 m=  9 P=0.989185  (132766208 / 8^9)
+   n=3 m= 12 P=0.906694  (62307508096 / 8^12)
+   n=3 m= 15 P=0.751752  (26449937580032 / 8^15)
+PASS A2 n=4 monotone nonincreasing in m
+PASS A2 n=4 first moment P <= 2^n (7/8)^m
+PASS A2 n=4 P=1 exactly for m<8 and P<1 at m=8: first m with P<1: 8
+   n=4 m=  8 P=0.999990  (1099500660736 / 32^8)
+   n=4 m= 10 P=0.998911  (1124673333735424 / 32^10)
+   n=4 m= 16 P=0.897625  (1085161609275248268691456 / 32^16)
+   n=4 m= 12 P=0.989361  (1140655401030301696 / 32^12)
+   n=4 m= 16 P=0.897625  (1085161609275248268691456 / 32^16)
+   n=4 m= 20 P=0.708149  (897685811435904234778027350016 / 32^20)
+   n=4 m= 32 P=0.203314  (297143536552689009340780183965501188133708138496 / 32^32)
+   center(4,3) = 6.296722  (solution's eventual bounds: 0.00846 <= center <= 9)
+PASS B center(4,3) within [e^-2/16, 9]
+CONTROL wrong bound 2^n(3/4)^m: 68 violations, e.g. [(3, 8, 0.9975967407226562, 0.8009033203125), (3, 9, 0.9891853332519531, 0.600677490234375)]
+PASS CONTROL-A wrong first-moment bound is refuted by exact numbers
+Monte Carlo k=3, seed 20261008, 200 formulas per cell, DPLL
+   c=2.00 n= 20 m=  40  P^=1.000  95% CI [0.981,1.000]
+   c=2.00 n= 40 m=  80  P^=1.000  95% CI [0.981,1.000]
+   c=2.00 n= 80 m= 160  P^=1.000  95% CI [0.981,1.000]
+   c=3.00 n= 20 m=  60  P^=1.000  95% CI [0.981,1.000]
+   c=3.00 n= 40 m= 120  P^=1.000  95% CI [0.981,1.000]
+   c=3.00 n= 80 m= 240  P^=1.000  95% CI [0.981,1.000]
+   c=4.27 n= 20 m=  85  P^=0.725  95% CI [0.659,0.782]
+   c=4.27 n= 40 m= 170  P^=0.625  95% CI [0.556,0.689]
+   c=4.27 n= 80 m= 341  P^=0.555  95% CI [0.486,0.622]
+   c=6.00 n= 20 m= 120  P^=0.020  95% CI [0.008,0.050]
+   c=6.00 n= 40 m= 240  P^=0.005  95% CI [0.001,0.028]
+   c=6.00 n= 80 m= 480  P^=0.000  95% CI [0.000,0.019]
+   c=8.00 n= 20 m= 160  P^=0.000  95% CI [0.000,0.019]
+   c=8.00 n= 40 m= 320  P^=0.000  95% CI [0.000,0.019]
+   c=8.00 n= 80 m= 640  P^=0.000  95% CI [0.000,0.019]
+PASS C c=2.0 n=80 P^ >= 0.95
+PASS C c=6.0 n=80 P^ <= 0.05
+PASS C c=3.0 trend nondecreasing in n (20 -> 80)
+PASS C c=6.0 trend nonincreasing in n (20 -> 80)
+   first-moment upper bound on any threshold for k=3: 5.1909
+PASS CONTROL-C wrong-side claim 'P(c=6,n=80) >= 0.95' is false: observed 0.000
+RESULT ALL PASS
