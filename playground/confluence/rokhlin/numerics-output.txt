@@ -1,0 +1,41 @@
+layoutTime (5,7,11) -> times [0, 5, 12, 23]  (successive differences are exactly the gaps)
+
+[Bernoulli(3/10) shift, exact] mu(A)mu(B)mu(C) = 83349/100000000 = 0.000833
+  gaps (1,1): 0.000000   exact equal to product: False
+  gaps (2,2): 0.002778   exact equal to product: False
+  gaps (3,3): 0.000833   exact equal to product: True
+  gaps (4,4): 0.000833   exact equal to product: True
+  gaps (10,10): 0.000833   exact equal to product: True
+  gaps (100,100): 0.000833   exact equal to product: True
+  gaps (50,1):  0.000000   (second gap small -> not the product: True)
+
+[doubling map, Monte Carlo n=200000, exact 400-bit orbits] product = 0.0600, 1-sigma = 0.0005
+  gaps (1,1): 0.0998   deviation +0.0398
+  gaps (2,3): 0.0493   deviation -0.0107
+  gaps (5,5): 0.0620   deviation +0.0020
+  gaps (20,20): 0.0596   deviation -0.0004
+  gaps (60,90): 0.0603   deviation +0.0003
+
+[Arnold cat map, Monte Carlo n=100000] product = 0.0180, 1-sigma = 0.0004
+  gaps (1,1): 0.0247   deviation +0.0067
+  gaps (2,2): 0.0204   deviation +0.0024
+  gaps (4,4): 0.0171   deviation -0.0009
+  gaps (10,10): 0.0188   deviation +0.0008
+  gaps (30,50): 0.0180   deviation +0.0000
+
+[NEGATIVE CONTROL: rotation by golden alpha, exact] mu(A)^2 = 0.1600, mu(A)^3 = 0.0640
+  2-fold, n = Fibonacci (mixing would need -> 0.16):
+    n= 121393: mu(A ∩ T^-n A) = 0.4000
+    n= 196418: mu(A ∩ T^-n A) = 0.4000
+    n= 317811: mu(A ∩ T^-n A) = 0.4000
+    n= 514229: mu(A ∩ T^-n A) = 0.4000
+    n= 832040: mu(A ∩ T^-n A) = 0.4000
+    n=1346269: mu(A ∩ T^-n A) = 0.4000
+  3-fold, gaps (F, F') consecutive Fibonacci (3-mixing would need -> 0.064):
+    gaps (75025,121393): 0.4000
+    gaps (121393,196418): 0.4000
+    gaps (196418,317811): 0.4000
+    gaps (317811,514229): 0.4000
+    gaps (514229,832040): 0.4000
+    gaps (832040,1346269): 0.4000
+  2-fold over n in [1e5, 1e5+2000): min 0.0000 max 0.3998 (Cesaro mean 0.1600: ergodic, so the AVERAGE -> 0.16, the sequence does not)
