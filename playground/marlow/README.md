@@ -170,7 +170,7 @@ The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil((
 
 ## 35. A conditional square-to-all-bases criterion
 
-The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; a weaker ordered test allows one shared edge per alternating matching of each earlier page. The even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17` and `h=29` in [items 41](41_seventeen_affine_pages.md) and [42](42_twentynine_affine_growth.md), so this remains a research reduction rather than a general odd-hub theorem.
+The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; a weaker ordered test allows one shared edge per alternating matching of each earlier page. The even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17,29,37` in [items 41](41_seventeen_affine_pages.md), [42](42_twentynine_affine_growth.md), and [43](43_thirtyseven_affine_growth.md), so this remains a research reduction rather than a general odd-hub theorem.
 
 ## 36. Two prime-one-mod-four template limits
 
@@ -199,3 +199,7 @@ The [affine-page note](41_seventeen_affine_pages.md) gives an explicit near-Hami
 ## 42. Every leaf count at twenty-nine prime hubs
 
 The [twenty-nine-hub growth note](42_twentynine_affine_growth.md) gives a compact explicit non-primitive page for the affine square at `p=29≡1 (mod 4)`. Its 13 selected translates have pairwise edge overlap at most one, so the two-leaf move gives all difficult odd bases; the even weave and offset lift prove `d(K_{29,t})=t+ceil(14t/29)` for every `t≥28`. The [checker](42_twentynine_affine_growth.py) rebuilds every growth partition from the displayed page and center set and draws the [difference table](art/twentynine_affine_growth.svg). This is a fixed-prime theorem outside item 34's infinite class; the first unchecked odd hub count is composite `h=33`.
+
+## 43. A split-overlap growth family at thirty-seven hubs
+
+The [thirty-seven-hub note](43_thirtyseven_affine_growth.md) proves `d(K_{37,t})=t+ceil(18t/37)` for every `t≥36` with sixteen translated affine growth pages and a final page of a different shape. That last page shares two edges with nine earlier pages, always one per earlier alternating matching, so the ordered refinement of [item 35](35_compatible_growth_criterion.md) applies. The [checker](43_thirtyseven_affine_growth.py) verifies all page properties and all seventeen edge partitions; the [overlap diagram](art/thirtyseven_last_page.svg) makes the key parity split visible. This fixed-prime result leaves `h=33` as the first unchecked odd count.
