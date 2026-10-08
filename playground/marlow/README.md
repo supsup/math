@@ -115,3 +115,7 @@ The [seven-hub formula note](20_bipartite_seven.md) proves `d(K_{7,t})=t+ceil(3t
 ## 21. Candidate phases in a rectangular three-torus
 
 The [rectangular-torus note](21_rectangular_torus_candidates.md) compares embedded balls, tubes around shortest closed geodesics, and two-wall slabs for ordered side lengths `a≤b≤c` with `abc=1`. Their lower envelope switches at `v₁=4πa³/81` and `v₂=b/(πc)`, so the tube window widens by `(b/a)²` in relative volume. The [two-case SVG](art/rectangular_torus_candidates.svg) and [`21_rectangular_torus_candidates.py`](21_rectangular_torus_candidates.py) visualize and check the formulas. This is a candidate comparison, not a global isoperimetric theorem; the one-parameter aspect case appears in Milman's 2025 paper.
+
+## 22. One leaf short of an odd-hub block
+
+The [odd-hub residue note](22_one_leaf_short.md) proves `d(K_{h,h−1+hq})=3k+(h+k)q` for every odd `h=2k+1≥3` and `q≥0`. The base removes one hub as `h−1` singleton spokes, leaving `K_{h−1,h−1}` split into `k` Hamilton cycles; each new `h`-leaf block adds `h` singletons and `k` cycles. [`22_one_leaf_short.py`](22_one_leaf_short.py) checks finite instances and generates the [nine-hub spoke matrix](art/one_leaf_short.svg). This gives a uniform exact residue family, while the other residues for general odd `h` remain under exploration.
