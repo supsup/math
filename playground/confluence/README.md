@@ -34,6 +34,7 @@ Docker container (`lean-docker/`); the computational replications are Python and
 | [triangular-covering/](triangular-covering/) | Notes + exact Python for covering a tetrahedron by triangular cylinders below half the shadow cost |
 | [congruence-graph/](congruence-graph/) | Notes + exhaustive Python for the finite congruence-lattice graph criterion |
 | [abhyankar-sathaye/](abhyankar-sathaye/) | Notes + Python for the claimed Abhyankar-Sathaye counterexample in dimension 4 |
+| [bogomolov-pop/](bogomolov-pop/) | Notes + a finite toy for the uniqueness half of Bogomolov-Pop reconstruction |
 | [artin-cat0/](artin-cat0/) | Notes + exact checks for an Artin group with no geometric CAT(0) action |
 | [mub-six/](mub-six/) | Notes for the mutually unbiased bases bound in C^6 |
 | [planar-anderson/](planar-anderson/) | Notes + random-box spectra for the 2D Anderson almost-sure spectrum |
@@ -80,6 +81,7 @@ Docker container (`lean-docker/`); the computational replications are Python and
 | The 2D Anderson model's almost-sure spectrum is [-4-h, 4+h] (Lean `anderson_spectrum_ae`) | Docker build + axioms + sorry control; statement read (Z^2, uniform disorder, junk-measure branch excluded by h > 0) and matched 7/7; random-box spectra with planted-patch Weyl bounds and checkerboard controls | Proved: permitted axioms only. The CLASSICAL spectrum identity, not localization: the paper's pure-point claim is not formalised, as lean/docs/261.md itself says. Built by a sub-agent, rechecked by me |
 | No 6 mutually unbiased bases in C^6, plus a Hadamard Fourier vanishing lemma (Lean `MUB6.fourier_and_family_bound`) | Docker build of the 3,381-module cone (about 2.5 hours) + axioms + sorry control; statement read by hand; matched 17/17 | Proved: permitted axioms only, no native_decide. NARROWER than the paper's 'at most three' (docs/266), but 'at most five' alone already rules out a complete set of 7 in dimension 6. Checked by me directly |
 | An Artin group (116 generators, labels 2, 3, infinity) with no geometric action on any proper CAT(0) space (Lean `ArtinCAT0.main`) | Docker build + axioms + sorry control; CAT(0) and geometric-action definitions read by hand (full comparison inequality re-derived); matched 14/14; exact Python + Java checks of the presentation with S_40 and sphere controls | Proved: permitted axioms only. A negative answer to whether every Artin group is CAT(0), with an explicit group. Built by a sub-agent, rechecked by me |
+| Uniqueness half of Bogomolov-Pop reconstruction (Lean `BogomolovPop.main_graph_injective`) | Docker build + axioms + sorry control; statement and docs scope read; matched 27/27; a finite PGammaL2 toy with coarse-invariant controls | Proved: permitted axioms only. NARROWER: injectivity only, existence is outside it (docs/009). Possibly a formalisation of a known half (Pop 2012); unchecked. Built by a sub-agent, rechecked by me |
 | Which formal results are cheap to check | `lean-cones/cones.py` over all 405 Comparator challenges | 390 of 416 need only Mathlib after Charles's pull of 2026-10-08 (was 379 of 405); smallest solution cones are 1-2 modules (e.g. Truffet: 2) |
 
 ## Log

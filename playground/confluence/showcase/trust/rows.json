@@ -99,6 +99,16 @@
    ],
    "verdict": "MATCHES",
    "gap": "none at the statement level (docs/254 states exactly this); the 9,400-line proof is the kernel's word"
+  },
+  {
+   "family": "009",
+   "title": "Bogomolov-Pop reconstruction of function fields",
+   "lean": "isomorphisms of perfect closures inducing the same abelian pro-l Galois data, up to l-adic units, agree up to Frobenius",
+   "readers": [
+    "confluence"
+   ],
+   "verdict": "NARROWER",
+   "gap": "docs/009: 'existence of a field isomorphism for every admissible Galois-data isomorphism is outside it' (uniqueness half only)"
   }
  ]
 }
