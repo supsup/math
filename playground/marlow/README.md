@@ -155,3 +155,11 @@ The [even-hub note](30_even_hub_cycle_weave.md) gives an explicit `C_{4k}`-cycle
 ## 31. Every large leaf count with seventeen bipartite hubs
 
 The [seventeen-hub formula note](31_seventeen_hub_all_residues.md) proves `d(K_{17,t})=t+ceil(8t/17)` for every `t≥16`. The [checker](31_seventeen_hub_all_residues.py) constructs all nine even bases from item 30's weave, the 17-leaf offset base, and seven [saved odd-base certificates](31_seventeen_hub_odd_seeds.json), then checks every spoke through eleven lifts. The [residue ladder](art/seventeen_hub_residue_ladder.svg) shows all seventeen methods. An independent read-only checker verified the raw odd witnesses, even weave, and lift; the saved JSON matches its SHA-256 digest. Priority and a uniform all-odd-hub proof remain open.
+
+## 32. Every large leaf count with nineteen bipartite hubs
+
+The [nineteen-hub formula note](32_nineteen_hub_all_residues.md) proves `d(K_{19,t})=t+ceil(9t/19)` for every `t≥18`. The [checker](32_nineteen_hub_all_residues.py) constructs all ten even bases from item 30's weave, the 19-leaf offset base, and eight [saved odd-base certificates](32_nineteen_hub_odd_seeds.json), then checks exact spoke coverage through eleven lifts. The [residue ladder](art/nineteen_hub_residue_ladder.svg) shows all nineteen methods. An independent checker verified the odd witnesses and 95 base/lift partitions. Priority and a uniform all-odd-hub proof remain open.
+
+## 33. A uniform leaf-omission schedule
+
+The [interval schedule note](33_interval_omission_schedule.md) proves that for every odd `h=2k+1` and odd base `t=h+2j`, a simple cyclic tape distributes omitted leaves among `k` full and `j` short prospective cycles with exactly the required vertex-incidence degrees. This is a uniform arithmetic step toward the conjecture, not an edge assignment or connected-cycle decomposition. A fixed near-one-factor at each singleton hub fails for this schedule already at small cases, so a proof needs more flexible pairings or a different design.
