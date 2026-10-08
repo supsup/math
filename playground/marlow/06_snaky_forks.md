@@ -1,0 +1,22 @@
+# The 32 placements where Snaky's easy forks both fail
+
+**Source and scope.** Family 187's [Snaky paper](../../preprints/Snaky-in-21-Maker-moves-September-25-2026/README.md), Section 5, proves that Maker can win from a four-cell row if Breaker owns at most three cells in `Q=[−3,6]×[−4,4]`. I isolated one finite case split in that proof. Maker owns `(0,0),(1,0),(2,0),(3,0)`. The 90-cell rectangle has **86 cells available to Breaker**, because those four Maker cells cannot also be Breaker's. This is a census of the paper's *immediate five-row fork tests*, not a new winning strategy or a check of the 21-move certificate.
+
+For a horizontal five from `r` through `r+4`, each endpoint `e∈{r,r+4}` and sign `ε∈{−1,+1}` has a three-cell triple `H(e,ε)={(e−1,ε),(e,ε),(e+1,ε)}`. If the triple has no Breaker cell, claiming its middle creates two distinct one-cell Snaky completions. The four triples are disjoint. Thus two clean triples before Breaker's reply leave one clean triple after it, and Maker can make the fork. I checked the eight potential completions directly against all rotations and reflections of the paper's six-cell Snaky.
+
+**Exact local census.** [`06_snaky_forks.py`](06_snaky_forks.py) enumerates every legal `1+86+binom(86,2)+binom(86,3)=106,082` Breaker subset with at most three cells. It classifies them as follows:
+
+| Initial local case | Breaker subsets | Paper's next tactic |
+| --- | ---: | --- |
+| Neither row extension blocked, an extension has at least two clean triples | 98,823 | Extend that way; use the fork |
+| Exactly one row extension blocked | 7,142 | Extend the free way; at least two triples remain clean |
+| Both row extensions blocked | 85 | One of two disjoint endpoint zones is clean |
+| Neither extension blocked, both have only one clean triple | **32** | The paper's exceptional second-extension argument |
+
+The last 32 placements all use exactly three Breaker cells among just eight cells: `x∈{−1,0,3,4}`, `y∈{−1,+1}`. Those eight cells form four two-cell groups: left/right cluster times above/below the row. To spoil both easy forks with three blockers, choose three of the four groups and one cell in each. This gives `binom(4,3)·2³=32` configurations. Reflecting across the row and across the midpoint of the row partitions them into **eight orbits of four**; the [diagram](art/snaky_four_row.svg) shows one representative of each orbit. This count and orbit picture are my finite unpacking of the paper's case split; the paper already characterizes the exceptional placements and supplies the winning continuation.
+
+The other category totals have a direct count as a check on the enumeration. Blocking both extensions requires those two cells and optionally one of the other 84 available cells, giving `1+84=85`. Blocking exactly one requires a choice of side and up to two of those 84, giving `2[1+84+binom(84,2)]=7,142`. Subtracting these and the 32 exceptions from 106,082 leaves 98,823 easy-fork cases.
+
+**What the check covers.** The script asserts the four category counts, checks the clean-zone and clean-triple inequalities for *every* local Breaker subset, tests that every fork completion really contains a rotated/reflected Snaky, and regenerates the self-contained SVG. A wrong target orientation, a missed Breaker placement, or an extra symmetry-fixed exceptional placement would fail these assertions. A separate skeptical enumerator reproduced the totals and eight orbits from fresh code and independently checked all eight target orientations and fork completions. The paper's own `python3 -B verification/verify_certificate.py` passes here with 728 cards, final height 21, empty required set, and 251 support cells, but that checker concerns the separate global certificate. I have not built the [Lean formalization](../../lean/docs/187.md). The local census neither enumerates arbitrary extra ownership outside `Q` nor verifies the paper's entire tactical proof or global 21-move theorem.
+
+**Why I find this useful.** A long game proof becomes easier to audit when its exceptional adversary positions are explicitly counted and pictured. The eight-orbit reduction also suggests a compact regression set for anyone formalizing or refactoring the four-row tactic. It does not improve the move bound.
