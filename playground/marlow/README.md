@@ -131,3 +131,11 @@ The [even-base note](24_even_base_residues.md) applies Sotteau's fixed-length cy
 ## 25. Every large leaf count with eleven bipartite hubs
 
 The [eleven-hub formula note](25_eleven_hub_all_residues.md) proves `d(K_{11,t})=t+ceil(5t/11)` for all `t≥10`. Six even bases follow from Sotteau's cycle-design theorem, one from the eleven-leaf offset block, and four odd bases from [explicit JSON walks](25_eleven_hub_odd_seeds.json). The [checker](25_eleven_hub_odd_seeds.py) verifies the finite odd witnesses and lifts; its [residue ladder](art/eleven_hub_residue_ladder.svg) makes the three construction methods visible. The `t<10` values and priority remain open in this exploration.
+
+## 26. Every large leaf count with thirteen bipartite hubs
+
+The [thirteen-hub formula note](26_thirteen_hub_all_residues.md) proves `d(K_{13,t})=t+ceil(6t/13)` for all `t≥12`. Sotteau supplies seven even bases, the thirteen-leaf offset block supplies one odd base, and five [saved edge certificates](26_thirteen_hub_odd_seeds.json) supply the other odd bases. The [checker](26_thirteen_hub_all_residues.py) validates the six odd-base partitions and their modular lifts, and draws a [residue ladder](art/thirteen_hub_residue_ladder.svg). An independent read-only checker also verified the five saved odd bases before this note was committed.
+
+## 27. The general odd-base design question
+
+The [design-question note](27_odd_hub_design_question.md) isolates the remaining odd bases for a possible uniform theorem. It formulates a sufficient deletion-and-cycle design with `k` full cycles and `j` short cycles at `t=h+2j`, records the stronger `j=1` missing-leaf structure, and separates the conjecture from the proved finite-hub cases and existing cycle-design theorems.

@@ -1,0 +1,15 @@
+# The odd-base design question
+
+The examples with 3, 5, 7, 9, 11, and 13 hubs suggest the following **conjecture**, not a theorem of this note:
+
+> For every odd `h=2k+1≥3` and every `t≥h−1`, the minimum cycle/singleton partition size of `K_{h,t}` is `d(K_{h,t})=t+ceil(kt/h)`.
+
+The parity/cycle-capacity argument supplies this lower bound for every odd `h`. [Sotteau's theorem](24_even_base_residues.md) supplies every even base `b∈[h−1,2h−2]`, while the offset construction supplies `b=h`. Adding an `h`-leaf offset block preserves equality. Thus one needs only `k−1` odd bases, `b=h+2j` for `1≤j≤k−1`, to prove the conjecture for a given `h`. [Items 20, 23, 25, and 26](README.md) store the finite hub proofs through `h=13`; `h=3,5` are in the earlier playground notes. The first unverified hub count here is `h=15`, starting with `t=17`.
+
+Here is a sharper **sufficient design problem** for each missing base. Set `t=h+2j`. Choose one singleton spoke at every leaf so that `j` hubs receive three singleton spokes and the other `h−j` hubs receive one. Decompose the remaining graph into exactly `k` full cycles of length `2h` and `j` short cycles of length `2(h−1)`, with each short cycle omitting a different triple-spoke hub. The proposed cycle counts meet all hub degrees: a triple-spoke hub appears in `k+j−1` cycles, and every other hub appears in all `k+j`. They also meet the global edge count because `h(k+j)−kt=j`, exactly the total of `j` omitted hub visits. The saved certificates for `h=9,11,13` exhibit this pattern. This is sufficient for the formula; it is not claimed necessary for every optimum.
+
+For `j=1`, every leaf participates in exactly `k` of the `k+1` cycles, so each leaf is omitted once. The `k` full cycles each omit two leaves, and the one short cycle omits three: these missing-leaf sets partition all `h+2=2k+3` leaves. A possible extra search constraint is to make the short-cycle omitted triple equal the three leaves whose singleton spokes meet the triple-spoke hub. The current certificates do not enforce that constraint, so its feasibility remains unproved. This reduces the search to a constrained near-complete bipartite Hamilton-cycle design, though no general construction is established here.
+
+**Prior-art boundary.** Sotteau's fixed-length result applies after removing an entire hub at the even bases. [Horsley's theorem on arbitrary even-cycle lists](https://arxiv.org/pdf/1204.3368) addresses complete bipartite graphs with both sides even, or balanced odd sides after deleting a perfect matching; its stated hypotheses do not directly cover these unequal odd sides with the prescribed spoke deletion. This scope comparison does not prove the design problem new. A literature search for near-complete bipartite cycle decompositions with the specified missing stars is still needed before any novelty claim.
+
+**Next experiment.** Seek a uniform construction for the `j=1` design and test it at `h=15,t=17` with a saved edge certificate. A failed search is not a counterexample to the conjecture. Any positive computation should be independently checked and kept outside the showcase until Fixpoint reviews its scope.
