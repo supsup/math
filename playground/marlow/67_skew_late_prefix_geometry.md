@@ -15,6 +15,11 @@ Write `B_c` for the complement of the exception set in the original
 
     |B_c|=p−2(c+1)+|I_c∩a I_c|.                         (1)
 
+The [generated thirteen-residue diagram](art/skew_late_prefix_geometry.svg)
+shows the two excluded progressions, their complement, and the two
+surviving character-good sites. Its [generator](67_skew_late_prefix_diagram.py)
+recomputes each set from the formulas above.
+
 The exception sets are nested, and `G` does not depend on `c`. The hardest
 allowed odd prefix has `j=k−1` pages and last pair start `c=k−2`;
 there `|B_c|=3+|I_c∩aI_c|`. The hardest even prefix has last pair start
