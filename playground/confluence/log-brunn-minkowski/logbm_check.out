@@ -1,0 +1,31 @@
+== Part A: plane, proved lower bound on vol W (modulo float rounding)
+square vs rectangle 4x0.25 (common axes)     t=0.50 LHS=2.000000 volW in [1.971619, 2.000000]  ratio_lb=0.985810  NEAR-EQUALITY (outer >= LHS, bound too loose)
+rect 2x0.5 vs rect 0.5x2                     t=0.50 LHS=1.000000 volW in [0.993800, 1.000000]  ratio_lb=0.993800  NEAR-EQUALITY (outer >= LHS, bound too loose)
+square vs 45deg-rotated square               t=0.50 LHS=4.000000 volW in [4.681456, 4.686292]  ratio_lb=1.170364  PASS (proved lower bound >= LHS)
+rect 3x1 vs rotated 30deg                    t=0.30 LHS=3.000000 volW in [3.506615, 3.521125]  ratio_lb=1.168872  PASS (proved lower bound >= LHS)
+square vs regular hexagon                    t=0.50 LHS=3.223710 volW in [3.445101, 3.448245]  ratio_lb=1.068676  PASS (proved lower bound >= LHS)
+thin rect vs rotated thin rect (60deg)       t=0.50 LHS=0.800000 volW in [0.817867, 0.823136]  ratio_lb=1.022334  PASS (proved lower bound >= LHS)
+random symmetric polygons #0                 t=0.64 LHS=4.217534 volW in [4.821786, 4.836724]  ratio_lb=1.143271  PASS (proved lower bound >= LHS)
+random symmetric polygons #1                 t=0.28 LHS=1.719205 volW in [1.899307, 1.902526]  ratio_lb=1.104759  PASS (proved lower bound >= LHS)
+random symmetric polygons #2                 t=0.09 LHS=5.426839 volW in [5.438530, 5.445407]  ratio_lb=1.002154  PASS (proved lower bound >= LHS)
+random symmetric polygons #3                 t=0.29 LHS=2.023557 volW in [2.301581, 2.312731]  ratio_lb=1.137393  PASS (proved lower bound >= LHS)
+random symmetric polygons #4                 t=0.90 LHS=1.402766 volW in [1.505719, 1.509774]  ratio_lb=1.073393  PASS (proved lower bound >= LHS)
+random symmetric polygons #5                 t=0.63 LHS=3.304261 volW in [3.589897, 3.595807]  ratio_lb=1.086445  PASS (proved lower bound >= LHS)
+-- equality cases (must be ~ratio 1; lower bound may land just under)
+t=0 (W[h_K] = K)                             t=0.00 LHS=4.000000 volW in [3.995713, 4.000000]  ratio_lb=0.998928  NEAR-EQUALITY (outer >= LHS, bound too loose)
+dilates K, 3K (W = 3^t K)                    t=0.50 LHS=7.794229 volW in [7.788558, 7.794648]  ratio_lb=0.999273  NEAR-EQUALITY (outer >= LHS, bound too loose)
+-- note: boxes with COMMON axes are an equality case: Hoelder gives box(a^(1-t)b^t) inside W and
+   the axis constraints give W inside that box, so W = box(a^(1-t) b^t) exactly (ratio 1).
+-- CONTROLS (must FAIL)
+NONSYM: square vs square shifted (0.95,0.95) t=0.50 LHS=4.000000 volW in [2.423580, 2.624500]  ratio_lb=0.605895  CONTROL FAILS AS REQUIRED
+WRONG COMB: W[min(h_K,h_L)] = K cap L        t=0.50 LHS=1.000000 volW in [0.249566, 0.250000]  ratio_lb=0.249566  CONTROL FAILS AS REQUIRED
+== Part B: R^3, quadrature only (not a bound)
+box(1,1,1) vs box(2,.5,1) common axes        t=0.50 LHS=8.00000 volW~7.99990 ratio=0.99999 [quadrature on K: 8.00001 vs exact 8.00000]  PASS (numeric)
+cube vs cube rotated 45 about z              t=0.50 LHS=8.00000 volW~9.37260 ratio=1.17158 [quadrature on K: 8.00001 vs exact 8.00000]  PASS (numeric)
+cube vs octahedron r=1.5                     t=0.50 LHS=6.00000 volW~8.85388 ratio=1.47565 [quadrature on K: 8.00001 vs exact 8.00000]  PASS (numeric)
+box(2,.3,1) vs rotated about x 50deg         t=0.40 LHS=4.80000 volW~5.71240 ratio=1.19008 [quadrature on K: 4.79990 vs exact 4.80000]  PASS (numeric)
+NONSYM 3D: cube vs cube shifted .95(1,1,1)   t=0.50 LHS=8.00000 volW~4.25179 ratio=0.53147 [quadrature on K: 8.00001 vs exact 8.00000]  CONTROL FAILS AS REQUIRED
+
+Part A results: {'PASS (proved lower bound >= LHS)': 10, 'NEAR-EQUALITY (outer >= LHS, bound too loose)': 2}
+Part B results: {'PASS (numeric)': 4}
+controls: CONTROL FAILS AS REQUIRED | CONTROL FAILS AS REQUIRED | CONTROL FAILS AS REQUIRED

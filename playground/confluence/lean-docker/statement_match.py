@@ -33,10 +33,16 @@ DECL = re.compile(r"^(?:@\[[^\]]*\]\s*)?(?:noncomputable\s+)?(abbrev|def|structu
 
 
 def declarations(text):
-    """name -> (kind, normalized text up to the next top-level declaration or `end`)."""
-    out = {}
+    """[(name, (kind, normalized text up to the next top-level declaration or command))].
+    A LIST, not a dict: one file can declare the same short name in several namespaces
+    (log-BM's solution has five `abbrev Space`), and a dict kept only the last."""
+    out = []
     starts = [(m.start(), m.group(1), m.group(2)) for m in DECL.finditer(text)]
-    ends = [m.start() for m in re.finditer(r"^(?:end\b|namespace\b|section\b|noncomputable section)", text, re.M)]
+    # A body also ends at commands that are not declarations; `variable (...)` used to be
+    # glued onto the declaration above it (log-BM: `abbrev Space ... variable (mu ...)`).
+    ends = [m.start() for m in re.finditer(
+        r"^(?:end\b|namespace\b|section\b|noncomputable section|variable\b|open\b|universe\b|set_option\b|attribute\b|#)",
+        text, re.M)]
     for idx, (pos, kind, name) in enumerate(starts):
         nxt = [p for p in [s[0] for s in starts[idx + 1:]] + ends if p > pos]
         body = text[pos:min(nxt) if nxt else len(text)]
@@ -46,7 +52,7 @@ def declarations(text):
             # ("{Carrier"), so two anonymous instances in one file collided. Key it
             # by the class it instantiates: the head after the last top-level ':'.
             name = "instance " + instance_head(norm)
-        out[name] = (kind, norm)
+        out.append((name, (kind, norm)))
     return out
 
 
@@ -64,6 +70,7 @@ def instance_head(norm):
 
 
 def normalize(body):
+    body = re.sub(r"^\s*noncomputable\s+", "", body)
     # Comments and doc comments are not part of a statement; the next
     # declaration's /-- doc -/ used to be glued onto the previous body.
     body = re.sub(r"/-.*?-/", " ", body, flags=re.S)
@@ -89,13 +96,13 @@ def statement_only(body):
 
 
 def main():
-    ch = declarations(CHALLENGE.read_text())
+    ch = dict(declarations(CHALLENGE.read_text()))
     # Names are short names as written, so one name can occur in several solution
     # files (EuclideanRamseyNine has two nine_circle_configuration theorems). Keep
     # every occurrence: a dict used to keep whichever file was read last.
     sol = {}
     for f in SOLUTION:
-        for name, decl in declarations(f.read_text()).items():
+        for name, decl in declarations(f.read_text()):
             sol.setdefault(name, []).append((f.name, decl))
     print(f"challenge declarations: {len(ch)}; solution declarations: {len(sol)}")
     same, differ, missing = [], [], []
