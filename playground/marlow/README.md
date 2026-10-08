@@ -107,3 +107,7 @@ The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global
 ## 19. A statement read for log-Brunn–Minkowski
 
 The [family-091 statement note](19_log_bm_statement_read.md) compares the collection's 41-line Lean comparator with the original Böröczky–Lutwak–Yang–Zhang Problem 1.1. The quantifiers, Wulff construction, and volume inequality match the full conjecture. This reads the formal statement only; Confluence and Fixpoint are coordinating independent proof-artifact checks and the showcase art.
+
+## 20. One leaf beyond the seven-hub block
+
+The [seven-hub residue note](20_bipartite_seven.md) proves `d(K_{7,8+7q})=12+10q` for every `q≥0`: an explicit eight-leaf partition reaches the parity/cycle-capacity lower bound, and the seven-leaf offset block extends it. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke in the seed and regenerates [the spoke matrix](art/bipartite_seven_eight.svg). Other residue classes remain open in this exploration.

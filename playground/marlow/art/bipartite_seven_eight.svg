@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 630" role="img" aria-label="Seven by eight spoke matrix partitioned into four cycles and eight singleton spokes">
+<rect width="690" height="630" fill="#f7f5ef"/>
+<text x="34" y="43" fill="#21313d" font-family="sans-serif" font-size="24" font-weight="700">Seven hubs, eight leaves, twelve parts</text>
+<text x="34" y="67" fill="#4c5962" font-family="sans-serif" font-size="13">Each colored cell is one spoke. Four cycles cover the colors; eight dark cells stand alone.</text>
+<text x="136.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">A</text>
+<text x="197.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">B</text>
+<text x="258.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">C</text>
+<text x="319.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">D</text>
+<text x="380.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">E</text>
+<text x="441.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">F</text>
+<text x="502.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">G</text>
+<text x="563.5" y="101" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">H</text>
+<text x="75" y="150.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">0</text>
+<rect x="109" y="118" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="136.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="170" y="118" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="197.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="231" y="118" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="258.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="292" y="118" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="319.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="353" y="118" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="380.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="414" y="118" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="441.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="475" y="118" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="502.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="536" y="118" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="563.5" y="153" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<text x="75" y="211.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">1</text>
+<rect x="109" y="179" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="136.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="170" y="179" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="197.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="231" y="179" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="258.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="292" y="179" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="319.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="353" y="179" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="380.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="414" y="179" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="441.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="475" y="179" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="502.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="536" y="179" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="563.5" y="214" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<text x="75" y="272.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">2</text>
+<rect x="109" y="240" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="136.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="170" y="240" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="197.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="231" y="240" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="258.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="292" y="240" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="319.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="353" y="240" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="380.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="414" y="240" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="441.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="475" y="240" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="502.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="536" y="240" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="563.5" y="275" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<text x="75" y="333.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">3</text>
+<rect x="109" y="301" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="136.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="170" y="301" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="197.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="231" y="301" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="258.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="292" y="301" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="319.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="353" y="301" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="380.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="414" y="301" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="441.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="475" y="301" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="502.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<rect x="536" y="301" width="55" height="55" rx="9" fill="#263e50"/>
+<text x="563.5" y="336" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">•</text>
+<text x="75" y="394.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">4</text>
+<rect x="109" y="362" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="136.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="170" y="362" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="197.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="231" y="362" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="258.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="292" y="362" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="319.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="353" y="362" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="380.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="414" y="362" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="441.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="475" y="362" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="502.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="536" y="362" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="563.5" y="397" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<text x="75" y="455.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">5</text>
+<rect x="109" y="423" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="136.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="170" y="423" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="197.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="231" y="423" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="258.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="292" y="423" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="319.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="353" y="423" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="380.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="414" y="423" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="441.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="475" y="423" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="502.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="536" y="423" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="563.5" y="458" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<text x="75" y="516.5" text-anchor="middle" fill="#233847" font-family="sans-serif" font-size="15" font-weight="700">6</text>
+<rect x="109" y="484" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="136.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="170" y="484" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="197.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="231" y="484" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="258.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="292" y="484" width="55" height="55" rx="9" fill="#b590d1"/>
+<text x="319.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">3</text>
+<rect x="353" y="484" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="380.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<rect x="414" y="484" width="55" height="55" rx="9" fill="#96b96d"/>
+<text x="441.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">4</text>
+<rect x="475" y="484" width="55" height="55" rx="9" fill="#ea8a6a"/>
+<text x="502.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">1</text>
+<rect x="536" y="484" width="55" height="55" rx="9" fill="#5eaab6"/>
+<text x="563.5" y="519" text-anchor="middle" fill="white" font-family="sans-serif" font-size="18" font-weight="700">2</text>
+<text x="34" y="579" fill="#4c5962" font-family="sans-serif" font-size="13">Cycle labels 1–4 are complete simple 12-cycles. The dark singleton pattern is 2+2+2+2 across four hubs.</text>
+<text x="34" y="602" fill="#21313d" font-family="sans-serif" font-size="14" font-weight="700">8 singletons + 4 cycles = 12, meeting the parity/capacity lower bound.</text>
+</svg>
