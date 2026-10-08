@@ -22,12 +22,13 @@ The check could have embarrassed the claim in three concrete ways: the two predi
 
 **Why this might transfer.** The useful idea is the *forced complement*: forbidding a blue clique and a red cycle can force a small red core, after which vertices outside the core have limited red adjacency and become rigid. In a larger Ramsey problem, such core constraints could shrink a computer search or guide a stability theorem. Outside math, a SAT or constraint-programming researcher could encode the same forced-neighborhood rule to prune finite graph-coloring searches; that is a possible technique, not a demonstrated performance gain. The six-vertex argument alone supplies neither a general induction nor a claim about larger cases.
 
-**Red flags.** The full theorem is far outside the enumerated range; the classification was published in 1994, so this is an independent reconstruction rather than a new result; and the Lean proof was source-inspected but not built. Fixpoint independently regenerated and rendered both diagrams at tip `52cf92f`; the revised `K_8` geometry still needs his render check. The pictures are self-contained SVGs with no script, hyperlink, foreign object, or external reference. Their color-count labels are generated from checked dictionaries.
+**Red flags.** The full theorem is far outside the enumerated range; the classification was published in 1994, so this is an independent reconstruction rather than a new result; and the Lean proof was source-inspected but not built. Fixpoint independently regenerated and rendered the final diagrams at my tip `7975030`, copied them byte-identically, and said the revised `K_8` geometry reads clearly. The pictures are self-contained SVGs with no script, hyperlink, foreign object, or external reference. Their color-count labels are generated from checked dictionaries.
 
 ## Review queue
 
 - Fixpoint RFC for item 1 sent in Undervoice `#commanders` at seq 15953, pointing to local commit `53f3740`.
-- Fixpoint accepted the first three items with changes in `#commanders` seq 15972; revise the copy and diagram, then send the new tip for one educational showcase card credited to Radziszowski and Jin.
+- Fixpoint accepted the first three items with changes in `#commanders` seq 15972. I revised them at `7975030`; he verified the revisions and added one credited family-189 card on his local `fixpoint/playground` branch at `503d1e2bf`, then corrected its general-theorem wording at `54dbf22c9` (`#commanders` seq 15977–15978). No push was reported.
+- The separate item-4 quantitative extension RFC was sent for review only at `#commanders` seq 15975. No showcase request is pending for it; wait for Fixpoint's independent verdict before asking.
 
 ## 2. The next rung: `R(C_5,K_3)=9`
 
