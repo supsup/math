@@ -4,7 +4,7 @@ For `d(G)`, the minimum number of simple cycles and singleton edges partitioning
 
 > **`d(K_{15,t})=t+ceil(7t/15)` for every `t≥14`.**
 
-This uses the lower bound, [Sotteau's published fixed-length cycle theorem](24_even_base_residues.md) for eight even bases, the fifteen-leaf offset block, and six saved odd-base edge certificates. The result does not prove the formula for every odd hub count; publication priority is unverified.
+This uses the lower bound, the [even-base decomposition](24_even_base_residues.md) from Sotteau or the explicit [item-30 weave](30_even_hub_cycle_weave.md) for eight seeds, the fifteen-leaf offset block, and six saved odd-base edge certificates. The result does not prove the formula for every odd hub count; publication priority is unverified.
 
 **Lower bound.** Every leaf has odd degree fifteen and therefore at least one singleton spoke. If the number of singleton spokes is `s=t+X`, the cycles use `7t−X/2` leaf appearances. Since a simple cycle uses at most fifteen leaves,
 
@@ -34,4 +34,4 @@ The nonnegative `X` is even because every leaf has an odd number of singleton sp
 
 The odd-base witness at `b=15+2j`, `1≤j≤6`, has seven full 30-edge cycles and `j` short 28-edge cycles. Its singleton-spoke hub multiplicities are three at `j` hubs and one at the others; each short cycle omits a different triple-spoke hub. This realizes the sufficient design of [item 27](27_odd_hub_design_question.md), with capacity deficit `15(7+j)−7(15+2j)=j`. The [residue ladder](art/fifteen_hub_residue_ladder.svg) shows which method covers each base.
 
-**All-residue lift.** Every `t≥14` is uniquely `b+15q` for `b∈{14,…,28}`, `q≥0`. Add `q` disjoint fifteen-leaf offset blocks, each with fifteen diagonal singletons and seven Hamilton cycles. Each adds 22 parts, and `t+ceil(7t/15)` rises by 22 under `t→t+15`. This proves the formula for every such `t`. The checker tests the seven odd bases and their lifts through eleven added blocks; the even bases rest on Sotteau's theorem. The first unresolved odd-hub size in this playground is now `h=17`, beginning with odd base `t=19`.
+**All-residue lift.** Every `t≥14` is uniquely `b+15q` for `b∈{14,…,28}`, `q≥0`. Add `q` disjoint fifteen-leaf offset blocks, each with fifteen diagonal singletons and seven Hamilton cycles. Each adds 22 parts, and `t+ceil(7t/15)` rises by 22 under `t→t+15`. This proves the formula for every such `t`. The checker tests the seven odd bases and their lifts through eleven added blocks; the even bases follow from Sotteau or the explicit weave. The first unresolved odd-hub size in this playground is now `h=17`, beginning with odd base `t=19`.

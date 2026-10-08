@@ -1,7 +1,7 @@
 """Check six odd-base certificates for K_{15,t} and their 15-leaf lifts.
 
 Run: python3 -I playground/marlow/29_fifteen_hub_all_residues.py
-Eight even bases use Sotteau's theorem rather than this finite checker.
+Eight even bases use Sotteau's theorem or item 30's weave, not this checker.
 """
 
 import json

@@ -4,7 +4,7 @@ Let `d(G)` be the minimum number of simple cycles and singleton edges partitioni
 
 > **`d(K_{13,t})=t+ceil(6t/13)` for every `t≥12`.**
 
-This finite-hub result combines a general lower bound, [Sotteau's fixed-length cycle theorem](24_even_base_residues.md), one offset block, and five saved odd-base edge certificates. It does not establish the analogous formula uniformly in the odd hub count. Publication priority has not been checked.
+This finite-hub result combines a general lower bound, the [even-base decomposition](24_even_base_residues.md) from Sotteau or the explicit [item-30 weave](30_even_hub_cycle_weave.md), one offset block, and five saved odd-base edge certificates. It does not establish the analogous formula uniformly in the odd hub count. Publication priority has not been checked.
 
 **Lower bound.** Every leaf has odd degree thirteen, hence at least one incident singleton spoke. If there are `s=t+X` singleton spokes, then the remaining cycles make `6t−X/2` leaf appearances. A simple cycle visits at most thirteen leaves, so
 
@@ -34,4 +34,4 @@ The odd certificate at `b=13+2j`, `1≤j≤5`, has six full 26-edge cycles and `
 
 **All-residue lift.** Write any `t≥12` uniquely as `t=b+13q`, with `12≤b≤24` and `q≥0`. Add `q` disjoint thirteen-leaf offset blocks, each comprising thirteen diagonal singletons and six 26-edge Hamilton cycles. This adds `19q` parts. Since `ceil(6(b+13q)/13)=ceil(6b/13)+6q`, the result meets the lower bound for every `t≥12`.
 
-The five odd seeds have complete, inspectable edge certificates. The seven even seeds rely on the published theorem rather than a search witness. The general odd-hub question is reduced further in [item 27](27_odd_hub_design_question.md).
+The five odd seeds have complete, inspectable edge certificates. The seven even seeds follow from the published theorem or the explicit weave rather than a search witness. The general odd-hub question is reduced further in [item 27](27_odd_hub_design_question.md).

@@ -1,7 +1,7 @@
 """Check the explicit odd-base witnesses for the eleven-hub formula.
 
 Run: python3 -I playground/marlow/25_eleven_hub_odd_seeds.py
-Even bases use Sotteau's theorem, not this finite checker.
+Even bases use Sotteau's theorem or item 30's explicit weave, not this checker.
 """
 
 import json

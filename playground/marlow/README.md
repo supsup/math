@@ -124,9 +124,9 @@ The [odd-hub residue note](22_one_leaf_short.md) proves `d(K_{h,h−1+hq})=3k+(h
 
 The [nine-hub formula note](23_nine_hub_all_residues.md) proves `d(K_{9,t})=t+ceil(4t/9)` for all `t≥8`. Explicit seeds cover all nine residues at `t=8,…,16`, then disjoint nine-leaf offset blocks add 13 parts and meet the lower bound. The [JSON witnesses](23_nine_hub_seeds.json) for `t=10,…,16` are checked by [`23_nine_hub_all_residues.py`](23_nine_hub_all_residues.py), which also draws the [eleven-leaf spoke matrix](art/nine_hub_eleven.svg). The small values `t<8` and publication priority remain open in this exploration.
 
-## 24. Sotteau closes every even base residue
+## 24. Every even base residue
 
-The [even-base note](24_even_base_residues.md) applies Sotteau's fixed-length cycle-decomposition theorem to `K_{2k,b}` after making one hub's `b` spokes singleton parts. For every odd `h=2k+1`, each even `b∈[h−1,2h−2]` meets the parity/capacity lower bound exactly, and the `h`-leaf lift extends that residue. Along with the divisible `b=h` block, only `k−1` odd bases require separate seed constructions in a uniform proof. This deduction relies on Sotteau's published theorem and does not claim it as a new cycle design.
+The [even-base note](24_even_base_residues.md) makes one hub's `b` spokes singleton parts and decomposes the residual `K_{2k,b}`. Sotteau's fixed-length theorem supplies the cycles; [item 30](30_even_hub_cycle_weave.md) also gives a direct explicit weave for this special case. For every odd `h=2k+1`, each even `b∈[h−1,2h−2]` meets the parity/capacity lower bound exactly, and the `h`-leaf lift extends that residue. Along with the divisible `b=h` block, only `k−1` odd bases require separate seed constructions in a uniform proof. This is a classical cycle-design corollary, with publication priority of the particular formulation unverified.
 
 ## 25. Every large leaf count with eleven bipartite hubs
 
@@ -147,3 +147,7 @@ The [finite transport note](28_finite_coulomb_branches.md) gives an exact atomic
 ## 29. Every large leaf count with fifteen bipartite hubs
 
 The [fifteen-hub formula note](29_fifteen_hub_all_residues.md) proves `d(K_{15,t})=t+ceil(7t/15)` for all `t≥14`. Sotteau supplies eight even bases, the 15-leaf offset block one odd base, and six [saved edge certificates](29_fifteen_hub_odd_seeds.json) the remaining odd bases. The [checker](29_fifteen_hub_all_residues.py) validates the seven odd-base partitions and modular lifts and draws a [residue ladder](art/fifteen_hub_residue_ladder.svg). An independent read-only checker verified all six saved odd-base witnesses, and a separate check reconstructed the offset block and Sotteau conditions.
+
+## 30. The even-hub parity cliff
+
+The [even-hub note](30_even_hub_cycle_weave.md) gives an explicit `C_{4k}`-cycle weave for every `K_{2k,2m}` with `m≥k`, replacing the Sotteau dependency for the even bases in item 24. It also proves `d(K_{h,t})=t/2` for even `h≤t` and even `t`, but `d(K_{h,t})=h+(t−1)/2` for odd `t`. The [checker](30_even_hub_cycle_weave.py) tests 72 even-even instances and draws the [four-hub parity diagram](art/even_hub_parity_cliff.svg): `d(K_{4,4}),d(K_{4,5}),d(K_{4,6})=2,6,3`. A separate read-only audit verified the general indexing and lower bound, including `h=2`; no publication novelty is claimed.

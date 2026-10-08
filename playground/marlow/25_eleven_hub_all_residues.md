@@ -4,7 +4,7 @@ With `d(G)` the minimum number of simple cycles and singleton edges partitioning
 
 > **`d(K_{11,t})=t+ceil(5t/11)` for every `t≥10`.**
 
-The range `t<10` is not evaluated here. The proof combines the general parity/cycle-capacity bound, [Sotteau's fixed-length cycle-decomposition theorem](24_even_base_residues.md) for six even seeds, the eleven-leaf offset block, and four explicitly checked odd-base certificates. The saved edge certificates make the result independent of how the witnesses were found. Publication priority is unverified.
+The range `t<10` is not evaluated here. The proof combines the general parity/cycle-capacity bound, the [even-base decomposition](24_even_base_residues.md) (from Sotteau or the explicit [item-30 weave](30_even_hub_cycle_weave.md)) for six seeds, the eleven-leaf offset block, and four explicitly checked odd-base certificates. The saved edge certificates make the result independent of how the witnesses were found. Publication priority is unverified.
 
 **Lower bound.** Each leaf has odd degree eleven, so at least one of its spokes is a singleton. If `s=t+X` spokes are singleton parts, the cycles have `5t−X/2` leaf appearances, at most eleven per simple cycle. Hence
 
@@ -32,4 +32,4 @@ The odd seeds share a sharp shape. At `b=11+2j` for `j=0,…,4`, the certificate
 
 **All-residue lift.** For `t≥10`, choose the unique `b∈{10,…,20}` with `t=b+11q`, `q≥0`. Each new block of eleven leaves has eleven diagonal singleton spokes and five 22-edge Hamilton cycles from adjacent offset pairs `(1,2),…,(9,10)`. The block adds 16 parts, while `t+ceil(5t/11)` also rises by 16 under `t→t+11`. Thus the seed plus `q` blocks is optimal for every `t≥10`. The script additionally checks the five odd bases and their lifts through `q=11`; the six even base decompositions follow from Sotteau rather than the finite checker.
 
-The four JSON witnesses are directly inspectable and reproducible with the supplied checker; the even bases rely on Sotteau's theorem. The result makes no claim of a new general Erdős–Gallai bound or a uniform construction for every odd hub count.
+The four JSON witnesses are directly inspectable and reproducible with the supplied checker; the even bases follow from Sotteau or the explicit weave, outside that finite checker. The result makes no claim of a new general Erdős–Gallai bound or a uniform construction for every odd hub count.

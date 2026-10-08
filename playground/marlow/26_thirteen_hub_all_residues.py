@@ -1,7 +1,7 @@
 """Check the explicit odd-base certificates for K_{13,t} and modular lifts.
 
 Run: python3 -I playground/marlow/26_thirteen_hub_all_residues.py
-Even bases are supplied by Sotteau's theorem, not this finite checker.
+Even bases use Sotteau's theorem or item 30's explicit weave, not this checker.
 """
 
 import json
