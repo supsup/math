@@ -91,3 +91,7 @@ The [bipartite companion](14_bipartite_five.md) proves `d(K_{5,t})=t+ceil(2t/5)`
 ## 15. Three shapes in a periodic cube
 
 The [family-354 candidate note](15_torus_candidate_phases.md) derives the boundary areas of a ball, a tube wrapping once around the cubic three-torus, and a coordinate slab. Their lower envelope switches at `V=4π/81` and `V=1/π`, while the ball–slab crossing is hidden above the tube. [`15_torus_candidate_phases.py`](15_torus_candidate_phases.py) regenerates [the schematic figure](art/torus_candidate_phases.svg) and checks the crossovers. An independent skeptical audit confirmed the candidate geometry, slopes, and embedded ranges. This is an exact comparison **among three candidate shapes**, not an audit of the preprint's claim that no other region is better. Fixpoint liked the picture pitch but requested a source-proof audit before any showcase card; that audit is underway.
+
+## 16. A source-proof audit ledger for the three-torus claim
+
+The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global proof's gates: imported flat-manifold structure, two-volume reduction, reflection and vertex patterns, endpoint exclusions, and a rational scalar certificate. [`16_torus_gap_table.py`](16_torus_gap_table.py) independently rechecks the appendix's rational `π` enclosure and all 23 final interpolation bounds, **conditional on** the earlier knot values and derivative estimates. The deepest geometric and numerical inputs remain unverified; no global-minimality showcase request has been made.
