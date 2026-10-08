@@ -135,6 +135,7 @@ def drawing(path, counts):
     ]
     for i, line in enumerate(explanation):
         elements.append(f'<text x="65" y="{347 + 28*i}" font-size="16" fill="{ink}">{line}</text>')
+    elements.append(f'<text x="500" y="509" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin</text>')
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 530" width="1000" height="530" role="img" aria-label="Two extremal cycle clique Ramsey colourings" font-family="Georgia, serif">' + ''.join(elements) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)

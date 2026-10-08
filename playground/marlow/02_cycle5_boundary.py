@@ -143,6 +143,7 @@ def drawing(path, types, counts):
     )
     for i, line in enumerate(notes):
         parts.append(f'<text x="61" y="{378 + 27 * i}" font-size="16" fill="{ink}">{line}</text>')
+    parts.append(f'<text x="500" y="496" text-anchor="middle" font-size="13" fill="{blue}">Critical types: Radziszowski &amp; Jin</text>')
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" width="1000" height="510" role="img" aria-label="Two surviving types for the C5 K3 Ramsey boundary" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)
