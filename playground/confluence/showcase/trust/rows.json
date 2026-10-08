@@ -66,6 +66,26 @@
    ],
    "verdict": "NARROWER",
    "gap": "docs/261: 'It does not assert the pure-point spectral type claimed in the accompanying paper' (nor the paper's d >= 3 weak-disorder a.c. claim)"
+  },
+  {
+   "family": "266",
+   "title": "At most three mutually unbiased bases in C^6",
+   "lean": "no 6 mutually unbiased orthonormal bases of C^6 (Attainable n -> n <= 5), plus a Fourier vanishing lemma for order-6 Hadamard matrices not equivalent to Tao's",
+   "readers": [
+    "confluence"
+   ],
+   "verdict": "NARROWER",
+   "gap": "docs/266: 'does not establish the paper's upper bound of three'. Note: n <= 5 alone already rules out a complete set of 7 in dimension 6 (six MUBs force seven), itself a famous open question, so the narrower statement is still a strong claim. Build: pending"
+  },
+  {
+   "family": "195",
+   "title": "A counterexample to the small Cohen-Macaulay conjecture",
+   "lean": "there exists a 3-dimensional complete Noetherian normal local C-domain with residue field C",
+   "readers": [
+    "confluence"
+   ],
+   "verdict": "NARROWER",
+   "gap": "docs/195 says the MCM-free property is not proved. Sharper: the existential is met by C[[x,y,z]], which is regular and IS its own maximal CM module, so the statement does not pin the paper's candidate at all"
   }
  ]
 }
