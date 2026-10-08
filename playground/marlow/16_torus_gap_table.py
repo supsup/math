@@ -1,8 +1,9 @@
 """Exact rational recheck of the final gap table in family 354.
 
 Run: python3 -I playground/marlow/16_torus_gap_table.py
-This takes the paper's *earlier knot bounds* as inputs; it does not verify
-the geometry, derivative bounds, or interval evaluations behind them.
+This takes the paper's *earlier knot bounds* as inputs; items 17 and 18
+verify those separately. It does not verify the geometric reduction or
+the second-derivative bounds used in interpolation.
 """
 
 from fractions import Fraction as F
@@ -43,6 +44,31 @@ def check_pi_interval():
     return published_lower
 
 
+def check_taylor_error():
+    """Check the paper's rational inequalities behind E(h) >= Taylor error.
+
+    The differentiation identity is elementary:
+    |rho''''(k)| = 15 sqrt(pi) (pi/4)^2 k/(1+(pi/4)k^2)^(7/2).
+    Its derivative has the sign of 1-6(pi/4)k^2.
+    """
+    pi_lower = F('3.14159265358979')
+    pi_upper = F('3.14159265358980')
+    b_lower = 1 - 1 / pi_lower
+    b_upper = 1 - 1 / pi_upper
+    assert F('.68') < b_lower < b_upper < F('.69')
+    assert 6 * F('3.14') / 4 * F('.68') ** 2 > 1
+
+    # Square positive sides of the published |rho''''(b0)| < 4 bound.
+    numerator = (15 * F(11, 14) ** 2 * F('.69')) ** 2 * F(22, 7)
+    denominator = (1 + (F('3.14') / 4) * F('.68') ** 2) ** 7
+    assert numerator < 16 * denominator
+
+    # Midpoint cubic Taylor remainder, weighted by int_0^D W = .72.
+    coefficient = F(4) * F(1, 2) ** 4 / 24 * F('.72')
+    assert coefficient == F('.0075') < F('.008')
+    assert 49 * F('.989743318611') ** 2 > 48
+
+
 def check_gap_table(pi_lower):
     assert len(KNOTS) == len(B_LOWER) == len(S_LOWER) == 24
     assert len(GAP_LOWER) == 23
@@ -68,8 +94,10 @@ def check_gap_table(pi_lower):
 
 def main():
     pi_lower = check_pi_interval()
+    check_taylor_error()
     smallest = check_gap_table(pi_lower)
     print('Published rational π enclosure passes Machin-series check.')
+    print('Published Taylor-error rational inequalities pass.')
     print('All 23 final gap-table bounds pass exact rational comparison.')
     print(f'Smallest conditional margin: {smallest} = {float(smallest):.8f}.')
 
