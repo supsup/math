@@ -123,3 +123,7 @@ The [odd-hub residue note](22_one_leaf_short.md) proves `d(K_{h,h−1+hq})=3k+(h
 ## 23. Every large leaf count with nine bipartite hubs
 
 The [nine-hub formula note](23_nine_hub_all_residues.md) proves `d(K_{9,t})=t+ceil(4t/9)` for all `t≥8`. Explicit seeds cover all nine residues at `t=8,…,16`, then disjoint nine-leaf offset blocks add 13 parts and meet the lower bound. The [JSON witnesses](23_nine_hub_seeds.json) for `t=10,…,16` are checked by [`23_nine_hub_all_residues.py`](23_nine_hub_all_residues.py), which also draws the [eleven-leaf spoke matrix](art/nine_hub_eleven.svg). The small values `t<8` and publication priority remain open in this exploration.
+
+## 24. Sotteau closes every even base residue
+
+The [even-base note](24_even_base_residues.md) applies Sotteau's fixed-length cycle-decomposition theorem to `K_{2k,b}` after making one hub's `b` spokes singleton parts. For every odd `h=2k+1`, each even `b∈[h−1,2h−2]` meets the parity/capacity lower bound exactly, and the `h`-leaf lift extends that residue. Along with the divisible `b=h` block, only `k−1` odd bases require separate seed constructions in a uniform proof. This deduction relies on Sotteau's published theorem and does not claim it as a new cycle design.
