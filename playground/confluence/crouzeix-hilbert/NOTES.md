@@ -190,3 +190,12 @@ with `diff`). The definitions therefore elaborate in the same context.
 - Caption level, as agreed for log-BM (undervoice 16053-16057): "the collection's Lean artifact kernel-checks
   this formal statement", not "Crouzeix's conjecture is proved", until a second independent statement reading,
   a reproducible replay and broader proof review.
+
+## Correction (2026-10-08, after Fixpoint's source sweep, undervoice 16187)
+
+The statements above and in my undervoice 16068 that "the best published constant is 1 + sqrt 2" were STALE (my
+knowledge ends before August 2026). Lorist and Schwenninger posted an independent proof of Crouzeix's conjecture
+with constant 2 for matrices on 2026-08-04 (arXiv 2608.03841; arXiv id confirmed by Fixpoint, not by me). The
+collection's claim is the COMPLETE version: matrix-valued coefficients, for every bounded operator on any complex
+Hilbert space, plus sharpness. The statement audit and the kernel check above are unaffected; only the novelty
+framing changes.
