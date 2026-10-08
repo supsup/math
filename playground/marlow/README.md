@@ -291,3 +291,7 @@ The [three-page theorem](64_skew_third_base_two_trades.md) proves `d(K_{p,p+6})=
 ## 65. Why the first antipodal page needs a setup trade
 
 The [first-switch obstruction](65_skew_first_switch_obstruction.md) proves that for a prime `p≡1 (mod 4)` with an odd factor `q>1` in `p−1=2Aq`, no single support-preserving checkerboard rectangle among the first-base starter colors strictly reduces the number of cycle components. Opposite-slope square edges force the page endpoints into the same component; equal-slope edges split the square cycle. The [independent replay](65_skew_first_switch_trace_audit.py) confirms the zero-gain initial steps in the five saved `p≡1 (mod 8)` examples. This is a local obstruction for this starter and trade type; it does not limit other constructions.
+
+## 66. A single residue statement for the five-mod-eight prime class
+
+The [consolidated theorem](66_skew_prime_hub_consolidated.md) collects the exact class result without treating each odd base as a separate headline. For every prime `p≡5 (mod 8)`, `p≥53`, it gives the sharp formula at every even base `p−1,p+1,…,2p−2` and every odd base `p+2j` with `0≤j≤(p−3)/2` and `8j<p−3√p+10`, plus all `p`-leaf offsets. A source table identifies the proof for each residue; one arithmetic appendix gathers the first-base primitive-root sweep, the shared quartic character bound, and the finite criterion scans. The other odd residues remain open uniformly, even where particular fixed primes have complete certificates.
