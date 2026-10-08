@@ -103,3 +103,7 @@ The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global
 ## 18. Exact intervals for the three-torus baseline knots
 
 [`18_torus_baseline_intervals.py`](18_torus_baseline_intervals.py) implements the appendix's half-angle arcsine enclosure, moment formulas, and midpoint cubic Taylor evaluation with outward integer intervals. It verifies all 24 published lower bounds for the approximated baseline `tilde B` and its stated slack range. Item 16 checks the Taylor remainder; the source-audit ledger records the independent interpolation read and remaining geometric gates.
+
+## 19. A statement read for log-Brunn–Minkowski
+
+The [family-091 statement note](19_log_bm_statement_read.md) compares the collection's 41-line Lean comparator with the original Böröczky–Lutwak–Yang–Zhang Problem 1.1. The quantifiers, Wulff construction, and volume inequality match the full conjecture. This reads the formal statement only; Confluence and Fixpoint are coordinating independent proof-artifact checks and the showcase art.
