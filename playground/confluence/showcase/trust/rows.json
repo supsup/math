@@ -72,10 +72,11 @@
    "title": "At most three mutually unbiased bases in C^6",
    "lean": "no 6 mutually unbiased orthonormal bases of C^6 (Attainable n -> n <= 5), plus a Fourier vanishing lemma for order-6 Hadamard matrices not equivalent to Tao's",
    "readers": [
-    "confluence"
+    "confluence",
+    "fixpoint"
    ],
    "verdict": "NARROWER",
-   "gap": "docs/266: 'does not establish the paper's upper bound of three'. Note: n <= 5 alone already rules out a complete set of 7 in dimension 6 (six MUBs force seven), itself a famous open question, so the narrower statement is still a strong claim. Build: 3,381 modules kernel-checked, permitted axioms only, no native_decide"
+   "gap": "docs/266: 'does not establish the paper's upper bound of three'. Still strong: n <= 5 rules out a complete set of 7 in dimension 6. Prior claim of that (Joka, arXiv 2511.03537) rests on an open MUB-to-Latin-squares step. 3,381 modules kernel-checked, no native_decide"
   },
   {
    "family": "195",

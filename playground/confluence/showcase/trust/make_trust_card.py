@@ -13,6 +13,10 @@ HERE = pathlib.Path(__file__).resolve().parent
 BG, INK, DIM, GOLD, AQUA, ROSE = "#0d1b2a", "#e8eef2", "#7d92a6", "#f4d58d", "#8fd3ff", "#ff8fa3"
 
 
+def row_height(r):
+    return 15 + 13 * len(textwrap.wrap("Lean: " + r["lean"], 82)) + 13 * len(textwrap.wrap("Gap: " + r["gap"], 82)) + 22
+
+
 def main():
     data = json.loads((HERE / "rows.json").read_text())
     rows = [r for r in data["rows"] if len(set(r["readers"])) >= 2]
@@ -21,12 +25,28 @@ def main():
     long = [r["family"] for r in rows if len(r["title"]) > 58]
     assert not long, f"titles too long to sit beside the verdict: {long}"
     assert "proved" not in text, "the table must not say 'proved'"
+    pages, cur, used = [], [], 0
+    for r in rows:
+        h = row_height(r)
+        if cur and 84 + used + h > 548:
+            pages.append(cur)
+            cur, used = [], 0
+        cur.append(r)
+        used += h
+    if cur:
+        pages.append(cur)
+    for pi, page in enumerate(pages, start=1):
+        draw(page, pi, len(pages), len(rows), len(pending))
+
+
+def draw(rows, pi, npages, nrows, npending):
     W, H = 480, 600
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
          f'<rect width="{W}" height="{H}" fill="{BG}"/>',
          f'<text x="240" y="36" text-anchor="middle" font-family="serif" font-size="21" fill="{INK}">Where the trust boundary sits</text>',
          f'<text x="240" y="57" text-anchor="middle" font-family="serif" font-style="italic" font-size="12.5" fill="{DIM}">'
-         'what the Lean kernel checks, against what each paper claims</text>']
+         'what the Lean kernel checks, against what each paper claims'
+         + (f' ({pi} of {npages})' if npages > 1 else '') + '</text>']
     y = 84
     for r in rows:
         colour = AQUA if r["verdict"] == "MATCHES" else ROSE
@@ -45,16 +65,16 @@ def main():
         y += 22
     assert y < 548, f"rows overflow the card (y = {y}); split into two cards"
     notes = [f"Every row: the Lean artifact kernel-checks the stated formal statement (permitted axioms only).",
-             f"{len(rows)} rows read twice; {len(pending)} more await a second independent reading."]
+             f"{nrows} rows read twice; {npending} more await a second independent reading."]
     yy = 556
     for t in notes:
         o.append(f'<text x="240" y="{yy}" text-anchor="middle" font-family="sans-serif" font-size="10.5" fill="{DIM}">{escape(t)}</text>')
         yy += 15
     o.append(f'<text x="240" y="592" text-anchor="middle" font-family="sans-serif" font-size="9" fill="{DIM}">trust-boundary table · Confluence, with Fixpoint, Lattice and Marlow</text>')
     o.append("</svg>")
-    p = HERE / "trust-boundary.svg"
+    p = HERE / ("trust-boundary.svg" if pi == 1 else f"trust-boundary-{pi}.svg")
     p.write_text("".join(o), encoding="utf-8")
-    print(p.name, p.stat().st_size, "bytes;", len(rows), "rows drawn,", len(pending), "pending:", [r["family"] for r in pending])
+    print(p.name, p.stat().st_size, "bytes; rows", [r["family"] for r in rows])
 
 
 if __name__ == "__main__":
