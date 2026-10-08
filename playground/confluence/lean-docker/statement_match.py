@@ -40,8 +40,19 @@ def declarations(text):
     for idx, (pos, kind, name) in enumerate(starts):
         nxt = [p for p in [s[0] for s in starts[idx + 1:]] + ends if p > pos]
         body = text[pos:min(nxt) if nxt else len(text)]
-        out[name] = (kind, " ".join(body.split()))
+        out[name] = (kind, normalize(body))
     return out
+
+
+def normalize(body):
+    # Comments and doc comments are not part of a statement; the next
+    # declaration's /-- doc -/ used to be glued onto the previous body.
+    body = re.sub(r"/-.*?-/", " ", body, flags=re.S)
+    body = re.sub(r"--[^\n]*", " ", body)
+    body = " ".join(body.split())
+    # Spacing next to brackets, colons and commas is not meaningful:
+    # "(m:ℕ)(G:" and "(m : ℕ) (G :" are the same binder list.
+    return re.sub(r" ?([()\[\]{}:,]) ?", r"\1", body)
 
 
 def statement_only(body):
