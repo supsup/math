@@ -1,0 +1,49 @@
+== 12:20:59Z packages
+debconf: delaying package configuration, since apt-utils is not installed
+Lean (version 4.34.1, aarch64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+== 12:21:04Z lake update (resolves mathlib at the pinned rev)
+Using cache from origin: (some leanprover-community/mathlib4)
+Attempting to download 8908 file(s) from leanprover-community/mathlib4 cache at https://cache.mathlib.org/mathlib4-master
+Downloaded: 7 file(s) [attempted 7/8908 = 0%, 74 KB/s], Decompressed: 3Downloaded: 152 file(s) [attempted 152/8908 = 1%, 3266 KB/s], Decompressed: 148Downloaded: 317 file(s) [attempted 317/8908 = 3%, 1322 KB/s], Decompressed: 311Downloaded: 483 file(s) [attempted 483/8908 = 5%, 954 KB/s], Decompressed: 482Downloaded: 646 file(s) [attempted 646/8908 = 7%, 284 KB/s], Decompressed: 642Downloaded: 808 file(s) [attempted 808/8908 = 9%, 3327 KB/s], Decompressed: 804Downloaded: 974 file(s) [attempted 974/8908 = 10%, 2252 KB/s], Decompressed: 970Downloaded: 1146 file(s) [attempted 1146/8908 = 12%, 938 KB/s], Decompressed: 1145Downloaded: 1274 file(s) [attempted 1274/8908 = 14%, 1120 KB/s], Decompressed: 1270Downloaded: 1425 file(s) [attempted 1425/8908 = 15%, 652 KB/s], Decompressed: 1422Downloaded: 1581 file(s) [attempted 1581/8908 = 17%, 352 KB/s], Decompressed: 1570Downloaded: 1753 file(s) [attempted 1753/8908 = 19%, 681 KB/s], Decompressed: 1746Downloaded: 1912 file(s) [attempted 1912/8908 = 21%, 2762 KB/s], Decompressed: 1908Downloaded: 2029 file(s) [attempted 2029/8908 = 22%, 693 KB/s], Decompressed: 2021Downloaded: 2190 file(s) [attempted 2190/8908 = 24%, 567 KB/s], Decompressed: 2184Downloaded: 2357 file(s) [attempted 2357/8908 = 26%, 1307 KB/s], Decompressed: 2350Downloaded: 2515 file(s) [attempted 2515/8908 = 28%, 979 KB/s], Decompressed: 2509Downloaded: 2633 file(s) [attempted 2633/8908 = 29%, 1828 KB/s], Decompressed: 2629Downloaded: 2798 file(s) [attempted 2798/8908 = 31%, 719 KB/s], Decompressed: 2795Downloaded: 2971 file(s) [attempted 2971/8908 = 33%, 2984 KB/s], Decompressed: 2960Downloaded: 3140 file(s) [attempted 3140/8908 = 35%, 1011 KB/s], Decompressed: 3129Downloaded: 3291 file(s) [attempted 3291/8908 = 36%, 433 KB/s], Decompressed: 3285Downloaded: 3460 file(s) [attempted 3460/8908 = 38%, 794 KB/s], Decompressed: 3450Downloaded: 3636 file(s) [attempted 3636/8908 = 40%, 2629 KB/s], Decompressed: 3633Downloaded: 3802 file(s) [attempted 3802/8908 = 42%, 5019 KB/s], Decompressed: 3799Downloaded: 3956 file(s) [attempted 3956/8908 = 44%, 149 KB/s], Decompressed: 3943Downloaded: 4112 file(s) [attempted 4112/8908 = 46%, 719 KB/s], Decompressed: 4109Downloaded: 4271 file(s) [attempted 4271/8908 = 47%, 106 KB/s], Decompressed: 4268Downloaded: 4432 file(s) [attempted 4432/8908 = 49%, 796 KB/s], Decompressed: 4423Downloaded: 4599 file(s) [attempted 4599/8908 = 51%, 330 KB/s], Decompressed: 4595Downloaded: 4764 file(s) [attempted 4764/8908 = 53%, 938 KB/s], Decompressed: 4761Downloaded: 4926 file(s) [attempted 4926/8908 = 55%, 4100 KB/s], Decompressed: 4923Downloaded: 5092 file(s) [attempted 5092/8908 = 57%, 1924 KB/s], Decompressed: 5085Downloaded: 5254 file(s) [attempted 5254/8908 = 58%, 1931 KB/s], Decompressed: 5247Downloaded: 5378 file(s) [attempted 5378/8908 = 60%, 246 KB/s], Decompressed: 5375Downloaded: 5540 file(s) [attempted 5540/8908 = 62%, 3987 KB/s], Decompressed: 5534Downloaded: 5713 file(s) [attempted 5713/8908 = 64%, 297 KB/s], Decompressed: 5706Downloaded: 5886 file(s) [attempted 5886/8908 = 66%, 6853 KB/s], Decompressed: 5882Downloaded: 6037 file(s) [attempted 6037/8908 = 67%, 1432 KB/s], Decompressed: 6034Downloaded: 6213 file(s) [attempted 6213/8908 = 69%, 838 KB/s], Decompressed: 6210Downloaded: 6372 file(s) [attempted 6372/8908 = 71%, 453 KB/s], Decompressed: 6368Downloaded: 6520 file(s) [attempted 6520/8908 = 73%, 2184 KB/s], Decompressed: 6517Downloaded: 6613 file(s) [attempted 6613/8908 = 74%, 606 KB/s], Decompressed: 6606Downloaded: 6761 file(s) [attempted 6761/8908 = 75%, 1102 KB/s], Decompressed: 6755Downloaded: 6927 file(s) [attempted 6927/8908 = 77%, 389 KB/s], Decompressed: 6922Downloaded: 7098 file(s) [attempted 7098/8908 = 79%, 1976 KB/s], Decompressed: 7093Downloaded: 7279 file(s) [attempted 7279/8908 = 81%, 829 KB/s], Decompressed: 7275Downloaded: 7417 file(s) [attempted 7417/8908 = 83%, 378 KB/s], Decompressed: 7413Downloaded: 7589 file(s) [attempted 7589/8908 = 85%, 2784 KB/s], Decompressed: 7582Downloaded: 7762 file(s) [attempted 7762/8908 = 87%, 363 KB/s], Decompressed: 7755Downloaded: 7920 file(s) [attempted 7920/8908 = 88%, 1165 KB/s], Decompressed: 7914Downloaded: 8065 file(s) [attempted 8065/8908 = 90%, 956 KB/s], Decompressed: 8058Downloaded: 8217 file(s) [attempted 8217/8908 = 92%, 767 KB/s], Decompressed: 8214Downloaded: 8385 file(s) [attempted 8385/8908 = 94%, 1677 KB/s], Decompressed: 8379Downloaded: 8548 file(s) [attempted 8548/8908 = 95%, 504 KB/s], Decompressed: 8541Downloaded: 8697 file(s) [attempted 8697/8908 = 97%, 3689 KB/s], Decompressed: 8693Downloaded: 8876 file(s) [attempted 8876/8908 = 99%, 5879 KB/s], Decompressed: 8872Downloaded: 8908 file(s) [attempted 8908/8908 = 100%, 5879 KB/s], Decompressed: 8903
+Decompressed 8908 file(s)
+Already decompressed 8908 file(s)
+== 12:21:13Z mathlib cache
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+No files to download
+Already decompressed 8908 file(s)
+== 12:21:16Z building the cone
+Build completed successfully (8926 jobs).
+== 12:21:19Z axioms
+OAI.TruffetV4Counterexample.finite_execution_not_optimal : OAI.TruffetV4Counterexample.crossRowRestriction
+    OAI.TruffetV4Counterexample.initial ∧
+  OAI.TruffetV4Counterexample.ForcedSingletonStep OAI.TruffetV4Counterexample.initial OAI.TruffetV4Counterexample.middle
+      0 1 ∧
+    OAI.TruffetV4Counterexample.ForcedSingletonStep OAI.TruffetV4Counterexample.middle
+        OAI.TruffetV4Counterexample.finalState 1 0 ∧
+      (¬∃ j, OAI.TruffetV4Counterexample.finalState.remaining j) ∧
+        OAI.TruffetV4Counterexample.stop OAI.TruffetV4Counterexample.finalState ∧
+          OAI.TruffetV4Counterexample.feasible OAI.TruffetV4Counterexample.initial OAI.TruffetV4Counterexample.output ∧
+            OAI.TruffetV4Counterexample.feasible OAI.TruffetV4Counterexample.initial
+                OAI.TruffetV4Counterexample.better ∧
+              OAI.TruffetV4Counterexample.output 2 = 0 ∧
+                OAI.TruffetV4Counterexample.better 2 = 0 ∧
+                  ↑(OAI.TruffetV4Counterexample.output 1) =
+                      OAI.TruffetV4Counterexample.eval
+                        (OAI.TruffetV4Counterexample.lowerForm OAI.TruffetV4Counterexample.initial 0 1)
+                        OAI.TruffetV4Counterexample.output ∧
+                    ↑(OAI.TruffetV4Counterexample.output 0) =
+                        OAI.TruffetV4Counterexample.eval
+                          (OAI.TruffetV4Counterexample.lowerForm OAI.TruffetV4Counterexample.middle 1 0)
+                          OAI.TruffetV4Counterexample.output ∧
+                      OAI.TruffetV4Counterexample.eval OAI.TruffetV4Counterexample.initial.cost
+                            OAI.TruffetV4Counterexample.output =
+                          OAI.TruffetV4Counterexample.eval OAI.TruffetV4Counterexample.finalState.cost
+                            OAI.TruffetV4Counterexample.output ∧
+                        OAI.TruffetV4Counterexample.eval OAI.TruffetV4Counterexample.initial.cost
+                            OAI.TruffetV4Counterexample.better <
+                          OAI.TruffetV4Counterexample.eval OAI.TruffetV4Counterexample.finalState.cost
+                            OAI.TruffetV4Counterexample.output
+'OAI.TruffetV4Counterexample.finite_execution_not_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+== 12:21:23Z done
+EXIT=0 12:21:24Z
