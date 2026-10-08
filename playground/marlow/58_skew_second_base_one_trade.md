@@ -34,4 +34,4 @@ The remaining primes below 53 are `p=13,29,37`. With primitive root `g=2`, expli
 | 29 | 11 | 0 | 11 | 26 | 4 | `(11,26),(0,4)` → `(11,4),(0,26)` |
 | 37 | 29 | 17 | 9 | 21 | 11 | `(9,21),(17,11)` → `(9,11),(17,21)` |
 
-A direct scan using the least primitive root finds a valid line parameter for all 42 primes `p≡5 (mod 8)` through 1000; these examples are numerical checks, not needed beyond the three small certificates for the proof. The theorem concerns the second odd base and its modular lifts, not all residues.
+A direct scan using the least primitive root finds a valid line parameter for all 42 primes `p≡5 (mod 8)` through 1000; these examples are numerical checks, not needed beyond the three small certificates for the proof. The theorem concerns the second odd base and its modular lifts, not all residues. [Item 60](60_skew_adjacent_pairs.md) extends the same trade to an initial run of page pairs.
