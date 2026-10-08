@@ -92,7 +92,11 @@ def coverage(root, children):
     assert sum(n == 31 for cell, n in counts.items() if cell != (8, 8)) == 43
     assert sum(n == 1 for cell, n in counts.items() if cell != (8, 8)) == 3
     assert set.intersection(*children) == {(8, 8)}
-    return counts
+    sole_survivor = Counter(next(i for i, child in enumerate(children) if cell not in child)
+                            for cell, n in counts.items() if cell != (8, 8) and n == 31)
+    assert len(sole_survivor) == 32
+    assert Counter(sole_survivor.values()) == {1: 22, 2: 9, 3: 1}
+    return counts, sole_survivor
 
 
 def color(value):
@@ -127,8 +131,9 @@ def drawing(path, counts):
         f'<text x="623" y="245" font-size="16" fill="{ink}">251-cell union</text>',
         f'<text x="623" y="307" font-size="19" fill="{ink}">43 cells touch 31</text>',
         f'<text x="623" y="337" font-size="15" fill="{ink}">of the 32 child envelopes.</text>',
-        f'<text x="623" y="391" font-size="15" fill="{ink}">A Breaker cell there leaves</text>',
-        f'<text x="623" y="417" font-size="15" fill="{ink}">one child precondition intact.</text>',
+        f'<text x="623" y="386" font-size="15" fill="{ink}">From the empty-board root,</text>',
+        f'<text x="623" y="412" font-size="15" fill="{ink}">a reply there leaves one</text>',
+        f'<text x="623" y="438" font-size="15" fill="{ink}">child precondition intact.</text>',
         f'<text x="623" y="497" font-size="14" fill="{ink}">This counts proof preconditions,</text>',
         f'<text x="623" y="521" font-size="14" fill="{ink}">not winning probabilities.</text>',
         f'<rect x="58" y="652" width="25" height="19" fill="{color(1)}"/>',
@@ -150,12 +155,13 @@ def main():
     payload = CERT.read_bytes()
     assert sha256(payload).hexdigest() == CERT_SHA256
     root, children = reconstruct(payload.decode('ascii'))
-    counts = coverage(root, children)
+    counts, sole_survivor = coverage(root, children)
     drawing(HERE / 'art/snaky_root_coverage.svg', counts)
     print('root:', len(root[1]), 'cells; height:', root[2], '; children:', len(children))
     print('child membership total:', sum(counts.values()))
     print('off-pivot coverage histogram:', sorted(Counter(n for cell, n in counts.items()
                                                    if cell != (8, 8)).items()))
+    print('31-of-32 cells per sole surviving child:', sorted(Counter(sole_survivor.values()).items()))
 
 
 if __name__ == '__main__':
