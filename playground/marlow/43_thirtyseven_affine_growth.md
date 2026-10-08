@@ -4,7 +4,7 @@ At `p=37≡1 (mod 4)`, the affine square and two explicit near-Hamilton page sha
 
 > **`d(K_{37,t})=t+ceil(18t/37)` for every `t≥36`.**
 
-As before, `d(G)` counts the fewest simple cycles and singleton edges partitioning `E(G)`. The result is specific to hub count 37; it does not imply the formula at the still unchecked composite counts 33 and 35, or at every prime `1 (mod 4)`. Publication priority of the page construction and its use here is unverified.
+As before, `d(G)` counts the fewest simple cycles and singleton edges partitioning `E(G)`. The result is specific to hub count 37; it does not imply the formula at the still unchecked composite count 35 or at every prime `1 (mod 4)`. [Item 44](44_thirtythree_hub_all_residues.md) handles 33 by finite certificates. Publication priority of the page construction and its use here is unverified.
 
 Start with the affine square seed of [item 34](34_prime_two_leaf_growth.md): Hamilton hub colors are differences `d=1,…,18`, and an edge `{u,v}` carries midpoint leaf `(u+v)/2 mod 37`. Use this 36-cycle omitting zero for the first sixteen growth steps:
 

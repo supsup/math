@@ -1,0 +1,15 @@
+# Every large leaf count with thirty-three bipartite hubs
+
+The next composite odd hub count meets the proposed exact formula. For `d(G)` the least number of simple cycles and singleton edges partitioning `E(G)`,
+
+> **`d(K_{33,t})=t+ceil(16t/33)` for every `t≥32`.**
+
+This is a fixed-hub theorem from explicit even bases, one offset base, fifteen saved odd-base edge certificates, and a residue lift. It does not yield a uniform construction for composite hub counts. Publication priority is unverified.
+
+**Lower bound.** Every leaf has odd degree 33, so at least one singleton spoke. If the singleton count is `s=t+X`, the cycles use `16t−X/2` leaf appearances, at most 33 per simple cycle. Thus `r+s≥t+16t/33+(65/66)X`, giving `d(K_{33,t})≥t+ceil(16t/33)`. The nonnegative `X` is even because each leaf has an odd singleton-spoke count. If `X≥2`, the real bound rises by `65/33>1`, so a partition meeting it has one singleton at each leaf. This parity/cycle-capacity mechanism is the bipartite Erdős/Gallai example discussed by [Bucić–Montgomery, Section 6](https://rhmontgomery.warwick.ac.uk/papers/28cyclepacking.pdf); the upper construction is the finite result here.
+
+**All 33 base residues.** For each even `b=32,34,…,64`, make hub 32's `b` spokes singleton and apply the [even-side weave](30_even_hub_cycle_weave.md) to partition the residual `K_{32,b}` into `b/2` simple 64-edge cycles. Here `ceil(16b/33)=b/2`. At `b=33`, use 33 diagonal singleton spokes and sixteen 66-edge [offset cycles](10_odd_hub_blocks.md). The fifteen odd bases `b=35,37,…,63` use the saved [JSON walks](44_thirtythree_hub_odd_seeds.json). At `b=33+2j`, `1≤j≤15`, each has sixteen full 66-edge cycles and `j` short 64-edge cycles, giving `b+16+j=b+ceil(16b/33)` parts. Singleton degrees are three at hubs `0,…,j−1` and one elsewhere, with the short cycles omitting those hubs one each. Their omitted leaves obey the [cyclic interval schedule](33_interval_omission_schedule.md). The schedule supplies vertex incidence only; the saved walks supply the connected, simple edge partition.
+
+The [checker](44_thirtythree_hub_all_residues.py) verifies all 33 base partitions, exact spoke coverage, cycle simplicity, interval omissions, and eleven lifted copies per base, then draws the [residue ladder](art/thirtythree_hub_residue_ladder.svg). A separate direct audit reconstructed every saved walk and checked it against the original solver edge lists; the hardest final odd base `b=63` required a longer search but passed the same audit. The JSON SHA-256 is `c7cb214a3d204f26cae0ecc4179b15fc7dc658ebb43bda423e1a4a825d578e75`.
+
+**Lift.** Every `t≥32` is uniquely `b+33q` with `32≤b≤64`, `q≥0`. A disjoint 33-leaf offset block adds 33 singleton spokes and sixteen Hamilton cycles, or 49 parts. The lower bound rises by 49 under `t→t+33`, proving every residue. The next unverified odd hub count is composite `h=35`; [item 43](43_thirtyseven_affine_growth.md) already covers prime `h=37` by structural growth.
