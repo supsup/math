@@ -102,9 +102,11 @@ second-trade exceptions for every \(p\ge53\).
 
 The [full-partition checker](60_skew_adjacent_pairs_full_replay.py)
 and [odd-prefix checker](64_skew_odd_prefix_replay.py) replay sample
-graphs. The [even-prefix C++ criterion scan](60_skew_adjacent_pairs_final_scan.cpp)
-checks all 19,622 class primes through one million, and the
+graphs. The [even-prefix counting scan](60_skew_adjacent_pairs_final_scan.cpp)
+checks all 19,622 class primes through one million; an independently
+audited [fast existence scan](60_skew_adjacent_pairs_fast_existence_scan.cpp)
+checks all 166,203 through ten million. The
 [odd-prefix criterion scan](64_skew_odd_prefix_criterion_scan.py)
-checks all 42 through 1000. Those scans also find witnesses outside
-the analytic range at the tested primes; they are finite evidence,
-not a proof of the remaining uniform odd residues.
+checks all 42 through 1000. These bounded scans find witnesses
+outside the analytic range at the tested primes; they are finite
+evidence, not a proof of the remaining uniform odd residues.

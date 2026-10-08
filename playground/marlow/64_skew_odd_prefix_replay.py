@@ -1,6 +1,7 @@
 """Self-contained exact replay of formulaic three-page two-trade repairs.
 
 Usage: python3 -I playground/marlow/64_skew_odd_prefix_replay.py [13 29 37 53 61 101]
+Use --anchor-counterexample or --anchor-stall for the p=29 strategy limits.
 Self-contained; no imports from other repository scripts.
 """
 import sys
@@ -158,7 +159,72 @@ def run(p,j=3):
     raise AssertionError(('no formulaic repair',p))
 
 
+def orientation_counterexample():
+    """Exact p=29 witness: a third (+,-) anchor switch splits P1."""
+    p=29;g=primitive_root(p);a=g*g%p;k=(p-1)//2
+    assert g==2 and a==4
+    singles,colors=grow_pages(p,g,4)
+    for second_center,z in ((2,2),(3,3)):
+        R=rectangle(p,a,1,second_center-1,z)
+        switch(colors[k],colors[k+second_center-1],R)
+        assert component_sizes(colors[k])==[p-1]
+        assert component_sizes(colors[k+second_center-1])==[p-1]
+    z=21;delta=(1-a)*pow(a+1,-1,p)%p
+    assert chi(p,z*(z+delta))==1
+    assert chi(p,(z-1)*(z+delta-1))==-1
+    R=rectangle(p,a,1,3,z)
+    assert R==((10,9),(6,15),(10,15),(6,9))
+    assert {R[0],R[1]}<=colors[k] and {R[2],R[3]}<=colors[k+3]
+    assert component_sizes(colors[k+3])==[14,14]
+    switch(colors[k],colors[k+3],R)
+    assert component_sizes(colors[k])==[8,20]
+    assert component_sizes(colors[k+3])==[28]
+    seen=set(singles)
+    for C in colors:
+        component_sizes(C)  # checks every supported vertex has degree two
+        assert not seen&C
+        seen|=C
+    assert seen=={(h,l) for h in range(p) for l in range(p+8)}
+    return R
+
+
+def greedy_anchor_stall():
+    """Exact p=29 state with no valid P1/P5 (+,-) absorption."""
+    p=29;g=primitive_root(p);a=g*g%p;k=(p-1)//2
+    _,colors=grow_pages(p,g,5)
+    for center,z in ((2,2),(3,3),(4,5)):
+        R=rectangle(p,a,1,center-1,z)
+        switch(colors[k],colors[k+center-1],R)
+        assert component_sizes(colors[k])==[p-1]
+        assert component_sizes(colors[k+center-1])==[p-1]
+    delta=(1-a)*pow(a+1,-1,p)%p
+    outcomes={}
+    for z in range(p):
+        if chi(p,z*(z+delta))!=1 or chi(p,(z-1)*(z+delta-1))!=-1:
+            continue
+        R=rectangle(p,a,1,4,z)
+        if not ({R[0],R[1]}<=colors[k] and {R[2],R[3]}<=colors[k+4]):
+            outcomes[z]='missing'
+            continue
+        switch(colors[k],colors[k+4],R)
+        sizes=component_sizes(colors[k])
+        assert component_sizes(colors[k+4])==[p-1]
+        outcomes[z]=sizes
+        switch(colors[k],colors[k+4],(R[2],R[3],R[0],R[1]))
+    assert outcomes=={3:[7,21],5:[9,19],8:[10,18],
+                     13:'missing',15:'missing',21:[5,23]}
+    return outcomes
+
+
 if __name__=='__main__':
+    if sys.argv[1:]==['--anchor-counterexample']:
+        print('p=29 third (+,-) rectangle',orientation_counterexample(),
+              'splits P1 into 8 and 20 hubs while joining P4')
+        raise SystemExit(0)
+    if sys.argv[1:]==['--anchor-stall']:
+        print('p=29 P1/P5 (+,-) candidates after greedy absorptions:',
+              greedy_anchor_stall())
+        raise SystemExit(0)
     for token in (sys.argv[1:] or ('13','29','37','53','61','101')):
         p,j=map(int,token.split(':')) if ':' in token else (int(token),3)
         g,z1,z2,R1,R2,n1,n2,tail=run(p,j)

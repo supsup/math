@@ -164,3 +164,9 @@ verifies maximal odd prefixes at p=13:j=5, 29:13, 37:17, 53:25,
 and 61:29; it checks every spoke and all final cycle supports.
 At p=13,j=5 it uses three page-only trades, one fewer than the
 earlier four-trade finite trace.
+
+The [orientation-limit note](64_skew_anchor_orientation_limit.md) gives
+an exact p=29 counterexample to extending the `(+,−)` sign test by
+repeatedly absorbing later pages into the same anchor. It only limits
+that particular strategy; the paired-page construction above still
+repairs the tested odd prefixes.
