@@ -5,7 +5,7 @@ an edge partition, and put \(k=(p-1)/2\). The following gathers the
 separate constructions in items 10, 24, 57, 58, 60, and 64 into one
 statement. It is a **partial residue theorem** that begins at \(p=53\).
 The later [half-interval overlap theorem](68_half_interval_overlap_all_large_primes.md)
-strengthens this to **every residue** for every such prime \(p\ge10^9\).
+strengthens this to **every residue** for every such prime \(p\ge600{,}000{,}000\).
 
 **Theorem.** Let \(p\ge53\) be prime with \(p\equiv5\pmod8\). Set
 
@@ -110,5 +110,5 @@ checks all 166,203 through ten million. The
 [odd-prefix criterion scan](64_skew_odd_prefix_criterion_scan.py)
 checks all 42 through 1000. These bounded scans find witnesses
 outside this note's initial analytic range at the tested primes. Item 68
-supplies a separate uniform proof of all residues for \(p\ge10^9\);
+supplies a separate uniform proof of all residues for \(p\ge600{,}000{,}000\);
 the scans remain finite evidence for smaller primes.

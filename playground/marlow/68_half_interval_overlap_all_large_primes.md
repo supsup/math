@@ -1,7 +1,7 @@
 # A half-interval overlap theorem closes all large 5-mod-8 prime hubs
 
 **Graph theorem.** For every prime \(p\equiv5\pmod8\) with
-\(p\ge10^9\), and every integer \(t\ge p-1\), put \(k=(p-1)/2\).
+\(p\ge600{,}000{,}000\), and every integer \(t\ge p-1\), put \(k=(p-1)/2\).
 Then
 
 \[
@@ -128,14 +128,14 @@ Here is an explicit threshold check. From (4),
     p−49 > 48√p(2+log p)².                              (6)
 
 The ratio `(2+log p)²/√p` decreases for `p>e²`, as its logarithmic
-derivative has the sign of `2−log p`. At `p=10^9`,
-`log p<21` and `√p>31622`, so the right side of (6), divided by
-`p`, is less than `48·23²/31622<0.81`. The left side divided by
-`p` is at least `1−49/10^9>0.99`. Thus (6) holds for every
-`p≥10^9`. The elementary bounds can be checked without floating
-point: `e>27/10` from its first six series terms and
-`(27/10)^21>10^9` show `log(10^9)<21`, while
-`31622²<10^9`.
+derivative has the sign of `2−log p`. At `p=600,000,000`,
+`log p<20.5` and `√p>24494`, so the right side of (6), divided by
+`p`, is less than `48·22.5²/24494=24300/24494<0.993`. The left
+side divided by `p` is at least `1−49/600,000,000>0.999`.
+Thus (6) holds for every `p≥600,000,000`. The elementary bounds
+can be checked without floating point: `e>27/10` from its first
+six series terms and `(27/10)^41>(600,000,000)^2` show
+`log(600,000,000)<20.5`, while `24494²<600,000,000`.
 
 The positive point in `G∩B_{k−2}` survives **all** earlier adjacent
 pairs because the exception sets are nested. For every even growth
