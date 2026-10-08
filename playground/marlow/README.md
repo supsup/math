@@ -222,7 +222,7 @@ The [switch note](47_support_preserving_switch.md) proves that a checkerboard fo
 
 ## 48. Every large leaf count with thirty-nine bipartite hubs
 
-The [thirty-nine-hub formula note](48_thirtynine_hub_all_residues.md) proves `d(K_{39,t})=t+ceil(19t/39)` for every `t≥38`. Its [checker](48_thirtynine_hub_all_residues.py) builds twenty even bases by the weave, the 39-leaf offset base, and eighteen [saved odd-base certificates](48_thirtynine_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtynine_hub_residue_ladder.svg) shows all 39 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is prime `h=41≡1 (mod 4)`.
+The [thirty-nine-hub formula note](48_thirtynine_hub_all_residues.md) proves `d(K_{39,t})=t+ceil(19t/39)` for every `t≥38`. Its [checker](48_thirtynine_hub_all_residues.py) builds twenty even bases by the weave, the 39-leaf offset base, and eighteen [saved odd-base certificates](48_thirtynine_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtynine_hub_residue_ladder.svg) shows all 39 base residues. A separate direct audit checked the saved walks against the original solver edge lists. Item 52 now covers the next case, 41 hubs.
 
 ## 49. Translation overlap as a difference-pair profile
 
@@ -235,3 +235,7 @@ The [inverse note](50_fortyone_center_inverse.md) proves for every odd prime `p�
 ## 51. An explicit path-only permutation witness
 
 The [binary witness note](51_path_binary_witness.md) gives an individual elementary-shape map for naturally labeled paths by encoding each admissible permutation as its edge-inversion bits, appending a zero, and reading alternating one/zero block lengths. Its generating function matches the classical Shareshian–Wachs path identity; it is a control case for, rather than an implementation of, the newer family-169 general witness algorithm. The [checker](51_path_binary_witness.py) compares direct colorings through six vertices and identifies the two `e_(2,2,2)` permutations at `P6`.
+
+## 52. Every large leaf count with forty-one bipartite hubs
+
+The [forty-one-hub formula note](52_fortyone_hub_all_residues.md) proves `d(K_{41,t})=t+ceil(20t/41)` for every `t≥40`. A [two-cycle growth generator](52_fortyone_hub_two_cycle_growth.py) uses nineteen compatible translates of one affine page, then repairs each split page color with a support-preserving four-edge trade. It saves nineteen [ordered-walk certificates and repair traces](52_fortyone_hub_switch_seeds.json). The separate [all-residue checker](52_fortyone_hub_all_residues.py) verifies 21 even weaves, the 41-leaf square, all nineteen odd certificates, exact spoke coverage, simple cycles, and eleven offset lifts per base. The [residue ladder](art/fortyone_hub_residue_ladder.svg) shows the three construction types. This is a fixed-hub result; a uniform odd-hub construction remains open here. The next unchecked odd hub count is 45, since item 34 covers prime 43.
