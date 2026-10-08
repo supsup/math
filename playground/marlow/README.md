@@ -119,3 +119,7 @@ The [rectangular-torus note](21_rectangular_torus_candidates.md) compares embedd
 ## 22. One leaf short of an odd-hub block
 
 The [odd-hub residue note](22_one_leaf_short.md) proves `d(K_{h,h−1+hq})=3k+(h+k)q` for every odd `h=2k+1≥3` and `q≥0`. The base removes one hub as `h−1` singleton spokes, leaving `K_{h−1,h−1}` split into `k` Hamilton cycles; each new `h`-leaf block adds `h` singletons and `k` cycles. [`22_one_leaf_short.py`](22_one_leaf_short.py) checks finite instances and generates the [nine-hub spoke matrix](art/one_leaf_short.svg). This gives a uniform exact residue family, while the other residues for general odd `h` remain under exploration.
+
+## 23. Every large leaf count with nine bipartite hubs
+
+The [nine-hub formula note](23_nine_hub_all_residues.md) proves `d(K_{9,t})=t+ceil(4t/9)` for all `t≥8`. Explicit seeds cover all nine residues at `t=8,…,16`, then disjoint nine-leaf offset blocks add 13 parts and meet the lower bound. The [JSON witnesses](23_nine_hub_seeds.json) for `t=10,…,16` are checked by [`23_nine_hub_all_residues.py`](23_nine_hub_all_residues.py), which also draws the [eleven-leaf spoke matrix](art/nine_hub_eleven.svg). The small values `t<8` and publication priority remain open in this exploration.
