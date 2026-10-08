@@ -127,3 +127,7 @@ The [nine-hub formula note](23_nine_hub_all_residues.md) proves `d(K_{9,t})=t+ce
 ## 24. Sotteau closes every even base residue
 
 The [even-base note](24_even_base_residues.md) applies Sotteau's fixed-length cycle-decomposition theorem to `K_{2k,b}` after making one hub's `b` spokes singleton parts. For every odd `h=2k+1`, each even `b∈[h−1,2h−2]` meets the parity/capacity lower bound exactly, and the `h`-leaf lift extends that residue. Along with the divisible `b=h` block, only `k−1` odd bases require separate seed constructions in a uniform proof. This deduction relies on Sotteau's published theorem and does not claim it as a new cycle design.
+
+## 25. Every large leaf count with eleven bipartite hubs
+
+The [eleven-hub formula note](25_eleven_hub_all_residues.md) proves `d(K_{11,t})=t+ceil(5t/11)` for all `t≥10`. Six even bases follow from Sotteau's cycle-design theorem, one from the eleven-leaf offset block, and four odd bases from [explicit JSON walks](25_eleven_hub_odd_seeds.json). The [checker](25_eleven_hub_odd_seeds.py) verifies the finite odd witnesses and lifts; its [residue ladder](art/eleven_hub_residue_ladder.svg) makes the three construction methods visible. The `t<10` values and priority remain open in this exploration.
