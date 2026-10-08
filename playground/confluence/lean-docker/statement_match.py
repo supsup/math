@@ -11,7 +11,7 @@ semantic difference (formatting, notation), so mismatches are printed for a huma
 import pathlib
 import re
 
-LEAN = pathlib.Path("/Users/charles/projects/coderefs/math/lean")
+LEAN = pathlib.Path(__file__).resolve().parents[3] / "lean"  # repo root/lean, from playground/confluence/lean-docker/
 CHALLENGE = LEAN / "ComparatorChallenges/TruffetCounterexample.lean"
 SOLUTION = [LEAN / "OAI/Optimization/Tropical/TruffetModel.lean",
             LEAN / "OAI/Optimization/Tropical/TruffetCounterexample.lean"]
@@ -22,7 +22,7 @@ def configure(name):
     global CHALLENGE, SOLUTION
     import json
     import sys as _sys
-    _sys.path.insert(0, "/Users/charles/projects/coderefs/math/playground/confluence/lean-cones")
+    _sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lean-cones"))
     import cones
     spec = json.loads((LEAN / "ComparatorChallenges" / f"{name}.json").read_text())
     mods, _, _ = cones.cone(spec["solution_module"])

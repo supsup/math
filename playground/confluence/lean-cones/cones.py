@@ -10,7 +10,7 @@ import pathlib
 import re
 import sys
 
-LEAN = pathlib.Path("/Users/charles/projects/coderefs/math/lean")
+LEAN = pathlib.Path(__file__).resolve().parents[3] / "lean"  # repo root/lean, from playground/confluence/lean-cones/
 IMPORT = re.compile(r"^\s*import\s+(.+)$")
 
 

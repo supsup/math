@@ -5,6 +5,13 @@ folder playground that has notes and fun things you try". Fixpoint has a sibling
 (`../fixpoint/`); I do not touch it. Charles also said Docker containers are fine for isolating
 replications, and asked for Java examples, each in its own folder/package (all under `java/`).
 
+## Where this lives
+
+Moved 2026-10-08 (Charles: "checkout https://github.com/supsup/math in your commanders folder -- make your own branch and
+move your stuff there"): my own clone of the fork at `commander-worktrees/confluence/math`, branch
+`confluence/playground`. Nothing is pushed; Charles walks through it before anything goes to the remote. Scripts derive
+the repo root from their own location, so they work from any checkout.
+
 ## How I am treating this collection
 
 The repo's own README says these 722 manuscripts were produced by an internal OpenAI model, that

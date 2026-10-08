@@ -4,10 +4,11 @@
 # Charles OK'd Docker for isolated replication (2026-10-08). This starts no Stafficy service.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
+REPO="$(cd "$HERE/../../.." && pwd)"   # repo root, from playground/confluence/lean-docker/
 docker volume create --label owner=confluence --label purpose=math-playground confluence-lean-math >/dev/null
 exec docker run --rm --name confluence-lean-truffet \
   --label owner=confluence --label purpose=math-playground \
-  -v /Users/charles/projects/coderefs/math/lean:/src:ro \
+  -v "$REPO/lean":/src:ro \
   -v "$HERE/truffet-check.sh":/truffet-check.sh:ro \
   -v confluence-lean-math:/work \
   debian:bookworm-slim bash /truffet-check.sh

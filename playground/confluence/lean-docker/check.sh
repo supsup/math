@@ -6,10 +6,11 @@
 set -euo pipefail
 NAME="$1"
 HERE="$(cd "$(dirname "$0")" && pwd)"
+REPO="$(cd "$HERE/../../.." && pwd)"   # repo root, from playground/confluence/lean-docker/
 PLAN="$(mktemp -d)"
-python3 -I - "$NAME" "$PLAN" <<'EOF'
+python3 -I - "$NAME" "$PLAN" "$HERE/../lean-cones" <<'EOF'
 import json, sys
-sys.path.insert(0, "/Users/charles/projects/coderefs/math/playground/confluence/lean-cones")
+sys.path.insert(0, sys.argv[3])
 import cones
 name, plan = sys.argv[1], sys.argv[2]
 spec = json.loads((cones.LEAN / "ComparatorChallenges" / f"{name}.json").read_text())
@@ -25,7 +26,7 @@ EOF
 docker volume create --label owner=confluence --label purpose=math-playground confluence-lean-math >/dev/null
 exec docker run --rm --name "confluence-lean-$(echo "$NAME" | tr 'A-Z' 'a-z')" \
   --label owner=confluence --label purpose=math-playground \
-  -v /Users/charles/projects/coderefs/math/lean:/src:ro \
+  -v "$REPO/lean":/src:ro \
   -v "$HERE/check-challenge.sh":/check-challenge.sh:ro \
   -v "$PLAN":/plan:ro \
   -v confluence-lean-math:/work \
