@@ -1,0 +1,43 @@
+== A. tetrahedron K and A_min
+squared edge lengths (exact): [Fraction(4, 1)] -> regular tetrahedron of edge 2
+shadow along x-axis: triangle, area^2 = 2 (exact) -> area = sqrt 2 = H
+shadow along z-axis (float): 2.0  face normal (H,0,1) (float): 1.732050807568878  (sqrt3 = 1.7320508075688772 )
+closed form vs convex-hull area, max |diff| over 2000 random directions: 2.00e-15
+min shadow over 200000 sphere points + refinement: 1.414213562373572 at u=[-0.5       0.5      -0.707107]; H = 1.414213562373095
+min - H = 4.772e-13 (>= 0 expected; Lean proves the lower bound)
+CONTROL A: is A_min = sqrt3 (face shadow)?  found shadow 1.414214 < sqrt3 = 1.732051 -> the alternative value is REFUTED
+
+== B. base areas of the cylinders (exact squared areas)
+eps = 1/2001  n(eps) = ceil(2/eps^2) = 8008002  (2/eps^2 = 8008002 ) -> 2n = 16016004 cylinders
+exact squared-area identity checked on 96 cylinders: 0 mismatches
+
+== C. area expansion  totalArea/H = sum_j (b-a) T_j^2 / sqrt(1+eps^2 S_j)
+pipeline check eps=1/20: N=800, Decimal direct sum-1/2 = -4.566938169065828e-06, numpy residual = -4.566938169065820e-06, diff = -8.47e-21
+pipeline check eps=1/50: N=5000, Decimal direct sum-1/2 = -8.449377372205953e-07, numpy residual = -8.449377372205936e-07, diff = -1.69e-21
+eps          N=n(eps)     R = total/H-(1/2-13/6000 eps^2)   R/eps^4    total/H < 1/2 ?   control R'/eps^4 (12/6000)
+1/2001         8008002    8.469119e-15                   0.1358    True            -6.6720e+02
+1/2500        12500000    3.475894e-15                   0.1358    True            -1.0415e+03
+1/3000        18000000    1.676261e-15                   0.1358    True            -1.4999e+03
+1/4000        32000000    5.303793e-16                   0.1358    True            -2.6665e+03
+1/5000        50000000    2.172434e-16                   0.1358    True            -4.1665e+03
+Lean constant C = 14; delta = eta/2 = 1/2000.  max |R/eps^4| above = 0.1358
+CONTROL C: replacing 13/6000 by 12/6000 gives |R'|/eps^4 ~ 1/(6000 eps^2) >> 14 -> must FAIL the C*eps^4 bound
+
+== D. covering K at eps = 1/2001 (exact rational membership)
+  [real family] grid 161x161 of (x,y), t=1/2: min G/eps^2 = 0.001997 at (x,y)=(-0.0250,0.0062); max G/eps^2 = 0.251725; #G<0: 0
+  [real family] 10660 points, uncovered by window search: 0
+  (section D real family: 11s)
+
+  CONTROL D: same cylinders but cutoff T = 1/2 (eps^2 term removed). Must leave part of K uncovered.
+  [cutoff 1/2] grid 81x81 of (x,y), t=1/2: min G/eps^2 = -0.062519 at (x,y)=(-0.4999,0.0000); max G/eps^2 = 0.000000; #G<0: 6560
+  candidate hole: (Fraction(-4999, 10000), Fraction(0, 1), Fraction(499999992192967979, 1000000000000000000)) = (-0.4999, 0.0, 0.499999992192968)
+    exhaustive lower: 0 float candidates (margin > -1e-9), max float margin -7.807e-09
+    exhaustive upper: 0 float candidates (margin > -1e-9), max float margin -7.807e-09
+  CONTROL D result: cylinders (of all 16016004 ) containing it exactly: [] -> UNCOVERED, control fails as required
+  the same point under the real family: lower witness None  upper witness 800
+  [eta = 0 (informational)] grid 161x161 of (x,y), t=1/2: min G/eps^2 = -0.000003 at (x,y)=(-0.0250,0.0062); max G/eps^2 = 0.249725; #G<0: 60
+  eta = 0 candidate hole: (Fraction(-4999, 200000), Fraction(4999, 800000), Fraction(62499990238540807, 125000000000000000)) = (-0.024995, 0.00624875, 0.4999999219083265)
+    exhaustive lower: 1 float candidates (margin > -1e-9), max float margin -3.835e-13
+    exhaustive upper: 1 float candidates (margin > -1e-9), max float margin -3.835e-13
+  eta = 0 result: cylinders containing it exactly: [] -> UNCOVERED: the 1/1000 slack is load-bearing at this eps
+  the same point under the real family: lower witness 4054066  upper witness 3803847
