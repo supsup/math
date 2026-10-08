@@ -3,8 +3,9 @@
 Write \(d(K_{p,t})\) for the fewest simple cycles and singleton edges in
 an edge partition, and put \(k=(p-1)/2\). The following gathers the
 separate constructions in items 10, 24, 57, 58, 60, and 64 into one
-statement. It is a **partial residue theorem**, not an all-residue
-formula for the prime class.
+statement. It is a **partial residue theorem** that begins at \(p=53\).
+The later [half-interval overlap theorem](68_half_interval_overlap_all_large_primes.md)
+strengthens this to **every residue** for every such prime \(p\ge10^9\).
 
 **Theorem.** Let \(p\ge53\) be prime with \(p\equiv5\pmod8\). Set
 
@@ -30,7 +31,7 @@ The first set in \(B_p\) is **every even base** from \(p-1\) through
 \(2p-2\); the second is an initial run of odd bases. For example,
 \(J_{53}=\{0,1,2,3,4,5\}\), so the theorem covers every even base
 and the odd bases \(53,55,57,59,61,63\), with all their 53-leaf
-offsets. Other odd residues are not claimed by this class theorem;
+offsets. Other odd residues below the large-prime threshold are not claimed by this partial theorem;
 the [fixed 53-hub certificate](63_fiftythree_hub_all_residues.md)
 covers them at that particular prime.
 
@@ -108,5 +109,6 @@ audited [fast existence scan](60_skew_adjacent_pairs_fast_existence_scan.cpp)
 checks all 166,203 through ten million. The
 [odd-prefix criterion scan](64_skew_odd_prefix_criterion_scan.py)
 checks all 42 through 1000. These bounded scans find witnesses
-outside the analytic range at the tested primes; they are finite
-evidence, not a proof of the remaining uniform odd residues.
+outside this note's initial analytic range at the tested primes. Item 68
+supplies a separate uniform proof of all residues for \(p\ge10^9\);
+the scans remain finite evidence for smaller primes.

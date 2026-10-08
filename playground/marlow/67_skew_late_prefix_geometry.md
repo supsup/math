@@ -25,8 +25,9 @@ allowed odd prefix has `j=k−1` pages and last pair start `c=k−2`;
 there `|B_c|=3+|I_c∩aI_c|`. The hardest even prefix has last pair start
 `c=k−3`, where `|B_c|=5+|I_c∩aI_c|`. A single point of `G∩B_{k−2}`
 works for *every* later adjacent pair in *every* prefix. Together with
-the separate first-three-page repair, this would settle all odd
-prefixes; it also settles the even pair prefixes.
+the separate first-three-page repair, this settles all odd
+prefixes whenever the size condition below holds; it also settles
+the even pair prefixes.
 
 ## A uniform conditional counting lemma
 
@@ -61,10 +62,10 @@ Consequently the *computed geometric condition*
     |B_{k−2}| > 8√p(2+log p)² + 8                     (3)
 
 rigorously supplies a universal late-pair witness for that particular
-`p,g`, without testing quadratic characters point by point. If one
-proved `|I_{k−2}∩aI_{k−2}|≥εp` uniformly for primitive-square `a`
-and some fixed `ε>0`, (2) would give all prefixes for all sufficiently
-large `p`. I have **not** proved such a geometric lower bound. The
+`p,g`, without testing quadratic characters point by point. The later
+[half-interval overlap theorem](68_half_interval_overlap_all_large_primes.md)
+proves the uniform geometric bound needed here and gives every prime
+`p≡5 (mod 8)` above one billion. The
 complete-sum estimate from item60 alone cannot finish the last pairs:
 its `N≈p/4` is smaller than the allowed `|E_c|≈3p/4` or more.
 
@@ -111,7 +112,8 @@ Thus the sharp formula
     d(K_{p,t})=t+ceil(((p−1)/2)t/p)
 
 holds for **every `t≥p−1`** at `p=1,000,000,453`. This one-prime
-corollary does not assert an infinite full-residue class.
+certificate predates the uniform large-prime conclusion of item 68 and
+independently checks one instance of it.
 
 ## Finite boundary
 
