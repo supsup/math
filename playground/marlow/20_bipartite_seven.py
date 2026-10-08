@@ -1,4 +1,4 @@
-"""Verify an optimal K_(7,8) cycle/edge partition and its seven-leaf lift.
+"""Verify exact cycle/edge partitions for every K_(7,t).
 
 Run: python3 -I playground/marlow/20_bipartite_seven.py
 Regenerates art/bipartite_seven_eight.svg from the checked certificate.
@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 HUBS = tuple(range(7))
-LEAF_NAMES = 'ABCDEFGH'
+LEAF_NAMES = 'ABCDEFGHIJKL'
 SINGLETONS_8 = ((0, 0), (0, 1), (1, 2), (1, 3),
                 (2, 4), (2, 5), (3, 6), (3, 7))
 WALKS_8 = (
@@ -19,20 +19,57 @@ WALKS_8 = (
     (0, 'C', 2, 'D', 5, 'B', 6, 'F', 1, 'A', 4, 'E'),
 )
 
+SEED_DATA = {
+    2: ("6A 6B", """0,A,1,B
+2,A,3,B
+4,A,5,B"""),
+    3: ("0B 1C 2A 3C 4C 5B 6B", """0,A,1,B,2,C
+3,A,4,B
+5,A,6,C"""),
+    4: ("0A 0B 1C 1D", """0,C,6,A,5,B,4,D
+1,A,3,C,2,D,6,B
+2,A,4,C,5,D,3,B"""),
+    5: ("0A 1A 2A 3B 4C 5D 6E", """2,C,6,A,3,D,4,B,5,E
+0,B,6,D,1,C,5,A,4,E
+0,C,3,E,1,B,2,D"""),
+    6: ("0A 0B 1C 1D 2E 2F", """1,A,2,D,4,E,5,C,6,F,3,B
+0,C,2,B,5,F,4,A,6,D,3,E
+0,D,5,A,3,C,4,B,6,E,1,F"""),
+    9: ("0A 0B 0C 1D 2E 3F 4G 5H 6I", """0,G,1,A,5,F,2,I,3,B,4,C,6,H
+0,E,1,H,2,C,3,A,6,B,5,D,4,I
+0,D,3,E,6,G,5,C,1,B,2,A,4,F
+1,F,6,D,2,G,3,H,4,E,5,I"""),
+    10: ("0A 0B 1C 1D 2E 2F 3G 3H 4I 4J", """1,F,5,C,2,G,4,D,3,E,6,H
+0,E,4,F,3,J,5,G,6,I,2,H
+0,G,1,I,3,A,4,H,5,B,6,J
+0,D,2,J,1,B,4,C,6,A,5,I
+0,C,3,B,2,A,1,E,5,D,6,F"""),
+    11: ("0A 0B 0C 0D 0E 1F 2G 3H 4I 5J 6K", """0,F,5,E,6,B,3,D,1,A,4,C,2,I
+0,G,1,B,2,A,5,C,3,E,4,D,6,J
+0,H,4,B,5,D,2,E,1,C,6,A,3,K
+1,I,5,G,3,J,4,F,6,H,2,K
+1,H,5,K,4,G,6,I,3,F,2,J"""),
+}
+
 
 def normalize_vertex(vertex):
-    return LEAF_NAMES.index(vertex) if isinstance(vertex, str) else vertex
+    if isinstance(vertex, str):
+        return LEAF_NAMES.index(vertex)
+    assert vertex >= 1000
+    return vertex - 1000
 
 
-def cycle_edges(walk):
+def edge_list(walk):
     assert len(walk) >= 4 and len(walk) % 2 == 0
     assert len(set(walk)) == len(walk), 'cycle repeats a vertex'
-    assert all(isinstance(walk[i], int) == (i % 2 == 0)
-               for i in range(len(walk))), 'cycle is not bipartite'
+    assert all(walk[i] in HUBS for i in range(0, len(walk), 2))
+    assert all(isinstance(walk[i], str) or walk[i] >= 1000
+               for i in range(1, len(walk), 2))
+    leaf_ids = [normalize_vertex(walk[i]) for i in range(1, len(walk), 2)]
+    assert len(set(leaf_ids)) == len(leaf_ids), 'cycle repeats a leaf'
     result = []
-    for a, b in zip(walk, walk[1:] + walk[:1]):
-        hub, leaf = (a, b) if isinstance(a, int) else (b, a)
-        assert hub in HUBS
+    for i, (a, b) in enumerate(zip(walk, walk[1:] + walk[:1])):
+        hub, leaf = (a, b) if i % 2 == 0 else (b, a)
         result.append((hub, normalize_vertex(leaf)))
     assert len(set(result)) == len(result)
     return result
@@ -45,30 +82,47 @@ def block_cycles(start):
         walk = []
         for j in range(7):
             hub = (-j) % 7
-            walk.extend((hub, start + (hub + offset) % 7))
+            walk.extend((hub, 1000 + start + (hub + offset) % 7))
         result.append(tuple(walk))
     return result
 
 
-def edge_list(walk):
-    if isinstance(walk[1], str):
-        return cycle_edges(walk)
-    assert len(walk) == 14 and len(set(walk)) == 14
-    edges = []
-    for a, b in zip(walk, walk[1:] + walk[:1]):
-        hub, leaf = (a, b) if a < 7 else (b, a)
-        assert hub in HUBS and leaf >= 8
-        edges.append((hub, leaf))
-    return edges
+def parsed_seed(t):
+    if t == 0:
+        return [], []
+    if t == 1:
+        return [(hub, 0) for hub in HUBS], []
+    if t == 7:
+        return [(hub, hub) for hub in HUBS], block_cycles(0)
+    if t == 8:
+        return list(SINGLETONS_8), list(WALKS_8)
+    if t == 12:
+        singleton, cycles = parsed_seed(6)
+        more_singleton = [(hub, leaf + 6) for hub, leaf in singleton]
+        more_cycles = [tuple(vertex if i % 2 == 0 else
+                             1000 + LEAF_NAMES.index(vertex) + 6
+                             for i, vertex in enumerate(walk))
+                       for walk in cycles]
+        return singleton + more_singleton, cycles + more_cycles
+    singles_text, walks_text = SEED_DATA[t]
+    singleton = [(int(token[0]), LEAF_NAMES.index(token[1:]))
+                 for token in singles_text.split()]
+    cycles = [tuple(int(token) if i % 2 == 0 else token
+                    for i, token in enumerate(line.split(',')))
+              for line in walks_text.splitlines()]
+    return singleton, cycles
 
 
-def certificate(q):
-    assert q >= 0
-    t = 8 + 7 * q
-    singleton = list(SINGLETONS_8)
-    cycles = list(WALKS_8)
+def certificate(t):
+    assert t >= 0
+    if t >= 6:
+        base = 6 + (t - 6) % 7
+        q = (t - base) // 7
+    else:
+        base, q = t, 0
+    singleton, cycles = parsed_seed(base)
     for block in range(q):
-        start = 8 + 7 * block
+        start = base + 7 * block
         singleton.extend((i, start + i) for i in HUBS)
         cycles.extend(block_cycles(start))
     seen = {}
@@ -81,8 +135,8 @@ def certificate(q):
             seen[edge] = ('cycle', index)
     expected = {(hub, leaf) for hub in HUBS for leaf in range(t)}
     assert set(seen) == expected, (q, sorted(expected - set(seen)))
-    lower = t + (3 * t + 6) // 7
-    assert len(singleton) + len(cycles) == lower == 12 + 10 * q
+    expected_parts = (0, 7, 5, 10, 7, 10)[t] if t <= 5 else t + (3 * t + 6) // 7
+    assert len(singleton) + len(cycles) == expected_parts
     return seen
 
 
@@ -119,13 +173,13 @@ def make_svg(seen):
 
 
 def main():
-    base = certificate(0)
-    for q in range(1, 7):
-        certificate(q)
+    base = certificate(8)
+    for t in range(0, 100):
+        certificate(t)
     target = Path(__file__).with_name('art') / 'bipartite_seven_eight.svg'
     target.write_text(make_svg(base))
-    print('K_(7,8): 56 spokes covered exactly by eight singletons and four simple cycles.')
-    print('Seven-leaf extension checked through q=6; all attain t+ceil(3t/7).')
+    print('All K_(7,t) seed partitions and lifts checked through t=99.')
+    print('For t>=6, every certificate attains t+ceil(3t/7).')
     print(f'Wrote {target}.')
 
 

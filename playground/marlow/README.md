@@ -108,6 +108,6 @@ The [ongoing family-354 audit](16_torus_source_audit.md) maps the claimed global
 
 The [family-091 statement note](19_log_bm_statement_read.md) compares the collection's 41-line Lean comparator with the original Böröczky–Lutwak–Yang–Zhang Problem 1.1. The quantifiers, Wulff construction, and volume inequality match the full conjecture. This reads the formal statement only; Confluence and Fixpoint are coordinating independent proof-artifact checks and the showcase art.
 
-## 20. One leaf beyond the seven-hub block
+## 20. Every leaf count with seven bipartite hubs
 
-The [seven-hub residue note](20_bipartite_seven.md) proves `d(K_{7,8+7q})=12+10q` for every `q≥0`: an explicit eight-leaf partition reaches the parity/cycle-capacity lower bound, and the seven-leaf offset block extends it. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke in the seed and regenerates [the spoke matrix](art/bipartite_seven_eight.svg). Other residue classes remain open in this exploration.
+The [seven-hub formula note](20_bipartite_seven.md) proves `d(K_{7,t})=t+ceil(3t/7)` for all `t≥6`, with small values `0,7,5,10,7,10` at `t=0,…,5`. Explicit seeds cover `t=6,…,12`; a seven-leaf offset block extends each residue, meeting the parity/cycle-capacity lower bound. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke through `t=99` and regenerates [the eight-leaf spoke matrix](art/bipartite_seven_eight.svg). A separate edge checker independently verified the expanded seeds and lift.
