@@ -30,8 +30,9 @@ Indeed, for `1≤x≤k`, `−3x mod n` lies in `H` precisely when
 `k<3x≤2k`; the range `3x≤3k<n+k` leaves no second wrapped
 interval. When `n=6j+3`, the multiplier `−3` is not a unit.
 The [equality-pattern note](70_half_interval_equality_patterns.md)
-records the finite cases; [item 71](71_half_interval_equality_classification.md)
-classifies all equality multipliers when the modulus is coprime to 3.
+records the finite cases; [items 71](71_half_interval_equality_classification.md)
+and [72](72_half_interval_equality_complete.md) classify every
+equality multiplier.
 
 ## Metric reduction
 

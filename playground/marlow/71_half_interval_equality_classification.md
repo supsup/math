@@ -108,7 +108,7 @@ recomputes every unit through \(n=501\); the
 extends the check through 10,000. Neither long scan is
 needed for the large-\(n\) proof.
 
-At moduli divisible by 3, \(-3\) is not a unit; the
-finite patterns in [item 70](70_half_interval_equality_patterns.md)
-remain a separate open classification problem. Publication
-priority for this equality theorem has not been established.
+At moduli divisible by 3, \(-3\) is not a unit;
+[item 72](72_half_interval_equality_complete.md) proves the
+remaining eleven equality cases. Publication priority for
+this equality theorem has not been established.

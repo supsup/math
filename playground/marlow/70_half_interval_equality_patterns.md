@@ -41,11 +41,9 @@ pairs:
 
 The later [equality theorem](71_half_interval_equality_classification.md)
 proves that the four extra pairs at \(n=11,17\) are the **only**
-exceptions when \(3\nmid n\). For \(3\mid n\), it remains an
-**unproved conjecture** that the eleven pairs in the table are
-complete beyond the finite scan. A counterexample would be
-mathematically interesting even though it would not affect the
-lower bound or the graph theorem.
+exceptions when \(3\nmid n\). [Item 72](72_half_interval_equality_complete.md)
+proves that the eleven pairs in the table are the **only**
+cases when \(3\mid n\), completing the classification.
 
 There is a small structural reduction. Put
 \(r=\|a\|=\min(a\bmod n,(-a)\bmod n)\).
@@ -69,6 +67,6 @@ of \((-3)^{-1}\) modulo \(6j+5\). Finally
 modulus coprime to 3 and at least 23 would have **odd radius
 \(r\ge5\)**. Item 71 excludes those radii uniformly.
 
-This note's divisible-by-3 classification is finite evidence,
-not a proof. Publication priority for the overlap theorem and
-equality problem has not been established.
+The finite census motivated the complete proof in items 71–72.
+Publication priority for the overlap theorem and equality
+classification has not been established.
