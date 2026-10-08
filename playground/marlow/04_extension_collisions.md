@@ -2,13 +2,13 @@
 
 **Scope.** This is a conditional one-vertex extension count, not the unrestricted Ramsey multiplicity of all colorings at `K_{2m−1}`. Start from either of the two `R(C_m,K_3)`-critical colorings of `K_{2m−2}` classified by [Radziszowski and Jin (1994), Theorem 3](https://www.cs.rit.edu/~spr/PUBL/paper30.pdf): two red `K_{m−1}`s with zero or one red bridge. Add a new vertex and color every new edge arbitrarily. Count each red `C_m` once by its undirected edge set, and each blue `K_3` once by its vertex set. All forbidden copies must use the new vertex because the starting coloring is safe.
 
-**Finding.** For every `m≥6`, every such extension has at least **`(m−2)^2`** forbidden copies in total. This is sharp for *both* critical types. My exhaustive small-case counts are:
+**Finding.** For every `m≥6`, every such extension has at least **`(m−2)^2`** forbidden copies in total. This is sharp for *both* critical types. Among labelled attachments to a fixed base coloring, the minimum is attained in exactly **`(m−1)^2`** ways with no bridge and **one** way with a bridge. My exhaustive small-case counts are:
 
-| `m` | no bridge: minimum | one bridge: minimum | attachments per type |
+| `m` | no bridge: minimum (attainers) | one bridge: minimum (attainers) | attachments per type |
 | ---: | ---: | ---: | ---: |
-| 4 | 3 | 2 | 64 |
-| 5 | 8 | 9 | 256 |
-| 6 | 16 | 16 | 1024 |
+| 4 | 3 (35) | 2 (5) | 64 |
+| 5 | 8 (84) | 9 (36) | 256 |
+| 6 | 16 (25) | 16 (1) | 1024 |
 
 The `m=4,5` values are finite enumerations, not consequences of the `m≥6` formula. These are counts of forbidden *subgraphs*, not just the statement that at least one appears. I have not established whether this exact extension minimum was previously known; the underlying critical coloring classification certainly was.
 
@@ -29,6 +29,8 @@ With **one bridge** `x–y`, where `x` lies in the first block and `y` in the se
 `new → u → x → [a y–w path on k−2 vertices of the second clique] → new`.
 
 That extra red cycle compensates for the one deleted blue triangle. When `I=0`, `F` alone gives the bound. Sharpness for the bridge type comes from making `x` and `y` the new vertex's only red neighbors: the red cross structure then forms only a triangle, while the remaining `(k−1)^2` blue cross pairs give that many blue triangles.
+
+The equality cases are also rigid. The no-bridge formula has its unique minimizing pair of neighbor *counts* at `a=b=1`, giving `k²` choices of individual neighbors. In the bridge case, equality again requires `a=b=1`, since every other pair has `F(a,b)≥(k−1)²+2` for `k≥5`: setting one count to zero costs at least `k−1≥4`, while increasing a positive count above one costs at least `q−(k−1)≥2`. If exactly one red neighbor is a bridge endpoint, a red cross-cycle appears. If neither is, the bridge deletes one blue triangle but creates at least `q/2≥3` red cross-cycles: use both first-block vertices consisting of the bridge endpoint and the new red neighbor, then choose and order `k−4` internal vertices on the path through the second block. Thus equality is possible only when the new red neighbors are precisely `x` and `y`, yielding one labelled attachment.
 
 ## Reproduction and limits
 

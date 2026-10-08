@@ -105,6 +105,9 @@ def main():
     expected = {(4, 0): 3, (4, 1): 2,
                 (5, 0): 8, (5, 1): 9,
                 (6, 0): 16, (6, 1): 16}
+    expected_achievers = {(4, 0): 35, (4, 1): 5,
+                          (5, 0): 84, (5, 1): 36,
+                          (6, 0): 25, (6, 1): 1}
     results = {}
     for m in (4, 5, 6):
         n = 2 * m - 1
@@ -114,6 +117,7 @@ def main():
         for bridge in (0, 1):
             results[(m, bridge)] = extension_stats(m, bridge, index, cycles, triangles)
     assert {key: item['minimum'] for key, item in results.items()} == expected
+    assert {key: item['achievers'] for key, item in results.items()} == expected_achievers
     drawing(HERE / 'art/extension_collisions.svg', results)
     for key, item in sorted(results.items()):
         print(key, item)
