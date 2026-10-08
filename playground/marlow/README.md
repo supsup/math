@@ -228,9 +228,9 @@ The [thirty-nine-hub formula note](48_thirtynine_hub_all_residues.md) proves `d(
 
 The [overlap note](49_affine_translation_overlap.md) proves that the common-edge count of a growth page and its translate equals a multiplicity in the page's repeated-difference displacement list. It gives an explicit nineteen-center set for `p=41` if a page's only repeated displacement magnitudes lie in a pair `{a,3a}`; the needed page itself is still unproved. The [checker](49_affine_translation_overlap.py) tests the identity on the existing 17-, 29-, and 37-hub pages and draws the [forty-one-center circle](art/fortyone_compatible_centers.svg).
 
-## 50. Why nineteen translated pages at forty-one hubs need two special shifts
+## 50. Why translated prime-hub pages need two special shifts
 
-The [inverse note](50_fortyone_center_inverse.md) proves that nineteen pairwise compatible translates of a single 41-hub page exist exactly when all repeated edge-displacement magnitudes lie in `{a,3a}` for some nonzero `a`. Cauchy–Davenport bounds the number of bad magnitudes by two; in the two-magnitude case, Vosper forces the centers to be an arithmetic progression and the bad-shift ratio to be three. The [checker](50_fortyone_center_inverse.py) independently enumerates all 1330 normalized 19-center gap patterns. A valid page with the required profile remains open.
+The [inverse note](50_fortyone_center_inverse.md) proves for every odd prime `p≥7` that `(p−3)/2` pairwise compatible translates of a single page exist exactly when all repeated edge-displacement magnitudes lie in `{a,3a}` for some nonzero `a`. Cauchy–Davenport bounds the number of bad magnitudes by two; in the two-magnitude case, Vosper forces the centers to be an arithmetic progression and the bad-shift ratio to be three. The [checker](50_fortyone_center_inverse.py) tests the explicit progression across small primes and independently enumerates all 1330 normalized 19-center gap patterns at `p=41`. A valid 41-page with the required profile remains open.
 
 ## 51. An explicit path-only permutation witness
 

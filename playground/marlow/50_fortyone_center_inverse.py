@@ -1,4 +1,4 @@
-"""Finite cross-check of the 41-center inverse statement in note 50.
+"""Finite cross-check of the prime-center inverse statement in note 50.
 
 Run: python3 -I playground/marlow/50_fortyone_center_inverse.py
 """
@@ -34,6 +34,16 @@ def absent_magnitudes(centers):
 
 
 def main():
+    for prime in (7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47):
+        k = (prime - 1) // 2
+        size = k - 1
+        for c in range(1, prime):
+            centers = {(-2 * c * j) % prime for j in range(size)}
+            assert len(centers) == size
+            differences = {(a - b) % prime for a in centers for b in centers}
+            absent = set(range(1, prime)) - differences
+            assert absent == {c, -c % prime, 3 * c % prime, -3 * c % prime}
+
     counts = Counter()
     by_second = Counter()
     for centers in anchored_sets_avoiding_one():
@@ -54,8 +64,9 @@ def main():
     assert len(witness) == SIZE and len(set(witness)) == SIZE
     assert all((a - b) % P not in (1, 3, P - 1, P - 3)
                for a in witness for b in witness if a != b)
-    print('1330 normalized 19-center sets checked; the only two-class'
-          ' forbidden pairs are {1,3} and {1,14}, equivalent by scaling.')
+    print('Explicit progression checked at odd primes 7..47; 1330 normalized'
+          ' 41-point 19-center sets checked. The two-class forbidden pairs'
+          ' are {1,3} and {1,14}, equivalent by scaling.')
 
 
 if __name__ == '__main__':
