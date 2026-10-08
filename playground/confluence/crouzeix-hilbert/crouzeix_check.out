@@ -1,0 +1,79 @@
+== scalar polynomials: ||p(A)|| / max_W |p|
+  J2, p=z                                          ratio = 2.000000000000  [ok vs 2.0]
+  J2, p=z^2                                        ratio = 0.000000000000  [ok vs 2.0]
+  J2, p=z^3                                        ratio = 0.000000000000  [ok vs 2.0]
+  J2, p=1+2z-z^3                                   ratio = 1.266487790633  [ok vs 2.0]
+  J3, p=z                                          ratio = 1.414213562373  [ok vs 2.0]
+  J3, p=z^2                                        ratio = 2.000000000000  [ok vs 2.0]
+  J3, p=z^3                                        ratio = 0.000000000000  [ok vs 2.0]
+  J3, p=1+2z-z^3                                   ratio = 1.127590225930  [ok vs 2.0]
+  J4, p=z                                          ratio = 1.236067977500  [ok vs 2.0]
+  J4, p=z^2                                        ratio = 1.527864045000  [ok vs 2.0]
+  J4, p=z^3                                        ratio = 1.888543819998  [ok vs 2.0]
+  J4, p=1+2z-z^3                                   ratio = 1.048297437667  [ok vs 2.0]
+  J6, p=z                                          ratio = 1.109916264175  [ok vs 2.0]
+  J6, p=z^2                                        ratio = 1.231914113480  [ok vs 2.0]
+  J6, p=z^3                                        ratio = 1.367321510617  [ok vs 2.0]
+  J6, p=1+2z-z^3                                   ratio = 1.020339504381  [ok vs 2.0]
+  [[1,2],[0,i]], p=z                               ratio = 1.414213562373  [ok vs 2.0]
+  [[1,2],[0,i]], p=z^2                             ratio = 1.079627248519  [ok vs 2.0]
+  [[1,2],[0,i]], p=z^3                             ratio = 0.485281374239  [ok vs 2.0]
+  [[1,2],[0,i]], p=1+2z-z^3                        ratio = 0.686082466024  [ok vs 2.0]
+  [[0,5],[0,0.3]], p=z                             ratio = 1.886984194051  [ok vs 2.0]
+  [[0,5],[0,0.3]], p=z^2                           ratio = 0.213259039504  [ok vs 2.0]
+  [[0,5],[0,0.3]], p=z^3                           ratio = 0.024101642225  [ok vs 2.0]
+  [[0,5],[0,0.3]], p=1+2z-z^3                      ratio = 0.452618151632  [ok vs 2.0]
+  normal diag(1,i,-1), p=z                         ratio = 1.000000000000  [ok vs 2.0]
+  normal diag(1,i,-1), p=z^2                       ratio = 1.000000000000  [ok vs 2.0]
+  normal diag(1,i,-1), p=z^3                       ratio = 1.000000000000  [ok vs 2.0]
+  normal diag(1,i,-1), p=1+2z-z^3                  ratio = 1.000000000000  [ok vs 2.0]
+  random 4x4 #0, p=z                               ratio = 1.238459951926  [ok vs 2.0]
+  random 4x4 #0, p=z^2                             ratio = 1.053885484959  [ok vs 2.0]
+  random 4x4 #0, p=z^3                             ratio = 1.003152370064  [ok vs 2.0]
+  random 4x4 #0, p=1+2z-z^3                        ratio = 0.951824372169  [ok vs 2.0]
+  random 4x4 #1, p=z                               ratio = 1.501806414534  [ok vs 2.0]
+  random 4x4 #1, p=z^2                             ratio = 1.086001889899  [ok vs 2.0]
+  random 4x4 #1, p=z^3                             ratio = 0.730751291174  [ok vs 2.0]
+  random 4x4 #1, p=1+2z-z^3                        ratio = 0.724402102150  [ok vs 2.0]
+  random 4x4 #2, p=z                               ratio = 1.375531451795  [ok vs 2.0]
+  random 4x4 #2, p=z^2                             ratio = 1.131488992870  [ok vs 2.0]
+  random 4x4 #2, p=z^3                             ratio = 0.864307754366  [ok vs 2.0]
+  random 4x4 #2, p=1+2z-z^3                        ratio = 0.941803338699  [ok vs 2.0]
+  J2 boundary radius: min 0.500000000000000 max 0.500000000000000 (expect 0.5)
+  J2, p=z exact ratio = 2.000000000000000 (expect 2)
+  SharpConstant witness p=2z on J2: sup_W = 1.000000000000000, ||p(A)|| = 2.000000000000000
+== random search (3x3 matrices, random cubics), max ratio seen
+  max over 400 random (A, cubic)                   ratio = 1.168067013533  [ok vs 2.0]
+== matrix-valued polynomials sum A^k (x) B_k, B_k 2x2 (the 'complete' version)
+  max over 200 random (A, 2x2 matrix quadratic)    ratio = 1.496035064709  [ok vs 2.0]
+  J2, B1 = E12                                     ratio = 2.000000000000  [ok vs 2.0]
+== rational r(z) = 1/(z - c), c outside W:  ||(A - c)^{-1}|| / max_W |r|
+  J2, pole 0.600                                   ratio = 0.355840268775  [ok vs 2.0]
+  J2, pole 0.550                                   ratio = 0.205504700391  [ok vs 2.0]
+  J2, pole 0.000-0.800j                            ratio = 0.676592865565  [ok vs 2.0]
+  J4, pole 0.971                                   ratio = 0.498888322069  [ok vs 2.0]
+  J4, pole 0.859                                   ratio = 0.207708900116  [ok vs 2.0]
+  J4, pole 0.000-1.109j                            ratio = 0.687430263985  [ok vs 2.0]
+  [[1,2],[0,i]], pole 2.049                        ratio = 0.594832462990  [ok vs 2.0]
+  [[1,2],[0,i]], pole 1.757                        ratio = 0.324190924852  [ok vs 2.0]
+  [[1,2],[0,i]], pole 0.000-2.007j                 ratio = 0.857603973168  [ok vs 2.0]
+  random 4x4 #0, pole 3.945                        ratio = 0.619401649511  [ok vs 2.0]
+  random 4x4 #0, pole 3.337                        ratio = 0.409206407090  [ok vs 2.0]
+  random 4x4 #0, pole 0.000-3.587j                 ratio = 0.584099812526  [ok vs 2.0]
+== Dunford/Cauchy integral over boundary of W + delta D vs direct evaluation
+  J2               winding about eigenvalues [1. 1.]; rel.err poly 4.90e-08, rational(pole 1.35, dist to contour 0.60) 4.90e-08, exp 4.90e-08
+                   control: contour shifted off W gives ||integral|| = 4.46e-14 vs ||p(A)|| = 2.414 (must differ)
+  J4               winding about eigenvalues [1. 1. 1. 1.]; rel.err poly 4.90e-08, rational(pole 1.81, dist to contour 0.75) 4.90e-08, exp 4.90e-08
+                   control: contour shifted off W gives ||integral|| = 4.87e-13 vs ||p(A)|| = 2.858 (must differ)
+  [[1,2],[0,i]]    winding about eigenvalues [1. 1.]; rel.err poly 4.18e-08, rational(pole 3.16, dist to contour 1.31) 4.15e-08, exp 4.15e-08
+                   control: contour shifted off W gives ||integral|| = 1.03e-12 vs ||p(A)|| = 5.725 (must differ)
+  random 4x4 #0    winding about eigenvalues [1. 1. 1. 1.]; rel.err poly 6.62e-07, rational(pole 5.53, dist to contour 2.65) 7.08e-07, exp 8.79e-07
+                   control: contour shifted off W gives ||integral|| = 5.36e-06 vs ||p(A)|| = 37.831 (must differ)
+== NEGATIVE CONTROLS (each must exceed its bound)
+  W -> conv(spectrum), J2, p=z                     ratio = inf  [EXCEEDS vs 2.0]
+  W -> conv(spectrum), J4, p=z                     ratio = inf  [EXCEEDS vs 2.0]
+  W -> conv(spectrum), J8, p=z                     ratio = inf  [EXCEEDS vs 2.0]
+  constant 2 -> 1.9, J2, p=z                       ratio = 2.000000000000  [EXCEEDS vs 1.9]
+  (info) real-vector 'range' of [[1,2],[0,i]]: max|z| = 1.6445 vs true W max|z| = 1.7071
+
+OVERALL: PASS
