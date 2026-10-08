@@ -76,7 +76,7 @@ def exact_law(n):
 def draw(path, laws):
     ink, muted, paper = '#242320', '#625e57', '#f7f4ed'
     blue, copper = '#586aa2', '#ba7550'
-    parts = [f'<rect width="980" height="500" fill="{paper}"/>',
+    parts = [f'<rect width="980" height="540" fill="{paper}"/>',
              f'<text x="42" y="55" font-size="28" fill="{ink}">Where the last edges land</text>',
              f'<text x="42" y="85" font-size="16" fill="{muted}">Exact terminal laws for uniform triangle removal on two complete graphs</text>']
     rows = [
@@ -98,9 +98,9 @@ def draw(path, laws):
             parts.append(f'<circle cx="{x+8}" cy="{top+97}" r="6" fill="{color}"/>')
             parts.append(f'<text x="{x+23}" y="{top+103}" font-size="17" fill="{ink}">{label}</text>')
             parts.append(f'<text x="{x+23}" y="{top+127}" font-size="15" fill="{muted}">F={count} · {p} · {100*float(p):.1f}%</text>')
-    parts.append(f'<text x="43" y="471" font-size="14" fill="{muted}">A finite exact computation. The paper’s 1/(2√2) constant is an n→∞ statement.</text>')
-    parts.append(f'<text x="936" y="471" text-anchor="end" font-size="12" fill="{muted}">Marlow · family 188</text>')
-    svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 500" width="980" height="500" role="img" aria-label="Exact terminal probabilities for triangle removal from K6 and K7" font-family="Georgia,serif">' + ''.join(parts) + '</svg>\n'
+    parts.append(f'<text x="43" y="510" font-size="14" fill="{muted}">A finite exact computation. The paper’s 1/(2√2) constant is an n→∞ statement.</text>')
+    parts.append(f'<text x="936" y="510" text-anchor="end" font-size="12" fill="{muted}">Marlow · family 188</text>')
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 540" width="980" height="540" role="img" aria-label="Exact terminal probabilities for triangle removal from K6 and K7" font-family="Georgia,serif">' + ''.join(parts) + '</svg>\n'
     path.write_text(svg)
 
 
