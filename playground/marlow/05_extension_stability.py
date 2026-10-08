@@ -6,6 +6,7 @@ python3 -I playground/marlow/05_extension_stability.py.
 """
 
 from collections import Counter
+from importlib.util import module_from_spec, spec_from_file_location
 from math import comb, factorial, perm
 from pathlib import Path
 
@@ -50,6 +51,34 @@ def census(m, bridge):
             'gap': values[1] - values[0]}
 
 
+def verify_direct_small():
+    """Compare every formula value against direct cycle/triangle edge masks."""
+    spec = spec_from_file_location('extension_collisions', HERE / '04_extension_collisions.py')
+    direct = module_from_spec(spec)
+    spec.loader.exec_module(direct)
+    compared = 0
+    for m in (4, 5, 6):
+        k = m - 1
+        index = direct.edge_index(2 * k + 1)
+        cycles = direct.cycle_masks(2 * k + 1, m, index)
+        triangles = direct.triangle_masks(2 * k + 1, index)
+        for bridge in (0, 1):
+            base = direct.critical_base(m, bridge, index)
+            for attachment in range(1 << (2 * k)):
+                a = sum(attachment >> v & 1 for v in range(k))
+                b = sum(attachment >> (k + v) & 1 for v in range(k))
+                alpha = attachment >> (k - 1) & 1
+                beta = attachment >> k & 1
+                red_mask = base | sum(1 << index[(v, 2 * k)] for v in range(2 * k)
+                                      if attachment >> v & 1)
+                observed = sum(red_mask & mask == mask for mask in cycles)
+                observed += sum(red_mask & mask == 0 for mask in triangles)
+                assert total(k, a, b, alpha, beta, bridge) == observed, (m, bridge, attachment)
+                compared += 1
+    assert compared == 2688
+    return compared
+
+
 def drawing(path, results):
     """Show the gap between the smallest two distinct totals."""
     ink, green, gold, paper = '#242320', '#468875', '#b58a45', '#f7f4ed'
@@ -86,6 +115,7 @@ def drawing(path, results):
 
 
 def main():
+    compared = verify_direct_small()
     results = {(m, bridge): census(m, bridge)
                for m in range(4, 12) for bridge in (0, 1)}
     assert [(results[(m, 0)]['minimum'], results[(m, 1)]['minimum'])
@@ -100,6 +130,7 @@ def main():
                                    'second': base + k - 2, 'second_attainers': 2 * (k - 1),
                                    'gap': k - 2}
     drawing(HERE / 'art/extension_stability.svg', results)
+    print(f'Formula agrees with direct edge-mask counts on {compared} attachments at m=4,5,6.')
     for key, value in sorted(results.items()):
         print(key, value)
 
