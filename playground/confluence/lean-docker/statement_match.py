@@ -45,8 +45,17 @@ def declarations(text):
 
 
 def statement_only(body):
-    cut = body.find(":= by")
-    return body[:cut].strip() if cut >= 0 else body
+    # The statement ends at the first ":=" outside brackets. Cutting at ":= by"
+    # missed term-mode proofs (":= foo bar") and compared the whole proof.
+    depth = 0
+    for i, ch in enumerate(body):
+        if ch in "([{⟨":
+            depth += 1
+        elif ch in ")]}⟩":
+            depth -= 1
+        elif depth == 0 and body.startswith(":=", i):
+            return body[:i].strip()
+    return body
 
 
 def main():
@@ -61,7 +70,7 @@ def main():
             missing.append(name)
             continue
         a, b = body, sol[name][1]
-        if kind == "theorem":
+        if kind in ("theorem", "lemma"):
             a, b = statement_only(a), statement_only(b)
         (same if a == b else differ).append(name)
     print(f"identical: {len(same)}  differ: {len(differ)}  missing from solution: {len(missing)}")

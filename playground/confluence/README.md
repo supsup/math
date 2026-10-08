@@ -28,6 +28,8 @@ Python and Java; Lean would go in a container.
 | [sidorenko/](sidorenko/) | Notes + Python for the Sidorenko counterexample |
 | [truffet/](truffet/) | Notes + Python for the Truffet tropical-LP counterexample |
 | [permanent/](permanent/) | Notes for the robust four-row permanent inequality |
+| [plane-coloring/](plane-coloring/) | Notes + Python for the plane 7-colouring (Hadwiger-Nelson upper bound) |
+| [hadamard-cube-fiber/](hadamard-cube-fiber/) | Notes + Python for the 6x6 Hadamard cube-fibre lemma |
 | [lean-docker/](lean-docker/) | Container scripts + logs for checking Lean proofs (no Lean on the host) |
 | [lean-cones/](lean-cones/) | Script measuring each Comparator challenge's dependency cone (which formal results are cheap to check) |
 | [java/](java/) | ALL Java examples, one package per result (`confluence.math.*`) |
@@ -41,6 +43,8 @@ Python and Java; Lean would go in a container.
 | Truffet counterexample (Lean theorem `finite_execution_not_optimal`) | Python + Java replications of the Lean definitions, with negative controls | All 13 conjuncts hold: forced execution stops at cost 1, a feasible point costs 0. One conjunct (for-all/exists) only sampled |
 | Truffet: does the Lean PROOF check? | Docker, pinned Lean 4.34.1 + Mathlib d13f23b7, build + `#print axioms` + sorry control; textual statement match | Proved: axioms exactly [propext, Classical.choice, Quot.sound], no sorryAx (control shows sorryAx); 31/31 declarations match the challenge |
 | Robust four-row permanent (Lean `robust_permanent`) | Docker build + axioms + sorry control; statement match; Java search with a closed form | Proved: permitted axioms only, 10/10 declarations match. At the uniform law the inequality FAILS for p < 4 ln4/ln24 = 1.7448 (permutation matrix, closed form); proof's witness p0 = 1.99999 sits above it |
+| Plane 7-colouring (Lean `properColoring_seven`) | Docker build + axioms + sorry control; statement match; Python + Java over all admissible colour choices; my own independent recheck | Proved: permitted axioms only, 3/3 declarations match. 0 clashes in 1.4M unit pairs incl. boundary pairs; 6 controls fire (wrong spacing, wrong rule, 6 colours, broken instrument). Built by a sub-agent, rechecked by me |
+| 6x6 Hadamard cube fibres (Lean `rowRatio_cubeFiber_sum_zero`) | Docker build + axioms + sorry control; statement match; Python + Java on Tao's matrix, equivalents, standard families; my own recheck | Proved: permitted axioms only, 8/8 match. BUT the H∘H hypothesis forces Tao's matrix, where no row pair has two cube values, so matrix tests reach only the trivial case; the real content shows only on vectors. Built by a sub-agent, rechecked by me |
 | Which formal results are cheap to check | `lean-cones/cones.py` over all 405 Comparator challenges | 390 of 416 need only Mathlib after Charles's pull of 2026-10-08 (was 379 of 405); smallest solution cones are 1-2 modules (e.g. Truffet: 2) |
 
 ## Log
