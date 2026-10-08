@@ -1,13 +1,14 @@
 # Every leaf residue for prime hubs 5 modulo 8
 
-**Computer-assisted class theorem.** Let \(p\ge13\) be prime with
+**Computer-assisted class theorem.** Let \(p\ge5\) be prime with
 \(p\equiv5\pmod8\), and let \(t\ge p-1\) be an integer. Then
 
 \[
 d(K_{p,t})=t+\left\lceil\frac{(p-1)t}{2p}\right\rceil.
 \]
 
-The proof joins the analytic large-prime tail of
+The case \(p=5\) is the explicit [five-hub formula](14_bipartite_five.md).
+For \(p\ge13\), the proof joins the analytic large-prime tail of
 [item 68](68_half_interval_overlap_all_large_primes.md) to an exact
 finite enumeration below its \(60{,}000{,}000\) threshold. The
 enumeration is deterministic and reproducible from the
