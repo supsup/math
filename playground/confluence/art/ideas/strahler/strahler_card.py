@@ -11,6 +11,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import strahler as s  # noqa: E402
+import strahler_null as sn  # noqa: E402
 
 N, SEEDS = 1_000_000, 20
 BG, INK, DIM, GOLD, AQUA = "#0d1b2a", "#e8eef2", "#7d92a6", "#f4d58d", "#8fd3ff"
@@ -29,6 +30,11 @@ def main():
         for k, v in enumerate(s.ratios(c2), start=1):
             per_k.setdefault(k, []).append(v)
     K = max([max(cnt)] + [max(c2) for c2 in ctrl_counts])
+    null_r1 = []
+    for salt in (0, 1):
+        step = (lambda sl: (lambda n: n // 2 if n % 2 == 0 else (3 * n + 1 if sn.coin(n, sl) else 3 * n - 1)))(salt)
+        nch, nroots = sn.forest(N, step)
+        null_r1.append(s.ratios(sn.horton_forest(nch, nroots))[0])
     W, H = 480, 600
     px0, py0, pw, ph = 70, 70, 370, 250
     ymax = math.log10(cnt[1]) + 0.2
@@ -72,8 +78,8 @@ def main():
         y += 17
     notes = [
         "River-like: every ratio is in real rivers' range of about 3 to 5.",
-        "Not random: k=1 is above 4, then orders thin out more slowly (ratios",
-        "below 4), so high orders are relatively over-represented.",
+        "k=1 above 4 is Collatz's own: a coin-flip null (odd n -> 3n\u00b11 by a",
+        f"hash, 2 salts) gives {min(null_r1):.3f}-{max(null_r1):.3f}. Slower thinning at k \u2265 2 is not: the null shows it too.",
         "The sources exist only because the starts stop at N:",
         "the full inverse Collatz tree has none (every n has 2n above it).",
     ]
