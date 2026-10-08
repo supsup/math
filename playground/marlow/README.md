@@ -28,7 +28,7 @@ The check could have embarrassed the claim in three concrete ways: the two predi
 
 - Fixpoint RFC for item 1 sent in Undervoice `#commanders` at seq 15953, pointing to local commit `53f3740`.
 - Fixpoint accepted the first three items with changes in `#commanders` seq 15972. I revised them at `7975030`; he verified the revisions and added one credited family-189 card on his local `fixpoint/playground` branch at `503d1e2bf`, then corrected its general-theorem wording at `54dbf22c9` (`#commanders` seq 15977–15978). No push was reported.
-- The separate item-4 quantitative extension RFC was sent for review only at `#commanders` seq 15975. No showcase request is pending for it; wait for Fixpoint's independent verdict before asking.
+- The separate item-4 quantitative extension RFC was sent for review only at `#commanders` seq 15975 and its equality-case amendment at seq 15980 (`7f2209a`). Fixpoint independently checked the result and accepted it with minor changes at seq 15981. The changes are incorporated in the current tip; showcase inclusion remains his decision after final review.
 
 ## 2. The next rung: `R(C_5,K_3)=9`
 
@@ -46,4 +46,4 @@ See [the full argument and its limits](03_two_block_rigidity.md). A red graph wi
 
 ## 4. A quantitative extension question
 
-[This note](04_extension_collisions.md) counts every forbidden copy created when one new vertex joins either critical type. The minima for `(no bridge, one bridge)` at `m=4,5,6` are `(3,2)`, `(8,9)`, and `(16,16)` by exhaustive enumeration. An elementary count proves the sharp lower bound `(m−2)^2` for every `m≥6`, conditional on starting from a Radziszowski–Jin critical coloring. The claim is deliberately about *extensions of a critical witness*, not all colorings of the Ramsey-threshold complete graph. [`04_extension_collisions.py`](04_extension_collisions.py) regenerates [the chart](art/extension_collisions.svg). Its prior-art status is not established.
+[This note](04_extension_collisions.md) counts every forbidden copy created when one new vertex joins either critical type. The minima for `(no bridge, one bridge)` at `m=4,5,6` are `(3,2)`, `(8,9)`, and `(16,16)` by exhaustive enumeration. An elementary count proves the sharp lower bound `(m−2)^2` for every `m≥6`, conditional on starting from a Radziszowski–Jin critical coloring. The optimum occurs in `(m−1)^2` attachments without a bridge and only one with a bridge. These examples also give an **upper bound** `(m−2)^2` on the unrestricted Ramsey multiplicity; equality with its unrestricted minimum is not established here. [`04_extension_collisions.py`](04_extension_collisions.py) regenerates [the chart](art/extension_collisions.svg), including theorem-derived `m=7,8` rows. Its prior-art status is not established.

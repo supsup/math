@@ -76,27 +76,39 @@ def extension_stats(m, bridge, index, cycles, triangles):
 
 def drawing(path, results):
     """A compact chart of the exact conditional minima."""
-    ink, red, blue, paper = '#242320', '#ad4d35', '#718aa0', '#f7f4ed'
-    parts = [f'<rect width="960" height="540" fill="{paper}"/>',
+    ink, green, gold, paper = '#242320', '#468875', '#b58a45', '#f7f4ed'
+    parts = [f'<rect width="960" height="730" fill="{paper}"/>',
              f'<text x="480" y="43" text-anchor="middle" font-size="25" fill="{ink}">The first unavoidable collisions</text>',
              f'<text x="480" y="70" text-anchor="middle" font-size="15" fill="{ink}">One vertex joins a critical colouring · red Cₘ copies + blue K₃ copies</text>']
     max_count = max(row['minimum'] for row in results.values())
-    scale = 510 / max_count
+    scale = 440 / max_count
     for row, m in enumerate(sorted({m for m, _ in results})):
-        y = 135 + row * 112
-        parts.append(f'<text x="83" y="{y + 30}" text-anchor="end" font-size="19" fill="{ink}">m = {m}</text>')
-        for offset, bridge in ((0, 0), (33, 1)):
+        y = 135 + row * 104
+        parts.append(f'<text x="86" y="{y + 29}" text-anchor="end" font-size="19" fill="{ink}">m = {m}</text>')
+        for offset, bridge in ((0, 0), (32, 1)):
             value = results[(m, bridge)]['minimum']
             width = round(value * scale, 2)
-            color = blue if bridge == 0 else red
-            parts.append(f'<rect x="120" y="{y + offset}" width="{width}" height="26" rx="3" fill="{color}"/>')
-            parts.append(f'<text x="{137 + width}" y="{y + offset + 19}" font-size="17" fill="{ink}">{value}</text>')
-    parts.append(f'<rect x="120" y="475" width="15" height="15" fill="{blue}"/>')
-    parts.append(f'<text x="143" y="488" font-size="14" fill="{ink}">two cliques, no bridge</text>')
-    parts.append(f'<rect x="420" y="475" width="15" height="15" fill="{red}"/>')
-    parts.append(f'<text x="443" y="488" font-size="14" fill="{ink}">two cliques, one red bridge</text>')
-    parts.append(f'<text x="480" y="524" text-anchor="middle" font-size="12" fill="{blue}">Critical types: Radziszowski &amp; Jin (1994), Thm 3</text>')
-    svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="Minimum forbidden copies in one-vertex extensions of critical cycle triangle colorings" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'
+            color = green if bridge == 0 else gold
+            parts.append(f'<rect x="120" y="{y + offset}" width="{width}" height="25" rx="3" fill="{color}"/>')
+            parts.append(f'<text x="{136 + width}" y="{y + offset + 19}" font-size="17" fill="{ink}">{value}</text>')
+    parts.extend([
+        '<rect x="680" y="120" width="245" height="412" rx="8" fill="#eee8da"/>',
+        f'<text x="700" y="161" font-size="18" fill="{ink}">For m ≥ 6</text>',
+        f'<text x="700" y="211" font-size="34" fill="{ink}">(m−2)²</text>',
+        f'<text x="700" y="238" font-size="15" fill="{ink}">sharp for both bases</text>',
+        f'<text x="700" y="310" font-size="17" fill="{ink}">Optimal attachments</text>',
+        f'<text x="700" y="344" font-size="15" fill="{ink}">no bridge: (m−1)²</text>',
+        f'<text x="700" y="373" font-size="15" fill="{ink}">one bridge: 1</text>',
+        f'<text x="700" y="467" font-size="14" fill="{ink}">Conditional one-vertex</text>',
+        f'<text x="700" y="491" font-size="14" fill="{ink}">extension count</text>',
+        f'<rect x="120" y="646" width="15" height="15" fill="{green}"/>',
+        f'<text x="143" y="659" font-size="14" fill="{ink}">two cliques, no bridge</text>',
+        f'<rect x="420" y="646" width="15" height="15" fill="{gold}"/>',
+        f'<text x="443" y="659" font-size="14" fill="{ink}">two cliques, one red bridge</text>',
+        f'<text x="480" y="691" text-anchor="middle" font-size="13" fill="{ink}">m = 4–6 enumerated; m = 7–8 follow the proved formula</text>',
+        f'<text x="480" y="716" text-anchor="middle" font-size="12" fill="{green}">Critical types: Radziszowski &amp; Jin (1994), Thm 3</text>',
+    ])
+    svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 730" width="960" height="730" role="img" aria-label="Minimum forbidden copies in one-vertex extensions of critical cycle triangle colorings" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(svg)
 
@@ -118,10 +130,13 @@ def main():
             results[(m, bridge)] = extension_stats(m, bridge, index, cycles, triangles)
     assert {key: item['minimum'] for key, item in results.items()} == expected
     assert {key: item['achievers'] for key, item in results.items()} == expected_achievers
+    for m in (7, 8):
+        for bridge in (0, 1):
+            results[(m, bridge)] = {'minimum': (m - 2) ** 2}
     drawing(HERE / 'art/extension_collisions.svg', results)
     for key, item in sorted(results.items()):
         print(key, item)
-    print('For m>=6 the analytic bound is (m-2)^2; these checks cover m=6 only.')
+    print('The m=7,8 chart rows use the analytic formula; exhaustive attachment checks cover m<=6.')
 
 
 if __name__ == '__main__':
