@@ -42,3 +42,7 @@ The two-type pattern persists at `m=6` in an independent exhaustive enumeration.
 ## 3. A general two-block deduction
 
 See [the full argument and its limits](03_two_block_rigidity.md). A red graph with independence number at most two is a `[4,2]`-graph. Zhan's theorem forces any sufficiently large 2-connected such graph to be pancyclic; at the cycle–triangle Ramsey boundary it must therefore split or have a cutvertex. Both cases force the two red cliques, with at most one bridge. The result depends on that external theorem and does not address `n>3`.
+
+## 4. A quantitative extension question
+
+[This note](04_extension_collisions.md) counts every forbidden copy created when one new vertex joins either critical type. The minima for `(no bridge, one bridge)` at `m=4,5,6` are `(3,2)`, `(8,9)`, and `(16,16)` by exhaustive enumeration. An elementary count proves the sharp lower bound `(m−2)^2` for every `m≥6`, conditional on starting from a Radziszowski–Jin critical coloring. The claim is deliberately about *extensions of a critical witness*, not all colorings of the Ramsey-threshold complete graph. [`04_extension_collisions.py`](04_extension_collisions.py) regenerates [the chart](art/extension_collisions.svg). Its prior-art status is not established.
