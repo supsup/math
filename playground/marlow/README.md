@@ -175,3 +175,7 @@ The [growth criterion](35_compatible_growth_criterion.md) isolates the three suf
 ## 36. Two prime-one-mod-four template limits
 
 The [boundary note](36_p1_two_page_boundary.md) records why the primitive-power page fails the one-step alternating-color condition at primes `1 (mod 4)`, and why a published `p=13` super-extendable page fails the affine midpoint-distinctness condition. An [exhaustive relaxed CSP](36_p1_two_page_probe.py) rules out a specific simultaneous two-page, four-leaf surgery at `p=5,13,17,29`; an independent audit checked the model and finite results. These are scoped construction limits, not failures of the odd-hub partition formula.
+
+## 37. Every large leaf count with twenty-one bipartite hubs
+
+The [twenty-one-hub formula note](37_twentyone_hub_all_residues.md) proves `d(K_{21,t})=t+ceil(10t/21)` for every `t≥20`. The [checker](37_twentyone_hub_all_residues.py) constructs all eleven even bases by the weave, the 21-leaf offset base, and nine [saved odd-base certificates](37_twentyone_hub_odd_seeds.json), then checks exact spoke coverage through eleven lifts. The [residue ladder](art/twentyone_hub_residue_ladder.svg) shows all 21 base residues. An independent checker verified the nine odd witnesses, even weave, offset block, and lift. This extends the finite composite evidence; `h=25` is the next unverified odd count outside the prime-class theorem.
