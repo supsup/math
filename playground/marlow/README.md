@@ -279,3 +279,7 @@ The [fifty-one-hub note](61_fiftyone_hub_partial.md) certifies the optimal squar
 ## 62. First-base repairs of four-, eight-, and sixteen-component pages
 
 The [multi-component note](62_one_mod8_first_base.md) gives finite first odd-base certificates from the antipodal starter for `p=41,73,89,97,113`, all `1 (mod 8)`. Their pages begin with 4, 4, 4, 16, and 8 components and need 5, 4, 6, 17, and 9 support-preserving trades, respectively. The [saved traces](62_one_mod8_first_base_traces.json) and [independent replay](62_one_mod8_first_base_audit.py) verify exact spoke coverage and `d(K_{p,p+2})=(3p+5)/2` in each case. Offsets give the same equality for `t=p+2+pq`; a uniform class theorem remains open.
+
+## 63. Every large leaf count with fifty-three bipartite hubs
+
+The [fifty-three-hub formula note](63_fiftythree_hub_all_residues.md) proves `d(K_{53,t})=t+ceil(26t/53)` for every `t≥52`. Translated antipodal pages are repaired in consecutive pairs at even odd-base prefixes; the first single page uses two trades, and each later unpaired page uses one additional trade. The [saved walks and traces](63_fiftythree_hub_odd_seeds.json) cover the square and all 25 growth prefixes. A [deterministic generator](63_fiftythree_hub_generator.py) reproduces the certificate, a [trade replay](63_fiftythree_hub_trace_audit.py) checks all 170 switches, and an [independent audit](63_fiftythree_hub_independent_audit.py) verifies all 53 base residues and offset lifts. The next unresolved fixed odd hub count is 51, whose square and even residues are covered by item 61.
