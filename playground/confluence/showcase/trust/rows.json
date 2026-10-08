@@ -89,6 +89,16 @@
    ],
    "verdict": "NARROWER",
    "gap": "docs/195 says the MCM-free property is not proved. Sharper: the existential is met by C[[x,y,z]], which is regular and IS its own maximal CM module, so the statement does not pin the paper's candidate at all"
+  },
+  {
+   "family": "254",
+   "title": "An Artin group that is not CAT(0)",
+   "lean": "an explicit Artin group on 116 generators (labels 2, 3, infinity) has no geometric action on any nonempty proper CAT(0) space",
+   "readers": [
+    "confluence"
+   ],
+   "verdict": "MATCHES",
+   "gap": "none at the statement level (docs/254 states exactly this); the 9,400-line proof is the kernel's word"
   }
  ]
 }
