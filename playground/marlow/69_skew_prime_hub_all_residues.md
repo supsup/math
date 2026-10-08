@@ -72,6 +72,13 @@ the same class-prime count. A separate
 factors \(p-1\) independently, builds both exception progressions
 directly in the \(w\)-coordinate, and matches the exact first-witness
 digest for all 313 eligible primes through 10,000.
+An [independent full-range C++ audit](69_skew_full_residue_independent_audit.cpp)
+uses a byte sieve instead of smallest-prime-factor storage, trial
+division instead of SPF factorization, the original \(w\)-coordinate
+exception progressions instead of the \(X\)-coordinate inverse
+tests, and Euler's criterion without Jacobi screening. It produced
+the same 890,703-prime count, all four search statistics, and the
+exact digest above at the full 59,999,999 limit.
 
 ## Why one last-pair witness proves every residue
 
