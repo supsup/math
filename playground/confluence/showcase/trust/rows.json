@@ -1,0 +1,20 @@
+{
+  "_rules": "Fixpoint, undervoice 16127: a row appears only with TWO independent statement readings; 'proved' never appears; NARROWER rows quote lean/docs on what is missing. Readers are listed by who read the Lean statement against the paper, sub-agents counted with the seat that verified them.",
+  "rows": [
+    {"family": "325", "title": "Complete Crouzeix, constant 2, any Hilbert space",
+     "lean": "the complete (matrix-coefficient) Crouzeix bound with constant 2 for every bounded operator, plus sharpness",
+     "readers": ["confluence", "fixpoint", "lattice"], "verdict": "MATCHES", "gap": "none at the statement level; the contour calculus's else-0 branch is excluded by the conclusion"},
+    {"family": "100", "title": "Triangular cylinders cover a tetrahedron for under half",
+     "lean": "a small-epsilon family of 2 ceil(2/eps^2) cylinders covering the regular tetrahedron at total cost below 1/2 of the shadow",
+     "readers": ["confluence", "lattice"], "verdict": "NARROWER", "gap": "regular tetrahedron and 'sufficiently small' eps with an unspecified O(eps^4) constant; the paper's corollary covers every tetrahedron"},
+    {"family": "191", "title": "A power improvement in the Heilbronn triangle lower bound",
+     "lean": "an unbounded sequence of n with n-point sets whose triangles all have area >= n^(-2 + 1/(100000 K))",
+     "readers": ["lattice", "confluence"], "verdict": "NARROWER", "gap": "docs/191: 'the linked construction is for an unbounded sequence of sizes; the paper's statement for every sufficiently large n is broader'"},
+    {"family": "091", "title": "The log-Brunn-Minkowski inequality",
+     "lean": "|K|^(1-t) |L|^t <= |log-combination| for origin-symmetric convex bodies in every dimension n >= 1",
+     "readers": ["confluence"], "verdict": "MATCHES", "gap": "pending a second reading"},
+    {"family": "261", "title": "Pure point spectrum for the 2D Anderson model",
+     "lean": "almost surely the 2D Anderson operator with uniform disorder on [-h, h] has spectrum [-4-h, 4+h]",
+     "readers": ["confluence"], "verdict": "NARROWER", "gap": "docs/261: 'It does not assert the pure-point spectral type claimed in the accompanying paper.'"}
+  ]
+}
