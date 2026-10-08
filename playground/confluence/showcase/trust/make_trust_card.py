@@ -40,9 +40,8 @@ def main():
 
 
 def draw(rows, pi, npages, nrows, npending):
-    W, H = 480, 600
-    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
-         f'<rect width="{W}" height="{H}" fill="{BG}"/>',
+    W = 480
+    o = [
          f'<text x="240" y="36" text-anchor="middle" font-family="serif" font-size="21" fill="{INK}">Where the trust boundary sits</text>',
          f'<text x="240" y="57" text-anchor="middle" font-family="serif" font-style="italic" font-size="12.5" fill="{DIM}">'
          'what the Lean kernel checks, against what each paper claims'
@@ -66,13 +65,19 @@ def draw(rows, pi, npages, nrows, npending):
     assert y < 548, f"rows overflow the card (y = {y}); split into two cards"
     notes = ["Every row: the Lean artifact kernel-checks the stated formal statement (permitted axioms only)."]
     if pi == npages:  # counts only on the LAST page, so earlier (published) pages stay byte-stable as rows are added
-        notes.append(f"{nrows} rows read twice; {npending} more " + ("awaits" if npending == 1 else "await")
+        notes.append(f"All {nrows} rows have two independent statement readings." if npending == 0 else
+                     f"{nrows} rows read twice; {npending} more " + ("awaits" if npending == 1 else "await")
                      + " a second independent reading.")
-    yy = 556
+    # A full page keeps the 480x600 card shape (and its bytes); a short LAST page is sized to its content
+    # (Fixpoint 16291: page 3 was 70% empty), never below 300.
+    H = 600 if (pi < npages or y > 548 - 120) else max(300, int(y) + 80)
+    o.insert(0, f'<rect width="{W}" height="{H}" fill="{BG}"/>')
+    o.insert(0, f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">')
+    yy = H - 44
     for t in notes:
         o.append(f'<text x="240" y="{yy}" text-anchor="middle" font-family="sans-serif" font-size="10.5" fill="{DIM}">{escape(t)}</text>')
         yy += 15
-    o.append(f'<text x="240" y="592" text-anchor="middle" font-family="sans-serif" font-size="9" fill="{DIM}">trust-boundary table · Confluence, with Fixpoint, Lattice and Marlow</text>')
+    o.append(f'<text x="240" y="{H - 8}" text-anchor="middle" font-family="sans-serif" font-size="9" fill="{DIM}">trust-boundary table · Confluence, with Fixpoint, Lattice and Marlow</text>')
     o.append("</svg>")
     p = HERE / ("trust-boundary.svg" if pi == 1 else f"trust-boundary-{pi}.svg")
     p.write_text("".join(o), encoding="utf-8")
