@@ -163,3 +163,7 @@ The [nineteen-hub formula note](32_nineteen_hub_all_residues.md) proves `d(K_{19
 ## 33. A uniform leaf-omission schedule
 
 The [interval schedule note](33_interval_omission_schedule.md) proves that for every odd `h=2k+1` and odd base `t=h+2j`, a simple cyclic tape distributes omitted leaves among `k` full and `j` short prospective cycles with exactly the required vertex-incidence degrees. This is a uniform arithmetic step toward the conjecture, not an edge assignment or connected-cycle decomposition. A fixed near-one-factor at each singleton hub fails for this schedule already at small cases, so a proof needs more flexible pairings or a different design.
+
+## 34. All leaf counts at primes three modulo four
+
+The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil(((p−1)/2)t/p)` for every `t≥p−1` and every prime `p≥7` with `p≡3 (mod 4)`. An affine square seed labels hub pairs by their midpoints. Translated multiplicative hub cycles intersect pairwise in exactly one edge, letting a two-leaf growth move repeat through **every odd base**; the even weave and offset lift finish all residues. The [checker](34_prime_two_leaf_growth.py) verifies every odd base at 23 primes through 199 and draws the [seven-hub first-move diagram](art/prime_two_leaf_growth.svg). Other odd hub counts remain open.
