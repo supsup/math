@@ -71,18 +71,27 @@ def statement_only(body):
 
 def main():
     ch = declarations(CHALLENGE.read_text())
+    # Names are short names as written, so one name can occur in several solution
+    # files (EuclideanRamseyNine has two nine_circle_configuration theorems). Keep
+    # every occurrence: a dict used to keep whichever file was read last.
     sol = {}
     for f in SOLUTION:
-        sol.update(declarations(f.read_text()))
+        for name, decl in declarations(f.read_text()).items():
+            sol.setdefault(name, []).append((f.name, decl))
     print(f"challenge declarations: {len(ch)}; solution declarations: {len(sol)}")
     same, differ, missing = [], [], []
     for name, (kind, body) in ch.items():
         if name not in sol:
             missing.append(name)
             continue
-        a, b = body, sol[name][1]
-        if kind in ("theorem", "lemma"):
-            a, b = statement_only(a), statement_only(b)
+        cands = sol[name]
+        strip = statement_only if kind in ("theorem", "lemma") else (lambda x: x)
+        a = strip(body)
+        hits = [fn for fn, (_, b) in cands if strip(b) == a]
+        if len(cands) > 1:
+            print(f"NOTE: {name} occurs in {len(cands)} solution files "
+                  f"({', '.join(fn for fn, _ in cands)}); identical in: {', '.join(hits) or 'none'}")
+        b = strip(cands[0][1][1]) if not hits else a
         # Keep the compared strings: printing the raw bodies showed proofs that
         # were never compared and misled a reader into a stale note.
         if a == b:

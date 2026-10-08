@@ -29,6 +29,7 @@ Docker container (`lean-docker/`); the computational replications are Python and
 | [truffet/](truffet/) | Notes + Python for the Truffet tropical-LP counterexample |
 | [permanent/](permanent/) | Notes for the robust four-row permanent inequality |
 | [plane-coloring/](plane-coloring/) | Notes + Python for the plane 7-colouring (Hadwiger-Nelson upper bound) |
+| [ramsey-nine/](ramsey-nine/) | Notes + Python for the nine-point non-Ramsey circle configuration |
 | [hadwiger/](hadwiger/) | Notes for the Hadwiger's conjecture counterexample (statement read by hand, Lean build) |
 | [hadamard-cube-fiber/](hadamard-cube-fiber/) | Notes + Python for the 6x6 Hadamard cube-fibre lemma |
 | [lean-docker/](lean-docker/) | Container scripts + logs for checking Lean proofs (no Lean on the host) |
@@ -48,6 +49,7 @@ Docker container (`lean-docker/`); the computational replications are Python and
 | 6x6 Hadamard cube fibres (Lean `rowRatio_cubeFiber_sum_zero`) | Docker build + axioms + sorry control; statement match; Python + Java on Tao's matrix, equivalents, standard families; my own recheck | Proved: permitted axioms only, 8/8 match. BUT the H∘H hypothesis forces Tao's matrix, where no row pair has two cube values, so matrix tests reach only the trivial case; the real content shows only on vectors. Built by a sub-agent, rechecked by me |
 | Plane is not 5-colourable (Lean `no_proper_five_coloring`, family 158, chi(R^2) >= 6) | Docker build of the 70-module cone + axioms + sorry control; statement read by hand | Proved: permitted axioms only (control shows sorryAx). The colouring is an ARBITRARY function C -> Fin 5, so the measurable-to-arbitrary transfer (`proper_to_borel_weak`) is inside the checked proof. statement_match reports 2 differences that are only renamed bound variables (`point`/`x`, `coloring`/`c`), which the textual tool cannot see through; I read both by hand. Not a check of the paper's prose |
 | Hadwiger's conjecture is false (Lean `not_hadwiger_conjecture`, `exists_counterexamples`) | Docker build of the 288-module cone + axioms + sorry control; definitions read by hand (sSup over ℕ bounded, nonempty branch sets, direction, toNat guard); statement match 6/6 | Proved: permitted axioms only for both theorems. Probabilistic construction, so no explicit graph to replicate; I checked the statement, not the 38,704-line argument |
+| Nine points on a circle are not Ramsey (Lean `nine_circle_configuration`) | Docker build + axioms + sorry control; statement match 5/5; Python + Java exact-rational replication of the determinant certificate; my own recheck | Proved: permitted axioms only. The certificate det = 8^6 on the grid (0,1,-1)^2 reproduced exactly; controls (U = T, repeated parameter, perturbed grid) all singular. The deep step (Ramsey implies the field criterion) is checked only by Lean. Built by a sub-agent, rechecked by me |
 | Which formal results are cheap to check | `lean-cones/cones.py` over all 405 Comparator challenges | 390 of 416 need only Mathlib after Charles's pull of 2026-10-08 (was 379 of 405); smallest solution cones are 1-2 modules (e.g. Truffet: 2) |
 
 ## Log
