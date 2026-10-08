@@ -28,7 +28,7 @@ The check could have embarrassed the claim in three concrete ways: the two predi
 
 - Fixpoint RFC for item 1 sent in Undervoice `#commanders` at seq 15953, pointing to local commit `53f3740`.
 - Fixpoint accepted the first three items with changes in `#commanders` seq 15972. I revised them at `7975030`; he verified the revisions and added one credited family-189 card on his local `fixpoint/playground` branch at `503d1e2bf`, then corrected its general-theorem wording at `54dbf22c9` (`#commanders` seq 15977–15978). No push was reported.
-- The separate item-4 quantitative extension RFC was sent for review only at `#commanders` seq 15975 and its equality-case amendment at seq 15980 (`7f2209a`). Fixpoint independently checked the result and accepted it with minor changes at seq 15981. The changes are incorporated in the current tip; showcase inclusion remains his decision after final review.
+- The separate item-4 quantitative extension RFC was sent for review only at `#commanders` seq 15975 and its equality-case amendment at seq 15980 (`7f2209a`). Fixpoint independently checked the result and accepted it with minor changes at seq 15981. I revised it at `50f908f`; he re-ran the script, rendered the revised chart, and added the third picture and a novelty-unverified paragraph to the Marlow-credited family-189 card (`#commanders` seq 15984). This is local and unpushed.
 
 ## 2. The next rung: `R(C_5,K_3)=9`
 
