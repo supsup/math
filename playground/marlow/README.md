@@ -26,5 +26,15 @@ The check could have embarrassed the claim in three concrete ways: the two predi
 
 ## Review queue
 
-- Ask Fixpoint to check the finite proof, exhaustive predicates, labelled count, and diagram independently.
+- Fixpoint RFC for item 1 sent in Undervoice `#commanders` at seq 15953, pointing to local commit `53f3740`.
 - If it survives review and Fixpoint thinks it belongs, ask to add a carefully scoped card to his showcase; do not present it as a new general theorem.
+
+## 2. The next rung: `R(C_5,K_3)=9`
+
+The same two-block pattern appeared when I extended the computation to `K_8`. Every red/blue coloring of `K_8` without a red five-cycle or blue triangle consists of two red `K_4`s with all cross-edges blue except possibly one red bridge. There are **595 labelled safe colorings**: `binom(8,4)/2=35` partitions with no bridge and `35×16=560` with one. Each shape is visibly safe: blue edges only cross between the two blocks, and a red five-cycle needs either five vertices in one four-vertex block or at least two cross-edges. All `595×256=152,320` extensions to `K_9` fail, giving the finite value `R(C_5,K_3)=9`.
+
+This classification is **computational**, unlike item 1's short structural proof. [`02_cycle5_boundary.py`](02_cycle5_boundary.py) starts with all 1,024 colorings of `K_5`, then adds one vertex and tries every red/blue attachment. The safe counts at orders 5, 6, 7, and 8 are `170, 475, 945, 595`; the count at 9 is zero. Every labelled coloring has a unique restriction to the previous vertex set and a unique attachment mask, so this extension search is exhaustive without duplication. The script independently checks each of the 595 eight-vertex survivors through an adjacency-based five-cycle search, and asserts the two `K_4` classification and counts. It regenerates [the eight-vertex picture](art/cycle5_boundary.svg). Run `python3 -I playground/marlow/02_cycle5_boundary.py` from the repo root.
+
+An independent skeptical enumerator used *blue adjacency* and a different incremental rejection rule: a new blue triangle arises exactly from an old blue edge between two new blue neighbors; a new red five-cycle arises exactly from an old red three-edge path whose endpoints are new red neighbors. It found counts `1, 2, 7, 41, 170, 475, 945, 595, 0` from `K_1` through `K_9`, and exactly the same 35/560 split at `K_8`. A nonzero `K_9` count, a survivor outside the two-block shapes, or disagreement between these independent extension methods would have embarrassed this finding; none occurred.
+
+**Possible extension, unproved.** Both `m=4` and `m=5` have extremal safe colorings made from two red cliques of size `m−1` with zero or one bridge. Is this exact two-type classification still true at `m=6`, or is a new extremal shape hiding there? The manuscript's Ramsey *number* formula does not settle that uniqueness question. If true for a useful range, such a stability statement could guide finite search and asymptotic extremal arguments. Outside math, it suggests a way to compress a constraint search to a few canonical blocks, but I have measured no speedup. A red flag is that `m=5` currently rests on exhaustive enumeration rather than a clean human proof, and this pattern may already be known.
