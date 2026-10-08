@@ -100,11 +100,17 @@ def coverage(root, children):
 
 
 def color(value):
-    """Pale blue to rust; dark pivot uses its own color."""
-    lo, hi = (184, 207, 213), (173, 79, 54)
-    f = (value - 1) / 30
-    rgb = tuple(round(a + f * (b - a)) for a, b in zip(lo, hi))
-    return '#%02x%02x%02x' % rgb
+    """Five discrete bands; the 31-of-32 cells also get an outline."""
+    assert 1 <= value <= 31
+    if value <= 7:
+        return '#b7d6d8'
+    if value <= 16:
+        return '#7fb4bd'
+    if value <= 28:
+        return '#ad9ca9'
+    if value <= 30:
+        return '#c48a65'
+    return '#a85136'
 
 
 def drawing(path, counts):
@@ -123,7 +129,8 @@ def drawing(path, counts):
                 fill = color(counts[cell])
             else:
                 fill = '#fffdf8'
-            parts.append(f'<rect x="{px}" y="{py}" width="{size-2}" height="{size-2}" rx="2" fill="{fill}"/>')
+            outline = f' stroke="{ink}" stroke-width="2.5"' if counts.get(cell) == 31 else ''
+            parts.append(f'<rect x="{px}" y="{py}" width="{size-2}" height="{size-2}" rx="2" fill="{fill}"{outline}/>')
     parts.extend([
         '<rect x="600" y="122" width="297" height="420" rx="8" fill="#eee8da"/>',
         f'<text x="623" y="164" font-size="18" fill="{ink}">The root pivot is (8, 8)</text>',
@@ -136,14 +143,20 @@ def drawing(path, counts):
         f'<text x="623" y="438" font-size="15" fill="{ink}">child precondition intact.</text>',
         f'<text x="623" y="497" font-size="14" fill="{ink}">This counts proof preconditions,</text>',
         f'<text x="623" y="521" font-size="14" fill="{ink}">not winning probabilities.</text>',
-        f'<rect x="58" y="652" width="25" height="19" fill="{color(1)}"/>',
-        f'<text x="90" y="667" font-size="14" fill="{ink}">1 child</text>',
-        f'<rect x="170" y="652" width="25" height="19" fill="{color(31)}"/>',
-        f'<text x="202" y="667" font-size="14" fill="{ink}">31 children</text>',
-        f'<rect x="324" y="652" width="25" height="19" fill="{ink}"/>',
-        f'<text x="356" y="667" font-size="14" fill="{ink}">Maker pivot</text>',
-        f'<rect x="490" y="652" width="25" height="19" fill="#fffdf8"/>',
-        f'<text x="522" y="667" font-size="14" fill="{ink}">outside support</text>',
+        f'<rect x="58" y="640" width="25" height="19" fill="{color(1)}"/>',
+        f'<text x="90" y="655" font-size="14" fill="{ink}">1–7</text>',
+        f'<rect x="166" y="640" width="25" height="19" fill="{color(8)}"/>',
+        f'<text x="198" y="655" font-size="14" fill="{ink}">8–16</text>',
+        f'<rect x="296" y="640" width="25" height="19" fill="{color(17)}"/>',
+        f'<text x="328" y="655" font-size="14" fill="{ink}">17–28</text>',
+        f'<rect x="447" y="640" width="25" height="19" fill="{color(29)}"/>',
+        f'<text x="479" y="655" font-size="14" fill="{ink}">29–30</text>',
+        f'<rect x="604" y="640" width="25" height="19" fill="{color(31)}" stroke="{ink}" stroke-width="2.5"/>',
+        f'<text x="638" y="655" font-size="14" fill="{ink}">31 (43 outlined cells)</text>',
+        f'<rect x="58" y="677" width="25" height="19" fill="{ink}"/>',
+        f'<text x="90" y="692" font-size="14" fill="{ink}">Maker pivot: 32</text>',
+        f'<rect x="278" y="677" width="25" height="19" fill="#fffdf8"/>',
+        f'<text x="310" y="692" font-size="14" fill="{ink}">outside support: 0</text>',
         f'<text x="475" y="721" text-anchor="middle" font-size="12" fill="{ink}">From family 187 certificate; this picture does not simulate the game.</text>',
     ])
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 750" width="950" height="750" role="img" aria-label="Coverage heatmap of the 32 Snaky final certificate child envelopes" font-family="Georgia, serif">' + ''.join(parts) + '</svg>\n'

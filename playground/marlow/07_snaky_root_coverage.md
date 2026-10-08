@@ -2,7 +2,7 @@
 
 **Source and scope.** Family 187's [21-move Snaky certificate](../../preprints/Snaky-in-21-Maker-moves-September-25-2026/verification/certificate.txt) ends with a card whose required Maker set is empty, whose clean envelope has 251 cells in a `17×17` box, and whose height is 21. Its root move is `(8,8)`, after which it offers 32 transformed child conditions. The paper supplies the soundness argument and its [checker](../../preprints/Snaky-in-21-Maker-moves-September-25-2026/verification/verify_certificate.py) validates the finite set identities; this note asks a smaller descriptive question: **how many child envelopes contain each board cell?**
 
-[`07_snaky_root_coverage.py`](07_snaky_root_coverage.py) reconstructs all 728 certificate cards from the source bytes, checks the pinned certificate hash and root invariants, and counts membership in the final card's 32 child envelopes. The [heatmap](art/snaky_root_coverage.svg) covers the `17×17` box. The exact results are:
+[`07_snaky_root_coverage.py`](07_snaky_root_coverage.py) reconstructs all 728 certificate cards from the source bytes, checks the pinned certificate hash and root invariants, and counts membership in the final card's 32 child envelopes. The [heatmap](art/snaky_root_coverage.svg) covers the `17×17` box, groups counts into five color steps, and outlines the 43 cells at 31-of-32 coverage. The exact results are:
 
 | Quantity | Count |
 | --- | ---: |
