@@ -119,3 +119,11 @@ the small \(n\le63\) check.
 
 Publication priority for the complete equality theorem
 has not been established.
+
+The complementary count \(k-m(a)=|aH\cap(-H)|\) is the
+classical Gauss–Schering half-system sign count. In particular,
+[Kuroki and Katayama (2009), pp. 11–13](https://www-math.st.tokushima-u.ac.jp/journal/2009/2009-2.pdf)
+define this count for odd composite moduli and study its parity and
+average. That historical formulation is relevant context; the source
+comparison does not establish publication priority for the sharp
+one-third bound or the equality classification here.
