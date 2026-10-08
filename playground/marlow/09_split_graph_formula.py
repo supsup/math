@@ -45,6 +45,29 @@ def partition(t):
     return cycles, singles
 
 
+def bipartite_partition(t):
+    """A matching exact construction for K_(3,t), with no hub triangle."""
+    assert t >= 0
+    leaves = list(range(3, t + 3))
+    if t == 1:
+        return [], [edge(h, 3) for h in range(3)]
+    groups, remainder = divmod(t, 3)
+    if remainder == 1:
+        groups -= 1
+        remainder = 4
+    cycles, singles = [], []
+    for j in range(groups):
+        a, b, c = leaves[3 * j:3 * j + 3]
+        cycles.append((0, a, 1, b, 2, c))
+        singles.extend((edge(2, a), edge(0, b), edge(1, c)))
+    rest = leaves[3 * groups:]
+    for j in range(0, remainder, 2):
+        d, e = rest[j:j + 2]
+        cycles.append((0, d, 1, e))
+        singles.extend((edge(2, d), edge(2, e)))
+    return cycles, singles
+
+
 def check(t):
     cycles, singles = partition(t)
     all_edges = {edge(u, v) for u in range(3) for v in range(u + 1, 3)}
@@ -61,7 +84,21 @@ def check(t):
     assert seen == all_edges
     expected = t + (t + 2) // 3 + 1
     assert len(cycles) + len(singles) == expected
-    return len(cycles), len(singles)
+    bcycles, bsingles = bipartite_partition(t)
+    bipartite_edges = {edge(h, leaf) for h in range(3)
+                       for leaf in range(3, t + 3)}
+    seen = set()
+    for walk in bcycles:
+        for e in cycle_edges(walk):
+            assert e in bipartite_edges and e not in seen
+            seen.add(e)
+    for e in bsingles:
+        assert e in bipartite_edges and e not in seen
+        seen.add(e)
+    assert seen == bipartite_edges
+    bipartite_expected = 3 if t == 1 else t + (t + 2) // 3
+    assert len(bcycles) + len(bsingles) == bipartite_expected
+    return len(cycles), len(singles), len(bcycles) + len(bsingles)
 
 
 def draw(path):
@@ -98,9 +135,9 @@ def draw(path):
 
 def main():
     for t in range(41):
-        cycles, singles = check(t)
+        cycles, singles, bipartite = check(t)
         if t <= 11:
-            print(f't={t:2d} cycles={cycles:2d} singletons={singles:2d} total={cycles + singles:2d}')
+            print(f't={t:2d} joined={cycles + singles:2d} bipartite={bipartite:2d}')
     draw(HERE / 'art/split_graph_staircase.svg')
     print('All construction checks passed through t=40.')
 
