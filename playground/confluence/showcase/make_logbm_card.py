@@ -67,9 +67,9 @@ def main():
          f'<circle cx="{cx}" cy="{cy}" r="2.5" fill="{INK}"/>',
          f'<text x="{cx + sc + 6}" y="{cy - sc - 6}" font-family="sans-serif" font-size="12" fill="{AQUA}">K</text>',
          f'<text x="{cx + sc * 1.414 + 6}" y="{cy + 4}" font-family="sans-serif" font-size="12" fill="{ROSE}">L</text>',
-         f'<text x="{cx + 2}" y="{cy - sc * 1.25}" font-family="sans-serif" font-size="12" fill="{GOLD}">W</text>']
+         f'<text x="{cx + 30}" y="{cy - sc * 1.22}" font-family="sans-serif" font-size="12" fill="{GOLD}">W</text>']
     # inset: |W_t| / 4 against t
-    ix, iy, iw, ih = 150, 400, 180, 64
+    ix, iy, iw, ih = 150, 392, 180, 60
     top = max(r for _, r in curve)
     o.append(f'<rect x="{ix}" y="{iy}" width="{iw}" height="{ih}" fill="none" stroke="{DIM}" stroke-width="0.6"/>')
     ypos = lambda r: iy + ih - (r - 1) / (top - 1) * (ih - 8) - 4
@@ -78,16 +78,16 @@ def main():
     o.append(f'<text x="{ix - 6}" y="{ypos(1) + 4:.1f}" text-anchor="end" font-family="sans-serif" font-size="10" fill="{DIM}">1</text>')
     o.append(f'<text x="{ix - 6}" y="{ypos(top) + 4:.1f}" text-anchor="end" font-family="sans-serif" font-size="10" fill="{DIM}">{top:.3f}</text>')
     o.append(f'<text x="{ix + iw / 2}" y="{iy + ih + 14}" text-anchor="middle" font-family="sans-serif" font-size="10" fill="{DIM}">|W_t| / |K|^(1-t)|L|^t  for t from 0 to 1</text>')
-    lines = [(f"W = log-combination at t = 1/2: support √(h_K h_L) in every direction", INK, 12),
+    lines = [(f"W = log-combination at t = 1/2: support at most √(h_K h_L) in every direction", INK, 12),
              (f"|W| = {aw:.4f} against |K|^(1/2) |L|^(1/2) = {gm:.0f}: ratio {aw / gm:.4f}", INK, 12),
              (f"W is the regular octagon of inradius 2^(1/4), area 16 - 8\u221a2 = {16 - 8 * math.sqrt(2):.4f}", GOLD, 11),
-             ("The conjecture (BLYZ 2012) says |W| ≥ the geometric mean for every", DIM, 11),
-             ("pair of origin-symmetric convex bodies, in every dimension.", DIM, 11),
+             ("The conjecture (BLYZ 2012), which the collection's family 091 claims to prove:", DIM, 11),
+             ("|W| ≥ the geometric mean for origin-symmetric convex bodies, every dimension.", DIM, 11),
              ("The collection's Lean artifact kernel-checks that formal statement.", DIM, 11)]
-    y = 504
+    y = 490
     for text, col, size in lines:
         o.append(f'<text x="240" y="{y}" text-anchor="middle" font-family="sans-serif" font-size="{size}" fill="{col}">{text}</text>')
-        y += 17
+        y += 16
     o.append(f'<text x="240" y="592" text-anchor="middle" font-family="sans-serif" font-size="9" fill="{DIM}">{N:,} directions clipped; family 091 · Confluence</text>')
     o.append("</svg>")
     p = pathlib.Path(__file__).with_name("logbm-wulff.svg")
