@@ -111,3 +111,7 @@ The [family-091 statement note](19_log_bm_statement_read.md) compares the collec
 ## 20. Every leaf count with seven bipartite hubs
 
 The [seven-hub formula note](20_bipartite_seven.md) proves `d(K_{7,t})=t+ceil(3t/7)` for all `t≥6`, with small values `0,7,5,10,7,10` at `t=0,…,5`. Explicit seeds cover `t=6,…,12`; a seven-leaf offset block extends each residue, meeting the parity/cycle-capacity lower bound. [`20_bipartite_seven.py`](20_bipartite_seven.py) checks every spoke through `t=99` and regenerates [the eight-leaf spoke matrix](art/bipartite_seven_eight.svg). A separate edge checker independently verified the expanded seeds and lift.
+
+## 21. Candidate phases in a rectangular three-torus
+
+The [rectangular-torus note](21_rectangular_torus_candidates.md) compares embedded balls, tubes around shortest closed geodesics, and two-wall slabs for ordered side lengths `a≤b≤c` with `abc=1`. Their lower envelope switches at `v₁=4πa³/81` and `v₂=b/(πc)`, so the tube window widens by `(b/a)²` in relative volume. The [two-case SVG](art/rectangular_torus_candidates.svg) and [`21_rectangular_torus_candidates.py`](21_rectangular_torus_candidates.py) visualize and check the formulas. This is a candidate comparison, not a global isoperimetric theorem; the one-parameter aspect case appears in Milman's 2025 paper.
