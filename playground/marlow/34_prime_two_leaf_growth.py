@@ -88,7 +88,7 @@ def draw(path):
     inv2 = pow(2, -1, p)
     ink, muted, paper = '#24313a', '#5c6970', '#f7f4ed'
     teal, copper = '#348b7b', '#b7754c'
-    cx, cy, radius = 270, 220, 145
+    cx, cy, radius = 270, 235, 125
     coords = [(cx + radius*math.cos(2*math.pi*i/6-math.pi/2),
                cy + radius*math.sin(2*math.pi*i/6-math.pi/2)) for i in range(6)]
     parts = [f'<rect width="940" height="445" fill="{paper}"/>',
@@ -100,8 +100,12 @@ def draw(path):
         color_class = min(d, p-d)
         midpoint = ((powers[i]+powers[(i+1) % 6])*inv2) % p
         color = teal if i % 2 == 0 else copper
+        mx, my = (x+nx)/2, (y+ny)/2
+        outward = math.hypot(mx-cx, my-cy)
+        label_x = mx + 29*(mx-cx)/outward
+        label_y = my + 29*(my-cy)/outward + 4
         parts.extend([f'<line x1="{x:.1f}" y1="{y:.1f}" x2="{nx:.1f}" y2="{ny:.1f}" stroke="{color}" stroke-width="8"/>',
-                      f'<text x="{(x+nx)/2:.1f}" y="{(y+ny)/2-9:.1f}" text-anchor="middle" font-size="13" fill="{ink}">d{color_class} · ℓ{midpoint}</text>'])
+                      f'<text x="{label_x:.1f}" y="{label_y:.1f}" text-anchor="middle" font-size="13" fill="{ink}">d{color_class} · ℓ{midpoint}</text>'])
     for i, (x, y) in enumerate(coords):
         parts.extend([f'<circle cx="{x:.1f}" cy="{y:.1f}" r="20" fill="#fffdf8" stroke="{ink}" stroke-width="2"/>',
                       f'<text x="{x:.1f}" y="{y+6:.1f}" text-anchor="middle" font-size="19" fill="{ink}">{powers[i]}</text>'])
