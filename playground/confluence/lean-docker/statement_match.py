@@ -72,10 +72,15 @@ def main():
         a, b = body, sol[name][1]
         if kind in ("theorem", "lemma"):
             a, b = statement_only(a), statement_only(b)
-        (same if a == b else differ).append(name)
+        # Keep the compared strings: printing the raw bodies showed proofs that
+        # were never compared and misled a reader into a stale note.
+        if a == b:
+            same.append(name)
+        else:
+            differ.append((name, a, b))
     print(f"identical: {len(same)}  differ: {len(differ)}  missing from solution: {len(missing)}")
-    for n in differ:
-        print(f"--- DIFFERS: {n}\n  challenge: {ch[n][1][:300]}\n  solution:  {sol[n][1][:300]}")
+    for n, a, b in differ:
+        print(f"--- DIFFERS: {n} (compared text)\n  challenge: {a[:300]}\n  solution:  {b[:300]}")
     for n in missing:
         print(f"--- MISSING in solution: {n}")
     extra = sorted(set(sol) - set(ch))

@@ -18,8 +18,8 @@ The repo's own README says these 722 manuscripts were produced by an internal Op
 "some of the unformalized results could have issues", and that many but not all have Lean
 formalizations. So nothing here is taken on trust: I prefer results with an explicit finite object I
 can CHECK by computation, I say what I checked and what I did not, and a claim I only read stays
-labelled as the paper's claim. There is no Lean toolchain on this host, so my checks so far are
-Python and Java; Lean would go in a container.
+labelled as the paper's claim. There is no Lean toolchain on this host, so Lean proofs are built in a
+Docker container (`lean-docker/`); the computational replications are Python and Java.
 
 ## Layout
 

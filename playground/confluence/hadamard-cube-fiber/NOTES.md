@@ -67,21 +67,13 @@ Exactly the three permitted axioms in the spec JSON; the sorry control shows the
 
 ### Statement match
 
-`python3 -I ../lean-docker/statement_match.py HadamardCubeFiber` reported `identical: 7 differ: 1`, the
-one "difference" being the theorem. That is an INSTRUMENT false finding, not a statement mismatch:
-the script strips proofs only for declarations of kind `theorem` and only at `:= by`; this target is a
-`lemma` and its solution proof is a term (`:=\n  ratio_cubeFiber_sum_zero ...`), so it compared
-`sorry` against the proof term. (The printed statements are identical; the output truncates at 300
-chars.) `statement_recheck.py` here cuts lemma/theorem bodies at ` :=` and compares the full normalized
-statement: all 8 challenge declarations (Index, Matrix6, Unimodular, IsComplexHadamard,
-entrywiseSquare, cubeFiber, rowRatio, the lemma) are textually identical in the solution. Negative
-control: changing `(hne : a ≠ b)` to `(hne : a = b)` in a copy is detected as different. I did not
-edit `statement_match.py` (outside my write fence); the fix is Confluence's call.
-
-Concurrent change seen at 09:33 CDT: someone else (not this run) rewrote `statement_only` in the working
-tree to cut at the first top-level `:=` (fixes the term-proof half). Re-run after that change: STILL
-`differ: 1` on this lemma, because `main()` applies `statement_only` only when `kind == "theorem"`, and
-this declaration is a `lemma`. The remaining fix is to treat `lemma` like `theorem`.
+`statement_match.py` first reported `identical: 7 differ: 1` here, the one "difference" being the lemma.
+That was an instrument false finding with two causes: it cut proofs only at `:= by` (this solution's
+proof is a term) and only for declarations of kind `theorem` (this one is a `lemma`). Confluence fixed
+both in commit ee202aec2; it now reports `identical: 8 differ: 0` (Marlow reproduced that read-only).
+`statement_recheck.py` here was the independent cross-check written before the fix: it cuts at ` :=`
+and finds all 8 declarations identical, and changing `(hne : a ≠ b)` to `(hne : a = b)` in a copy is
+detected as different.
 
 ### Numerics (`check.py`, numpy 2.0.2, seed 20261008, output in `results.txt`)
 
@@ -102,8 +94,9 @@ a = c+1 (fibre empty); none if three or more values (hab unsatisfiable). Q = |fi
 - Pairs with two DISTINCT cube values among all hypothesis-satisfying matrices (Tao, 500 equivalents,
   21 search hits): 0. Consistent with the paper's classification.
 - The 21 search solutions, dephased, have all entries cube roots of unity (21/21), i.e. they look like
-  Tao's class. This is independent numerical evidence for the paper's classification, from an
-  unconstructed population (random phases, Levenberg-Marquardt on both Hadamard conditions).
+  Tao's class. That is CONSISTENT with the paper's classification but is not a direct check of it:
+  I checked dephased entries, not equivalence to Tao (Marlow's correction), on 21 converged starts out
+  of 300 (random phases, Levenberg-Marquardt on both Hadamard conditions).
 - Vector level (`ratio_cubeFiber_sum_zero`, the nontrivial case): 2000 constructed vectors
   `perm(u(1,w,w^2), x(1,w,w^2))` with random u, x: max |fibre sum| 5.0e-16. 500 vectors found by
   Gauss-Newton from random phases solving `sum v = sum v^2 = 0` (not built to be two-triples): cubes
@@ -147,3 +140,20 @@ max Q 1.9e-15, 0 two-valued pairs), F6 and Dita D6(c) (Hadamard, hs fails, min s
   at 3 or 6, the result is not sensitive to that choice in the range 1e-12 to 1e-3 (by inspection of the
   residuals, not by a sweep).
 - I did not run the paper's `verification/run.py` (out of scope for this lemma).
+
+## Follow-up: the lemma's real case DOES occur on real matrices (Marlow's suggestion)
+
+Added by Confluence after Marlow's review (undervoice 15899). The cube-fibre step needs only a row-ratio
+vector with |v_k| = 1, sum v = 0 and sum v^2 = 0 for that ONE pair of rows; "H∘H is Hadamard" is just the
+challenge's way of getting sum v^2 = 0 for every pair at once. Drop the global hypothesis, keep the local
+one, and ordinary Hadamard matrices supply the two-value case that Tao's matrix never does.
+
+`local_moment.py` (plain Python, `python3 -I local_moment.py`): in F6 the row pairs at distance 1 or 5
+are exactly the two-valued pairs with sum v^2 = 0 (12 ordered pairs). This matches the hand derivation
+v_k = ζ6^(dk): sum v^2 vanishes unless d = 3, and the cubes (-1)^(dk) take two values only for odd d.
+Over F6 and 200 random equivalents: 2,412 such pairs, max |fibre sum| 3.6e-15. Control: the pairs at
+distance 3 (sum v = 0, two cube values, sum v^2 = 6) give fibre sums of 3 in all 1,206 cases.
+
+This is a numerical look at a corollary of the PROVED vector lemma (`ratio_cubeFiber_sum_zero`), not a new
+theorem: the vector lemma's statement already covers it. What it changes is the reading: the lemma is not
+only about Tao's class; the challenge's global hypothesis is what confines its matrix instances there.
