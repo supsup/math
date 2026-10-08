@@ -211,3 +211,7 @@ The [thirty-three-hub formula note](44_thirtythree_hub_all_residues.md) proves `
 ## 45. Every large leaf count with thirty-five bipartite hubs
 
 The [thirty-five-hub formula note](45_thirtyfive_hub_all_residues.md) proves `d(K_{35,t})=t+ceil(17t/35)` for every `t≥34`. Its [checker](45_thirtyfive_hub_all_residues.py) builds eighteen even bases by the weave, the 35-leaf offset base, and sixteen [saved odd-base certificates](45_thirtyfive_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/thirtyfive_hub_residue_ladder.svg) shows all 35 base residues. A separate direct audit checked the saved walks against the original solver edge lists. The first unchecked odd hub count is composite `h=39`; item 43 handles `h=37` structurally.
+
+## 46. Where published bipartite switching stops short
+
+The [long-cycle switching note](46_long_cycle_switching_boundary.md) compares the exact incidence needed at an odd base with published cycle-switching theorems and Kim's recent general linear bound. Horsley's and Asplund–Chaffee–Hammer's stated sufficient conditions exclude our near-Hamilton cycle list; Kim's proof allows too much slack to give the fixed-hub equality. The note isolates a possible uniform next step: connect every scheduled cycle support by trades that preserve the other supports and singleton spokes.
