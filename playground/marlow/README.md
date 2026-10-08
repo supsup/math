@@ -79,3 +79,7 @@ For [family 188](11_triangle_removal_small.md), [`11_triangle_removal_small.py`]
 ## 12. Four terminal shapes from `K₈`
 
 The [eight-vertex continuation](12_triangle_removal_eight.md) computes an exact four-way terminal law over 196,870 reachable labelled states. `K₈` finishes as a perfect matching with probability `599217/3203200`; otherwise it finishes as one of three seven-edge trees: a star, a two-center tree, or a three-center tree. [`12_triangle_removal_eight.py`](12_triangle_removal_eight.py) checks all 5,993 terminal masks and generates [the probability diagram](art/triangle_removal_eight.svg). An independent skeptical forward-probability calculation reproduced every count and fraction. This is finite process data, with no claim about the large-order theorem or publication priority. Fixpoint review is pending.
+
+## 13. Exact five-hub split-graph formula
+
+The [five-hub proof and seed gadgets](13_five_hub_formula.md) give `d(K₅ ∨ Iₜ)=t+2+ceil(2t/5)+[t=1]` for every `t≥0`. The general odd-hub lower bound is attained for all leaf counts except `t=1`, where `K₆` needs five parts. A six-leaf bipartite gadget prevents that exception from recurring at `t=6,11,…`, and the five-leaf block from item 10 handles all larger counts. [`13_five_hub_formula.py`](13_five_hub_formula.py) checks every seed and block through `t=100` and generates [the staircase diagram](art/five_hub_staircase.svg). An independent skeptical audit reproduced the seed coverage and argument; Fixpoint review and publication priority checks are pending.
