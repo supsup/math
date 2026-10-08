@@ -170,7 +170,7 @@ The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil((
 
 ## 35. A conditional square-to-all-bases criterion
 
-The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; the even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17` in [item 41](41_seventeen_affine_pages.md), so this remains a research reduction rather than a general odd-hub theorem.
+The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; the even weave and offset lift then give the all-residue formula. Compatible cycles are explicit for primes `3 (mod 4)` and for `h=17` and `h=29` in [items 41](41_seventeen_affine_pages.md) and [42](42_twentynine_affine_growth.md), so this remains a research reduction rather than a general odd-hub theorem.
 
 ## 36. Two prime-one-mod-four template limits
 
@@ -190,8 +190,12 @@ The [template note](39_prime_power_template_limits.md) proves that no nonprime o
 
 ## 40. Every large leaf count with twenty-seven bipartite hubs
 
-The [twenty-seven-hub formula note](40_twentyseven_hub_all_residues.md) proves `d(K_{27,t})=t+ceil(13t/27)` for every `t≥26`. The [checker](40_twentyseven_hub_all_residues.py) builds fourteen even bases by the weave, the 27-leaf offset base, and twelve [saved odd-base certificates](40_twentyseven_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/twentyseven_hub_residue_ladder.svg) shows the 27 base residues. Two separate raw-edge audits verified the odd certificates; the edge assignments appear solver-specific. The next unverified odd hub count is prime `h=29≡1 (mod 4)`.
+The [twenty-seven-hub formula note](40_twentyseven_hub_all_residues.md) proves `d(K_{27,t})=t+ceil(13t/27)` for every `t≥26`. The [checker](40_twentyseven_hub_all_residues.py) builds fourteen even bases by the weave, the 27-leaf offset base, and twelve [saved odd-base certificates](40_twentyseven_hub_odd_seeds.json), then checks exact edge coverage and eleven lifts. The [residue ladder](art/twentyseven_hub_residue_ladder.svg) shows the 27 base residues. Two separate raw-edge audits verified the odd certificates; the edge assignments appear solver-specific. [Item 42](42_twentynine_affine_growth.md) covers the next prime `h=29`; the first unchecked odd hub count is composite `h=33`.
 
 ## 41. A non-primitive growth page at seventeen hubs
 
 The [affine-page note](41_seventeen_affine_pages.md) gives an explicit near-Hamilton cycle at `p=17` whose alternating matchings each sample every affine square color and whose 16 midpoint labels are distinct. Eight translates have pairwise intersection at most one edge, so seven meet the [growth criterion](35_compatible_growth_criterion.md) and give a structural proof of the seventeen-hub formula. The [checker](41_seventeen_affine_pages.py) verifies all growth moves and draws the [edge table](art/seventeen_affine_pages.svg). It also exhaustively finds that the same affine seed at `p=13` admits no single compatible growth page, despite the exact thirteen-hub formula from other certificates.
+
+## 42. Every leaf count at twenty-nine prime hubs
+
+The [twenty-nine-hub growth note](42_twentynine_affine_growth.md) gives a compact explicit non-primitive page for the affine square at `p=29≡1 (mod 4)`. Its 13 selected translates have pairwise edge overlap at most one, so the two-leaf move gives all difficult odd bases; the even weave and offset lift prove `d(K_{29,t})=t+ceil(14t/29)` for every `t≥28`. The [checker](42_twentynine_affine_growth.py) rebuilds every growth partition from the displayed page and center set and draws the [difference table](art/twentynine_affine_growth.svg). This is a fixed-prime theorem outside item 34's infinite class; the first unchecked odd hub count is composite `h=33`.
