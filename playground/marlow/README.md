@@ -167,3 +167,7 @@ The [interval schedule note](33_interval_omission_schedule.md) proves that for e
 ## 34. All leaf counts at primes three modulo four
 
 The [prime growth note](34_prime_two_leaf_growth.md) proves `d(K_{p,t})=t+ceil(((p−1)/2)t/p)` for every `t≥p−1` and every prime `p≥7` with `p≡3 (mod 4)`. An affine square seed labels hub pairs by their midpoints. Translated multiplicative hub cycles intersect pairwise in exactly one edge, letting a two-leaf growth move repeat through **every odd base**; the even weave and offset lift finish all residues. The [checker](34_prime_two_leaf_growth.py) verifies every odd base at 23 primes through 199 and draws the [seven-hub first-move diagram](art/prime_two_leaf_growth.svg). Other odd hub counts remain open.
+
+## 35. A conditional square-to-all-bases criterion
+
+The [growth criterion](35_compatible_growth_criterion.md) isolates the three sufficient properties behind item 34: each short hub cycle alternates two transversals of the square seed's Hamilton colors, its original leaf labels are distinct, and different short hub cycles meet in at most one edge. Together with a Kotzig square seed, these conditions grow every difficult odd base; the even weave and offset lift then give the all-residue formula. Existence of such compatible cycles is established here for primes `3 (mod 4)` only, so this is a research reduction rather than a general odd-hub theorem.
