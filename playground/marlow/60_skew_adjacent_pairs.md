@@ -7,7 +7,7 @@ d(K_{p,p+4r})=p+4r+\left\lceil\frac{(p-1)(p+4r)}{2p}\right\rceil
 =p+4r+\frac{p-1}{2}+2r.
 \]
 
-The same equality holds at \(t=p+4r+pq\), \(q\ge0\), by the [offset lift](10_odd_hub_blocks.md). A [full-partition checker](60_skew_adjacent_pairs_full_replay.py) verifies every even prefix at six primes through 101; an [exact-criterion scan](60_skew_adjacent_pairs_criterion_scan.py) finds witnesses at every even prefix for all 42 primes in this class through 1000. Those finite checks do not extend the proved range for arbitrarily large primes.
+The same equality holds at \(t=p+4r+pq\), \(q\ge0\), by the [offset lift](10_odd_hub_blocks.md). A [full-partition checker](60_skew_adjacent_pairs_full_replay.py) verifies every even prefix at six primes through 101. An [exact-criterion scan](60_skew_adjacent_pairs_criterion_scan.py) checks all 42 primes in this class through 1000; the independently audited [C++ final-prefix scan](60_skew_adjacent_pairs_final_scan.cpp) extends the finite criterion check through all 19,622 class primes at most one million. Its minimum final-prefix count is two, at \(p=13\). The exception sets are nested, so a surviving parameter at the final even prefix works at all earlier even prefixes. These finite checks do not extend the proved range for arbitrarily large primes.
 
 Let p>=13 be prime with p≡5 (mod 8), let g be any primitive root,
 a=g^2, k=(p-1)/2, D=a+1, beta=D/2, gamma=beta/a, and
