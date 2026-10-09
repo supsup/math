@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Barnette Tour</title>
+<style>
+  :root { --bg: #0d1020; --ink: #e8e6f2; --dim: #9a98b4; --accent: #ff9f68; --even: #f2c14e; --odd: #7aa7ff; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif; overflow: hidden; }
+  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; touch-action: none; }
+  canvas:active { cursor: grabbing; }
+  #hud { position: fixed; left: 16px; top: 14px; right: 16px; pointer-events: none; }
+  #hud h1 { margin: 0; font-size: 26px; font-weight: normal; }
+  #hud p { margin: 4px 0 0; font-size: 13.5px; color: var(--dim); max-width: 760px; line-height: 1.4; }
+  .even { color: var(--even); } .odd { color: var(--odd); }
+  .tour { background: linear-gradient(90deg, #ff9f68, #ff5fa2, #8a7dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  #state { position: fixed; left: 16px; right: 16px; bottom: 64px; font-size: 15px; color: var(--accent); pointer-events: none; }
+  #bar { position: fixed; left: 16px; right: 16px; bottom: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  button { background: #1c2140; color: var(--ink); border: 1px solid #39406e; border-radius: 6px;
+    padding: 7px 12px; font: 13px Georgia, serif; cursor: pointer; }
+  button[aria-pressed="true"] { background: #39406e; border-color: var(--accent); }
+  #err { position: fixed; inset: auto 16px 16px 16px; background: #5a1020; color: #fff; padding: 12px;
+    border-radius: 6px; display: none; font: 14px monospace; }
+</style>
+</head>
+<body>
+<canvas id="c" aria-label="Spinning truncated octahedron, the permutohedron of S_4, with a Hamilton cycle through its 24 vertices traced by a travelling comet"></canvas>
+<div id="hud">
+  <h1>A Barnette tour</h1>
+  <p>The truncated octahedron is the permutohedron of S_4: its 24 vertices are the orderings of 0, 1, 2, 3, joined when they differ
+  by swapping two neighbouring entries. <span class="even">Even</span> and <span class="odd">odd</span> permutations alternate along
+  every edge, so the graph is bipartite; it is also cubic and 3-connected (the page deletes every set of at most 2 vertices and
+  checks the rest stays connected). Barnette's conjecture (1969) says every cubic, bipartite, 3-connected planar graph has a
+  Hamilton cycle; this collection claims a proof (kernel-checked, read twice, not yet confirmed outside the crew). One example
+  is illustration, not evidence. This one does: a <span class="tour">tour</span> found by exhaustive backtracking and re-checked. Planarity is not
+  computed; it holds because the graph is the skeleton of a convex polyhedron, and the page checks that each of the 14 faces
+  (8 hexagons, 6 squares) is flat with the whole solid on one side. Drag to orbit, scroll to zoom.</p>
+</div>
+<div id="state"></div>
+<div id="bar">
+  <button id="bSpin" aria-pressed="true">Spin</button>
+  <button id="bTour" aria-pressed="true">Tour</button>
+  <button id="bCycle" aria-pressed="true">Show cycle</button>
+  <button id="bFaces" aria-pressed="true">Faces</button>
+</div>
+<div id="err"></div>
+<script>
+"use strict";
+/* ---------- the mathematics (no drawing) ---------- */
+const BARNETTE = (function () {
+  const fail = [], EPS = 1e-9;
+  const range = k => Array.from({ length: k }, (_, i) => i);
+  // the 24 permutations of {0,1,2,3}, in one-line notation p = [p(0), p(1), p(2), p(3)]
+  const PERMS = [];
+  (function gen(pre, rest) { if (!rest.length) { PERMS.push(pre); return; }
+    rest.forEach((x, i) => gen(pre.concat([x]), rest.slice(0, i).concat(rest.slice(i + 1)))); })([], [0, 1, 2, 3]);
+  const N = PERMS.length, name = p => p.join("");
+  const IDX = new Map(PERMS.map((p, i) => [name(p), i]));
+  const swapPos = (p, s) => { const q = p.slice(); const t = q[s]; q[s] = q[s + 1]; q[s + 1] = t; return q; };  // p composed with (s s+1)
+  const inv = p => { const q = []; p.forEach((x, i) => { q[x] = i; }); return q; };
+  const parity = p => { let c = 0; for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) if (p[i] > p[j]) c++; return c % 2; };
+  const PAR = PERMS.map(parity);   // 0 = even, 1 = odd
+  if (N !== 24 || IDX.size !== 24) fail.push("expected 24 distinct permutations, got " + N);
+  // edges: p -- p o (s s+1), s = 0, 1, 2 (the Cayley graph of S_4 on adjacent transpositions)
+  const EDGES = [];
+  PERMS.forEach((p, i) => { for (let s = 0; s < 3; s++) { const j = IDX.get(name(swapPos(p, s))); if (i < j) EDGES.push([i, j, s]); } });
+  const ADJ = range(N).map(() => []);
+  for (const [a, b] of EDGES) { ADJ[a].push(b); ADJ[b].push(a); }
+  const ek = (a, b) => (a < b ? a * 64 + b : b * 64 + a), EKEY = new Set(EDGES.map(e => ek(e[0], e[1])));
+  const adj = (a, b) => EKEY.has(ek(a, b));
+  if (EDGES.length !== 36) fail.push("expected 36 edges, got " + EDGES.length);
+  if (EKEY.size !== EDGES.length) fail.push("repeated edge");
+  ADJ.forEach((L, v) => { if (L.length !== 3 || new Set(L).size !== 3 || L.includes(v)) fail.push("vertex " + name(PERMS[v]) + " is not of degree 3"); });
+  for (const [a, b] of EDGES) if (PAR[a] === PAR[b]) fail.push("edge " + name(PERMS[a]) + "-" + name(PERMS[b]) + " joins equal signs");
+  // coordinates: x(p) = (p^-1(0)+1, ..., p^-1(3)+1) in R^4, on the hyperplane sum = 10
+  const X4 = PERMS.map(p => inv(p).map(x => x + 1));
+  X4.forEach((x, i) => { if (x.reduce((s, t) => s + t, 0) !== 10) fail.push("x(" + name(PERMS[i]) + ") not on sum = 10"); });
+  const dot = (a, b) => a.reduce((s, t, i) => s + t * b[i], 0), sub = (a, b) => a.map((t, i) => t - b[i]);
+  const len = a => Math.sqrt(dot(a, a));
+  const BASIS = [[1, -1, 0, 0], [1, 1, -2, 0], [1, 1, 1, -3]].map(b => b.map(t => t / len(b)));
+  for (let i = 0; i < 3; i++) {
+    if (Math.abs(dot(BASIS[i], [1, 1, 1, 1])) > EPS) fail.push("basis vector " + i + " leaves the hyperplane");
+    for (let j = 0; j < 3; j++) if (Math.abs(dot(BASIS[i], BASIS[j]) - (i === j ? 1 : 0)) > EPS) fail.push("basis not orthonormal");
+  }
+  const CEN = [2.5, 2.5, 2.5, 2.5];
+  const X3 = X4.map(x => BASIS.map(b => dot(b, sub(x, CEN))));
+  for (const [a, b] of EDGES) {
+    if (Math.abs(len(sub(X4[a], X4[b])) - Math.SQRT2) > EPS) fail.push("edge length in R^4 is not sqrt 2");
+    if (Math.abs(len(sub(X3[a], X3[b])) - Math.SQRT2) > EPS) fail.push("edge length in 3D is not sqrt 2");
+  }
+  const R = Math.sqrt(5);
+  X4.forEach((x, i) => { if (Math.abs(len(sub(x, CEN)) - R) > EPS || Math.abs(len(X3[i]) - R) > EPS) fail.push("vertex off the sphere of radius sqrt 5"); });
+  // 3-connected, literally: at least 4 vertices, and deleting any set of at most 2 vertices leaves the rest connected
+  if (N < 4) fail.push("fewer than 4 vertices");
+  const connectedWithout = gone => {
+    const start = range(N).find(v => !gone.includes(v)), seen = new Set([start]), st = [start];
+    while (st.length) { const v = st.pop(); for (const w of ADJ[v]) if (!gone.includes(w) && !seen.has(w)) { seen.add(w); st.push(w); } }
+    return seen.size === N - gone.length;
+  };
+  let cutTests = 0;
+  const cuts = [[]];
+  for (let a = 0; a < N; a++) { cuts.push([a]); for (let b = a + 1; b < N; b++) cuts.push([a, b]); }
+  for (const g of cuts) { cutTests++; if (!connectedWithout(g)) fail.push("deleting {" + g.map(v => name(PERMS[v])).join(", ") + "} disconnects"); }
+  // a Hamilton cycle by exhaustive backtracking from the identity, then re-verified from scratch
+  let nodes = 0;
+  const path = [0], used = new Array(N).fill(false); used[0] = true;
+  (function back() {
+    nodes++;
+    if (path.length === N) return adj(path[N - 1], path[0]);
+    for (const w of ADJ[path[path.length - 1]]) if (!used[w]) {
+      used[w] = true; path.push(w); if (back()) return true; path.pop(); used[w] = false;
+    }
+    return false;
+  })();
+  const CYCLE = path.length === N ? path.slice() : [];
+  if (CYCLE.length !== N || new Set(CYCLE).size !== N) fail.push("no Hamilton cycle found");
+  for (let k = 0; k < CYCLE.length; k++) {
+    const a = CYCLE[k], b = CYCLE[(k + 1) % CYCLE.length];
+    if (!adj(a, b)) fail.push("tour step " + k + " is not an edge");
+    if (PAR[a] === PAR[b]) fail.push("tour step " + k + " does not alternate sign");
+  }
+  // faces: cosets of <s0,s1> and <s1,s2> (hexagons) and <s0,s2> (squares), walked by alternating the two generators
+  const FACES = [];
+  for (const [g0, g1, size] of [[0, 1, 6], [1, 2, 6], [0, 2, 4]]) {
+    const seen = new Set();
+    for (let i = 0; i < N; i++) {
+      if (seen.has(i)) continue;
+      const F = [i]; let cur = i;
+      for (let k = 0; k < 2 * size + 2; k++) { cur = IDX.get(name(swapPos(PERMS[cur], k % 2 ? g1 : g0))); if (cur === i) break; F.push(cur); }
+      F.forEach(v => seen.add(v));
+      if (F.length !== size || new Set(F).size !== size) fail.push("coset face has " + F.length + " vertices, expected " + size);
+      for (let k = 0; k < F.length; k++) if (!adj(F[k], F[(k + 1) % F.length])) fail.push("face side is not an edge");
+      FACES.push(F);
+    }
+  }
+  const hexes = FACES.filter(F => F.length === 6).length, squares = FACES.filter(F => F.length === 4).length;
+  if (FACES.length !== 14 || hexes !== 8 || squares !== 6) fail.push("faces: " + hexes + " hexagons, " + squares + " squares");
+  const onFaces = new Map();
+  for (const F of FACES) for (let k = 0; k < F.length; k++) { const e = ek(F[k], F[(k + 1) % F.length]); onFaces.set(e, (onFaces.get(e) || 0) + 1); }
+  for (const e of EKEY) if (onFaces.get(e) !== 2) fail.push("an edge lies on " + (onFaces.get(e) || 0) + " faces, not 2");
+  if (N - EDGES.length + FACES.length !== 2) fail.push("V - E + F is not 2");
+  // each face is flat and a supporting plane: every other vertex strictly on the side of the centre
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  for (const F of FACES) {
+    const p0 = X3[F[0]], nrm = cross(sub(X3[F[1]], p0), sub(X3[F[2]], p0));
+    const sgn = dot(nrm, p0) > 0 ? 1 : -1;   // orient outwards (the centre is the origin)
+    for (let v = 0; v < N; v++) {
+      const h = sgn * dot(nrm, sub(X3[v], p0));
+      if (F.includes(v) ? Math.abs(h) > EPS : h > -EPS) fail.push("face " + F.map(u => name(PERMS[u])).join(" ") + " is not a flat supporting face");
+    }
+  }
+  const facts = { vertices: N, edges: EDGES.length, degrees: [...new Set(ADJ.map(L => L.length))], even: PAR.filter(x => !x).length,
+    odd: PAR.filter(x => x).length, cutSetsTested: cutTests, backtrackNodes: nodes, hexagons: hexes, squares,
+    cycle: CYCLE.map(v => name(PERMS[v]) + (PAR[v] ? "-" : "+")).join(" ") };
+  return { PERMS, PAR, EDGES, ADJ, X4, X3, CYCLE, FACES, name, facts, fail };
+})();
+if (typeof module !== "undefined") module.exports = BARNETTE;   // lets node test the block above
+
+/* ---------- drawing ---------- */
+if (typeof document !== "undefined") (function () {
+  const B = BARNETTE, err = document.getElementById("err");
+  if (B.fail.length) { err.style.display = "block"; err.textContent = "Refusing to draw: " + B.fail.join("; "); return; }
+  const canvas = document.getElementById("c");
+
+  // painter: screen-space ribbons, glow discs and small polygons; WebGL with additive blending,
+  // or the 2D canvas with "lighter" compositing (the same geometry, the same additive look)
+  function painter(cv, bg) {
+    const gl = cv.getContext("webgl", { antialias: true, premultipliedAlpha: false });
+    const ctx = gl ? null : cv.getContext("2d");
+    if (!gl && !ctx) return null;
+    let V = [], buf = null, loc = null;
+    if (gl) {
+      const vs = `attribute vec2 aP; attribute vec4 aC; attribute vec2 aE; uniform vec2 uRes;
+        varying vec4 vC; varying vec2 vE;
+        void main() { vC = aC; vE = aE; gl_Position = vec4(aP.x / uRes.x * 2.0 - 1.0, 1.0 - aP.y / uRes.y * 2.0, 0.0, 1.0); }`;
+      const fs = `precision mediump float; varying vec4 vC; varying vec2 vE;
+        void main() { float e = abs(vE.x);
+          float f = vE.y < 0.5 ? 1.0 - smoothstep(0.55, 1.0, e) : (1.0 - e) * (1.0 - e);
+          gl_FragColor = vec4(vC.rgb * vC.a * f, 1.0); }`;
+      const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+      const prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+      gl.linkProgram(prog); gl.useProgram(prog);
+      buf = gl.createBuffer();
+      loc = { P: gl.getAttribLocation(prog, "aP"), C: gl.getAttribLocation(prog, "aC"), E: gl.getAttribLocation(prog, "aE"),
+        res: gl.getUniformLocation(prog, "uRes") };
+      gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE);   // additive glow on the dark background
+      gl.clearColor(bg[0], bg[1], bg[2], 1);
+    }
+    const cl = x => Math.max(0, Math.min(255, Math.round(x * 255)));
+    const css = c => "rgb(" + cl(c[0] * c[3]) + "," + cl(c[1] * c[3]) + "," + cl(c[2] * c[3]) + ")";
+    const push = (x, y, c, e, m) => V.push(x, y, c[0], c[1], c[2], c[3], e, m);
+    let w = 0, h = 0;
+    return {
+      webgl: !!gl,
+      begin(W, H) {
+        w = W; h = H; V = [];
+        if (gl) { gl.viewport(0, 0, w, h); gl.clear(gl.COLOR_BUFFER_BIT); return; }
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = css([bg[0], bg[1], bg[2], 1]); ctx.fillRect(0, 0, w, h);
+        ctx.globalCompositeOperation = "lighter";
+      },
+      seg(a, b, wd, c0, c1) {
+        c1 = c1 || c0;
+        let dx = b[0] - a[0], dy = b[1] - a[1]; const L = Math.hypot(dx, dy); if (L < 1e-6) return;
+        if (ctx) {
+          let st = css(c0);
+          if (c1 !== c0) { st = ctx.createLinearGradient(a[0], a[1], b[0], b[1]); st.addColorStop(0, css(c0)); st.addColorStop(1, css(c1)); }
+          ctx.strokeStyle = st; ctx.lineWidth = wd; ctx.lineCap = "butt";
+          ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); return;
+        }
+        dx /= L; dy /= L; const r = wd / 2 + 1, nx = -dy * r, ny = dx * r;
+        push(a[0] + nx, a[1] + ny, c0, 1, 0); push(a[0] - nx, a[1] - ny, c0, -1, 0); push(b[0] + nx, b[1] + ny, c1, 1, 0);
+        push(a[0] - nx, a[1] - ny, c0, -1, 0); push(b[0] - nx, b[1] - ny, c1, -1, 0); push(b[0] + nx, b[1] + ny, c1, 1, 0);
+      },
+      disc(x, y, r, c, glow) {
+        if (ctx) {
+          if (glow) { const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+            g.addColorStop(0, css(c)); g.addColorStop(0.5, css([c[0], c[1], c[2], c[3] * 0.25])); g.addColorStop(1, "rgb(0,0,0)");
+            ctx.fillStyle = g; } else ctx.fillStyle = css(c);
+          ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); return;
+        }
+        const N = 28, m = glow ? 1 : 0;
+        for (let i = 0; i < N; i++) {
+          const t0 = 2 * Math.PI * i / N, t1 = 2 * Math.PI * (i + 1) / N;
+          push(x, y, c, 0, m); push(x + r * Math.cos(t0), y + r * Math.sin(t0), c, 1, m); push(x + r * Math.cos(t1), y + r * Math.sin(t1), c, 1, m);
+        }
+      },
+      poly(P, c) {
+        if (ctx) { ctx.fillStyle = css(c); ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+          for (let i = 1; i < P.length; i++) ctx.lineTo(P[i][0], P[i][1]); ctx.closePath(); ctx.fill(); return; }
+        for (let i = 1; i + 1 < P.length; i++) { push(P[0][0], P[0][1], c, 0, 0); push(P[i][0], P[i][1], c, 0, 0); push(P[i + 1][0], P[i + 1][1], c, 0, 0); }
+      },
+      end() {
+        if (!gl || !V.length) return;
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(V), gl.DYNAMIC_DRAW);
+        gl.enableVertexAttribArray(loc.P); gl.vertexAttribPointer(loc.P, 2, gl.FLOAT, false, 32, 0);
+        gl.enableVertexAttribArray(loc.C); gl.vertexAttribPointer(loc.C, 4, gl.FLOAT, false, 32, 8);
+        gl.enableVertexAttribArray(loc.E); gl.vertexAttribPointer(loc.E, 2, gl.FLOAT, false, 32, 24);
+        gl.uniform2f(loc.res, w, h);
+        gl.drawArrays(gl.TRIANGLES, 0, V.length / 8);
+      }
+    };
+  }
+  const pt = painter(canvas, [0.051, 0.063, 0.125]);
+  if (!pt) { err.style.display = "block"; err.textContent = "Neither WebGL nor a 2D canvas is available."; return; }
+
+  const hex = s => [parseInt(s.slice(1, 3), 16) / 255, parseInt(s.slice(3, 5), 16) / 255, parseInt(s.slice(5, 7), 16) / 255];
+  const rgba = (c, a) => [c[0], c[1], c[2], a];
+  const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const EVEN = hex("#f2c14e"), ODD = hex("#7aa7ff"), EDGE = hex("#c9c6e6"), WHITE = [1, 1, 1];
+  const STOPS = [hex("#ff9f68"), hex("#ff5fa2"), hex("#8a7dff"), hex("#ff9f68")];   // cyclic, so the gradient closes
+  const tourCol = s => { const u = ((s % 1) + 1) % 1 * 3, k = Math.min(2, Math.floor(u)); return mix(STOPS[k], STOPS[k + 1], u - k); };
+  const SC = 1 / Math.sqrt(5);   // scale the sphere of radius sqrt 5 to radius 1
+  const P3 = B.X3.map(p => p.map(t => t * SC));
+  const L = B.CYCLE.length, SUB = 6;
+
+  // tiny matrix helpers (column-major)
+  const mul = (a, b) => { const o = new Array(16).fill(0);
+    for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) for (let k = 0; k < 4; k++) o[j * 4 + i] += a[k * 4 + i] * b[j * 4 + k]; return o; };
+  const persp = (fov, asp, nr, fr) => { const t = 1 / Math.tan(fov / 2);
+    return [t / asp,0,0,0, 0,t,0,0, 0,0,(fr + nr) / (nr - fr),-1, 0,0,2 * fr * nr / (nr - fr),0]; };
+  const rotX = t => [1,0,0,0, 0,Math.cos(t),Math.sin(t),0, 0,-Math.sin(t),Math.cos(t),0, 0,0,0,1];
+  const rotZ = t => [Math.cos(t),Math.sin(t),0,0, -Math.sin(t),Math.cos(t),0,0, 0,0,1,0, 0,0,0,1];
+  const trans = (x, y, z) => [1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1];
+
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let yaw = 0.4, pitch = -1.0, dist = 4.9, spin = !reduced, tour = !reduced, showCycle = true, faces = true, head = 0;
+  const stateEl = document.getElementById("state");
+  function toggle(id, on) { document.getElementById(id).setAttribute("aria-pressed", on ? "true" : "false"); }
+  document.getElementById("bSpin").onclick = () => { spin = !spin; toggle("bSpin", spin); };
+  document.getElementById("bTour").onclick = () => { tour = !tour; toggle("bTour", tour); };
+  document.getElementById("bCycle").onclick = () => { showCycle = !showCycle; toggle("bCycle", showCycle); };
+  document.getElementById("bFaces").onclick = () => { faces = !faces; toggle("bFaces", faces); };
+  toggle("bSpin", spin); toggle("bTour", tour); toggle("bCycle", showCycle); toggle("bFaces", faces);
+
+  let drag = null;
+  canvas.addEventListener("pointerdown", e => { drag = [e.clientX, e.clientY]; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener("pointermove", e => { if (!drag) return;
+    yaw += (e.clientX - drag[0]) * 0.008; pitch = Math.max(-3.0, Math.min(0.1, pitch + (e.clientY - drag[1]) * 0.008));
+    drag = [e.clientX, e.clientY]; });
+  canvas.addEventListener("pointerup", () => { drag = null; });
+  canvas.addEventListener("wheel", e => { e.preventDefault(); dist = Math.max(2.4, Math.min(9, dist * Math.exp(e.deltaY * 0.001))); }, { passive: false });
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.max(0, Math.min(0.05, (now - last) / 1000)); last = now;   // rAF time can precede the script start
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const w = Math.floor(canvas.clientWidth * dpr), h = Math.floor(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    const dd = dist * Math.max(1, 0.85 * h / w);   // portrait screens: step back so the figure fits the width
+    if (spin && !drag) yaw += dt * 0.18;
+    if (tour) head = (head + dt * 1.5) % L;
+    const Rm = mul(rotX(pitch), rotZ(yaw));
+    const M = mul(persp(0.75, w / h, 0.1, 50), mul(trans(0, -0.22, -dd), Rm));
+    const P = p => { const x = p[0], y = p[1], z = p[2];
+      const X = M[0]*x + M[4]*y + M[8]*z + M[12], Y = M[1]*x + M[5]*y + M[9]*z + M[13], Wc = M[3]*x + M[7]*y + M[11]*z + M[15];
+      return [(X / Wc * 0.5 + 0.5) * w, (0.5 - Y / Wc * 0.5) * h, Math.max(0, Math.min(1, (dd + 1 - Wc) / 2))]; };
+    const rot = p => [Rm[0]*p[0] + Rm[4]*p[1] + Rm[8]*p[2], Rm[1]*p[0] + Rm[5]*p[1] + Rm[9]*p[2], Rm[2]*p[0] + Rm[6]*p[1] + Rm[10]*p[2]];
+    const S = P3.map(P);
+    const lerp3 = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    pt.begin(w, h);
+    if (faces) for (const F of B.FACES) {
+      const c = [0, 0, 0]; F.forEach(v => { c[0] += P3[v][0] / F.length; c[1] += P3[v][1] / F.length; c[2] += P3[v][2] / F.length; });
+      const n = rot(c), cv = [n[0], n[1], n[2] - dd], front = n[0] * cv[0] + n[1] * cv[1] + n[2] * cv[2] < 0;
+      pt.poly(F.map(v => S[v]), rgba(F.length === 6 ? hex("#8a7dff") : hex("#ff9f68"), front ? 0.11 : 0.035));
+    }
+    for (const [a, b] of B.EDGES) {
+      const da = 0.18 + 0.32 * S[a][2], db = 0.18 + 0.32 * S[b][2];
+      pt.seg(S[a], S[b], 1.8 * dpr, rgba(EDGE, da), rgba(EDGE, db));
+    }
+    // the tour: SUB pieces per edge, coloured by position along the cycle; s in [0, L) is the cycle parameter
+    for (let k = 0; k < L; k++) {
+      const A = P3[B.CYCLE[k]], Bp = P3[B.CYCLE[(k + 1) % L]];
+      for (let j = 0; j < SUB; j++) {
+        const s0 = k + j / SUB, s1 = k + (j + 1) / SUB;
+        const a = P(lerp3(A, Bp, j / SUB)), b = P(lerp3(A, Bp, (j + 1) / SUB));
+        const ca = tourCol(s0 / L), cb = tourCol(s1 / L);
+        if (showCycle) {
+          pt.seg(a, b, 10 * dpr, rgba(ca, 0.07 + 0.08 * a[2]), rgba(cb, 0.07 + 0.08 * b[2]));
+          pt.seg(a, b, 3.2 * dpr, rgba(ca, 0.45 + 0.45 * a[2]), rgba(cb, 0.45 + 0.45 * b[2]));
+        }
+        if (tour) {
+          const TAIL = 4.5, b0 = ((head - s0) % L + L) % L, b1 = ((head - s1) % L + L) % L;
+          if (b0 <= TAIL && b1 <= TAIL && b1 <= b0) {
+            const i0 = Math.pow(1 - b0 / TAIL, 1.6), i1 = Math.pow(1 - b1 / TAIL, 1.6);
+            pt.seg(a, b, 18 * dpr, rgba(ca, 0.22 * i0), rgba(cb, 0.22 * i1));
+            pt.seg(a, b, 5.5 * dpr, rgba(mix(ca, WHITE, 0.35 * i0), i0), rgba(mix(cb, WHITE, 0.35 * i1), i1));
+          }
+        }
+      }
+    }
+    for (let v = 0; v < S.length; v++) {
+      const c = B.PAR[v] ? ODD : EVEN, d = S[v][2];
+      pt.disc(S[v][0], S[v][1], 13 * dpr, rgba(c, 0.18 + 0.3 * d), true);
+      pt.disc(S[v][0], S[v][1], (3 + 2 * d) * dpr, rgba(c, 0.55 + 0.45 * d), false);
+    }
+    const k = Math.floor(head), vA = B.CYCLE[k], vB = B.CYCLE[(k + 1) % L];
+    if (tour) {
+      const hp = P(lerp3(P3[vA], P3[vB], head - k));
+      pt.disc(hp[0], hp[1], 40 * dpr, rgba(tourCol(head / L), 0.85), true);
+      pt.disc(hp[0], hp[1], 5.5 * dpr, rgba(WHITE, 1), false);
+    }
+    pt.end();
+    const par = v => (B.PAR[v] ? "odd" : "even");
+    stateEl.textContent = tour
+      ? "tour step " + (k + 1) + " of " + L + ": " + B.name(B.PERMS[vA]) + " (" + par(vA) + ") -> " + B.name(B.PERMS[vB]) + " (" + par(vB) +
+        "); colours alternate even/odd along every edge"
+      : "Hamilton cycle through all " + L + " vertices; colours alternate even/odd along every edge";
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
