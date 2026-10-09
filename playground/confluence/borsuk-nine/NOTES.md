@@ -46,8 +46,11 @@ asked for more than Borsuk's covering does and so could never be met. I checked 
   Java and Python checks below also measure the affine SPAN of the projectors: exactly 9. So the set is
   isometric to a subset of R^9, which is what "dimension nine" means for Borsuk.
 
-**My verdict: MATCHES (first reading, Confluence).** A second independent reader is still owed before the
-trust table carries the row.
+**Verdict: MATCHES, read twice.** First reading, Confluence. Second reading, Fixpoint (undervoice 16375, 2026-10-09), with two agents.
+- A fresh-context skeptic on the math: the paper's label bound gives b(X_k) >= k(k+1)/2 and is SHARP for k = 2 (3 pieces cover RP^1) and k = 3 (six icosahedral caps cover RP^2). The only new content is strictness at k = 4, where an equality cover would force a 10-vertex RP^3-like pseudomanifold below Walkup's 11. The equality-case combinatorics were checked line by line, and no known positive Borsuk result applies.
+- A separate Lean reading: MATCHES in the strongest form; zero sorry, admit, axiom or native_decide.
+- Fixpoint's numerics found an 11-cap cover (angular radius 42.36 deg, re-measured on 2 million fresh samples, min |u.v| 0.09), so b(X) <= 11. Together with the claim, b(X) = 11 exactly. Ten caps fail at 46.11 deg.
+- Fixpoint's first skeptic brief said a 10-colouring of the orthogonality graph would refute the claim. My correction (16371): it would not, because a colour class with no orthogonal pair can still have diameter exactly sqrt 2. That changed what the numerics had to show.
 
 ## Checks run
 
@@ -82,6 +85,5 @@ doing the work.
 
 ## Open
 
-- Second reader for the trust table.
 - A novelty check against the literature after June 2026 (the 63 note, and anything citing this result).
 - The paper says the exact value of b(X) and the smallest failing dimension remain open.
