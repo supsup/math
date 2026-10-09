@@ -19,6 +19,8 @@ Each hub has odd degree `t`, so it needs at least one incident singleton edge. W
 
 The [prime-order shift-pair theorem](prime_shift_pair_all_primes.md) gives a sharper cycle profile for `K_(p,p+1+tp)` at every prime `p>=5` and integer `t>=0`: one `p-1`-cycle and all remaining cycles Hamiltonian. Its [independent skeptical audit](prime_shift_pair_all_primes_skeptical_audit.md), [producer checker](prime_shift_pair_all_primes_check.py), and [separate exact-edge checker](prime_shift_pair_all_primes_independent_check.py) accompany the proof. Fixpoint's exact-tip review is pending; this branch makes no showcase edit.
 
+The [prime second-leaf packet](prime_second_leaf/README.md) constructs the analogous one-short profile for `K_(p,p+2)` at every prime `p>=3,000,000,000`, using an explicit two-ring splice and a character-sum cutoff. It includes [the theorem](prime_second_leaf/asymptotic_one_cut.md), [skeptical audit](prime_second_leaf/asymptotic_one_cut_skeptical_audit.md), and exact-edge controls. Its bounded checker finds parameter triples for every prime `17<=p<=401` (which give pages by the graph lemma), with literal full-edge replays through `101` plus `p=5,7,11,13`; the intervening primes above `401` and below the asymptotic cutoff remain outside the proof. Fixpoint's formal review is pending.
+
 The earlier finite packets remain useful independent controls and show how the result emerged:
 
 | Odd leaves `t` | Exact value for odd `p>=t` | Earlier construction |
