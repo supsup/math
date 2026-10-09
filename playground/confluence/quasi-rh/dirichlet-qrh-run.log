@@ -1,0 +1,204 @@
+DirichletSevenEighths: solution OAI.NumberTheory.DirichletL.Nonvanishing theorems ['OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re'] permitted ['propext', 'Quot.sound', 'Classical.choice']
+QuasiRiemannHypothesis: solution OAI.NumberTheory.DirichletL.Nonvanishing theorems ['OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re'] permitted ['propext', 'Quot.sound', 'Classical.choice']
+cone: 2924 module(s), ext ['PrimeNumberTheoremAnd', 'RellichKondrachov']
+== lock taken 16:46:16Z
+11:46:22 FREE: no active java, no build chain, no container lane outside self
+budget: would-admit busy_cores=0.0 cost=4 budget=12
+info: downloading installer
+info: default toolchain set to 'leanprover/lean4:v4.34.1'
+warning: could not canonicalize path: '/work/elan/toolchains'
+info: downloading https://releases.lean-lang.org/lean4/v4.34.1/lean-4.34.1-linux_aarch64.tar.zst
+info: installing /work/elan/toolchains/leanprover--lean4---v4.34.1
+Lean (version 4.34.1, aarch64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+== copied 2924 module file(s)
+import OAI.NumberTheory.DirichletL.Nonvanishing
+
+#print axioms OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re
+#print axioms OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re
+
+-- NEGATIVE CONTROL: must show sorryAx
+theorem controlWithSorry : (1 : Nat) = 2 := by sorry
+#print axioms controlWithSorry
+== 16:46:44Z lake update
+✔ [19/42] Built Cache.Marker (260ms)
+✔ [20/42] Built Cache.Marker:c.o (51ms)
+✔ [21/42] Built Cache.Upload.Dest (390ms)
+✔ [22/42] Built Cache.Query (430ms)
+✔ [23/42] Built Cache.Upload.Dest:c.o (64ms)
+✔ [24/42] Built Cache.Query:c.o (144ms)
+✔ [25/42] Built Cache.Upload.Curl (409ms)
+✔ [26/42] Built Cache.Upload.Rclone (409ms)
+✔ [27/42] Built Cache.Warning (440ms)
+✔ [28/42] Built Cache.Upload.Curl:c.o (80ms)
+✔ [29/42] Built Cache.Upload.Rclone:c.o (76ms)
+✔ [30/42] Built Cache.Requests:c.o (1.2s)
+✔ [31/42] Built Cache.Warning:c.o (108ms)
+✔ [32/42] Built Cache.Upload.Azure (291ms)
+✔ [33/42] Built Cache.Upload.S3 (356ms)
+✔ [34/42] Built Cache.Upload.Azure:c.o (54ms)
+✔ [35/42] Built Cache.Upload.S3:c.o (127ms)
+✔ [36/42] Built Cache.Upload.Defs (270ms)
+✔ [37/42] Built Cache.Upload.Defs:c.o (53ms)
+✔ [38/42] Built Cache.Upload (247ms)
+✔ [39/42] Built Cache.Upload:c.o (51ms)
+✔ [40/42] Built Cache.Main (466ms)
+✔ [41/42] Built Cache.Main:c.o (341ms)
+✔ [42/42] Built cache:exe (746ms)
+Current branch: HEAD
+Using cache from origin: (some leanprover-community/mathlib4)
+Attempting to download 8908 file(s) from leanprover-community/mathlib4 cache at https://cache.mathlib.org/mathlib4-master
+Decompressed 8908 file(s)
+Already decompressed 8908 file(s)
+== 16:48:04Z verify resolved pins against repo manifest
+ok BibtexQuery 4d8616fd4870d0a3453d845770833eac7951fe1c https://github.com/dupuisf/BibtexQuery
+ok Cli e92c9f15fdfacc8536f31cfb3b7ad26c3c8cd204 https://github.com/leanprover/lean4-cli
+ok LeanArchitect 468e8f58fb4ad6e6ad672a08da6d0d0531e95a97 https://github.com/hanwenzhu/LeanArchitect.git
+ok LeanSearchClient ddf04cf3949fa556442341e87d47f9f6e6074707 https://github.com/leanprover-community/LeanSearchClient
+ok MD4Lean 31907cc18f48a95384f99cee5582c00fb39e0f67 https://github.com/acmepjz/md4lean
+ok PrimeCert 0803c2f6bd289c09704c7d352bb8fcf770cbb9b2 https://github.com/b-mehta/PrimeCert.git
+ok PrimeNumberTheoremAnd c39a751132c88b6e8080b74c74023fd95b3d8be0 https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git
+ok Qq 6a489d9af5d0c47e5b259e2e8bcdfc1811b5a259 https://github.com/leanprover-community/quote4
+ok UnicodeBasic 0e569d08b6443ce0908d356884c765397253e2f0 https://github.com/fgdorais/lean4-unicode-basic
+ok aesop 355695d523e41d0554926416cba2a2b3544fbbc9 https://github.com/leanprover-community/aesop
+ok batteries f2effa3d803fda822b1f97b806c47cf2adfbcbc2 https://github.com/leanprover-community/batteries
+ok checkdecls 3d425859e73fcfbef85b9638c2a91708ef4a22d4 https://github.com/PatrickMassot/checkdecls.git
+ok importGraph e928b72544873815af278d38681b31c0293588e3 https://github.com/leanprover-community/import-graph
+ok leancert 7f91b6eb3567437f6cfac03ed279706603ee22f4 https://github.com/alerad/leancert.git
+ok leansqlite f9cdb9eacb5c8b8ecc02ee9fd9e568d7d28c1416 https://github.com/leanprover/leansqlite
+ok mathlib d13f23b723b8a846827a245b89c10fc7d3f11612 https://github.com/leanprover-community/mathlib4.git
+ok plausible 118aa17ee84656b8bd727fef7c458ee8c833385c https://github.com/leanprover-community/plausible
+ok proofwidgets 106ff4fafc74ef4ac99d81dbf3ab399118f497a5 https://github.com/leanprover-community/ProofWidgets4
+ok «doc-gen4» 953c8992d174b4e56955e01e101d46668c68f2bb https://github.com/leanprover/doc-gen4.git
+ok «rellich-kondrachov» 70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23 https://github.com/abenenson/rellich-kondrachov.git
+20 resolved package(s), 0 mismatch(es)
+== PrimeNumberTheoremAnd origin https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git HEAD c39a751132c88b6e8080b74c74023fd95b3d8be0
+== rellich-kondrachov origin https://github.com/abenenson/rellich-kondrachov.git HEAD 70f85d4c1bf99c6e7d61e8be4daa6f3664d08d23
+/src/patches/PrimeNumberTheoremAnd-lean4341.patch:748: trailing whitespace.
+                                          
+/src/patches/PrimeNumberTheoremAnd-lean4341.patch:752: trailing whitespace.
+                                             
+/src/patches/PrimeNumberTheoremAnd-lean4341.patch:759: trailing whitespace.
+                                                          
+/src/patches/PrimeNumberTheoremAnd-lean4341.patch:770: trailing whitespace.
+                                          
+/src/patches/PrimeNumberTheoremAnd-lean4341.patch:787: trailing whitespace.
+                                          
+warning: squelched 221 whitespace errors
+warning: 226 lines add whitespace errors.
+== PrimeNumberTheoremAnd: applied compatibility patch PrimeNumberTheoremAnd-lean4341.patch
+== rellich-kondrachov: applied compatibility patch rellich-kondrachov-lean4341.patch
+== PrimeNumberTheoremAnd dirty paths after patch: 15
+== rellich-kondrachov dirty paths after patch: 15
+== 16:48:04Z cache
+Using cache from origin: (some leanprover-community/mathlib4)
+No files to download
+Already decompressed 8908 file(s)
+== 16:48:08Z build start
+✔ [6983/7062] Built OAI.NumberTheory.DirichletL.Energy.OriginalHighReflectionOriginal (3.6s)
+✔ [6984/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferencePower (3.5s)
+✔ [6985/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferenceBounded (3.6s)
+✔ [6986/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroUnbalancedOriginalPower (3.6s)
+✔ [6987/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthBounded (4.4s)
+✔ [6988/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalReferencePaid (3.4s)
+✔ [6989/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferenceLive (2.7s)
+✔ [6990/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferenceLiveBounded (2.8s)
+✔ [6991/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroUnbalancedOriginal (3.2s)
+✔ [6992/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceRobustDeletedEnergy (5.1s)
+✔ [6993/7062] Built OAI.NumberTheory.DirichletL.Energy.OriginalHighReflectionPower (6.3s)
+✔ [6994/7062] Built OAI.NumberTheory.DirichletL.Energy.OriginalHighReflectionBounded (6.6s)
+✔ [6995/7062] Built OAI.NumberTheory.DirichletL.Energy.ChildEnvelopeFitting (3.4s)
+✔ [6996/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferencePhysical (3.3s)
+✔ [6997/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalNestedReference (6.1s)
+✔ [6998/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthOriginal (6.8s)
+✔ [6999/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalUniformReference (5.4s)
+✔ [7000/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceRobustOriginal (4.1s)
+✔ [7001/7062] Built OAI.NumberTheory.DirichletL.Energy.OriginalHighReflectionSymmetric (3.2s)
+✔ [7002/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroReferencePhysicalBounded (3.3s)
+✔ [7003/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthConclusion (3.1s)
+✔ [7004/7062] Built OAI.NumberTheory.DirichletL.Energy.OriginalHighReflectionSymmetricBounded (2.9s)
+✔ [7005/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceRobustBounded (4.2s)
+✔ [7006/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceRobustPower (4.3s)
+✔ [7007/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthContourBounded (2.7s)
+✔ [7008/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainPaid (6.0s)
+✔ [7009/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceLiveBounded (2.3s)
+✔ [7010/7062] Built OAI.NumberTheory.DirichletL.Energy.ReferenceLivePower (2.4s)
+✔ [7011/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthHighBound (6.5s)
+✔ [7012/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainUniform (3.0s)
+✔ [7013/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighSource (3.8s)
+✔ [7014/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorPaid (6.3s)
+✔ [7015/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthSource (4.6s)
+✔ [7016/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighSourceBounded (2.7s)
+✔ [7017/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainGaussian (4.4s)
+✔ [7018/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighAssembly (2.8s)
+✔ [7019/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighParameters (3.3s)
+✔ [7020/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorUniform (3.5s)
+✔ [7021/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighAssemblyBounded (2.9s)
+✔ [7022/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainSeparated (3.5s)
+✔ [7023/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroBalancedDictionary (3.1s)
+✔ [7024/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveBalancedAdmission (3.5s)
+✔ [7025/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroBalancedAdmission (2.4s)
+✔ [7026/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthSourceControlled (6.8s)
+✔ [7027/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainSeparatedPower (3.7s)
+✔ [7028/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthPhysicalReindex (1.9s)
+✔ [7029/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighBound (6.6s)
+✔ [7030/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorGaussian (7.9s)
+✔ [7031/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainHomogeneous (3.1s)
+✔ [7032/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighSourceBound (2.9s)
+✔ [7033/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorAdmitted (3.6s)
+✔ [7034/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalMainSubsets (3.8s)
+✔ [7035/7062] Built OAI.NumberTheory.DirichletL.Energy.StageMonotonicity (2.3s)
+✔ [7036/7062] Built OAI.NumberTheory.DirichletL.Energy.CappedSuccessorPacking (1.9s)
+✔ [7037/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorPower (3.6s)
+✔ [7038/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorHomogeneous (3.1s)
+✔ [7039/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalErrorSubsets (3.3s)
+✔ [7040/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalAmplifiedUniform (3.4s)
+✔ [7041/7062] Built OAI.NumberTheory.DirichletL.Energy.AmplifierFamilyAdmission (1.7s)
+✔ [7042/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalAnnularPower (3.8s)
+✔ [7043/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalAnnularLower (1.9s)
+✔ [7044/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalLowColumn (3.8s)
+✔ [7045/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalLowSource (3.2s)
+✔ [7046/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalHighColumn (3.8s)
+✔ [7047/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalHighSource (3.3s)
+✔ [7048/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalRightSourceColumn (3.8s)
+✔ [7049/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalLowPhysical (6.0s)
+✔ [7050/7062] Built OAI.NumberTheory.DirichletL.Energy.CanonicalHighPhysical (7.1s)
+✔ [7051/7062] Built OAI.NumberTheory.DirichletL.Energy.NaturalLowPhysical (2.4s)
+✔ [7052/7062] Built OAI.NumberTheory.DirichletL.Energy.PositiveHighPhysical (2.3s)
+✔ [7053/7062] Built OAI.NumberTheory.DirichletL.Energy.ZeroGrowthPhysical (2.4s)
+✔ [7054/7062] Built OAI.NumberTheory.DirichletL.Energy.NaturalHighStage (2.1s)
+✔ [7055/7062] Built OAI.NumberTheory.DirichletL.Energy.NaturalLowStage (4.1s)
+✔ [7056/7062] Built OAI.NumberTheory.DirichletL.Energy.NaturalZeroStage (4.2s)
+✔ [7057/7062] Built OAI.NumberTheory.DirichletL.Energy.CappedLowStage (1.7s)
+✔ [7058/7062] Built OAI.NumberTheory.DirichletL.Energy.CappedAnalyticSuccessor (2.1s)
+✔ [7059/7062] Built OAI.NumberTheory.DirichletL.Energy.CertifiedExistence (1.5s)
+✔ [7060/7062] Built OAI.NumberTheory.DirichletL.Detector.FinalAssemblyUnconditional (2.0s)
+✔ [7061/7062] Built OAI.NumberTheory.DirichletL.Nonvanishing (1.7s)
+Build completed successfully (7062 jobs).
+== build exit=0 duration=2143s
+== built lines: 2943  replayed: 0  last job: [7061/7062]
+== built PNT: 4  built RK: 15  built OAI: 2924  built Mathlib: 0
+✔ [7060/7062] Built OAI.NumberTheory.DirichletL.Detector.FinalAssemblyUnconditional (2.0s)
+✔ [7061/7062] Built OAI.NumberTheory.DirichletL.Nonvanishing (1.7s)
+Build completed successfully (7062 jobs).
+== 17:23:51Z axioms
+warning: PrimeNumberTheoremAnd: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: rellich-kondrachov: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/rellich-kondrachov' has local changes
+'OAI.DirichletCharacter.LFunction_ne_zero_of_seven_eighths_lt_re' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+Check.lean:7:8: warning: declaration uses `sorry`
+'controlWithSorry' depends on axioms: [sorryAx]
+check-exit=0
+== 17:23:53Z challenge statement file elaborates? ComparatorChallenges/DirichletSevenEighths.lean
+warning: PrimeNumberTheoremAnd: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: rellich-kondrachov: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/rellich-kondrachov' has local changes
+ComparatorChallenges/DirichletSevenEighths.lean:8:8: warning: declaration uses `sorry`
+challenge-elab ComparatorChallenges/DirichletSevenEighths.lean exit=0
+== 17:23:57Z challenge statement file elaborates? ComparatorChallenges/QuasiRiemannHypothesis.lean
+warning: PrimeNumberTheoremAnd: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/PrimeNumberTheoremAnd' has local changes
+warning: rellich-kondrachov: repository '/work/challenge-DirichletL-Nonvanishing/.lake/packages/rellich-kondrachov' has local changes
+ComparatorChallenges/QuasiRiemannHypothesis.lean:5:8: warning: declaration uses `sorry`
+challenge-elab ComparatorChallenges/QuasiRiemannHypothesis.lean exit=0
+== 17:24:00Z done
+exit=0

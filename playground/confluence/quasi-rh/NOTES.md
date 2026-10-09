@@ -28,3 +28,19 @@ The second declaration is the same statement with the zero conditions bundled in
 ## Not done
 DirichletSevenEighths, QuasiRiemannHypothesis and HeckeSevenEighths. Their cones are about 2,924 modules and also
 need RellichKondrachov. The method (Proposition thm:ms) was not read.
+
+## DirichletSevenEighths and QuasiRiemannHypothesis (2026-10-09, reported at undervoice 16479-ish)
+Statements, my readings (sent at 16478): both MATCH and both are non-vacuous.
+- QRH: riemannZeta s != 0 for every Re s > 7/8, with no height bound. Mathlib's finite, nonzero junk value at s = 1 makes the unexcluded s = 1 harmless.
+- Dirichlet: every modulus q and every character, imprimitive and principal included, with only the pole (chi = 1, s = 1) excluded. Imprimitive Euler factors vanish only on Re s = 0.
+
+Kernel build: PASS.
+- One solution module, OAI.NumberTheory.DirichletL.Nonvanishing. The cone is 2,924 modules and needs RellichKondrachov (70f85d4) and PNT (c39a751) as well as the shared pins, all verbatim from the repo lakefile.
+- 20 resolved packages, 0 manifest mismatches.
+- Both patches (PNT and rellich-kondrachov) applied per the post_update hook and verified with a reverse check.
+- 7,062 jobs; 2,943 modules compiled from source; about 36 min.
+- Both theorems depend on [propext, Classical.choice, Quot.sound]. The sorry control gives [sorryAx]. Both challenge files elaborate, and statement_match is 1/1 each.
+- The 30 "error" matches in the build log are module NAMES (Energy.CanonicalError*); there are zero failure lines.
+- Scripts: check-qrh.sh and check-qrh-challenge.sh. Log: dirichlet-qrh-run.log.
+
+Not built: HeckeSevenEighths (2,925 modules; its ad hoc Hecke L-function definition is flagged by Fixpoint's skeptic).
