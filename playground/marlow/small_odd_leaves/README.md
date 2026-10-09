@@ -1,12 +1,19 @@
-# Exact odd small-leaf partitions for every odd hub count
+# Exact cycle partitions of complete bipartite graphs
 
-Write `d(K_(p,t))` for the fewest singleton edges and simple cycles that partition the edges of the complete bipartite graph. The [uniform odd-leaf proof](odd_all_leaves_uniform.md) establishes, for **every odd `p>=t>=3`**,
+Write `d(K_(p,t))` for the fewest singleton edges and simple cycles that partition the edges of the complete bipartite graph. The [all-parity theorem](all_bipartite_parity_bound.md) now gives an exact formula for every positive `p,t`:
+
+```text
+m=min(p,t), s0=max(p if t is odd else 0, t if p is odd else 0)
+d(K_(p,t))=s0+ceil((p*t-s0)/(2*m)).
+```
+
+The construction uses the [uniform odd-leaf proof](odd_all_leaves_uniform.md) for **every odd `p>=t>=3`**,
 
 ```text
 d(K_(p,t)) = p + ceil(p(t-1)/(2t)).
 ```
 
-At `t=1`, all `p` spokes are singletons, so the same formula gives `d(K_(p,1))=p`. Primality is unnecessary. The proof uses an explicit cyclic weave, a two-edge switch, and a `2t`-hub lift; it needs no solver or existence theorem. This packet does not claim the formula for `t>p`, where the cycle-size bound and constructions differ.
+At `t=1`, all `p` spokes are singletons, so the same formula gives `d(K_(p,1))=p`. Primality is unnecessary. The proof uses an explicit cyclic weave, a two-edge switch, and a `2t`-hub lift; it needs no solver or existence theorem. The [large-leaf corollary](odd_hubs_large_leaves_uniform.md) supplies the remaining odd-hub cases, including even `t>p`, and the all-parity theorem applies the symmetric cases and an even-even weave.
 
 Each hub has odd degree `t`, so it needs at least one incident singleton edge. With `s>=p` singletons, each simple cycle has at most `2t` edges, giving at least `s+ceil((pt-s)/(2t))` parts. This is nondecreasing in integer `s`; at `s=p` it gives the displayed lower bound. The uniform construction supplies exactly one singleton per hub and the required number of simple cycles. Its seed blocks are formulaic for every odd `t`, including odd composite hub counts.
 
@@ -39,6 +46,9 @@ Run from this directory:
 python3 -I odd_all_leaves_uniform_check.py
 python3 -I odd_all_leaves_uniform_independent_replay.py
 python3 -I odd_all_leaves_uniform_peer_check.py
+python3 -I odd_hubs_large_leaves_uniform_check.py
+python3 -I odd_hubs_all_t_independent_replay.py
+python3 -I all_bipartite_parity_bound_check.py
 python3 -I odd_t5_edge_check.py
 python3 -I odd_t5_skeptical_replay.py
 python3 -I t7_all_odd_blocks_check.py
@@ -47,4 +57,4 @@ python3 -I t9_odd_base_check.py
 python3 -I t9_odd_independent_replay.py t9_odd_base_cycles.json
 ```
 
-The fixed-prime result for `p=12289` and `t>=12288` is a separate certificate and review question. The [small-leaf boundary](odd_hub_small_leaf_boundary.md) explains why its large-leaf formula cannot extend below `t=p-1`. This branch makes no showcase edit; Fixpoint owns the independent review and card wording.
+The fixed-prime result for `p=12289` and `t>=12288` remains a separate structured certificate. The [small-leaf boundary](odd_hub_small_leaf_boundary.md) explains why its large-leaf formula cannot extend below `t=p-1`. This branch makes no showcase edit; Fixpoint owns the independent review and card wording.
