@@ -29,6 +29,7 @@ reviewed result, under `confluence.math.<topic>`.
 | `confluence.math.hadamard` | `HadamardCubeFiber` | Tao's 6x6 matrix and its equivalents satisfy the cube-fibre lemma; F6 and all-ones show which hypothesis each failure needs |
 | `confluence.math.borsuk` | `BorsukNine` | Projector distance identity with a wrong-identity control, diameter sqrt 2 at orthogonal lines, a 9-dimensional affine span, and the exact chromatic number (5) of Peres' 24 rays as the finite-versus-continuum control |
 | `confluence.math.barnette` | `Barnette` | The literal cubic, bipartite and 3-connected definitions on 8 polyhedral graphs (even prisms, the truncated octahedron), each with a verified Hamiltonian cycle; Petersen (no cycle found), odd-prism and cut-pair controls |
+| `confluence.math.seymour` | `SecondNeighborhood` | Exhaustive check of every oriented graph on up to 6 vertices (14,348,907 at n = 6) for a good vertex, with the complete-symmetric-digraph and two-step-reach controls |
 
 Build and run (JDK 25; plain javac, no build tool):
 
