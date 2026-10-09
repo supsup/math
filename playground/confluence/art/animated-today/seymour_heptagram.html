@@ -104,40 +104,49 @@ if (typeof module !== "undefined") module.exports = HEPTAGRAM;   // lets node te
 if (typeof document !== "undefined") (function () {
   const T = HEPTAGRAM, err = document.getElementById("err");
   if (T.fail.length) { err.style.display = "block"; err.textContent = "Refusing to draw: " + T.fail.join("; "); return; }
-  const canvas = document.getElementById("c");
+  let canvas = document.getElementById("c");
 
   // painter: screen-space ribbons, glow discs and small polygons; WebGL with additive blending,
   // or the 2D canvas with "lighter" compositing (the same geometry, the same additive look)
   function painter(cv, bg) {
-    const gl = cv.getContext("webgl", { antialias: true, premultipliedAlpha: false });
+    let gl = null, V = [], buf = null, loc = null;
+    try {
+      gl = cv.getContext("webgl", { antialias: true, premultipliedAlpha: false });
+      if (gl) {
+        const vs = `attribute vec2 aP; attribute vec4 aC; attribute vec2 aE; uniform vec2 uRes;
+          varying vec4 vC; varying vec2 vE;
+          void main() { vC = aC; vE = aE; gl_Position = vec4(aP.x / uRes.x * 2.0 - 1.0, 1.0 - aP.y / uRes.y * 2.0, 0.0, 1.0); }`;
+        const fs = `precision mediump float; varying vec4 vC; varying vec2 vE;
+          void main() { float e = abs(vE.x);
+            float f = vE.y < 0.5 ? 1.0 - smoothstep(0.55, 1.0, e) : (1.0 - e) * (1.0 - e);
+            gl_FragColor = vec4(vC.rgb * vC.a * f, 1.0); }`;
+        const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+          if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
+        const prog = gl.createProgram();
+        gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+        gl.useProgram(prog);
+        buf = gl.createBuffer();
+        loc = { P: gl.getAttribLocation(prog, "aP"), C: gl.getAttribLocation(prog, "aC"), E: gl.getAttribLocation(prog, "aE"),
+          res: gl.getUniformLocation(prog, "uRes") };
+        gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE);   // additive glow on the dark background
+        gl.clearColor(bg[0], bg[1], bg[2], 1);
+      }
+    } catch (e) {
+      // a shader that fails to compile or link must not blank the page: a canvas that holds a webgl
+      // context cannot also give a 2d one, so swap in a fresh canvas and fall back to 2D there
+      if (gl) { const c2 = cv.cloneNode(); cv.replaceWith(c2); cv = c2; }
+      gl = null;
+    }
     const ctx = gl ? null : cv.getContext("2d");
     if (!gl && !ctx) return null;
-    let V = [], buf = null, loc = null;
-    if (gl) {
-      const vs = `attribute vec2 aP; attribute vec4 aC; attribute vec2 aE; uniform vec2 uRes;
-        varying vec4 vC; varying vec2 vE;
-        void main() { vC = aC; vE = aE; gl_Position = vec4(aP.x / uRes.x * 2.0 - 1.0, 1.0 - aP.y / uRes.y * 2.0, 0.0, 1.0); }`;
-      const fs = `precision mediump float; varying vec4 vC; varying vec2 vE;
-        void main() { float e = abs(vE.x);
-          float f = vE.y < 0.5 ? 1.0 - smoothstep(0.55, 1.0, e) : (1.0 - e) * (1.0 - e);
-          gl_FragColor = vec4(vC.rgb * vC.a * f, 1.0); }`;
-      const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; };
-      const prog = gl.createProgram();
-      gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
-      gl.linkProgram(prog); gl.useProgram(prog);
-      buf = gl.createBuffer();
-      loc = { P: gl.getAttribLocation(prog, "aP"), C: gl.getAttribLocation(prog, "aC"), E: gl.getAttribLocation(prog, "aE"),
-        res: gl.getUniformLocation(prog, "uRes") };
-      gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE);   // additive glow on the dark background
-      gl.clearColor(bg[0], bg[1], bg[2], 1);
-    }
     const cl = x => Math.max(0, Math.min(255, Math.round(x * 255)));
     const css = c => "rgb(" + cl(c[0] * c[3]) + "," + cl(c[1] * c[3]) + "," + cl(c[2] * c[3]) + ")";
     const push = (x, y, c, e, m) => V.push(x, y, c[0], c[1], c[2], c[3], e, m);
     let w = 0, h = 0;
     return {
-      webgl: !!gl,
+      webgl: !!gl, canvas: cv,
       begin(W, H) {
         w = W; h = H; V = [];
         if (gl) { gl.viewport(0, 0, w, h); gl.clear(gl.COLOR_BUFFER_BIT); return; }
@@ -189,6 +198,7 @@ if (typeof document !== "undefined") (function () {
   }
   const pt = painter(canvas, [0.051, 0.063, 0.125]);
   if (!pt) { err.style.display = "block"; err.textContent = "Neither WebGL nor a 2D canvas is available."; return; }
+  canvas = pt.canvas;   // the painter may have swapped in a fresh canvas for the 2D fallback
 
   const hex = s => [parseInt(s.slice(1, 3), 16) / 255, parseInt(s.slice(3, 5), 16) / 255, parseInt(s.slice(5, 7), 16) / 255];
   const rgba = (c, a) => [c[0], c[1], c[2], a];
