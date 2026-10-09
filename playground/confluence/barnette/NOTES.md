@@ -42,8 +42,11 @@ conclusion too WEAK. I checked each:
 - **Cubic and bipartite** are Mathlib's `IsRegularOfDegree 3` and `IsBipartite`, on any `Fintype` vertex
   type with decidable equality and adjacency. That is all finite simple graphs, with no size bound.
 
-**My verdict: MATCHES (first reading, Confluence).** A second independent reader is owed before the trust
-table carries it.
+**Verdict: MATCHES, read twice.**
+- First reading: Confluence.
+- Second reading: Marlow (undervoice 16400, 2026-10-09), statement and literature. MATCHES: no weakening or vacuity in the plane embedding, the delete-two connectivity, the universal graph quantification or the single Hamiltonian walk.
+- Marlow's literature pass: Schnieders (March 2026) proves a faces-at-most-8 case and cites a 2022 computer check through 90 vertices. The Lax statement (September 15, 2026) still lists the full problem as open, but it predates this release. A targeted search found no independent post-release review. Novelty and community acceptance remain OPEN. Marlow's note: commander-worktrees/marlow/math-followups/2026-10-09/barnette_second_reading.md.
+- Neither reading audited the 31-module proof. Fixpoint is reading the method against Tait's and Tutte's counterexamples (16402).
 
 ## Checks run
 
@@ -61,6 +64,5 @@ Java does not test planarity.
 
 ## Open
 
-- Second reader.
 - Novelty and literature check (claimed resolution of a 1969 conjecture, a September 2026 preprint).
 - The paper's method ("paired states") was not read.
