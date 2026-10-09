@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760">
+<defs>
+<marker id="faint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8892a6"/></marker>
+<marker id="gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f2c14e"/></marker>
+<marker id="teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4fd1c5"/></marker>
+<radialGradient id="bg" cx="50%" cy="50%" r="65%"><stop offset="0" stop-color="#1b2133"/><stop offset="1" stop-color="#0b0e17"/></radialGradient></defs>
+<rect width="760" height="760" fill="url(#bg)"/>
+<path d="M591.1,221.7 Q585.1,343.2 635.1,435.1" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M591.1,221.7 Q512.9,420.3 498.4,616.3" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M591.1,221.7 Q361.8,352.1 132.6,443.8" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M643.2,450.1 Q544.5,521.2 503.8,617.6" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M643.2,450.1 Q439.2,512.9 276.9,623.7" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M643.2,450.1 Q398.2,352.1 183.7,230.1" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M497.1,633.3 Q380.0,600.4 279.2,628.7" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M497.1,633.3 Q320.8,512.9 133.0,455.1" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M497.1,633.3 Q421.0,380.6 382.6,136.8" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M262.9,633.3 Q215.5,521.2 130.6,460.0" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M262.9,633.3 Q247.1,420.3 175.1,237.5" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M262.9,633.3 Q412.9,416.2 579.6,234.2" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M116.8,450.1 Q174.9,343.2 169.7,238.6" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M116.8,450.1 Q273.4,305.0 371.5,134.7" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M116.8,450.1 Q380.0,432.1 626.3,448.9" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M168.9,221.7 Q288.7,200.4 367.2,131.2" fill="none" stroke="#6f8fbf" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M168.9,221.7 Q380.0,253.6 574.3,224.2" fill="none" stroke="#9b7fc4" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M168.9,221.7 Q347.1,416.2 487.5,619.3" fill="none" stroke="#c46f9a" stroke-width="1.6" stroke-opacity="0.45" marker-end="url(#faint)"/>
+<path d="M380.0,120.0 Q472.9,197.1 574.4,218.2" fill="none" stroke="#4fd1c5" stroke-width="2.2" stroke-opacity="0.55" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M591.1,221.7 Q514.6,420.7 498.5,616.3" fill="none" stroke="#4fd1c5" stroke-width="2.6" stroke-opacity="0.95" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M380.0,120.0 Q472.9,197.1 574.4,218.2" fill="none" stroke="#4fd1c5" stroke-width="2.2" stroke-opacity="0.55" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M591.1,221.7 Q358.6,345.6 132.4,443.3" fill="none" stroke="#4fd1c5" stroke-width="2.6" stroke-opacity="0.95" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M380.0,120.0 Q495.8,297.6 631.4,437.9" fill="none" stroke="#4fd1c5" stroke-width="2.2" stroke-opacity="0.55" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M643.2,450.1 Q401.4,345.6 183.9,229.7" fill="none" stroke="#4fd1c5" stroke-width="2.6" stroke-opacity="0.95" marker-end="url(#teal)" stroke-dasharray="6 5"/>
+<path d="M380.0,120.0 Q472.9,197.1 574.4,218.2" fill="none" stroke="#f2c14e" stroke-width="3.2" stroke-opacity="1.0" marker-end="url(#gold)"/>
+<path d="M380.0,120.0 Q495.8,297.6 631.4,437.9" fill="none" stroke="#f2c14e" stroke-width="3.2" stroke-opacity="1.0" marker-end="url(#gold)"/>
+<path d="M380.0,120.0 Q328.5,378.2 267.1,616.8" fill="none" stroke="#f2c14e" stroke-width="3.2" stroke-opacity="1.0" marker-end="url(#gold)"/>
+<circle cx="380.0" cy="120.0" r="15" fill="#0b0e17" stroke="#ffffff" stroke-width="2.4"/>
+<text x="380.0" y="125.0" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#ffffff">0</text>
+<circle cx="591.1" cy="221.7" r="26" fill="none" stroke="#f2c14e" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="591.1" cy="221.7" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="591.1" y="226.7" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">1</text>
+<circle cx="643.2" cy="450.1" r="26" fill="none" stroke="#f2c14e" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="643.2" cy="450.1" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="643.2" y="455.1" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">2</text>
+<circle cx="497.1" cy="633.3" r="26" fill="none" stroke="#4fd1c5" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="497.1" cy="633.3" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="497.1" y="638.3" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">3</text>
+<circle cx="262.9" cy="633.3" r="26" fill="none" stroke="#f2c14e" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="262.9" cy="633.3" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="262.9" y="638.3" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">4</text>
+<circle cx="116.8" cy="450.1" r="26" fill="none" stroke="#4fd1c5" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="116.8" cy="450.1" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="116.8" y="455.1" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">5</text>
+<circle cx="168.9" cy="221.7" r="26" fill="none" stroke="#4fd1c5" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="168.9" cy="221.7" r="15" fill="#0b0e17" stroke="#d9dee8" stroke-width="2.4"/>
+<text x="168.9" y="226.7" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#d9dee8">6</text>
+<text x="380.0" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#e8ecf4">Seymour&#8217;s tight heptagram</text>
+<text x="380.0" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="13.5" fill="#a9b2c4">Paley tournament on 7 vertices: v &#8594; v+1, v+2, v+4 (the squares mod 7)</text>
+<text x="380.0" y="720" text-anchor="middle" font-family="Georgia, serif" font-size="13.5" fill="#a9b2c4"><tspan fill="#f2c14e">first ring {1, 2, 4}</tspan>  =  3  =  <tspan fill="#4fd1c5">second ring {3, 5, 6}</tspan></text>
+<text x="380.0" y="740" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#7f889a">equality at every vertex: the residues reach the non-residues in two steps</text>
+</svg>
