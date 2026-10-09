@@ -1,0 +1,18 @@
+ok   n = 1: all 1 oriented graphs have a good vertex (failures: 0)
+ok   n = 2: all 3 oriented graphs have a good vertex (failures: 0)
+ok   n = 3: all 27 oriented graphs have a good vertex (failures: 0)
+ok   n = 4: all 729 oriented graphs have a good vertex (failures: 0)
+ok   n = 5: all 59049 oriented graphs have a good vertex (failures: 0)
+ok   n = 6: all 14348907 oriented graphs have a good vertex (failures: 0)
+ok   control: forgetting to exclude first neighbours changes the verdict at some vertex in 10999816 of them
+ok   n = 7: all 10460353203 oriented graphs have a good vertex (failures: 0)
+ok   control: complete symmetric digraph on 2 vertices (2-cycles allowed) has NO good vertex
+ok   control: complete symmetric digraph on 3 vertices (2-cycles allowed) has NO good vertex
+ok   control: complete symmetric digraph on 4 vertices (2-cycles allowed) has NO good vertex
+ok   control: complete symmetric digraph on 5 vertices (2-cycles allowed) has NO good vertex
+ok   control: complete symmetric digraph on 6 vertices (2-cycles allowed) has NO good vertex
+ALL CHECKS PASSED
+
+real	16m55.184s
+user	16m47.151s
+sys	0m1.797s

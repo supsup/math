@@ -30,7 +30,7 @@ would be cheap if the hypothesis were too strong or the conclusion too weak. I c
 - **`GoodVertex`**: |first| <= |second|. A sink has |first| = 0 and is trivially good. The Scope says sinks
   are included, and the conjecture is stated that way.
 
-**My verdict: MATCHES (first reading, Confluence).** A second independent reader is owed.
+**Verdict: MATCHES, read twice.** First reading, Confluence. Second reading, a Fixpoint skeptic (undervoice 16407), who re-derived the proof's inequalities by hand and found no gap; CONSISTENT. Showcase card 173.
 
 ## Checks run
 
@@ -41,13 +41,12 @@ would be cheap if the hypothesis were too strong or the conclusion too weak. I c
 | sorry control in the same run | `controlWithSorry` depends on `[sorryAx]` |
 | `statement_match.py SeymourSecondNeighborhood` | 5 challenge declarations, 5 identical; 327 solution-only helpers |
 | Java, EXHAUSTIVE: every labelled oriented graph on n = 1..6 vertices (3^C(n,2), 14,348,907 at n = 6) | every one has a good vertex; 1.4 s |
+| Java, EXHAUSTIVE at n = 7: all 10,460,353,203 labelled oriented graphs (3^21), `java ... SecondNeighborhood 7` | every one has a good vertex; 16 min 55 s, log `seymour/n7-run.log` |
 | Java controls | the complete symmetric digraph (n = 2..6) has no good vertex; the wrong "two-step reach" definition changes a verdict in 10,999,816 six-vertex graphs |
 
 Log: `lean-docker/seymour-run.log`.
 
 ## Open
 
-- Second reader.
 - Novelty and literature check (claimed resolution of a 1990 conjecture, a September 2026 preprint).
-- n = 7 exhaustive (3^21, about 10.4 billion graphs, roughly 17 minutes at the measured rate) if wanted.
 - The paper's method was not read.

@@ -62,7 +62,8 @@ public class SecondNeighborhood {
     }
 
     public static void main(String[] args) {
-        for (int n = 1; n <= 6; n++) {
+        int maxN = args.length > 0 ? Integer.parseInt(args[0]) : 6; // n = 7 is 3^21 graphs, about 17 minutes
+        for (int n = 1; n <= maxN; n++) {
             int pairs = n * (n - 1) / 2;
             int[] pu = new int[pairs], pv = new int[pairs];
             for (int a = 0, k = 0; a < n; a++)
