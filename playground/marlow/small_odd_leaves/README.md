@@ -17,6 +17,8 @@ At `t=1`, all `p` spokes are singletons, so the same formula gives `d(K_(p,1))=p
 
 Each hub has odd degree `t`, so it needs at least one incident singleton edge. With `s>=p` singletons, each simple cycle has at most `2t` edges, giving at least `s+ceil((pt-s)/(2t))` parts. This is nondecreasing in integer `s`; at `s=p` it gives the displayed lower bound. The uniform construction supplies exactly one singleton per hub and the required number of simple cycles. Its seed blocks are formulaic for every odd `t`, including odd composite hub counts.
 
+The [prime-order shift-pair theorem](prime_shift_pair_all_primes.md) gives a sharper cycle profile for `K_(p,p+1+tp)` at every prime `p>=5` and integer `t>=0`: one `p-1`-cycle and all remaining cycles Hamiltonian. Its [independent skeptical audit](prime_shift_pair_all_primes_skeptical_audit.md), [producer checker](prime_shift_pair_all_primes_check.py), and [separate exact-edge checker](prime_shift_pair_all_primes_independent_check.py) accompany the proof. Fixpoint's exact-tip review is pending; this branch makes no showcase edit.
+
 The earlier finite packets remain useful independent controls and show how the result emerged:
 
 | Odd leaves `t` | Exact value for odd `p>=t` | Earlier construction |
@@ -49,6 +51,8 @@ python3 -I odd_all_leaves_uniform_peer_check.py
 python3 -I odd_hubs_large_leaves_uniform_check.py
 python3 -I odd_hubs_all_t_independent_replay.py
 python3 -I all_bipartite_parity_bound_check.py
+python3 -I prime_shift_pair_all_primes_check.py
+python3 -I prime_shift_pair_all_primes_independent_check.py
 python3 -I odd_t5_edge_check.py
 python3 -I odd_t5_skeptical_replay.py
 python3 -I t7_all_odd_blocks_check.py
