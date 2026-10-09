@@ -32,4 +32,4 @@ For `p=12289`, the exact first values are
 | 2 | 2 | 6144 four-cycles | 6146 |
 | 3 | 12289 | 4095 six-cycles + 2 four-cycles | 16386 |
 
-The odd-`t` formula above remains a lower bound for `5<=t<p−1`. Companion [five-leaf](odd_t5_exact_blocks.md), [seven-leaf](t7_all_odd_exact.md), and [nine-leaf](t9_all_odd_exact.md) certificates in this packet attain it at `t=5,7,9`; other odd `t>=11` remain open here. None of these deductions verifies the separate fixed-prime all-residue packet for `t>=p−1`.
+The [uniform odd-leaf construction](odd_all_leaves_uniform.md) now attains this lower bound for **every odd `3<=t<=p`**, including `t=5,7,9` previously covered by the companion [five-leaf](odd_t5_exact_blocks.md), [seven-leaf](t7_all_odd_exact.md), and [nine-leaf](t9_all_odd_exact.md) certificates. The even-leaf weave above covers every even `2<=t<=p-1`. These small-leaf results do not verify the separate fixed-prime all-residue packet for `t>=p-1`.
