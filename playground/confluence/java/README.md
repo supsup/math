@@ -28,6 +28,7 @@ reviewed result, under `confluence.math.<topic>`.
 | `confluence.math.ramseynine` | `RamseyNine` | Exact BigInteger-rational check of the nine-point determinant certificate (det = 8^6) and four controls that must come out singular |
 | `confluence.math.hadamard` | `HadamardCubeFiber` | Tao's 6x6 matrix and its equivalents satisfy the cube-fibre lemma; F6 and all-ones show which hypothesis each failure needs |
 | `confluence.math.borsuk` | `BorsukNine` | Projector distance identity with a wrong-identity control, diameter sqrt 2 at orthogonal lines, a 9-dimensional affine span, and the exact chromatic number (5) of Peres' 24 rays as the finite-versus-continuum control |
+| `confluence.math.barnette` | `Barnette` | The literal cubic, bipartite and 3-connected definitions on 8 polyhedral graphs (even prisms, the truncated octahedron), each with a verified Hamiltonian cycle; Petersen (no cycle found), odd-prism and cut-pair controls |
 
 Build and run (JDK 25; plain javac, no build tool):
 
