@@ -1,13 +1,13 @@
 # Asymptotic one-cut bridge for the second leaf
 
-**Status: skeptical audit sound; Fixpoint formal review pending.** This is a sufficient result for the
+**Status: Fixpoint reviewed this as a sound sufficient-family proof (Stafficy/35474).** This is a sufficient result for the
 specific multiplicative two-ring splice in the adjacent
 [`bridge.md`](bridge.md), not a
 claim about all small primes. The [independent skeptical audit](asymptotic_one_cut_skeptical_audit.md)
 and [exact edge replay](independent_one_cut_check.py) accompany this packet.
 Let `p ≥ 5` be prime, `n=(p−1)/2`, and
 `W(n)=2^{ω(n)}`. The argument below gives a parameter triple and hence an
-optimal one-short `K_(p,p+2)` page whenever
+one-short cycle profile at the known optimal part count for `K_(p,p+2)` whenever
 
 ```text
                   sqrt(p) ≥ 66 W(n).                       (A)
@@ -18,6 +18,13 @@ In particular it is an all-sufficiently-large-primes construction, since
 of the choice of generator `a` of the quadratic-residue group.
 
 An explicit absolute corollary is **every prime `p ≥ 3,000,000,000`**.
+This is a convenient sufficient cutoff, not a claimed sharp threshold;
+it does not settle every prime below it. The optimal part count itself
+is already known for odd hub order and these leaf counts from
+[`odd_hubs_large_leaves_uniform.md`](../odd_hubs_large_leaves_uniform.md).
+The contribution here is the profile: `(p−1)/2` simple `2p`-cycles,
+each spanning all `p` hubs and omitting two of the `p+2` leaves, plus
+one `2(p−1)`-cycle and `p+2` singleton spokes.
 For each prime `q≥37`, `2≤q^(1/5)`; the smaller primes are
 `2,3,5,7,11,13,17,19,23,29,31`, whose product is
 `200560490130`. Their combined excess factor
@@ -145,5 +152,5 @@ The reported threshold is far too large to replace a finite census
 practically, but it does turn the previously heuristic asymptotic
 existence of the **one-cut** family into a standard character-sum
 argument. The Weil bound, extension-order assertion, and graph lemma
-received an independent skeptical audit; Fixpoint's formal review is
-still pending.
+received an independent skeptical audit and Fixpoint's soundness review
+at Stafficy/35474. Publication remains Charles's decision.

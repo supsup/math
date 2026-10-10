@@ -1,18 +1,21 @@
 # Prime second-leaf one-cut packet
 
-The [asymptotic theorem](asymptotic_one_cut.md) gives an optimal one-short
-edge partition of `K_(p,p+2)` for every prime `p≥3,000,000,000` (more
-generally when `sqrt(p)≥66·2^ω((p−1)/2)`). It has `(p−1)/2` Hamiltonian
-`2p`-cycles, one `2(p−1)`-cycle, and `p+2` singleton edges. The claim is
-only for prime hub order and these stated ranges; primes `401<p<3B`
-remain outside this packet's existence proof.
+The [asymptotic theorem](asymptotic_one_cut.md) constructs a specific
+cycle profile at the [already known optimal part count](../odd_hubs_large_leaves_uniform.md)
+for `K_(p,p+2)` when `p` is prime and `p≥3,000,000,000` (more generally
+when `sqrt(p)≥66·2^ω((p−1)/2)`). It has `(p−1)/2` simple `2p`-cycles,
+each spanning every vertex on the small side and omitting two leaves,
+one `2(p−1)`-cycle, and `p+2` singleton edges. The numerical cutoff is
+sufficient and loose; this packet does not settle every prime between
+`401` and the stated cutoff.
 
 The proof specializes the [exact second-leaf bridge criterion](bridge.md)
 to `b=ac/(c+a−1)` and counts admissible `c` with a character sieve and
 the five-root Weil bound. The [exact cutoff arithmetic](cutoff_arithmetic.md),
 [skeptical theorem audit](asymptotic_one_cut_skeptical_audit.md), and
 [independent bridge audit](bridge_skeptical_audit.md) accompany it.
-Fixpoint's formal review is pending; no showcase claim has been made.
+Fixpoint found the sufficient-family proof sound at Stafficy/35474;
+publication remains Charles's decision.
 
 Bounded controls replay full edges at `p=5,7,11,13` and the `20`
 restricted-family primes `17≤p≤101`. The parameter checker finds a
@@ -32,4 +35,7 @@ python3 -I independent_character_audit.py
 
 The first three controls document the bridge and earlier finite
 two-ring cases. The last three independently check the restricted
-asymptotic family's algebra and finite full-edge pages.
+asymptotic family's algebra and finite full-edge pages. The character
+audit uses one deterministic generator of the quadratic-residue group
+per prime; its finite output is a control, not a quantifier over all
+generators.

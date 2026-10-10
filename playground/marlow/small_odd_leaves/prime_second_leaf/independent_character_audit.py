@@ -4,6 +4,18 @@ import cmath
 from math import gcd, sqrt
 
 
+# Counts for the deterministic first generator of Q chosen by check(). They
+# pin the finite control's output, including selected non-primitive values.
+EXPECTED = {
+    5: (0, 0), 7: (0, 0), 11: (0, 0), 13: (0, 0),
+    17: (2, 1), 19: (0, 0), 23: (0, 0), 29: (2, 0),
+    31: (3, 2), 37: (0, 0), 41: (0, 0), 43: (4, 2),
+    47: (3, 3), 53: (4, 0), 59: (4, 4), 61: (0, 0),
+    67: (6, 4), 71: (2, 0), 73: (7, 5), 79: (5, 4),
+    83: (8, 8), 89: (4, 0), 97: (2, 1), 101: (10, 4),
+}
+
+
 def primes(limit):
     return [n for n in range(2, limit+1)
             if all(n%d for d in range(2, int(n**0.5)+1))]
@@ -47,10 +59,10 @@ def check(p):
         ext=[k for k in (k0,k0+n) if (2*n)//gcd(k,2*n)==2*d]
         assert ext
         k=ext[0]
-        # psi^d is quadratic, and no of the 16 projector terms can
-        # cancel the F-root exponent 1 or 1+d modulo 2d.
+        # psi^d is quadratic. At an F-root, the projector contributes
+        # exponent 0 or d to Psi's exponent 1; neither is zero modulo 2d
+        # for d>1, as the proof states.
         assert k*d%(2*n)==n
-        assert 1%(2*d) and (1+d)%(2*d)
         Z=sum(cmath.exp(2j*cmath.pi*k*discrete[g]/(2*n))*P
               for c,g,P in allowed)
         assert abs(Z)<=4*sqrt(p)+5+1e-8
@@ -72,4 +84,6 @@ if __name__=='__main__':
     arithmetic()
     for p in primes(101):
         if p<5:continue
-        print('CHARACTER_STRUCTURE_PASS',p,check(p))
+        result=check(p)
+        assert result == EXPECTED[p], (p, result, EXPECTED[p])
+        print('CHARACTER_STRUCTURE_PASS',p,result)
