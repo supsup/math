@@ -1,19 +1,55 @@
-# Card draft (Confluence): Two thirds of the zeros are simple and on the line; and where the rest may be
+# Card draft (Confluence): Every zero is on the line. How many are single?
 
-For Fixpoint to edit into the showcase. Sources per Charles (2026-11-24): both collections, each cited.
-Agreed in Undervoice #general 34414-34440 (Marlow's frame: zeta23 asks how many zeros are simple and on
-the line; card 003 is the companion asking where zeros are excluded; both denominators labelled; the band
-not shaded by density).
+For Fixpoint to edit into the showcase. Plain reading first, then the details (Charles's rule, 2026-11-24:
+break the card down and simplify). Sources from both collections, each cited.
 
-## Claim, in plain words
+## In one sentence
 
-Count the nontrivial zeros of the Riemann zeta function up to height T, each as many times as its
-multiplicity. As T grows, at least two thirds of that count are zeros that are simple and lie exactly on
-the critical line Re s = 1/2; with the optimal Montgomery-Taylor window the share is at least
-2 - 1/c1* = 0.67250..., and at least (3 - 1/c1*)/2 = 0.83625... of the count are distinct zeros. The same
-holds for the zeros of L(s, chi) for every primitive Dirichlet character chi modulo q > 1.
+The zeros of the zeta function all sit on one line, and at least 67 out of every 100 of them are
+"single" zeros; mathematicians expect all of them to be single, but nobody has proved that.
 
-## The formulas (verbatim, anthropics/formal-math 11b6c7e, zeta23/Challenge.lean)
+## Step by step
+
+1. **The zeta function** is a function that mathematicians study because its zeros (the inputs where it
+   equals 0) control how the prime numbers are spread out.
+2. **Where the zeros are.** The interesting zeros all lie in a band, between 0 and 1 in one direction
+   (picture, panel 1). The Riemann Hypothesis says they all sit exactly on the centre line, at 1/2. In
+   November 2026 this was proved, and the proof was checked by computer and certified (see "How sure").
+3. **Single or repeated.** A zero can be single or repeated. Picture a graph crossing the zero level. At a
+   single zero it cuts through with a slope, like the graph of x at 0. At a repeated zero the graph is
+   flat at zero, like the graph of x squared at 0. A repeated zero is counted twice (or more) when we count.
+4. **How many are single.** Count the zeros up to some height, counting a repeated one as many times as it
+   repeats. Once the height is large enough, at least 67 out of every 100 counted are single (picture,
+   panel 2). So at most 33 out of 100 could belong to repeated zeros.
+5. **What is still open.** Mathematicians expect that no zero is repeated (the "simple zeros
+   conjecture"). The Riemann Hypothesis does not settle that: it says where the zeros are, not whether
+   each one is single.
+
+## How sure is each part?
+
+- **Every zero on the line (the Riemann Hypothesis):** proved by Levent Alpöge with Claude (announced
+  2026-11-20) as a computer-checked Lean proof. The Lean FRO and the Mathlib Initiative wrote: "We hereby
+  certify that both the statement and the proof of the Riemann Hypothesis are correct" (2026-11-21).
+  Andrew Sutherland's record (2026-11-24) shows four independent proof checkers accepting it.
+- **At least 67 in 100 single:** proved by Alpöge and Furman (arXiv:2608.13637); the computer-checked Lean
+  version was written by Claude, and one of the paper's authors checked that its statement says what the
+  paper says.
+- **What we, the crew, ran:** a script that checks the quoted statements against the sources and
+  recomputes the numbers (below). We did not rebuild either proof.
+
+## A note on card 003 (history)
+
+In October our card 003 recorded a CLAIM from openai/math: no zeros to the right of 7/8. The November
+proof implies that for the zeta function and for every Dirichlet L-function (7/8 is to the right of 1/2).
+It does not cover 003's separate result about Hecke L-functions over Q(sqrt -3).
+
+---
+
+## For the expert
+
+### The statements (verbatim)
+
+anthropics/formal-math 11b6c7e, zeta23/Challenge.lean:
 
     theorem two_thirds_simple_on_critical_line_cumulative :
         ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 / 3 - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T
@@ -21,61 +57,54 @@ holds for the zeros of L(s, chi) for every primitive Dirichlet character chi mod
         ∀ ε > 0, ∃ T₀ : ℝ, ∀ T ≥ T₀, (2 - 1 / cMT - ε) * (Ncount 0 T : ℝ) ≤ N0simple 0 T
     def cMT : ℝ := Real.sqrt 2 * Real.tan (1 / Real.sqrt 2) / (1 + 1 / Real.sqrt 2 * Real.tan (1 / Real.sqrt 2))
 
-Ncount counts zeros with multiplicity (`∑ᶠ ρ ∈ zerosIn T₁ T₂, zeroMult ρ`); N0simple counts the distinct
-simple zeros on the line (`.ncard`). Theorems A to E carry dyadic forms (T, 2T] too, and E the Dirichlet
-analogues.
+Ncount counts zeros with multiplicity; N0simple counts the distinct simple zeros on the line. With every
+nontrivial zero on the line, Ncount - N0simple is exactly the multiplicity mass of the multiple zeros, so
+eventually at most 1/cMT - 1 = 0.32750 of the count (1/3 from the first theorem alone); distinct zeros are
+at least (3 - 1/cMT)/2 = 0.83625 of the count.
 
-## The companion (openai/math f5702854, family 003, CLAIMED)
+The Riemann Hypothesis release, mirror 1337isnot1337/riemann-hypothesis-solved 6193bb5,
+extracted/lean/src/Main.lean: `theorem riemannHypothesis : RiemannHypothesis` (Mathlib's own definition;
+Statements.lean does not redefine it), and Dirichlet non-vanishing for `1 / 2 < s.re`, every character.
 
-    theorem riemannZeta_ne_zero_of_seven_eighths_lt_re {s : ℂ} (hs : (7 / 8 : ℝ) < s.re) : riemannZeta s ≠ 0
-    theorem LFunction_ne_zero_of_seven_eighths_lt_re {q : ℕ} [NeZero q] (χ : DirichletCharacter ℂ q) {s : ℂ}
-        (hs : (7 / 8 : ℝ) < s.re) (hpole : ¬ (χ = 1 ∧ s = 1)) : DirichletCharacter.LFunction χ s ≠ 0
+openai/math f5702854, family 003 (claimed in October): `(hs : (7 / 8 : ℝ) < s.re) : riemannZeta s ≠ 0`,
+and the same for `DirichletCharacter.LFunction χ s`, every character.
 
-A full half-plane (no hypothesis on Im s), for every Dirichlet character of every modulus.
+### Checked by
 
-## The combination (ours; elementary; NOT formalized; CONDITIONAL on 003's claim)
+`zeta_strip.py` (this folder), run by Confluence on 2026-11-24 against local checkouts at the three pinned
+commits; it refuses any other revision. It (1) verifies each file read is byte-identical to its pin;
+(2) asserts every quoted statement verbatim, that Statements.lean does not redefine RiemannHypothesis, and
+that 003's half-plane lies inside the release's; (3) recomputes c1* = 0.7532960679 from the closed form,
+equal to both alternative forms in the file's comments, and the proportions 0.67250070 and 0.83625035;
+CONTROL: the formula at the wrong angle (t = 1) gives 0.83887 and is asserted to differ; (4) checks that
+the plain-language numbers round honestly: a lower bound rounds DOWN (67.25% to "at least 67"), an upper
+bound UP (32.75% to "at most 33"). Output: `zeta_strip.out`; picture: `zeta_strip.svg` (self-contained).
+What it cannot show: it checks statements and arithmetic, not the proofs.
 
-From zeta23: N - N0s is the multiplicity-weighted mass of the zeros that are off the line OR multiple
-(including repeated zeros on the line), so for every ε > 0, eventually N - N0s <= (1/c1* - 1 + ε) N, that
-is at most 0.32750 of the count (1/3 with Theorem B alone). From 003, if it holds: no nontrivial zero has
-Re > 7/8, and by the functional equation none has Re < 1/8 (for a complex character, through its
-conjugate, which 003 also covers). Together: every off-line nontrivial zero lies in 1/8 <= Re <= 7/8, and
-those zeros together with the multiple ones are at most a third of the count. Neither source states this.
-The picture says WHERE an off-line zero may be, never how many: the band is deliberately not shaded.
+### Lean status
 
-## Checked by
+- zeta23: the repository's CI checks only the folders that change; the run that verified zeta23 is the
+  push on 2bafb8c (2026-08-28, success), and no commit has touched zeta23 since. Read: the run list, not
+  the job logs. Not built by the crew.
+- The RH release: Sutherland's record (math.mit.edu/~drew/grh/, updated 2026-11-24 05:25 UTC): all
+  175,187 modules compile; nanoda, Lean's default kernel, the paranoid kernel and lean4lean accept;
+  con-leche and con-ron find all five Mathlib-only statements justified; axioms propext, Classical.choice,
+  Quot.sound. Its caveats: the comparator's build step was "satisfied by a stub"; it relies on Mathlib's
+  definitions; Dedekind, Hecke and automorphic L-functions are not covered. The local checkout matches the
+  pin, the archive sha256 9631b4f0... and toolchain v4.33.1 of that record. Not built by the crew.
 
-`zeta_strip.py` (this folder), run by Confluence on 2026-11-24 against local checkouts at the two pinned
-commits; it refuses any other revision. It (1) verifies both statement files are byte-identical to the
-pinned commits; (2) asserts every quoted statement above is present verbatim, that 003 has no imaginary-part
-hypothesis and no primitivity restriction; (3) recomputes c1* = 0.7532960679 from the closed form, equal to
-both alternative forms in the file's comments, and the proportions 0.67250070 and 0.83625035 (the
-comments' decimals); CONTROL: the same formula at the wrong angle (t = 1) gives 0.83887 and is asserted to
-differ, so the check can fail; (4) checks the combination's arithmetic (1/c1* - 1 = 0.32749930 < 1/3).
-Output: `zeta_strip.out`. What it cannot show: it checks statements and arithmetic, not the proofs; nobody
-on the crew built either Lean project.
+### Red flags
 
-## Lean status
+- The Lean FRO and Mathlib certification is for the Riemann Hypothesis; it does not state the Dirichlet
+  generalization, which rests on Sutherland's kernel and statement records.
+- Both proofs are by Claude in Lean; the human checks are a paper author's reading of zeta23's statement
+  and the certification of RH's statement and proof. Neither is a refereed paper yet.
+- "At least 67" is a theorem about this result, not a claim that it is the best known.
 
-- zeta23: sorry-free and the three standard axioms per its README and AUDIT.md; the repository's CI checks
-  only the folders that change, so the run that verified zeta23 is the push on 2bafb8c (2026-08-28,
-  success); no commit has touched zeta23 since (git log), so it covers the files at 11b6c7e. Read: the run
-  list, not the job logs. Not built by the crew (a full build is Charles's call on the machine).
-- 003: statement unchanged since adc7f124 (2026-10-06); my October kernel build of DirichletSevenEighths
-  and QuasiRiemannHypothesis passed (7,062 jobs, confluence/playground 114062e2). The comparator was not run.
+### Sources
 
-## Red flags
-
-- The combination's whole force is 003's CLAIM: a zero-free half-plane at 7/8 would be a quasi-Riemann
-  hypothesis, a result of the first rank, which is why 003 is labelled Claimed.
-- The functional-equation step (Re < 1/8) is in neither Lean.
-- zeta23's proof and Lean are by Claude; the human check is that a paper author read the trusted statement
-  against the paper. That is the strongest statement-trust of anything on our page, and still not a
-  refereed proof.
-
-## Sources
-
-- Alpoge, Furman, "More than two thirds of the zeros of the Riemann zeta function are simple and on the
-  critical line", arXiv:2608.13637; Lean: github.com/anthropics/formal-math/tree/11b6c7e3c9/zeta23
-- openai/math family 003 (claimed): github.com/openai/math at f5702854, lean/ComparatorChallenges/
-  QuasiRiemannHypothesis.lean and DirichletSevenEighths.lean; our card 003.
+- Alpöge, Furman, arXiv:2608.13637; Lean: github.com/anthropics/formal-math/tree/11b6c7e3c9/zeta23
+- Riemann Hypothesis: alpo.ge/remark.pdf (2026-11-20); mirror github.com/1337isnot1337/riemann-hypothesis-solved
+  at 6193bb5; leanprover-community.github.io/blog/posts/riemann-hypothesis/ (2026-11-21);
+  math.mit.edu/~drew/grh/ (2026-11-24)
+- openai/math family 003 (claimed): github.com/openai/math at f5702854; our card 003.

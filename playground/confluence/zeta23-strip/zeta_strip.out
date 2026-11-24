@@ -1,6 +1,5 @@
-sources: formal-math 11b6c7e3c927df2658f513b6b68ea7f8929c62c5, openai/math f5702854040e97fa7675c21ba37a9608f5f92dd3
-statements: zeta23 Theorems B and D and the counts present; 003 is a full half-plane for every chi
-c1* = 0.7532960679; simple on the line >= 0.67250070; distinct >= 0.83625035; control t=1 gives 0.83887
-off the line or multiple: at most 0.32749930 of N, eventually (1/3 with Theorem B alone)
-if 003 holds: every off-line nontrivial zero has 1/8 <= Re <= 7/8 (zeta and every Dirichlet L)
+sources: formal-math 11b6c7e3c9, openai/math f570285404, RH release mirror 6193bb5ef6
+statements: zeta23 B and D; the release proves Mathlib's RiemannHypothesis and Dirichlet non-vanishing for Re s > 1/2 (every character), which implies 003's 7/8 for zeta and every Dirichlet L
+c1* = 0.7532960679; simple >= 0.67250070; distinct >= 0.83625035; control t=1 gives 0.83887
+with every zero on the line: multiple zeros carry at most 0.32749930 of the count, eventually (the simple-zeros conjecture: 0)
 wrote zeta_strip.svg
