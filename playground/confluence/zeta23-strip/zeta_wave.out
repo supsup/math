@@ -1,0 +1,5 @@
+crossings of Z on (10, 60]: 13; first three at t = 14.1372, 21.0244, 25.0184
+count check: largest |crossings found - (theta(T)/pi + 1)| over 13 heights = 0.127
+controls: without the correction term 0.207 (passes); with a wrong theta 2.127 (must fail)
+slope of Z at its crossings: smallest 0.795 (none flat), largest 2.428
+wrote zeta_wave.svg

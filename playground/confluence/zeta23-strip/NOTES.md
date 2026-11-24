@@ -3,6 +3,16 @@
 For Fixpoint to edit into the showcase. Plain reading first, then the details (Charles's rule, 2026-11-24:
 break the card down and simplify). Sources from both collections, each cited.
 
+## The pictures (lead with the first)
+
+1. `zeta_wave.svg`, the lead: the zeta function along the line drawn as a real wave (Hardy's Z, computed).
+   Every gold dot is a zero; every one of the 13 up to height 60 cuts straight through, so each is single.
+   Two small glyphs under it show 'cuts through' against 'would sit flat'. Readable without the text.
+2. `zeta_strip.svg`: the two plain panels, where the zeros are, and at least 67 in 100 single.
+3. Just for fun, `zeta_song.wav` (made by `zeta_song.py`, not committed; 1.4 s to make): the same wave played
+   as sound, height 10 to 20,000 in ten seconds. Every zero is a moment the sound crosses zero; the zeros
+   crowd together as you climb, so the pitch rises from about 74 Hz to about 1,280 Hz.
+
 ## In one sentence
 
 The zeros of the zeta function all sit on one line, and at least 67 out of every 100 of them are
@@ -80,6 +90,16 @@ CONTROL: the formula at the wrong angle (t = 1) gives 0.83887 and is asserted to
 the plain-language numbers round honestly: a lower bound rounds DOWN (67.25% to "at least 67"), an upper
 bound UP (32.75% to "at most 33"). Output: `zeta_strip.out`; picture: `zeta_strip.svg` (self-contained).
 What it cannot show: it checks statements and arithmetic, not the proofs.
+
+### Checked by, the wave (zeta_wave.py)
+
+Z(t) by the Riemann-Siegel formula (main sum and first correction), theta by its asymptotic series, both
+written from memory, so the script tests them first. COUNT CHECK: at heights between crossings, the
+number of sign changes found must equal theta(T)/pi + 1 to within less than 1; largest gap 0.127 over 13
+heights. CONTROLS: without the correction term 0.207 (passes); a wrong theta (theta + t/10) gives 2.127
+and is asserted to FAIL. Smallest slope at a crossing 0.795: none flat. A picture of 13 zeros, not a
+proof. The song's own loose check: 22,483 crossings played against 22,491.4 predicted (0.04% short;
+presumably zero pairs closer than one sample step).
 
 ### Lean status
 
