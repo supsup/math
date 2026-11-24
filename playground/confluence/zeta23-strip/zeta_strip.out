@@ -1,0 +1,6 @@
+sources: formal-math 11b6c7e3c927df2658f513b6b68ea7f8929c62c5, openai/math f5702854040e97fa7675c21ba37a9608f5f92dd3
+statements: zeta23 Theorems B and D and the counts present; 003 is a full half-plane for every chi
+c1* = 0.7532960679; simple on the line >= 0.67250070; distinct >= 0.83625035; control t=1 gives 0.83887
+off the line or multiple: at most 0.32749930 of N, eventually (1/3 with Theorem B alone)
+if 003 holds: every off-line nontrivial zero has 1/8 <= Re <= 7/8 (zeta and every Dirichlet L)
+wrote zeta_strip.svg

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" font-family="Helvetica, Arial, sans-serif">
+<rect width="960" height="560" fill="#ffffff"/>
+<defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#8c959f" stroke-width="2"/></pattern></defs>
+<text x="70" y="36" font-size="17" fill="#1f2328" font-weight="bold">Where the zeros of zeta can be</text>
+<rect x="70.0" y="70" width="50.0" height="400" fill="url(#hatch)" opacity="0.55"/>
+<rect x="420.0" y="70" width="50.0" height="400" fill="url(#hatch)" opacity="0.55"/>
+<rect x="70.0" y="70" width="400.0" height="400" fill="none" stroke="#1f2328" stroke-width="1"/>
+<line x1="270.0" y1="70" x2="270.0" y2="470" stroke="#b8860b" stroke-width="5"/>
+<text x="70.0" y="490" font-size="13" fill="#1f2328" text-anchor="middle">0</text>
+<text x="120.0" y="490" font-size="13" fill="#1f2328" text-anchor="middle">1/8</text>
+<text x="270.0" y="490" font-size="13" fill="#1f2328" text-anchor="middle">1/2</text>
+<text x="420.0" y="490" font-size="13" fill="#1f2328" text-anchor="middle">7/8</text>
+<text x="470.0" y="490" font-size="13" fill="#1f2328" text-anchor="middle">1</text>
+<text x="270.0" y="510" font-size="13" fill="#57606a" text-anchor="middle">real part of the zero (the strip 0 &lt; Re &lt; 1; height schematic)</text>
+<text x="445.0" y="62" font-size="12" fill="#57606a" text-anchor="middle">no zeros (claimed)</text>
+<text x="95.0" y="62" font-size="12" fill="#57606a" text-anchor="middle">no zeros (claimed)</text>
+<text x="280.0" y="92" font-size="12" fill="#b8860b">the critical line</text>
+<text x="190.0" y="270.0" font-size="12" fill="#57606a" text-anchor="middle">an off-line</text>
+<text x="190.0" y="286.0" font-size="12" fill="#57606a" text-anchor="middle">zero, if any,</text>
+<text x="190.0" y="302.0" font-size="12" fill="#57606a" text-anchor="middle">is in the band</text>
+<text x="540" y="110" font-size="15" fill="#1f2328" font-weight="bold">Of every zero counted (with multiplicity)</text>
+<rect x="540" y="150" width="255.6" height="34" fill="#b8860b"/>
+<rect x="795.6" y="150" width="124.4" height="34" fill="#ffffff" stroke="#1f2328" stroke-dasharray="4 3"/>
+<text x="540" y="206" font-size="13" fill="#b8860b">at least 0.6725: simple, on the line</text>
+<text x="540" y="226" font-size="13" fill="#1f2328">at most 0.3275: off the line, or multiple</text>
+<text x="540" y="258" font-size="13" fill="#1f2328">distinct zeros: at least 0.8363 of the count</text>
+<text x="540" y="278" font-size="13" fill="#57606a">(eventually, as the height grows; 2/3 and 5/6 without the</text>
+<text x="540" y="296" font-size="13" fill="#57606a">optimal window)</text>
+<text x="540" y="346" font-size="13" fill="#b8860b" font-weight="bold">PROVED, the proportions on the line</text>
+<text x="540" y="364" font-size="12" fill="#1f2328">Alpoge-Furman, arXiv:2608.13637; Lean by Claude, statement</text>
+<text x="540" y="380" font-size="12" fill="#1f2328">read by a paper author; anthropics/formal-math 11b6c7e</text>
+<text x="540" y="412" font-size="13" fill="#57606a" font-weight="bold">CLAIMED, the hatched strips</text>
+<text x="540" y="430" font-size="12" fill="#1f2328">openai/math f570285, family 003: no zeros right</text>
+<text x="540" y="446" font-size="12" fill="#1f2328">of 7/8 (left of 1/8 by the functional equation)</text>
+<text x="540" y="478" font-size="12" fill="#57606a">The band says WHERE an off-line zero may be, never how</text>
+<text x="540" y="494" font-size="12" fill="#57606a">many: it is deliberately not shaded by density.</text>
+</svg>
