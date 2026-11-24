@@ -14,8 +14,9 @@
 <text x="440.0" y="442" font-size="14" fill="#1f2328" text-anchor="middle">1</text>
 <text x="60" y="472" font-size="13" fill="#57606a">Proved in 2026 and checked by computer (the Riemann Hypothesis).</text>
 <text x="520" y="40" font-size="18" fill="#1f2328" font-weight="bold">2. How many are single?</text>
-<text x="520" y="102" font-size="14" fill="#1f2328">Count the zeros up to a large enough height</text>
-<text x="520" y="120" font-size="14" fill="#1f2328">(a repeated one counts twice). Of that count:</text>
+<text x="520" y="84" font-size="14" fill="#1f2328">Count the zeros up to a large enough height</text>
+<text x="520" y="102" font-size="14" fill="#1f2328">(a double counts twice, a triple three times).</text>
+<text x="520" y="120" font-size="14" fill="#1f2328">Of that count:</text>
 <rect x="520" y="150" width="255.6" height="40" fill="#b8860b"/>
 <rect x="775.6" y="150" width="124.4" height="40" fill="#ffffff" stroke="#1f2328" stroke-dasharray="4 3"/>
 <text x="530" y="176" font-size="15" fill="#ffffff" font-weight="bold">at least 67%</text>

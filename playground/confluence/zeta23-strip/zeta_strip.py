@@ -124,8 +124,9 @@ def write_svg(simple, distinct, multiple, zrev, orev, rrev):
     # right: how many are single
     bx, bw, by = 520, 380, 150
     o.append(f'<text x="{bx}" y="40" font-size="18" fill="{ink}" font-weight="bold">2. How many are single?</text>')
-    o.append(f'<text x="{bx}" y="{by - 48}" font-size="14" fill="{ink}">Count the zeros up to a large enough height</text>')
-    o.append(f'<text x="{bx}" y="{by - 30}" font-size="14" fill="{ink}">(a repeated one counts twice). Of that count:</text>')
+    o.append(f'<text x="{bx}" y="{by - 66}" font-size="14" fill="{ink}">Count the zeros up to a large enough height</text>')
+    o.append(f'<text x="{bx}" y="{by - 48}" font-size="14" fill="{ink}">(a double counts twice, a triple three times).</text>')
+    o.append(f'<text x="{bx}" y="{by - 30}" font-size="14" fill="{ink}">Of that count:</text>')
     o.append(f'<rect x="{bx}" y="{by}" width="{bw * simple:.1f}" height="40" fill="{gold}"/>')
     o.append(f'<rect x="{bx + bw * simple:.1f}" y="{by}" width="{bw * multiple:.1f}" height="40" fill="#ffffff" stroke="{ink}" stroke-dasharray="4 3"/>')
     o.append(f'<text x="{bx + 10}" y="{by + 26}" font-size="15" fill="#ffffff" font-weight="bold">at least {lo}%</text>')
