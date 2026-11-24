@@ -87,6 +87,8 @@ def main():
     print(f"slope of Z at its crossings: smallest {min(slopes):.3f} (none flat), largest {max(slopes):.3f}")
     write_svg(zs, slopes)
     print("wrote zeta_wave.svg")
+    write_svg_narrow(zs)
+    print("wrote zeta_wave_narrow.svg")
 
 
 def write_svg(zs, slopes):
@@ -127,6 +129,48 @@ def write_svg(zs, slopes):
     o.append(f'<text x="{x0}" y="{H - 10}" font-size="12" fill="{mute}">Computed with the Riemann-Siegel formula and checked against the zero-counting formula (zeta_wave.py). A picture of {len(zs)} zeros, not a proof.</text>')
     o.append('</svg>')
     with open("zeta_wave.svg", "w", encoding="utf-8") as fh:
+        fh.write("\n".join(o) + "\n")
+
+
+def write_svg_narrow(zs):
+    """The same picture for a phone (shown under 600 px): taller, larger type, the glyphs stacked."""
+    W, H = 420, 660
+    x0, x1, ymid, yscale = 22, 400, 318, 30
+    def X(t):
+        return x0 + (x1 - x0) * (t - 10) / (T_MAX - 10)
+    gold, ink, mute, teal = "#b8860b", "#1f2328", "#57606a", "#0f766e"
+    pts, t = [], 10.0
+    while t <= T_MAX + 1e-9:
+        pts.append(f"{X(t):.1f},{ymid - yscale * max(-4.5, min(4.5, Z(t))):.1f}")
+        t += 0.05
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Helvetica, Arial, sans-serif">',
+         f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+         f'<text x="{x0}" y="34" font-size="21" fill="{ink}" font-weight="bold">The zeta function along</text>',
+         f'<text x="{x0}" y="60" font-size="21" fill="{ink}" font-weight="bold">the line, drawn as a wave</text>']
+    for i, line in enumerate(["Every crossing is a zero of zeta. Each of",
+                              f"these {len(zs)} crossings has a clearly nonzero",
+                              "estimated slope, so each zero is single",
+                              "(a numerical picture)."]):
+        o.append(f'<text x="{x0}" y="{92 + 21 * i}" font-size="16" fill="{mute}">{line}</text>')
+    o.append(f'<line x1="{x0}" y1="{ymid}" x2="{x1}" y2="{ymid}" stroke="{ink}" stroke-width="1"/>')
+    o.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="{teal}" stroke-width="2.5"/>')
+    for z in zs:
+        o.append(f'<circle cx="{X(z):.1f}" cy="{ymid}" r="5.5" fill="{gold}" stroke="#ffffff" stroke-width="1.5"/>')
+    for tick in range(10, int(T_MAX) + 1, 10):
+        o.append(f'<text x="{X(tick):.1f}" y="{ymid + 160}" font-size="15" fill="{ink}" text-anchor="middle">{tick}</text>')
+    o.append(f'<text x="{(x0 + x1) / 2:.1f}" y="{ymid + 184}" font-size="15" fill="{mute}" text-anchor="middle">height along the line</text>')
+    gy, gw = 550, 64
+    o.append(f'<line x1="{x0}" y1="{gy}" x2="{x0 + gw}" y2="{gy}" stroke="{ink}" stroke-width="1"/>')
+    o.append(f'<line x1="{x0 + 8}" y1="{gy + 22}" x2="{x0 + gw - 8}" y2="{gy - 22}" stroke="{teal}" stroke-width="3"/>')
+    o.append(f'<circle cx="{x0 + gw / 2}" cy="{gy}" r="5.5" fill="{gold}" stroke="#ffffff" stroke-width="1.5"/>')
+    o.append(f'<text x="{x0 + gw + 14}" y="{gy + 6}" font-size="17" fill="{ink}" font-weight="bold">single zero: cuts through</text>')
+    gy2 = gy + 60
+    o.append(f'<line x1="{x0}" y1="{gy2}" x2="{x0 + gw}" y2="{gy2}" stroke="{ink}" stroke-width="1"/>')
+    o.append(f'<path d="M {x0 + 6} {gy2 - 24} Q {x0 + gw / 2} {gy2 + 24} {x0 + gw - 6} {gy2 - 24}" fill="none" stroke="{teal}" stroke-width="3" stroke-dasharray="5 4"/>')
+    o.append(f'<circle cx="{x0 + gw / 2}" cy="{gy2}" r="5.5" fill="#ffffff" stroke="{gold}" stroke-width="2"/>')
+    o.append(f'<text x="{x0 + gw + 14}" y="{gy2 + 6}" font-size="17" fill="{ink}" font-weight="bold">repeated zero: sits flat</text>')
+    o.append('</svg>')
+    with open("zeta_wave_narrow.svg", "w", encoding="utf-8") as fh:
         fh.write("\n".join(o) + "\n")
 
 

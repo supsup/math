@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 1010" width="420" height="1010" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="1010" fill="#ffffff"/>
+<defs><pattern id="hatchn" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#8c959f" stroke-width="2"/></pattern></defs>
+<text x="20" y="34" font-size="22" fill="#1f2328" font-weight="bold">1. Where the zeros are</text>
+<rect x="40.0" y="84" width="168.0" height="296" fill="url(#hatchn)" opacity="0.45"/>
+<rect x="212.0" y="84" width="168.0" height="296" fill="url(#hatchn)" opacity="0.45"/>
+<rect x="40.0" y="84" width="340.0" height="296" fill="none" stroke="#1f2328" stroke-width="1"/>
+<line x1="210.0" y1="84" x2="210.0" y2="380" stroke="#b8860b" stroke-width="7"/>
+<text x="210.0" y="72" font-size="17" fill="#b8860b" text-anchor="middle" font-weight="bold">every nontrivial zero is on this line</text>
+<text x="121.6" y="232.0" font-size="17" fill="#57606a" text-anchor="middle">none here</text>
+<text x="298.4" y="232.0" font-size="17" fill="#57606a" text-anchor="middle">none here</text>
+<text x="40.0" y="404" font-size="17" fill="#1f2328" text-anchor="middle">0</text>
+<text x="210.0" y="404" font-size="17" fill="#1f2328" text-anchor="middle">1/2</text>
+<text x="380.0" y="404" font-size="17" fill="#1f2328" text-anchor="middle">1</text>
+<text x="20" y="436" font-size="16" fill="#57606a">Proved in 2026 and checked by computer</text>
+<text x="20" y="457" font-size="16" fill="#57606a">(the Riemann Hypothesis).</text>
+<text x="20" y="530" font-size="22" fill="#1f2328" font-weight="bold">2. How many are single?</text>
+<text x="20" y="564" font-size="17" fill="#1f2328">Count the zeros up to a large enough</text>
+<text x="20" y="586" font-size="17" fill="#1f2328">height (a double counts twice, a triple</text>
+<text x="20" y="608" font-size="17" fill="#1f2328">three times). Of that count:</text>
+<rect x="20" y="646" width="255.6" height="46" fill="#b8860b"/>
+<rect x="275.6" y="646" width="124.4" height="46" fill="#ffffff" stroke="#1f2328" stroke-dasharray="4 3"/>
+<text x="32" y="676" font-size="19" fill="#ffffff" font-weight="bold">at least 67%</text>
+<text x="20" y="728" font-size="19" fill="#b8860b" font-weight="bold">at least 67% are single zeros</text>
+<text x="20" y="754" font-size="16" fill="#1f2328">(the graph cuts through zero, like x)</text>
+<text x="20" y="790" font-size="19" fill="#1f2328" font-weight="bold">at most 33% can be repeated ones</text>
+<text x="20" y="816" font-size="16" fill="#1f2328">(the graph would be flat, like x squared)</text>
+<text x="20" y="852" font-size="16" fill="#57606a">Mathematicians expect none to be</text>
+<text x="20" y="873" font-size="16" fill="#57606a">repeated, but nobody has proved that.</text>
+<text x="20" y="894" font-size="16" fill="#57606a">This result proves at least 67%.</text>
+<text x="20" y="929" font-size="13" fill="#57606a">Sources: Alpoge-Furman (arXiv:2608.13637;</text>
+<text x="20" y="946" font-size="13" fill="#57606a">Lean, formal-math 11b6c7e); Riemann Hypothesis:</text>
+<text x="20" y="963" font-size="13" fill="#57606a">Alpoge with Claude, 2026-11-20 (mirror 6193bb5).</text>
+</svg>

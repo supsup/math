@@ -93,6 +93,8 @@ def main(formal, openai, rh):
           "(the simple-zeros conjecture: 0)")
     write_svg(simple, distinct, multiple, zrev[:7], orev[:7], rrev[:7])
     print("wrote zeta_strip.svg")
+    write_svg_narrow(simple, distinct, multiple, zrev[:7], rrev[:7])
+    print("wrote zeta_strip_narrow.svg")
 
 
 def write_svg(simple, distinct, multiple, zrev, orev, rrev):
@@ -140,6 +142,61 @@ def write_svg(simple, distinct, multiple, zrev, orev, rrev):
     o.append(f'<text x="{bx}" y="{by + 266}" font-size="12" fill="{mute}">Riemann Hypothesis: Alpoge with Claude, 2026-11-20 (mirror {rrev}).</text>')
     o.append('</svg>')
     with open("zeta_strip.svg", "w", encoding="utf-8") as fh:
+        fh.write("\n".join(o) + "\n")
+
+
+def write_svg_narrow(simple, distinct, multiple, zrev, rrev):
+    """The same two panels for a phone (shown under 600 px): stacked, larger type."""
+    lo = math.floor(simple * 100)
+    hi = math.ceil(multiple * 100)
+    assert lo / 100 <= simple and hi / 100 >= multiple and lo + hi == 100
+    W, H = 420, 1010
+    x0, x1, ytop, ybot = 40, 380, 84, 380
+    def X(re):
+        return x0 + (x1 - x0) * re
+    gold, ink, grey, mute = "#b8860b", "#1f2328", "#8c959f", "#57606a"
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Helvetica, Arial, sans-serif">',
+         f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+         '<defs><pattern id="hatchn" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+         f'<line x1="0" y1="0" x2="0" y2="8" stroke="{grey}" stroke-width="2"/></pattern></defs>',
+         f'<text x="20" y="34" font-size="22" fill="{ink}" font-weight="bold">1. Where the zeros are</text>']
+    for a, b in ((0, 0.5 - 0.006), (0.5 + 0.006, 1)):
+        o.append(f'<rect x="{X(a):.1f}" y="{ytop}" width="{X(b) - X(a):.1f}" height="{ybot - ytop}" fill="url(#hatchn)" opacity="0.45"/>')
+    o.append(f'<rect x="{X(0):.1f}" y="{ytop}" width="{X(1) - X(0):.1f}" height="{ybot - ytop}" fill="none" stroke="{ink}" stroke-width="1"/>')
+    o.append(f'<line x1="{X(.5):.1f}" y1="{ytop}" x2="{X(.5):.1f}" y2="{ybot}" stroke="{gold}" stroke-width="7"/>')
+    o.append(f'<text x="{X(.5):.1f}" y="{ytop - 12}" font-size="17" fill="{gold}" text-anchor="middle" font-weight="bold">every nontrivial zero is on this line</text>')
+    o.append(f'<text x="{X(.24):.1f}" y="{(ytop + ybot) / 2:.1f}" font-size="17" fill="{mute}" text-anchor="middle">none here</text>')
+    o.append(f'<text x="{X(.76):.1f}" y="{(ytop + ybot) / 2:.1f}" font-size="17" fill="{mute}" text-anchor="middle">none here</text>')
+    for re, lab in ((0, "0"), (.5, "1/2"), (1, "1")):
+        o.append(f'<text x="{X(re):.1f}" y="{ybot + 24}" font-size="17" fill="{ink}" text-anchor="middle">{lab}</text>')
+    o.append(f'<text x="20" y="{ybot + 56}" font-size="16" fill="{mute}">Proved in 2026 and checked by computer</text>')
+    o.append(f'<text x="20" y="{ybot + 77}" font-size="16" fill="{mute}">(the Riemann Hypothesis).</text>')
+    y2 = 530
+    o.append(f'<text x="20" y="{y2}" font-size="22" fill="{ink}" font-weight="bold">2. How many are single?</text>')
+    for i, line in enumerate(["Count the zeros up to a large enough", "height (a double counts twice, a triple",
+                              "three times). Of that count:"]):
+        o.append(f'<text x="20" y="{y2 + 34 + 22 * i}" font-size="17" fill="{ink}">{line}</text>')
+    bx, bw, by = 20, 380, y2 + 116
+    o.append(f'<rect x="{bx}" y="{by}" width="{bw * simple:.1f}" height="46" fill="{gold}"/>')
+    o.append(f'<rect x="{bx + bw * simple:.1f}" y="{by}" width="{bw * multiple:.1f}" height="46" fill="#ffffff" stroke="{ink}" stroke-dasharray="4 3"/>')
+    o.append(f'<text x="{bx + 12}" y="{by + 30}" font-size="19" fill="#ffffff" font-weight="bold">at least {lo}%</text>')
+    rows = [(f"at least {lo}% are single zeros", gold, 19, True), ("(the graph cuts through zero, like x)", ink, 16, False),
+            (f"at most {hi}% can be repeated ones", ink, 19, True), ("(the graph would be flat, like x squared)", ink, 16, False)]
+    y = by + 82
+    for text, colour, size, bold in rows:
+        weight = ' font-weight="bold"' if bold else ""
+        o.append(f'<text x="20" y="{y}" font-size="{size}" fill="{colour}"{weight}>{text}</text>')
+        y += 26 if bold else 36
+    for text in ("Mathematicians expect none to be", "repeated, but nobody has proved that.", f"This result proves at least {lo}%."):
+        o.append(f'<text x="20" y="{y}" font-size="16" fill="{mute}">{text}</text>')
+        y += 21
+    y += 14
+    for text in ("Sources: Alpoge-Furman (arXiv:2608.13637;", f"Lean, formal-math {zrev}); Riemann Hypothesis:", f"Alpoge with Claude, 2026-11-20 (mirror {rrev})."):
+        o.append(f'<text x="20" y="{y}" font-size="13" fill="{mute}">{text}</text>')
+        y += 17
+    assert y <= H, "the narrow strip picture overflows"
+    o.append('</svg>')
+    with open("zeta_strip_narrow.svg", "w", encoding="utf-8") as fh:
         fh.write("\n".join(o) + "\n")
 
 

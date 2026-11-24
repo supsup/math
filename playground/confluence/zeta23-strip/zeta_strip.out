@@ -3,3 +3,4 @@ statements: zeta23 B and D; the release proves Mathlib's RiemannHypothesis and D
 c1* = 0.7532960679; simple >= 0.67250070; distinct >= 0.83625035; control t=1 gives 0.83887
 with every zero on the line: multiple zeros carry at most 0.32749930 of the count, eventually (the simple-zeros conjecture: 0)
 wrote zeta_strip.svg
+wrote zeta_strip_narrow.svg
