@@ -60,6 +60,8 @@ def main(formal, openai, rh):
 
     # 2. the quoted statements, verbatim
     for s in ("theorem two_thirds_simple_on_critical_line_cumulative :",
+              "theorem montgomery_taylor_distinct_mult_cumulative :",
+              "(3 / 2 - cMT⁻¹ / 2 - ε) * (Ncount 0 T : ℝ) ≤ Ndist 0 T",
               "theorem montgomery_taylor_simple_on_critical_line_mult_cumulative :",
               "def N0simple (T₁ T₂ : ℝ) : ℕ := (zerosIn T₁ T₂ ∩ {ρ | ρ.re = 1 / 2} ∩ {ρ | zeroMult ρ = 1}).ncard",
               "def Ncount (T₁ T₂ : ℝ) : ℕ := ∑ᶠ ρ ∈ zerosIn T₁ T₂, zeroMult ρ"):
@@ -113,7 +115,7 @@ def write_svg(simple, distinct, multiple, zrev, orev, rrev):
         o.append(f'<rect x="{X(a):.1f}" y="{ytop}" width="{X(b) - X(a):.1f}" height="{ybot - ytop}" fill="url(#hatch)" opacity="0.45"/>')
     o.append(f'<rect x="{X(0):.1f}" y="{ytop}" width="{X(1) - X(0):.1f}" height="{ybot - ytop}" fill="none" stroke="{ink}" stroke-width="1"/>')
     o.append(f'<line x1="{X(.5):.1f}" y1="{ytop}" x2="{X(.5):.1f}" y2="{ybot}" stroke="{gold}" stroke-width="6"/>')
-    o.append(f'<text x="{X(.5):.1f}" y="{ytop - 10}" font-size="14" fill="{gold}" text-anchor="middle" font-weight="bold">every zero is on this line</text>')
+    o.append(f'<text x="{X(.5):.1f}" y="{ytop - 10}" font-size="14" fill="{gold}" text-anchor="middle" font-weight="bold">every nontrivial zero is on this line</text>')
     o.append(f'<text x="{X(.23):.1f}" y="{(ytop + ybot) / 2:.1f}" font-size="14" fill="{mute}" text-anchor="middle">none here</text>')
     o.append(f'<text x="{X(.77):.1f}" y="{(ytop + ybot) / 2:.1f}" font-size="14" fill="{mute}" text-anchor="middle">none here</text>')
     for re, lab in ((0, "0"), (.5, "1/2"), (1, "1")):
@@ -122,16 +124,17 @@ def write_svg(simple, distinct, multiple, zrev, orev, rrev):
     # right: how many are single
     bx, bw, by = 520, 380, 150
     o.append(f'<text x="{bx}" y="40" font-size="18" fill="{ink}" font-weight="bold">2. How many are single?</text>')
-    o.append(f'<text x="{bx}" y="{by - 30}" font-size="14" fill="{ink}">Out of every 100 zeros (a repeated one counts twice):</text>')
+    o.append(f'<text x="{bx}" y="{by - 48}" font-size="14" fill="{ink}">Count the zeros up to a large enough height</text>')
+    o.append(f'<text x="{bx}" y="{by - 30}" font-size="14" fill="{ink}">(a repeated one counts twice). Of that count:</text>')
     o.append(f'<rect x="{bx}" y="{by}" width="{bw * simple:.1f}" height="40" fill="{gold}"/>')
     o.append(f'<rect x="{bx + bw * simple:.1f}" y="{by}" width="{bw * multiple:.1f}" height="40" fill="#ffffff" stroke="{ink}" stroke-dasharray="4 3"/>')
-    o.append(f'<text x="{bx + 10}" y="{by + 26}" font-size="15" fill="#ffffff" font-weight="bold">at least {lo}</text>')
-    o.append(f'<text x="{bx}" y="{by + 70}" font-size="15" fill="{gold}" font-weight="bold">at least {lo} are single</text>')
+    o.append(f'<text x="{bx + 10}" y="{by + 26}" font-size="15" fill="#ffffff" font-weight="bold">at least {lo}%</text>')
+    o.append(f'<text x="{bx}" y="{by + 70}" font-size="15" fill="{gold}" font-weight="bold">at least {lo}% are single zeros</text>')
     o.append(f'<text x="{bx}" y="{by + 92}" font-size="13" fill="{ink}">(the graph cuts through zero with a slope, like x)</text>')
-    o.append(f'<text x="{bx}" y="{by + 128}" font-size="15" fill="{ink}" font-weight="bold">at most {hi} could be repeated</text>')
+    o.append(f'<text x="{bx}" y="{by + 128}" font-size="15" fill="{ink}" font-weight="bold">at most {hi}% can be repeated ones</text>')
     o.append(f'<text x="{bx}" y="{by + 150}" font-size="13" fill="{ink}">(the graph would be flat at zero, like x squared)</text>')
     o.append(f'<text x="{bx}" y="{by + 188}" font-size="13" fill="{mute}">Mathematicians expect none to be repeated, but</text>')
-    o.append(f'<text x="{bx}" y="{by + 206}" font-size="13" fill="{mute}">nobody has proved that. This result proves at least {lo}.</text>')
+    o.append(f'<text x="{bx}" y="{by + 206}" font-size="13" fill="{mute}">nobody has proved that. This result proves at least {lo}%.</text>')
     o.append(f'<text x="{bx}" y="{by + 250}" font-size="12" fill="{mute}">Sources: Alpoge-Furman (arXiv:2608.13637; Lean, formal-math {zrev});</text>')
     o.append(f'<text x="{bx}" y="{by + 266}" font-size="12" fill="{mute}">Riemann Hypothesis: Alpoge with Claude, 2026-11-20 (mirror {rrev}).</text>')
     o.append('</svg>')

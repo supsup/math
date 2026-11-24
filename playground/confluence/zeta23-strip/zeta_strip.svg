@@ -6,7 +6,7 @@
 <rect x="251.5" y="80" width="188.5" height="340" fill="url(#hatch)" opacity="0.45"/>
 <rect x="60.0" y="80" width="380.0" height="340" fill="none" stroke="#1f2328" stroke-width="1"/>
 <line x1="250.0" y1="80" x2="250.0" y2="420" stroke="#b8860b" stroke-width="6"/>
-<text x="250.0" y="70" font-size="14" fill="#b8860b" text-anchor="middle" font-weight="bold">every zero is on this line</text>
+<text x="250.0" y="70" font-size="14" fill="#b8860b" text-anchor="middle" font-weight="bold">every nontrivial zero is on this line</text>
 <text x="147.4" y="250.0" font-size="14" fill="#57606a" text-anchor="middle">none here</text>
 <text x="352.6" y="250.0" font-size="14" fill="#57606a" text-anchor="middle">none here</text>
 <text x="60.0" y="442" font-size="14" fill="#1f2328" text-anchor="middle">0</text>
@@ -14,16 +14,17 @@
 <text x="440.0" y="442" font-size="14" fill="#1f2328" text-anchor="middle">1</text>
 <text x="60" y="472" font-size="13" fill="#57606a">Proved in 2026 and checked by computer (the Riemann Hypothesis).</text>
 <text x="520" y="40" font-size="18" fill="#1f2328" font-weight="bold">2. How many are single?</text>
-<text x="520" y="120" font-size="14" fill="#1f2328">Out of every 100 zeros (a repeated one counts twice):</text>
+<text x="520" y="102" font-size="14" fill="#1f2328">Count the zeros up to a large enough height</text>
+<text x="520" y="120" font-size="14" fill="#1f2328">(a repeated one counts twice). Of that count:</text>
 <rect x="520" y="150" width="255.6" height="40" fill="#b8860b"/>
 <rect x="775.6" y="150" width="124.4" height="40" fill="#ffffff" stroke="#1f2328" stroke-dasharray="4 3"/>
-<text x="530" y="176" font-size="15" fill="#ffffff" font-weight="bold">at least 67</text>
-<text x="520" y="220" font-size="15" fill="#b8860b" font-weight="bold">at least 67 are single</text>
+<text x="530" y="176" font-size="15" fill="#ffffff" font-weight="bold">at least 67%</text>
+<text x="520" y="220" font-size="15" fill="#b8860b" font-weight="bold">at least 67% are single zeros</text>
 <text x="520" y="242" font-size="13" fill="#1f2328">(the graph cuts through zero with a slope, like x)</text>
-<text x="520" y="278" font-size="15" fill="#1f2328" font-weight="bold">at most 33 could be repeated</text>
+<text x="520" y="278" font-size="15" fill="#1f2328" font-weight="bold">at most 33% can be repeated ones</text>
 <text x="520" y="300" font-size="13" fill="#1f2328">(the graph would be flat at zero, like x squared)</text>
 <text x="520" y="338" font-size="13" fill="#57606a">Mathematicians expect none to be repeated, but</text>
-<text x="520" y="356" font-size="13" fill="#57606a">nobody has proved that. This result proves at least 67.</text>
+<text x="520" y="356" font-size="13" fill="#57606a">nobody has proved that. This result proves at least 67%.</text>
 <text x="520" y="400" font-size="12" fill="#57606a">Sources: Alpoge-Furman (arXiv:2608.13637; Lean, formal-math 11b6c7e);</text>
 <text x="520" y="416" font-size="12" fill="#57606a">Riemann Hypothesis: Alpoge with Claude, 2026-11-20 (mirror 6193bb5).</text>
 </svg>

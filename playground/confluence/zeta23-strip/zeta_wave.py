@@ -102,8 +102,8 @@ def write_svg(zs, slopes):
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="Helvetica, Arial, sans-serif">',
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
          f'<text x="{x0}" y="38" font-size="19" fill="{ink}" font-weight="bold">The zeta function along the line, drawn as a wave</text>',
-         f'<text x="{x0}" y="62" font-size="14" fill="{mute}">Every point where the wave crosses zero is a zero of zeta. Here every crossing cuts straight through:</text>',
-         f'<text x="{x0}" y="80" font-size="14" fill="{mute}">each of these {len(zs)} zeros is single. A repeated zero would make the wave go flat at zero.</text>',
+         f'<text x="{x0}" y="62" font-size="14" fill="{mute}">Every point where the wave crosses zero is a zero of zeta. Each of these {len(zs)} crossings has a clearly nonzero</text>',
+         f'<text x="{x0}" y="80" font-size="14" fill="{mute}">estimated slope, so each zero is single (a numerical picture). A repeated zero would sit flat at zero.</text>',
          f'<line x1="{x0}" y1="{ymid}" x2="{x1}" y2="{ymid}" stroke="{ink}" stroke-width="1"/>',
          f'<polyline points="{" ".join(pts)}" fill="none" stroke="{teal}" stroke-width="2"/>']
     for z in zs:
@@ -117,7 +117,7 @@ def write_svg(zs, slopes):
     o.append(f'<line x1="{x0 + 8}" y1="{gy + 24}" x2="{x0 + gw - 8}" y2="{gy - 24}" stroke="{teal}" stroke-width="2.5"/>')
     o.append(f'<circle cx="{x0 + gw / 2}" cy="{gy}" r="5" fill="{gold}" stroke="#ffffff" stroke-width="1.5"/>')
     o.append(f'<text x="{x0 + gw + 14}" y="{gy - 4}" font-size="14" fill="{ink}" font-weight="bold">single zero</text>')
-    o.append(f'<text x="{x0 + gw + 14}" y="{gy + 14}" font-size="13" fill="{mute}">the wave cuts through (all {len(zs)} above)</text>')
+    o.append(f'<text x="{x0 + gw + 14}" y="{gy + 14}" font-size="13" fill="{mute}">the wave cuts through with a slope</text>')
     gx = 520
     o.append(f'<line x1="{gx}" y1="{gy}" x2="{gx + gw}" y2="{gy}" stroke="{ink}" stroke-width="1"/>')
     o.append(f'<path d="M {gx + 6} {gy - 26} Q {gx + gw / 2} {gy + 26} {gx + gw - 6} {gy - 26}" fill="none" stroke="{teal}" stroke-width="2.5" stroke-dasharray="5 4"/>')
